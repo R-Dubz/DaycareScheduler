@@ -1,0 +1,14 @@
+{
+  "name": "testapp.js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "testapp2.js",
+  "scripts": {
+      "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
