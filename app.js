@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-var nosql = require('nosql');
 
 
 app.get('/', function (req, res) {
