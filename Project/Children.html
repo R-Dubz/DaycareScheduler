@@ -1,0 +1,24 @@
+<DOCTYPE! html>
+<html>
+<body bgcolor="yellow">
+
+Answer: <input type="text" id="myText" value="Enter Answer Here">
+
+<button onclick="myFunction()">Check it</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("myText").value;
+if(x == "Hello"){
+	window.location.href = 'Home.html';
+}
+else
+	window.location.href = 'next/end.html';
+}
+
+</script>
+
+</body>
+<html>
