@@ -1,21 +1,34 @@
 <DOCTYPE! html>
 <html>
-<body bgcolor="yellow">
+<head bgcolor="red">
+<title>Child Search</title>
+<p><h1 style="text-align:center;">Child Search</h1></p>
+</head>
+<body bgcolor="ffff35">
 
-Answer: <input type="text" id="myText" value="Enter Answer Here">
+What to search for: <input type="text" id="myText" value="Search Here">
 
 <button onclick="myFunction()">Check it</button>
 
 <p id="demo"></p>
 
 <script>
+//import sqlite3
+
+//def get_stuff():
+//	con = sqlite3.connect('DaycareDB.db')
+//	c = con.cursor()
+//	c.execute('''SELECT * FROM Personal_Information;''')
+//	return [cat[0] for cat in c.fetchall()]
+	
 function myFunction() {
-    var x = document.getElementById("myText").value;
-if(x == "Hello"){
-	window.location.href = 'Home.html';
-}
-else
-	window.location.href = 'next/end.html';
+   var x = document.getElementById("myText").value;
+   if(x == "Enter")
+		window.location.href = 'Home.html';
+	else
+		window.location.href = 'Cildren.html';
+//	else
+//		GETHANDLERS["Personal_Information"] = get_stuff;
 }
 
 </script>

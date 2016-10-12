@@ -1,5 +1,9 @@
 var express = require('express');
 var app = express();
+var fs = require('fs');
+var file = "DaycareDB.db";
+var exists = fs.existsSync(file);
+//var db = OpenDatabase(file);
 
 app.use(express.static(__dirname + '/Project'));
 
@@ -7,13 +11,13 @@ app.use(express.static(__dirname + '/'));
 
 
 app.get('/', function (req, res) {
-    res.sendFile('project.html');
+    res.sendFile('Project/Home.html', {root: __dirname });
 //	app.use('html',express.static(path.join(__dirname, 'Project/Home.html')));
 //	res.sendFile('/Home.html', {root: __dirname })
 });
 
 app.get('/Home',function(req,res){
-  res.sendFile('/Home.html');
+  res.sendFile('/children.html');
 });
 
 app.listen(3000);
