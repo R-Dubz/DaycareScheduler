@@ -11,7 +11,7 @@ function loadData() {
 
   window.alert("Started loadData()");
 
-  var url="https://docs.google.com/spreadsheets/d/1EV8S8AaAmxF3vP0F6RWxKIUlvF6uFEmsrOFWA1oNBYI/pub?&gid=0&range=A2:X2&output=csv";
+  var url="https://spreadsheets.google.com/feeds/cells/1EV8S8AaAmxF3vP0F6RWxKIUlvF6uFEmsrOFWA1oNBYI/od6/public/values?alt=json-in-script&callback=myCallback";
   xmlhttp=new XMLHttpRequest();
   xmlhttp.onreadystatechange = function() {
     if(xmlhttp.readyState == 4 && xmlhttp.status==200){
@@ -36,7 +36,8 @@ function updateDB() {
 	var sqlite3 = require("sqlite3").verbose();
 	var db = new sqlite3.Database(file);
 
-	db.serialize(function() {
+	/* db.serialize(function() {
 		var stmt = db.prepare("INSERT INTO Personal_Information
 
-
+*/
+}
