@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var fs = require('fs');
+var nosql = require('nosql');
 var file = "DaycareDB.db";
 var exists = fs.existsSync(file);
 //var db = OpenDatabase(file);

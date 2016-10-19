@@ -1,10 +1,60 @@
 <DOCTYPE! html>
 <html>
-<head bgcolor="red">
-<title>Child Search</title>
-<p><h1 style="text-align:center;">Child Search</h1></p>
+
+<head>
+<style>
+.dropbtn {
+    background-color: #000000;
+    color: white;
+    padding: 10px;
+    font-size: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+	right: 0;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #ffff00}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #888888;
+}
+</style>
 </head>
+
 <body bgcolor="ffff35">
+<h1>Search for an enrolled child</h1>
+<h5><div class="dropdown" style="float:right;">
+  <button class="dropbtn">||||</button>
+  <div class="dropdown-content">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+  </div>
+</div></h5>
 
 What to search for: <input type="text" id="myText" value="Search Here">
 
@@ -26,7 +76,7 @@ function myFunction() {
    if(x == "Enter")
 		window.location.href = 'Home.html';
 	else
-		window.location.href = 'Cildren.html';
+		window.location.href = 'Children.html';
 //	else
 //		GETHANDLERS["Personal_Information"] = get_stuff;
 }
