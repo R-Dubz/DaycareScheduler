@@ -62,19 +62,27 @@ What to search for: <input type="text" id="myText" value="Search Here">
 
 <p id="demo"></p>
 
-<script>
-//import sqlite3
-
-//def get_stuff():
-//	con = sqlite3.connect('DaycareDB.db')
-//	c = con.cursor()
-//	c.execute('''SELECT * FROM Personal_Information;''')
-//	return [cat[0] for cat in c.fetchall()]
+<script type="text/javascript">
+<!--
+function runCmd(command, option)
+{
+    var char34 = String.fromCharCode(34);
+    var wsh = new ActiveXObject('WScript.Shell');
+    if (wsh)
+    {
+        command = 'cmd /k ' + char34 + wsh.ExpandEnvironmentStrings(command) + ' ';
+        command = command + char34 + wsh.ExpandEnvironmentStrings(option) + char34  + char34;
+        if (confirm(command))
+        {
+            wsh.Run(command);
+        }
+    }
+}
 	
 function myFunction() {
    var x = document.getElementById("myText").value;
    if(x == "Enter")
-		window.location.href = 'Home.html';
+		runCmd("start", "chrome");
 	else
 		window.location.href = 'Children.html';
 //	else
