@@ -1,9 +1,9 @@
-<DOCTYPE! html>
+<DOCKTYPE! html>
 <html>
 
 <head>
 <style>
-.dropbtn {
+.droptn {
     background-color: #000000;
     color: white;
     padding: 10px;
@@ -20,7 +20,7 @@
 .dropdown-content {
     display: none;
     position: absolute;
-	right: 0;
+        right: 0;
     background-color: #ffffff;
     min-width: 160px;
     box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2);
@@ -32,7 +32,6 @@
     text-decoration: none;
     display: block;
 }
-
 .dropdown-content a:hover {background-color: #ffff00}
 
 .dropdown:hover .dropdown-content {
@@ -45,8 +44,8 @@
 </style>
 </head>
 
-<body bgcolor="ffff35">
-<h1>Search for an enrolled child</h1>
+<body bgcolor="76ff00">
+<h1>Master Child Scedual</h1>
 <h5><div class="dropdown" style="float:right;">
   <button class="dropbtn">||||</button>
   <div class="dropdown-content">
@@ -62,32 +61,5 @@ What to search for: <input type="text" id="myText" value="Search Here">
 
 <p id="demo"></p>
 
-<script type="text/javascript">
-<!--
-function runCmd(command, option)
-{
-    var char34 = String.fromCharCode(34);
-    var wsh = new ActiveXObject('WScript.Shell');
-    if (wsh)
-    {
-        command = 'cmd /k ' + char34 + wsh.ExpandEnvironmentStrings(command) + ' ';
-        command = command + char34 + wsh.ExpandEnvironmentStrings(option) + char34  + char34;
-        if (confirm(command))
-        {
-            wsh.Run(command);
-        }
-    }
-}
-	
-function myFunction() {
-   var x = document.getElementById("myText").value;
-   if(x == "Enter")
-		runCmd("start", "chrome");
-	else
-		window.location.href = 'Children.html';
-}
 
-</script>
 
-</body>
-<html>
