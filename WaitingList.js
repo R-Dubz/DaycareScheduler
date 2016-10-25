@@ -1,7 +1,14 @@
-/* This will be used to connect to the google doc containing new
-	children information, importing the data, and then inserting
-	the data into our database.
+/* 
+This will be used to connect to the google doc containing new
+children information, importing the data, and then inserting
+the data into our database.
 */
+
+var GoogleSpreadsheet = require('google-spreadsheet');
+var async = require('async');
+
+var doc = new GoogleSpreadsheet('1EV8S8AaAmxF3vP0F6RWxKIUlvF6uFEmsrOFWA1oNBYI');
+var sheet;
 
 
 
