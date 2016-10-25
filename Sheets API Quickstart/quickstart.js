@@ -103,8 +103,8 @@ function listMajors(auth) {
   var sheets = google.sheets('v4');
   sheets.spreadsheets.values.get({
     auth: auth,
-    spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
-    range: 'Class Data!A2:E',
+    spreadsheetId: '1EV8S8AaAmxF3vP0F6RWxKIUlvF6uFEmsrOFWA1oNBYI',
+    range: 'Form Responses 1!A2:X2',
   }, function(err, response) {
     if (err) {
       console.log('The API returned an error: ' + err);
@@ -114,11 +114,11 @@ function listMajors(auth) {
     if (rows.length == 0) {
       console.log('No data found.');
     } else {
-      console.log('Name, Major:');
+      console.log('Form Responses');
       for (var i = 0; i < rows.length; i++) {
         var row = rows[i];
         // Print columns A and E, which correspond to indices 0 and 4.
-        console.log('%s, %s', row[0], row[4]);
+        console.log('%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s', row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9],row[10], row[11], row[12], row[13], row[14], row[15], row[16], row[17], row[18], row[19], row[20], row[21], row[22], row[23]);
       }
     }
   });
