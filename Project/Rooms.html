@@ -1,28 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<head>
-<script type="text/javascript">
-<!--
-function runCmd(command, option)
-{
-    var char34 = String.fromCharCode(34);
-    var wsh = new ActiveXObject('WScript.Shell');
-    if (wsh)
-    {
-        command = 'cmd /k ' + char34 + wsh.ExpandEnvironmentStrings(command) + ' ';
-        command = command + char34 + wsh.ExpandEnvironmentStrings(option) + char34  + char34;
-        if (confirm(command))
-        {
-            wsh.Run(command);
-        }
-    }
-}
-//-->
-</script>
-</head>
+<body bgcolor="00ff00">
 
-<body>
+<h1><font color="ff00ff">Hello</font></h1>
 
-<input type="button" value="Run!" onclick="runCmd(‘start’, ‘chrome’);" />
 </body>
 </html> 

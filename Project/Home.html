@@ -49,14 +49,19 @@
 
 <table style="width: 100%; height: 5%" bgcolor="white">
 <tr><td align="center"><h1><font color="maroon">
-SUNY Potsdam Daycare scheduling</font></h1></td></tr></table>
+SUNY Potsdam Daycare scheduling
+</font></h1></td></tr></table>
 <h5><div class="dropdown" style="float:right;">
   <button class="dropbtn">||||</button>
   <div class="dropdown-content">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
+    <a href="Rooms.html">Rooms</a>
+    <a href="Employees.html">Employees</a>
+    <a href="Children.html">Children</a>
+	<a href="sChildren.html">Schedule Children</a>
+	<a href="sEmployee.html">Schedule Employees</a>
+	<a href="Days.html">Day Schedule</a>
   </div>
+
 </div></h5>
 
 <script type="text/javascript" src="../node_modules/nosql/index.js">
@@ -75,9 +80,15 @@ SUNY Potsdam Daycare scheduling</font></h1></td></tr></table>
 			<h1>Employee search</h1></button></td>
 	</tr>
 	<tr style="height: 50%">
-		<td align="center">Schedule children</td>
-		<td align="center">Schedule employees</td>
-		<td align="center">Day schedule</td>
+		<td align="center">
+			<button style="height:200px;width:200px;background-color:3399f0" onclick="childSched()">
+			<h1>Schedule children</h1></button></td>
+		<td align="center">
+			<button style="height:200px;width:200px;background-color:3399f0" onclick="employeeSched()">
+			<h1>Schedule employees</h1></button></td>
+		<td align="center">
+			<button style="height:200px;width:200px;background-color:3399f0" onclick="day()">
+			<h1>Day schedule</h1></button></td>
 	</tr>
 </table>
 </h1>
@@ -88,8 +99,17 @@ function rooms() {
 function childInfo() {
 	window.location.href = 'Children.html';
 }
+function childSched() {
+	window.location.href = 'sChildren.html';
+}
 function employees() {
 	window.location.href = 'Employees.html';
+}
+function employeeSched() {
+	window.location.href = 'sEmployee.html';
+}
+function day() {
+	window.location.href = 'Days.html';
 }
 </script>
 </body>
