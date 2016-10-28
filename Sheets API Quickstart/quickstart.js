@@ -114,8 +114,8 @@ function listMajors(auth) {
       return;
     }
     var rows = response.values;
-	// splitData = rows.split(',');
-	updateDB.inputFormToDB(rows);
+	//splitData = rows.split(',');
+	updateDB.inputFormToDB.apply(this, rows);
     if (rows.length == 0) {
       console.log('No data found.');
     } else {
