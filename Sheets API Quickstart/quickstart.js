@@ -1,4 +1,5 @@
 var fs = require('fs');
+var updateDB = require('./updateDB.js');
 var readline = require('readline');
 var google = require('googleapis');
 var googleAuth = require('google-auth-library');
@@ -113,6 +114,8 @@ function listMajors(auth) {
       return;
     }
     var rows = response.values;
+	// splitData = rows.split(',');
+	updateDB.inputFormToDB(rows);
     if (rows.length == 0) {
       console.log('No data found.');
     } else {

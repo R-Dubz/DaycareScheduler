@@ -2,6 +2,7 @@
 This library holds functions to be used in order to modify the database
 */
 
+var updateDBService = function() {
 
 	var rawData;
 	var splitData = rawData.split(','); // this is to be put into quickstart.js to prepare data for input
@@ -40,3 +41,4 @@ This library holds functions to be used in order to modify the database
 	}
 };
 
+module.exports = updateDBService;
