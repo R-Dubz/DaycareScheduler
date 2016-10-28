@@ -4,11 +4,13 @@
   "description": "",
   "main": "testapp2.js",
   "scripts": {
-      "start": "node app.js"
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "google-auth-library": "^0.9.9",
+    "googleapis": "^14.1.0"
   }
 }
