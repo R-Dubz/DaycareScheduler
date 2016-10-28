@@ -1,7 +1,10 @@
 var fs = require('fs');
+var updateDB = require('../updateDB.js');
 var readline = require('readline');
 var google = require('googleapis');
 var googleAuth = require('google-auth-library');
+var splitData;
+
 
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/sheets.googleapis.com-nodejs-quickstart.json
@@ -111,6 +114,8 @@ function listMajors(auth) {
       return;
     }
     var rows = response.values;
+	splitData = rows.split(',');
+	updateDB.inputFormToDB(splitData);
     if (rows.length == 0) {
       console.log('No data found.');
     } else {
