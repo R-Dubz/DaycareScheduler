@@ -49,3 +49,7 @@ Temporary Items
 *.cc
 *.md
 *.json
+
+# Directories to ignore
+
+node_modules/
