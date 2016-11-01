@@ -1,10 +1,13 @@
 /*
 This library holds functions to be used in order to modify the database
 */
+
 	var updateDB = {
 
 		// var rawData;
 		// var splitData = rawData.split(','); // this is to be put into quickstart.js to prepare data for input
+
+		array_of_kids: [],
 
 		inputFormToDB: function(info) {
 			var fs = require("fs");
@@ -46,6 +49,12 @@ This library holds functions to be used in order to modify the database
 				$employment1: info[24],
 				$employment2: info[25]
 			});
+
+			db.each("SELECT * FROM Personal_Information", function(err, row) {
+    			console.log(row.ChildName + ": " + row.ChildAge);
+				updateDB.array_of_kids.push(row);
+  			});
+
 			db.close();
 		},
 

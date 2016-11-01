@@ -12,6 +12,7 @@ var SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
     process.env.USERPROFILE) + '/.credentials/';
 var TOKEN_PATH = TOKEN_DIR + 'sheets.googleapis.com-nodejs-quickstart.json';
+var array = [];
 
 var run = {
   runQuickstart : function() {
@@ -129,6 +130,33 @@ function listMajors(auth) {
         // Print columns A and E, which correspond to indices 0 and 4.
         console.log('%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s', row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9],row[10], row[11], row[12], row[13], row[14], row[15], row[16], row[17], row[18], row[19], row[20], row[21], row[22], row[23]);
       }
+
+
+      // var spreadsheetId = '1EV8S8AaAmxF3vP0F6RWxKIUlvF6uFEmsrOFWA1oNBYI';
+      // var requests = [];
+      // requests.push({
+      //   "deleteDimension": {
+      //     "range": {
+      //       "sheetId": spreadsheetId,
+      //       "dimension": "ROWS",
+      //       "startIndex": 0,
+      //       "endIndex": 3
+      //     }
+      //   }
+      // });
+      // var batchUpdateRequest = {requests: requests}
+      // var test = auth;
+      // sheets.spreadsheets.batchUpdate({
+      //   auth: test,
+      //   spreadsheetId: spreadsheetId,
+      //   resource: batchUpdateRequest
+      // }, function(err, response) {
+      //   if (err) {
+      //     console.log('The API returned an error: ' + err);
+      //     return;
+      //   }
+      // });
+
     }
   });
 }
