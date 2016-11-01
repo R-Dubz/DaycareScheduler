@@ -5,12 +5,21 @@
 <head>
 
 <script type="text/javascript" src="WaitingList.js"></script>
-<style>
-table, th, td {
+<style type="text/css">
+.TFtable {
+	width:100%;
 	border: 1px solid black;
 	border-collapse: collapse;
 	padding: 5px;
 }
+/*  Define the background color for all the ODD background rows  */
+	.TFtable tr:nth-child(odd){ 
+		background: #b8d1f3;
+	}
+	/*  Define the background color for all the EVEN background rows  */
+	.TFtable tr:nth-child(even){
+		background: #dae5f4;
+	}
 </style>
 <script type="text/javascript" src="updateDB.js"></script>
 <script type="text/javascript" src="quickstart.js"></script>
@@ -23,8 +32,8 @@ table, th, td {
 <button type="button" onclick="()">Unique ID Test</button>
 <div id="display"></div>
 
-<table style="with:100%">
-<tr>
+<table class = "TFtable">
+	<tr>
 	<th>Child's Name</th>
 	<th>D.O.B.</th>
 	<th>Phone Number</th>
@@ -39,6 +48,7 @@ table, th, td {
 	<th>View Profile</th>
 	<th>Accept</th>
 </tr>
+<tr>
 	<th> Saeki Yagami</th>
 	<th>011/10/2015</th>
         <th>(123) 456-7890</th>
@@ -50,11 +60,10 @@ table, th, td {
         <th>1/1/2017</th>
         <th>IN</th>
         <th>MWF</th>
-        <th>[button]</th>
-        <th>[button] </th>
-<tr>
+<!-- make shure all button code is between the <th> and </th> tags -->
+        <th><button type="button" onclick="()"> Profile</button></th>
+        <th><button type="button" onclick="()">Accept</button> </th>
 
-</tr>
 </table>
 
 
