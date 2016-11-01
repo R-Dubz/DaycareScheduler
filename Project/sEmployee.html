@@ -1,0 +1,63 @@
+<DOCKTYPE! html>
+<html>
+
+<head>
+<style>
+.droptn {
+    background-color: #000000;
+    color: white;
+    padding: 10px;
+    font-size: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+        right: 0;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {background-color: #ffff00}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #888888;
+}
+</style>
+</head>
+
+<body bgcolor="ff84c1">
+<h1>Master Employee Schedule</h1>
+<h5><div class="dropdown" style="float:right;">
+  <button class="dropbtn">||||</button>
+  <div class="dropdown-content">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+  </div>
+</div></h5>
+
+What to search for: <input type="text" id="myText" value="Search Here">
+
+<button onclick="myFunction()">Check it</button>
+
+<p id="demo"></p>
+

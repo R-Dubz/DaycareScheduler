@@ -1,13 +1,20 @@
 var express = require('express');
 var app = express();
+var fs = require('fs');
+var nosql = require('nosql');
+var file = "DaycareDB.db";
+var exists = fs.existsSync(file);
+//var db = OpenDatabase(file);
 
-//app.use('/html', express.static(__dirname, '/Project1'));
+app.use(express.static(__dirname + '/Project'));
+
+app.use(express.static(__dirname + '/'));
+
 
 app.get('/', function (req, res) {
-    res.sendFile('/project.html', {root: __dirname })
+    res.sendFile('Project/Home.html', {root: __dirname });
 });
 
 
-app.listen(3001, function () {
-  console.log('Example app listening on port 3001!');
-});
+app.listen(3000);
+console.log("running at port 3000");
