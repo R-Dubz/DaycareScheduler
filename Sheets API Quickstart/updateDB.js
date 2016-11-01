@@ -63,7 +63,7 @@ This library holds functions to be used in order to modify the database
 			
 			db.all("SELECT * FROM Personal_Information");
 			
-			bd.close();
+			db.close();
 		}
 	};
 
