@@ -9,7 +9,8 @@
 .TFtable {
 	width:100%;
 	border: 1px solid black;
-	border-collapse: collapse;
+	background-color: black;
+/*	border-collapse: collapse; */
 	padding: 5px;
 }
 /*  Define the background color for all the ODD background rows  */
@@ -49,12 +50,12 @@
 	<th>Accept</th>
 </tr>
 <tr>
-	<th> Saeki Yagami</th>
-	<th>11/10/2015</th>
-        <th>(123) 456-7890</th>
-        <th>Lexi Lusurn</th>
+	<th>Jessica Brown</th>
+	<th>06/04/2007</th>
+        <th>(123)456-7890</th>
+        <th>John Brown</th>
         <th>Student</th>
-        <th>Danger Dan</th>
+        <th>Jane Brown</th>
         <th>Comunaty</th>
         <th>10/31/2016</th>
         <th>1/1/2017</th>
@@ -71,14 +72,7 @@
 <script>
 
 function accept(){
-	var x;
-    if (confirm("You clicked accept! \n Nothing has happened. \n Thank you.") == true){
-        x = "You pressed OK!";
-    }
-	else {
-        x = "You pressed Cancel!";
-    }
-    document.getElementById("accepted").innerHTML = x;
+	confirm("You clicked accept! \nNothing has happened.\n Thank you.");
 }
 
 function profile(){
