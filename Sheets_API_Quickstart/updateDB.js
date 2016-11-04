@@ -6,7 +6,7 @@ This library holds functions to be used in order to modify the database
 		// var rawData;
 		// var splitData = rawData.split(','); // this is to be put into quickstart.js to prepare data for input
 
-		inputFormToDB: function(info) {
+		inputFormToDB: function(info, array) {
 			var fs = require("fs");
 			var file = "DaycareDB.db";
 			var exists = fs.existsSync(file);
@@ -46,14 +46,10 @@ This library holds functions to be used in order to modify the database
 				$employment1: info[24],
 				$employment2: info[25]
 			});
-
-
 			// db.each("SELECT * FROM Personal_Information", function(err, row) {
 			// 	console.log(row.ChildName + ": " + row.ChildAge);
-				
+			// 	array.push(info);
 			// });
-
-
 			db.close();
 		},
 
