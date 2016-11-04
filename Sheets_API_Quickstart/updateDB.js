@@ -46,6 +46,14 @@ This library holds functions to be used in order to modify the database
 				$employment1: info[24],
 				$employment2: info[25]
 			});
+
+
+			// db.each("SELECT * FROM Personal_Information", function(err, row) {
+			// 	console.log(row.ChildName + ": " + row.ChildAge);
+				
+			// });
+
+
 			db.close();
 		},
 
