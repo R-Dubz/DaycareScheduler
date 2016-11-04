@@ -139,8 +139,8 @@ function listMajors(auth) {
           "range": {
             "sheetId": spreadsheetId,
             "dimension": "ROWS",
-            "startIndex": 0,
-            "endIndex": 3
+            "startIndex": 2,
+            "endIndex": 2
           }
         }
       });
