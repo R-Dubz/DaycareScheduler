@@ -61,30 +61,15 @@ What to search for: <input type="text" id="myText" value="Search Here">
 <button onclick="myFunction()">Check it</button>
 
 <p id="demo"></p>
-
+<script src="..\Sheets_API_Quickstart\updateDB.js"></script>
 <script type="text/javascript">
 <!--
-function runCmd(command, option)
-{
-    var char34 = String.fromCharCode(34);
-    var wsh = new ActiveXObject('WScript.Shell');
-    if (wsh)
-    {
-        command = 'cmd /k ' + char34 + wsh.ExpandEnvironmentStrings(command) + ' ';
-        command = command + char34 + wsh.ExpandEnvironmentStrings(option) + char34  + char34;
-        if (confirm(command))
-        {
-            wsh.Run(command);
-        }
-    }
-}
-	
+//var updateDB = require('../Sheets_API_Quickstart/updateDB.js');
+var argus = ["", "", "Smith", "Jane", "1/24"];
 function myFunction() {
    var x = document.getElementById("myText").value;
-   if(x == "Enter")
-		runCmd("start", "chrome");
-	else
-		window.location.href = 'Children.html';
+ //  updateDB.inputFormToDB.apply(this argus);
+   document.getElementById("myText").value = argus[2];
 }
 
 </script>
