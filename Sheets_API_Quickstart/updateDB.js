@@ -6,7 +6,7 @@ This library holds functions to be used in order to modify the database
 		// var rawData;
 		// var splitData = rawData.split(','); // this is to be put into quickstart.js to prepare data for input
 
-		inputFormToDB: function(info, array) {
+		inputFormToDB: function(info) {
 			var fs = require("fs");
 			var file = "DaycareDB.db";
 			var exists = fs.existsSync(file);
