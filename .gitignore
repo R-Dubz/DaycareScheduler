@@ -1,6 +1,6 @@
 node_modules/*
-Sheets_API_Quickstart/client_secret.json
-Sheets_API_Quickstart/DaycareDB.db
+*.json
+*.db
 
 # Windows image file caches
 Thumbs.db
