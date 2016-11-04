@@ -8,7 +8,7 @@ var splitData;
 
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/sheets.googleapis.com-nodejs-quickstart.json
-var SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
+var SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
 var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
     process.env.USERPROFILE) + '/.credentials/';
 var TOKEN_PATH = TOKEN_DIR + 'sheets.googleapis.com-nodejs-quickstart.json';
@@ -132,32 +132,33 @@ function listMajors(auth) {
       }
 
 
-      // var spreadsheetId = '1EV8S8AaAmxF3vP0F6RWxKIUlvF6uFEmsrOFWA1oNBYI';
-      // var requests = [];
-      // requests.push({
-      //   "deleteDimension": {
-      //     "range": {
-      //       "sheetId": spreadsheetId,
-      //       "dimension": "ROWS",
-      //       "startIndex": 0,
-      //       "endIndex": 3
-      //     }
-      //   }
-      // });
-      // var batchUpdateRequest = {requests: requests}
-      // var test = auth;
-      // sheets.spreadsheets.batchUpdate({
-      //   auth: test,
-      //   spreadsheetId: spreadsheetId,
-      //   resource: batchUpdateRequest
-      // }, function(err, response) {
-      //   if (err) {
-      //     console.log('The API returned an error: ' + err);
-      //     return;
-      //   }
-      // });
+      var spreadsheetId = '1EV8S8AaAmxF3vP0F6RWxKIUlvF6uFEmsrOFWA1oNBYI';
+      var requests = [];
+      requests.push({
+        "deleteDimension": {
+          "range": {
+            "sheetId": spreadsheetId,
+            "dimension": "ROWS",
+            "startIndex": 0,
+            "endIndex": 3
+          }
+        }
+      });
+      var batchUpdateRequest = {requests: requests}
+      var test = auth;
+      sheets.spreadsheets.batchUpdate({
+        auth: test,
+        spreadsheetId: spreadsheetId,
+        resource: batchUpdateRequest
+      }, function(err, response) {
+        if (err) {
+          console.log('The API returned an error: ' + err);
+          return;
+        }
+      });
 
     }
+    console.log("Success");
   });
 }
 
