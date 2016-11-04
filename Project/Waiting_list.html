@@ -50,7 +50,7 @@
 </tr>
 <tr>
 	<th> Saeki Yagami</th>
-	<th>011/10/2015</th>
+	<th>11/10/2015</th>
         <th>(123) 456-7890</th>
         <th>Lexi Lusurn</th>
         <th>Student</th>
@@ -61,11 +61,31 @@
         <th>IN</th>
         <th>MWF</th>
 <!-- make shure all button code is between the <th> and </th> tags -->
-        <th><button type="button" onclick="()"> Profile</button></th>
-        <th><button type="button" onclick="()">Accept</button> </th>
+        <th><button type="button" onclick="profile()"> Profile</button></th>
+        <th><button type="button" onclick="accept()">Accept</button> </th>
 
 </table>
 
+<p id="accepted"></p>
+
+<script>
+
+function accept(){
+	var x;
+    if (confirm("You clicked accept! \n Nothing has happened. \n Thank you.") == true){
+        x = "You pressed OK!";
+    }
+	else {
+        x = "You pressed Cancel!";
+    }
+    document.getElementById("accepted").innerHTML = x;
+}
+
+function profile(){
+	window.location.href = 'DemoPage.html';
+}
+
+</script>
 
 
 </body>
