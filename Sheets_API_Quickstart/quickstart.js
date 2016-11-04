@@ -135,25 +135,25 @@ function listMajors(auth) {
       var spreadsheetId = '1EV8S8AaAmxF3vP0F6RWxKIUlvF6uFEmsrOFWA1oNBYI';
       var requests = [];
       requests.push({
-        "deleteDimension": {
-          "range": {
-            "sheetId": spreadsheetId,
-            "dimension": "ROWS",
-            "startIndex": 2,
-            "endIndex": 2
-          }
+      "deleteDimension": {
+        "range": {
+          "sheetId": 1484177643,
+          "dimension": "ROWS",
+          "startIndex": 1,
+          "endIndex": 2
         }
+      }
       });
       var batchUpdateRequest = {requests: requests}
-      var test = auth;
+
       sheets.spreadsheets.batchUpdate({
-        auth: test,
+        auth: auth,
         spreadsheetId: spreadsheetId,
         resource: batchUpdateRequest
       }, function(err, response) {
-        if (err) {
-          console.log('The API returned an error: ' + err);
-          return;
+        if(err) {
+          // Handle error
+          console.log(err);
         }
       });
 
