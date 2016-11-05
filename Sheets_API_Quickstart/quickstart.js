@@ -1,6 +1,3 @@
-angular.module('myApp.controllers').controller('QuickstartController', ['$scope', '$http', function($scope, $http){
-
-
 var fs = require('fs');
 var updateDB = require('./updateDB.js');
 var readline = require('readline');
@@ -17,10 +14,6 @@ var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
 var TOKEN_PATH = TOKEN_DIR + 'sheets.googleapis.com-nodejs-quickstart.json';
 var array = [];
 
-var test = function(){
-  console.log("Hello World");
-}
-
 var run = {
   runQuickstart : function() {
     // Load client secrets from a local file.
@@ -33,10 +26,6 @@ var run = {
       // Google Sheets API.
       authorize(JSON.parse(content), listChildren);
     });
-  },
-
-  test : function(){
-    console.log("Hello World");
   }
 }
 
@@ -201,5 +190,3 @@ function listChildren(auth) {
 }
 
 module.exports = run;
-
-}]);
