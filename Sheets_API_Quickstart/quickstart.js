@@ -149,8 +149,8 @@ function listChildren(auth) {
             "range": {
               "sheetId": 1484177643, //this can be found after the string 'gid=' in the URL of our google sheet
               "dimension": "ROWS",
-              "startIndex": 999,
-              "endIndex": 1000
+              "startIndex": 499,
+              "endIndex": 500
             }
           }
         });
@@ -180,7 +180,7 @@ function listChildren(auth) {
                     return;
                   } 
                   else {
-                    listChildren(auth);
+                    setTimeout(function() { listChildren(auth); },1100);
                   }
               });
             }
