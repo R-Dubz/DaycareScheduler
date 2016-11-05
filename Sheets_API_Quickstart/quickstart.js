@@ -180,7 +180,7 @@ function listChildren(auth) {
                     return;
                   } 
                   else {
-                    setTimeout(function() { listChildren(auth); },1100);
+                    setTimeout(function() { listChildren(auth); },1150);
                   }
               });
             }

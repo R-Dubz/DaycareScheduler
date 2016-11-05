@@ -54,3 +54,4 @@ Temporary Items
 
 # Directories to ignore
 *.db
+Sheets_API_Quickstart/DaycareDB.db
