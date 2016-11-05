@@ -24,13 +24,15 @@
 </style>
 <script type="text/javascript" src="updateDB.js"></script>
 <script type="text/javascript" src="quickstart.js"></script>
+<script src="app.js"></script>
+<script src="quickstart.js"></script>
 
 </head>
-<body>
+<body ng-app="myApp" ng-controller="QuickstartController">
 
 <h1>Waiting List Testing</h1>
 
-<button type="button" onclick="()">Refresh List</button>
+<button type="button" onclick="()" ng-submit="test()">Refresh List</button>
 <div id="display"></div>
 
 <table class = "TFtable">
