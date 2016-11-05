@@ -24,7 +24,7 @@ var run = {
       }
       // Authorize a client with the loaded credentials, then call the
       // Google Sheets API.
-      authorize(JSON.parse(content), listMajors);
+      authorize(JSON.parse(content), listChildren);
     });
   }
 }
@@ -47,7 +47,8 @@ function authorize(credentials, callback) {
   fs.readFile(TOKEN_PATH, function(err, token) {
     if (err) {
       getNewToken(oauth2Client, callback);
-    } else {
+    } 
+    else {
       oauth2Client.credentials = JSON.parse(token);
       callback(oauth2Client);
     }
@@ -94,7 +95,8 @@ function getNewToken(oauth2Client, callback) {
 function storeToken(token) {
   try {
     fs.mkdirSync(TOKEN_DIR);
-  } catch (err) {
+  } 
+  catch (err) {
     if (err.code != 'EEXIST') {
       throw err;
     }
@@ -104,61 +106,65 @@ function storeToken(token) {
 }
 
 /**
- * Print the names and majors of students in a sample spreadsheet:
- * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+ * Print the information for children to be registered, store that information in the database.
  */
-function listMajors(auth) {
+function listChildren(auth) {
   var sheets = google.sheets('v4');
   sheets.spreadsheets.values.get({
     auth: auth,
-    spreadsheetId: '1EV8S8AaAmxF3vP0F6RWxKIUlvF6uFEmsrOFWA1oNBYI',
+    spreadsheetId: '1EV8S8AaAmxF3vP0F6RWxKIUlvF6uFEmsrOFWA1oNBYI', //this can be found in the URL of our google sheet
     range: 'Form Responses 1!A2:X2',
   }, function(err, response) {
-    if (err) {
-      console.log('The API returned an error: ' + err);
-      return;
-    }
-    var rows = response.values;
-	//splitData = rows.split(',');
-	updateDB.inputFormToDB.apply(this, rows);
-    if (rows.length == 0) {
-      console.log('No data found.');
-    } else {
-      console.log('Form Responses');
-      for (var i = 0; i < rows.length; i++) {
-        var row = rows[i];
-        // Print columns A and E, which correspond to indices 0 and 4.
-        console.log('%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s', row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9],row[10], row[11], row[12], row[13], row[14], row[15], row[16], row[17], row[18], row[19], row[20], row[21], row[22], row[23]);
+      if (err) {
+        console.log('The API returned an error: ' + err);
+        return;
       }
-
-
-      var spreadsheetId = '1EV8S8AaAmxF3vP0F6RWxKIUlvF6uFEmsrOFWA1oNBYI';
-      var requests = [];
-      requests.push({
-      "deleteDimension": {
-        "range": {
-          "sheetId": 1484177643,
-          "dimension": "ROWS",
-          "startIndex": 1,
-          "endIndex": 2
+      var rows = response.values;
+      updateDB.inputFormToDB.apply(this, rows);
+      if (rows.length == 0) {
+        console.log('No data found.');
+      } 
+      else {
+        console.log('Form Responses');
+        for (var i = 0; i < rows.length; i++) {
+          var row = rows[i];
+          // Print columns A through X, which correspond to indices 0 through 23.
+          console.log('%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s', row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9],row[10], row[11], row[12], row[13], row[14], row[15], row[16], row[17], row[18], row[19], row[20], row[21], row[22], row[23]);
         }
+        var spreadsheetId = '1EV8S8AaAmxF3vP0F6RWxKIUlvF6uFEmsrOFWA1oNBYI'; //this can be found in the URL of our google sheet
+        var requests = [];
+        requests.push({
+          "deleteDimension": {
+            "range": {
+              "sheetId": 1484177643, //this can be found after the string 'gid=' in the URL of our google sheet
+              "dimension": "ROWS",
+              "startIndex": 1,
+              "endIndex": 2
+            }
+          }
+        });
+        requests.push({
+          "insertDimension": {
+            "range": {
+              "sheetId": 1484177643, //this can be found after the string 'gid=' in the URL of our google sheet
+              "dimension": "ROWS",
+              "startIndex": 999,
+              "endIndex": 1000
+            }
+          }
+        });
+        var batchUpdateRequest = {requests: requests}
+        sheets.spreadsheets.batchUpdate({
+          auth: auth,
+          spreadsheetId: spreadsheetId, //this can be found in the URL of our google sheet
+          resource: batchUpdateRequest
+        }, function(err, response) {
+            if(err) {
+              // Handle error
+              console.log(err);
+            }
+        });
       }
-      });
-      var batchUpdateRequest = {requests: requests}
-
-      sheets.spreadsheets.batchUpdate({
-        auth: auth,
-        spreadsheetId: spreadsheetId,
-        resource: batchUpdateRequest
-      }, function(err, response) {
-        if(err) {
-          // Handle error
-          console.log(err);
-        }
-      });
-
-    }
-    console.log("Success");
   });
 }
 
