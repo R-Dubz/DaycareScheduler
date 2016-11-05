@@ -120,11 +120,12 @@ function listChildren(auth) {
         return;
       }
       var rows = response.values;
-      updateDB.inputFormToDB.apply(this, rows);
-      if (rows.length == 0) {
+      if (!rows) {
         console.log('No data found.');
+        return;
       } 
       else {
+        updateDB.inputFormToDB.apply(this, rows);
         console.log('Form Responses');
         for (var i = 0; i < rows.length; i++) {
           var row = rows[i];
@@ -162,6 +163,26 @@ function listChildren(auth) {
             if(err) {
               // Handle error
               console.log(err);
+            }
+            else{
+              sheets.spreadsheets.values.get({
+                auth: auth,
+                spreadsheetId: '1EV8S8AaAmxF3vP0F6RWxKIUlvF6uFEmsrOFWA1oNBYI', //this can be found in the URL of our google sheet
+                range: 'Form Responses 1!A2',
+              }, function(err, response) {
+                  if (err) {
+                    console.log('The API returned an error: ' + err);
+                    return;
+                  }
+                  var cell = response.values;
+                  if (!cell) {
+                    console.log('SHEET IS EMPTY NOW.');
+                    return;
+                  } 
+                  else {
+                    listChildren(auth);
+                  }
+              });
             }
         });
       }
