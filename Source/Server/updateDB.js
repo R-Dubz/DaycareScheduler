@@ -8,7 +8,7 @@ This library holds functions to be used in order to modify the database
 
 		inputFormToDB: function(info) {
 			var fs = require("fs");
-			var file = "DaycareDB.db";
+			var file = "./Data/DaycareDB.db";
 			var exists = fs.existsSync(file);
 
 			if (!exists) {
@@ -55,7 +55,7 @@ This library holds functions to be used in order to modify the database
 
 		callWaitingList: function() {
 			var fs = require("fs");
-			var file = "DaycareDB.db";
+			var file = "./Data/DaycareDB.db";
 			var exists = fs.existsSync(file);
 
 			if (!exists) {

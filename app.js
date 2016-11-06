@@ -6,13 +6,13 @@ var fs = require('fs');
 //var exists = fs.existsSync(file);
 //var db = OpenDatabase(file);
 
-app.use(express.static(__dirname + '/Project'));
+app.use(express.static(__dirname + '/Source/Client/Templates'));
 
 app.use(express.static(__dirname + '/'));
 
 
 app.get('/', function (req, res) {
-    res.sendFile('Project/Home.html', {root: __dirname });
+    res.sendFile('/Source/Client/Templates/Home.html', {root: __dirname });
 });
 
 
