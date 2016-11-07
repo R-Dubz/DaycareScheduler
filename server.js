@@ -15,6 +15,10 @@ app.get('/', function (req, res) {
     res.sendFile('/Source/Client/Templates/Home.html', {root: __dirname });
 });
 
+app.get('/ThisIsATest', function (req, res) {
+  res.send('YOU HAVE SUCCEEDED! HTTP REQUEST RECEIVED!')
+})
+
 
 app.listen(3000);
 console.log("running at port 3000");
