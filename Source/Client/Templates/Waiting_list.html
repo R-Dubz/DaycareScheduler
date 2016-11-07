@@ -1,0 +1,86 @@
+<DOCTYPE! html>
+<html>
+<head>
+<title>Waiting List</title>
+<script type="text/javascript"></script>
+<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script>
+<script src="./app.js"></script>
+<script src="./Source/Client/Controllers/WaitingListController.js"></script>
+
+<style type="text/css">
+.TFtable {
+	width:100%;
+	border: 1px solid black;
+	background-color: black;
+/*	border-collapse: collapse; */
+	padding: 5px;
+}
+/*  Define the background color for all the ODD background rows  */
+	.TFtable tr:nth-child(odd){ 
+		background: #b8d1f3;
+	}
+	/*  Define the background color for all the EVEN background rows  */
+	.TFtable tr:nth-child(even){
+		background: #dae5f4;
+	}
+</style>
+
+</head>
+<body ng-app="DaycareApp" ng-controller="WaitingListController">
+
+<h1>Waiting List Testing</h1>
+
+<button type="button" ng-click="test()">Refresh List</button>
+<div id="display"></div>
+
+<table class = "TFtable">
+	<tr>
+	<th>Child's Name</th>
+	<th>D.O.B.</th>
+	<th>Phone Number</th>
+	<th>Primany Parent Name</th>
+	<th>Primanry Parent Status</th>
+	<th>Secondary Parent Name</th>
+	<th>Secondary Parent Status</th>
+	<th>Date of App.</th>
+	<th>Desired Start Date</th>
+	<th>Class</th>
+	<th>Days</th>
+	<th>View Profile</th>
+	<th>Accept</th>
+</tr>
+<tr>
+	<th>Jessica Brown</th>
+	<th>06/04/2007</th>
+        <th>(123)456-7890</th>
+        <th>John Brown</th>
+        <th>Student</th>
+        <th>Jane Brown</th>
+        <th>Comunaty</th>
+        <th>10/31/2016</th>
+        <th>1/1/2017</th>
+        <th>IN</th>
+        <th>MWF</th>
+<!-- make shure all button code is between the <th> and </th> tags -->
+        <th><button type="button" onclick="profile()"> Profile</button></th>
+        <th><button type="button" onclick="accept()">Accept</button> </th>
+
+</table>
+
+<p id="accepted"></p>
+
+<script>
+
+function accept(){
+	confirm("You clicked accept! \nNothing has happened.\n Thank you.");
+}
+
+function profile(){
+	window.location.href = 'DemoPage.html';
+}
+
+</script>
+
+
+</body>
+</html>
