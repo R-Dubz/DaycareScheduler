@@ -5,6 +5,8 @@ var fs = require('fs');
 //var file = "DaycareDB.db";
 //var exists = fs.existsSync(file);
 //var db = OpenDatabase(file);
+var str = (__dirname + '/Source/Server/quickstart.js')
+var runQuickstart = require(str);
 
 app.use(express.static(__dirname + '/Source/Client/Templates'));
 
@@ -15,9 +17,10 @@ app.get('/', function (req, res) {
     res.sendFile('/Source/Client/Templates/Home.html', {root: __dirname });
 });
 
-app.get('/ThisIsATest', function (req, res) {
-  res.send('YOU HAVE SUCCEEDED! HTTP REQUEST RECEIVED!')
-})
+
+var test = require('./Source/Server/test.js');
+  app.get('/ThisIsATest', function (req, res) {
+  })
 
 
 app.listen(3000);

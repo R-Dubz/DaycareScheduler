@@ -8,7 +8,7 @@ This library holds functions to be used in order to modify the database
 
 		inputFormToDB: function(info) {
 			var fs = require("fs");
-			var file = "./Data/DaycareDB.db";
+			var file = "./Source/Server/Data/DaycareDB.db";
 			var exists = fs.existsSync(file);
 
 			if (!exists) {

@@ -1,2 +1,10 @@
 var run = require('./quickstart.js');
-run.runQuickstart();
+
+function mySpecialFunction() {
+    var msg = run.runQuickstart();
+    return msg;
+}
+
+module.exports = {
+    mySpecialFunction: mySpecialFunction
+};
