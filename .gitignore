@@ -1,5 +1,6 @@
 node_modules/*
 angular/*
+Source/Server/Other Files/creds.txt
 
 # Windows image file caches
 Thumbs.db

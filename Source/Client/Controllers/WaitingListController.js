@@ -1,4 +1,4 @@
-angular.module('DaycareApp').controller('testController', ['$scope', '$http', function($scope, $http){
+angular.module('DaycareApp').controller('WaitingListController', ['$scope', '$http', function($scope, $http){
 
     $scope.test = function() {
         // console.log("Hello World!");
