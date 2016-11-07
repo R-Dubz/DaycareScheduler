@@ -1,4 +1,5 @@
 node_modules/*
+angular/*
 
 # Windows image file caches
 Thumbs.db
