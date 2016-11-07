@@ -1,9 +1,8 @@
-// app.controller('testCtrl', function($scope, $http) {
+angular.module('DaycareApp').controller('testController', ['$scope', '$http', function($scope, $http){
 
-//     var testCall = function() {
-//         $http.get("./Source/Server/quickstart.js").then(function(response) {
-//             console.log("Call Success");
-//         });
-//     }
-// });
+    $scope.test = function() {
+        console.log("Hello World!");
+    };
+
+}]);
 
