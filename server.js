@@ -20,6 +20,8 @@ app.get('/', function (req, res) {
 
 var test = require('./Source/Server/test.js');
   app.get('/ThisIsATest', function (req, res) {
+    // res.send('YOU HAVE SUCCEEDED! HTTP REQUEST RECEIVED!' + test.mySpecialFunction()); //This one sort of works
+    res.send(test.mySpecialFunction());  //This one works  
   })
 
 
