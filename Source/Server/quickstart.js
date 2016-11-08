@@ -23,8 +23,7 @@ var run = {
       }
       // Authorize a client with the loaded credentials, then call the
       // Google Sheets API.
-      var msg = authorize(JSON.parse(content), listChildren);
-      console.log(msg);
+      authorize(JSON.parse(content), listChildren);
     });
   }
 }

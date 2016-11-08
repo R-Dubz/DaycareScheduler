@@ -1,8 +1,9 @@
 var run = require('./quickstart.js');
 
 function mySpecialFunction() {
-    var msg = run.runQuickstart();
-    return msg;
+    run.runQuickstart();
+    // var msg = "This is a test";
+    // return msg;
 }
 
 module.exports = {
