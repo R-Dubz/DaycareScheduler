@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var fs = require('fs');
-var test = require('./Source/Server/test.js');
+var DatabaseFunction = require('./Source/Server/test.js');
 
 
 var str = (__dirname + '/Source/Server/quickstart.js')
@@ -17,7 +17,7 @@ app.get('/', function (req, res) {
 });
 
   app.get('/RefreshDatabase', function (req, res) {
-    res.send(test.RefreshDatabase());
+    res.send(DatabaseFunction.RefreshDatabase());
   })
 
   app.get('/LoadWaitingList', function (req, res) {
