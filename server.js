@@ -21,7 +21,7 @@ app.get('/', function (req, res) {
   })
 
   app.get('/LoadWaitingList', function (req, res) {
-    res.send("Returning row data...");
+    res.send(DatabaseFunction.loadWaitingList());
   })
 
 
