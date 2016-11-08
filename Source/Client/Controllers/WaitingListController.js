@@ -7,5 +7,11 @@
             });
         };
 
+        $scope.loadWaitingList = function() {
+            $http.get('/loadWaitingList')
+            .then(function(response) {
+                alert("HTTP request set, getting data");
+            });
+        };
 
     }]);
