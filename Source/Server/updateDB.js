@@ -57,6 +57,7 @@ This library holds functions to be used in order to modify the database
 			var fs = require("fs");
 			var file = "./Data/DaycareDB.db";
 			var exists = fs.existsSync(file);
+			var child = [];
 
 			if (!exists) {
 				throw new Error("File not Found");
@@ -64,10 +65,27 @@ This library holds functions to be used in order to modify the database
 
 			var sqlite3 = require("sqlite3").verbose();
 			var db = new sqlite3.Database(file);
-			
-			db.all("SELECT * FROM Personal_Information");
-			
-			db.close();
+
+			db.all("SELECT * FROM WaitingList", function(err, row) {
+					console.log(row[0].ChildName);
+					for (var i=0; i<=2; ++i) {
+						child[i] = new Array(9);
+						child[i][0] = row[i].ChildName;
+						child[i][1] = row[i].BirthDate;
+						child[i][2] = row[i].HomePhone;
+						child[i][3] = row[i].GaurdianName1;
+						child[i][4] = row[i].GaurdianStatus1;
+						child[i][5] = row[i].GaurdianName2;
+						child[i][6] = row[i].GaurdianStatus2;
+						child[i][7] = row[i].TimeStamp;
+						child[i][8] = row[i].DesiredEnrollment;
+						child[i][9] = row[i].RequiredDays;
+						return row;
+					}
+			});
+
+
+			db.close();		
 		}
 	};
 
