@@ -1,10 +1,9 @@
 var express = require('express');
 var app = express();
 var fs = require('fs');
-//var nosql = require('nosql');
-//var file = "DaycareDB.db";
-//var exists = fs.existsSync(file);
-//var db = OpenDatabase(file);
+var test = require('./Source/Server/test.js');
+
+
 var str = (__dirname + '/Source/Server/quickstart.js')
 var runQuickstart = require(str);
 
@@ -17,10 +16,11 @@ app.get('/', function (req, res) {
     res.sendFile('/Source/Client/Templates/Home.html', {root: __dirname });
 });
 
+  app.get('/RefreshDatabase', function (req, res) {
+    res.send(test.mySpecialFunction());  //This one works  
+  })
 
-var test = require('./Source/Server/test.js');
-  app.get('/ThisIsATest', function (req, res) {
-    // res.send('YOU HAVE SUCCEEDED! HTTP REQUEST RECEIVED!' + test.mySpecialFunction()); //This one sort of works
+  app.get('/LoadWaitingList', function (req, res) {
     res.send(test.mySpecialFunction());  //This one works  
   })
 
