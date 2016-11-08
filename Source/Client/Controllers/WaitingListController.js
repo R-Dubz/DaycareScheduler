@@ -1,7 +1,6 @@
     angular.module('DaycareApp').controller('WaitingListController', ['$scope', '$http', function($scope, $http){
-        
         $scope.variable = "Refresh List"
-
+        
         $scope.test = function() {
             $http.get('/ThisIsATest')
             .then(function(response) {

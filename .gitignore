@@ -52,7 +52,6 @@ Temporary Items
 *.h
 *.cc
 *.md
-*.json
 
 # Directories to ignore
 *.db
