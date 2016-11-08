@@ -9,7 +9,10 @@
         };
 
         $scope.loadWaitingList = function() {
-            console.log("The page has loaded");
-        }
+            $http.get('/loadWaitingList')
+            .then(function(response) {
+                alert("HTTP request set, getting data");
+            });
+        };
 
     }]);
