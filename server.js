@@ -17,11 +17,11 @@ app.get('/', function (req, res) {
 });
 
   app.get('/RefreshDatabase', function (req, res) {
-    res.send(test.mySpecialFunction());  //This one works  
+    res.send(test.RefreshDatabase());
   })
 
   app.get('/LoadWaitingList', function (req, res) {
-    res.send(test.mySpecialFunction());  //This one works  
+    res.send("Returning row data...");
   })
 
 

@@ -1,6 +1,6 @@
 var run = require('./quickstart.js');
 
-function mySpecialFunction() {
+function RefreshDatabase() {
     // run.runQuickstart();
     var footballTeams = {
     AFCEast: ["Patriots", "Jets", "Bills", "Dolphins"],
@@ -20,5 +20,5 @@ function mySpecialFunction() {
 }
 
 module.exports = {
-    mySpecialFunction: mySpecialFunction
+    RefreshDatabase: RefreshDatabase
 };

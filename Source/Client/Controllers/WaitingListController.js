@@ -4,13 +4,15 @@
             $http.get('/RefreshDatabase')
             .then(function(response) {
                 alert("An HTTP request has been sent to the server.\nNow updating DaycareDB.db!");
+                // location.reload();
             });
         };
 
-        $scope.loadWaitingList = function() {
-            $http.get('/loadWaitingList')
+        $scope.LoadWaitingList = function() {
+            $http.get('/LoadWaitingList')
             .then(function(response) {
                 alert("HTTP request set, getting data");
+                console.log(response.data);
             });
         };
 
