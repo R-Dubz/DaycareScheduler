@@ -33,12 +33,56 @@
 	transform: rotate(90deg);
 }
 
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+        right: 0;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {background-color: #ffff00}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #888888;
+}
+
 </style>
 
 </head>
 <body ng-app="DaycareApp" ng-controller="WaitingListController" ng-init="LoadWaitingList()">
 
 <h1>Waiting List Testing</h1>
+
+<h5><div class="dropdown" style="float:right;">
+
+  <button class="dropbtn">||||</button>
+  <div class="dropdown-content">
+    <a href="Rooms.html">Rooms</a>
+    <a href="Employees.html">Employees</a>
+    <a href="Children.html">Children</a>
+	<a href="sChildren.html">Schedule Classrooms</a>
+	<a href="sEmployee.html">Schedule Employees</a>
+	<a href="Waiting_list.html">Waiting List</a>
+  </div>
+
+</div></h5>
 
 <button type="button" ng-click="RefreshDatabase()">Refresh Database</button>
 <div id="display"></div>
