@@ -68,8 +68,7 @@ This library holds functions to be used in order to modify the database
 			if (err){
 				callback(err);
 				return;
-			}
-			console.log(row[0].ChildName);					
+			}				
 			callback(null, row);
 		});
 	},
