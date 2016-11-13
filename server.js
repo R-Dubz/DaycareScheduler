@@ -18,11 +18,17 @@ app.get('/', function (req, res) {
 
   app.get('/RefreshDatabase', function (req, res) {
     res.send(DatabaseFunction.RefreshDatabase());
-  })
+  });
 
   app.get('/LoadWaitingList', function (req, res) {
-    res.send(DatabaseFunction.loadWaitingList());
-  })
+    DatabaseFunction.loadWaitingList(function(err, data){
+      if(err) {
+        // handle the error here
+      }
+      // send the data
+      res.send(data);
+    })
+  });
 
 
 app.listen(3000);

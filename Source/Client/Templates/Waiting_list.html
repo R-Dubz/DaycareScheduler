@@ -84,7 +84,7 @@
 
 </div></h5>
 
-<button type="button" ng-click="RefreshDatabase()">Refresh Database</button>
+<button type="button" ng-click="RefreshDatabase()">Refresh Database</button> 
 <div id="display"></div>
 
 <table class = "TFtable">
@@ -102,22 +102,24 @@
 	<th>Days</th>
 	<th>View Profile</th>
 	<th>Accept</th>
+        
 </tr>
-<tr>
-	<th>Jessica Brown</th>
-	<th>06/04/2007</th>
-        <th>(123)456-7890</th>
-        <th>John Brown</th>
-        <th>Student</th>
-        <th>Jane Brown</th>
-        <th>Comunaty</th>
-        <th>10/31/2016</th>
-        <th>1/1/2017</th>
-        <th>IN</th>
-        <th>MWF</th>
-<!-- make shure all button code is between the <th> and </th> tags -->
-        <th><button type="button" onclick="profile()"> Profile</button></th>
-        <th><button type="button" onclick="accept()">Accept</button> </th>
+<tr ng-repeat="child in Children">
+    <th>{{child.ChildName}}</th>
+    <th>{{child.DOB}}</th>
+    <th>{{child.PhoneNumber}}</th>
+    <th>{{child.PrimaryParentName}}</th>
+    <th>{{child.PrimaryParentStatus}}</th>
+    <th>{{child.SecondaryParentName}}</th>
+    <th>{{child.SecondaryParentStatus}}</th>
+    <th>{{child.DOA}}</th>
+    <th>{{child.DesStart}}</th>
+    <th>{{child.Class}}</th>
+    <th>{{child.Days}}</th>
+<!--make sure all button code is between the <th> and </th> tags-->
+    <th><button type="button" onclick="profile()"> Profile</button></th>
+    <th><button type="button" onclick="accept()">Accept</button> </th>
+</tr>
 
 </table>
 

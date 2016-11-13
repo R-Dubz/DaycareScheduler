@@ -53,28 +53,26 @@ This library holds functions to be used in order to modify the database
 			db.close();
 		},
 
-		callWaitingList: function() {
-			var fs = require("fs");
-			var file = "./Source/Server/Data/DaycareDB.db";
-			var exists = fs.existsSync(file);
+	callWaitingList : function(callback){
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+		var row = [];
 
-			if (!exists) {
-				throw new Error("File not Found");
+		db.all("SELECT * FROM WaitingList", function(err, row) {
+			if (err){
+				callback(err);
+				return;
 			}
-
-			var sqlite3 = require("sqlite3").verbose();
-			var db = new sqlite3.Database(file);
-
-			db.all("SELECT * FROM WaitingList", function(err, row) {
-					console.log(row[0].ChildName);
-					for (var i=0; i<=2; ++i) {
-						return row;
-					}
-			});
-
-
-			db.close();		
-		},
-	};
+			console.log(row[0].ChildName);					
+			callback(null, row);
+		});
+	},
+};
 
 	module.exports = updateDB;
