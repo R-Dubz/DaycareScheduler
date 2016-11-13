@@ -2,6 +2,8 @@ var express = require('express');
 var app = express();
 var fs = require('fs');
 var DatabaseFunction = require('./Source/Server/test.js');
+var quickstart = require('./Source/Server/quickstart.js');
+var updateDB = require('./Source/Server/updateDB.js');
 
 
 var str = (__dirname + '/Source/Server/quickstart.js')
@@ -17,11 +19,19 @@ app.get('/', function (req, res) {
 });
 
   app.get('/RefreshDatabase', function (req, res) {
-    res.send(DatabaseFunction.RefreshDatabase());
+    // quickstart.runQuickstart(function(err, data){
+    //   if(err) {
+    //     // handle the error here
+    //     console.log("An error has occurred: " + err)
+    //   }
+    //   // send the data
+    //   res.send(data);
+    // })
+    res.send(quickstart.runQuickstart());
   });
 
   app.get('/LoadWaitingList', function (req, res) {
-    DatabaseFunction.loadWaitingList(function(err, data){
+    updateDB.callWaitingList(function(err, data){
       if(err) {
         // handle the error here
       }
