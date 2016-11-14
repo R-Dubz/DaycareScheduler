@@ -5,11 +5,11 @@
 <link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">
 <script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script>
 <script src="./app.js"></script>
-<script src="./Source/Client/Controllers/WaitingListController.js"></script>
+<script src="./Source/Client/Controllers/EnrollmentController.js"></script>
 </head>
 
-<body bgcolor="ffff35"ng-app="DaycareApp" ng-controller="WaitingListController" ng-init="LoadWaitingList()">
-<center><h1>Search for an enrolled child</h1></center>
+<body bgcolor="ffff35"ng-app="DaycareApp" ng-controller="EnrollmentController" ng-init="LoadWaitingList()">
+
 <h5><div class="dropdown" style="float:right;">
   <button class="dropbtn">||||</button>
   <div class="dropdown-content">
@@ -22,6 +22,9 @@
 
   </div>
 </div></h5>
+
+<center><h1>Search for an enrolled child</h1></center>
+
 
 What to search for: <input type="text" id="myText" value="Search Here">
 

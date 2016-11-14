@@ -12,8 +12,9 @@
 }
 
 .dropdown {
-    position: relative;
+    position: fixed;
     display: inline-block;
+    right: 0;
 }
 
 .dropdown-content {

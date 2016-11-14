@@ -10,9 +10,6 @@
 
 <link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">
 </head>
-<body ng-app="DaycareApp" ng-controller="WaitingListController" ng-init="LoadWaitingList()">
-
-<h1>Waiting List Testing</h1>
 
 <h5><div class="dropdown" style="float:right;">
 
@@ -27,6 +24,12 @@
   </div>
 
 </div></h5>
+
+<body ng-app="DaycareApp" ng-controller="WaitingListController" ng-init="LoadWaitingList()">
+
+<h1>Waiting List Testing</h1>
+
+
 
 <button type="button" ng-click="RefreshDatabase()">Refresh Database</button> 
 <div id="display"></div>
