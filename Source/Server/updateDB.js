@@ -130,7 +130,7 @@ This library holds functions to be used in order to modify the database
 		var db = new sqlite3.Database(file);
 
 		db.run("UPDATE Personal_Information SET EnrollmentStatus = 'E' WHERE ChildID = $ChildID", {
-			$ChildID = info[26],
+			$ChildID: info[26],
 		});
 
 		db.close();
@@ -157,7 +157,7 @@ This library holds functions to be used in order to modify the database
 		db.close();
 	},
 
-		callProfile : function(callback){
+		callProfile : function(callback, info){
 		var fs = require("fs");
 		var file = "./Source/Server/Data/DaycareDB.db";
 		var exists = fs.existsSync(file);
@@ -168,7 +168,6 @@ This library holds functions to be used in order to modify the database
 		var db = new sqlite3.Database(file);
 
 		db.all("SELECT * FROM Personal_Information WHERE ChildID = $ChildID", function(err, row) {
-			$ChildID = info[26];
 			if (err){
 				callback(err);
 				return;
