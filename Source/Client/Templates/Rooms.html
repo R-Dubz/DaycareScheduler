@@ -1,51 +1,25 @@
 <!DOCTYPE html>
 <html>
 
-<style>
-.dropbtn {
-    background-color: #000000;
-    color: white;
-    padding: 10px;
-    font-size: 10px;
-    border: none;
-    cursor: pointer;
-	transform: rotate(90deg);
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-        right: 0;
-    background-color: #ffffff;
-    min-width: 160px;
-    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2);
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-.dropdown-content a:hover {background-color: #ffff00}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown:hover .dropbtn {
-    background-color: #888888;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">
     
 <body bgcolor="00ff00">
 
 <center><h1><font color="ff0000">Room search</font></h1></center>
+
+<h5><div class="dropdown" style="float:right;">
+  <button class="dropbtn">||||</button>
+  <div class="dropdown-content">
+    <a href="Rooms.html">Rooms</a>
+    <a href="Employees.html">Employees</a>
+    <a href="Children.html">Children</a>
+        <a href="sChildren.html">Schedule Classrooms</a>
+        <a href="sEmployee.html">Schedule Employees</a>
+        <a href="Waiting_list.html">Waiting List</a>
+
+  </div>
+</div></h5>
+
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <div ng-app="app" ng-controller="myCtrl">
@@ -72,19 +46,6 @@
         };  
         });
     </script>
-
-<h5><div class="dropdown" style="float:right;">
-  <button class="dropbtn">||||</button>
-  <div class="dropdown-content">
-    <a href="Rooms.html">Rooms</a>
-    <a href="Employees.html">Employees</a>
-    <a href="Children.html">Children</a>
-        <a href="sChildren.html">Schedule Classrooms</a>
-        <a href="sEmployee.html">Schedule Employees</a>
-        <a href="Waiting_list.html">Waiting List</a>
-
-  </div>
-</div></h5>
 
 </body>
 </html> 
