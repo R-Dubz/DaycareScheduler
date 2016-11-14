@@ -1,9 +1,12 @@
 var express = require('express');
+var bodyParser = require('body-parser');
+var jsonParser = bodyParser.json();
 var app = express();
 var fs = require('fs');
 var DatabaseFunction = require('./Source/Server/test.js');
 var quickstart = require('./Source/Server/quickstart.js');
 var updateDB = require('./Source/Server/updateDB.js');
+var profileStorage = require('./Source/Server/profileStorage.js');
 
 
 var str = (__dirname + '/Source/Server/quickstart.js')
@@ -32,6 +35,21 @@ app.get('/', function (req, res) {
 
   app.get('/LoadWaitingList', function (req, res) {
     updateDB.callWaitingList(function(err, data){
+      if(err) {
+        // handle the error here
+      }
+      // send the data
+      res.send(data);
+    })
+  });
+
+  app.post('/storeTempProfile', jsonParser, function (req, res) {
+    profileStorage.storeProfile(req.body); 
+    return res.sendStatus(200);
+  }); 
+
+  app.get('/getTempProfile', function (req, res) {
+    profileStorage.retrieveProfile(function(err, data){
       if(err) {
         // handle the error here
       }
