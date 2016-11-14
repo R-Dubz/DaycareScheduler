@@ -21,6 +21,10 @@
                     $scope.Children.push(response.data[i]);
                 }
 
+                if($scope.Children.length === 0){
+                alert("It appears there are no children on the waiting list.\nPlease refresh the database and reload the page.");                
+                }
+
             });
         };
 
@@ -29,7 +33,7 @@
             .then(function(response) {
                 window.location.href = 'DemoPage.html';
             });
-        }
+        };
 
         $scope.LoadTempProfile = function() {
             $http.get('/getTempProfile')
@@ -37,6 +41,22 @@
                 // alert("HTTP request set, getting data");
                 // $scope.Children.push(response.data);
                 $scope.Profile.push(response);
+            });
+        };
+
+        $scope.acceptChild = function(ID){
+            var sendID = [];
+            sendID.push(ID);
+            $http.post('/acceptChild', sendID)
+            .then(function(response) {
+                var acceptedChild = [];
+                for(var i = 0; i < $scope.Children.length; i++){
+                    if($scope.Children[i].ChildID === ID){
+                        $scope.Children.splice(i, 1);
+                        return;
+                    }
+                }
+                console.log("Child has been accepted into the program!");
             });
         };
 

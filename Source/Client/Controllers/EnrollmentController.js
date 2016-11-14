@@ -2,17 +2,10 @@ angular.module('DaycareApp').controller('EnrollmentController', ['$scope', '$htt
 
         $scope.Children = [];
         $scope.Profile = [];        
-        
-        $scope.RefreshDatabase = function() {
-            $http.get('/RefreshDatabase')
-            .then(function(response) {
-                alert("An HTTP request has been sent to the server.\nNow updating DaycareDB.db!");
-                // location.reload();
-            });
-        };
 
-        $scope.LoadWaitingList = function() {
-            $http.get('/LoadWaitingList')
+
+        $scope.callEnrolledList = function() {
+            $http.get('/callEnrolledList')
             .then(function(response) {
                 // alert("HTTP request set, getting data");
                 // $scope.Children.push(response.data);

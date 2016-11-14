@@ -8,7 +8,7 @@
 <script src="./Source/Client/Controllers/EnrollmentController.js"></script>
 </head>
 
-<body bgcolor="ffff35"ng-app="DaycareApp" ng-controller="EnrollmentController" ng-init="LoadWaitingList()">
+<body bgcolor="ffff35"ng-app="DaycareApp" ng-controller="EnrollmentController" ng-init="callEnrolledList()">
 
 <h5><div class="dropdown" style="float:right;">
   <button class="dropbtn">||||</button>
@@ -30,7 +30,6 @@ What to search for: <input type="text" id="myText" value="Search Here">
 
 <button onclick="myFunction()">Check it</button>
 
-<button type="button" ng-click="RefreshDatabase()">Refresh Database</button> 
 <div id="display"></div>
 
 <table class = "TFtable">
@@ -47,7 +46,7 @@ What to search for: <input type="text" id="myText" value="Search Here">
 	<th>Class</th>
 	<th>Days</th>
 	<th>View Profile</th>
-	<th>Accept</th>
+	<!--<th>Delete</th>-->
         
 </tr>
 <tr ng-repeat="child in Children">
@@ -64,7 +63,20 @@ What to search for: <input type="text" id="myText" value="Search Here">
     <th>{{child.RequiredDays}}</th>
 <!--make sure all button code is between the <th> and </th> tags-->
     <th><button type="button" ng-click="storeProfile(child)">Profile</button></th>
-    <th><button type="button" onclick="accept()">Accept</button> </th>
+</tr>
+
+<tr ng-if="Children.length === 0">
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
 </tr>
 
 

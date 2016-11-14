@@ -130,7 +130,7 @@ This library holds functions to be used in order to modify the database
 		var db = new sqlite3.Database(file);
 
 		db.run("UPDATE Personal_Information SET EnrollmentStatus = 'E' WHERE ChildID = $ChildID", {
-			$ChildID: info[26],
+			$ChildID: info[0],
 		});
 
 		db.close();

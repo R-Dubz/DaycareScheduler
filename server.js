@@ -58,6 +58,21 @@ app.get('/', function (req, res) {
     })
   });
 
+  app.post('/acceptChild', jsonParser, function (req, res) {
+    updateDB.acceptChild(req.body); 
+    return res.sendStatus(200);
+  }); 
+
+  app.get('/callEnrolledList', function (req, res) {
+    updateDB.callEnrolledList(function(err, data){
+      if(err) {
+        // handle the error here
+      }
+      // send the data
+      res.send(data);
+    })
+  });
+
 
 app.listen(3000);
 console.log("running at port 3000");

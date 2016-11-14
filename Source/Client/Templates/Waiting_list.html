@@ -65,25 +65,28 @@
     <th>{{child.RequiredDays}}</th>
 <!--make sure all button code is between the <th> and </th> tags-->
     <th><button type="button" ng-click="storeProfile(child)">Profile</button></th>
-    <th><button type="button" onclick="accept()">Accept</button> </th>
+    <th><button type="button" ng-click="acceptChild(child.ChildID)">Accept</button> </th>
+</tr>
+
+<tr ng-if="Children.length === 0">
+    <th style="height: 48px"></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>    
+    <th style="background: #dae5f4"></th>
+    <th style="background: #dae5f4"></th>
 </tr>
 
 </table>
 
 <p id="accepted"></p>
-
-<script>
-
-function accept(){
-	confirm("You clicked accept! \nNothing has happened.\n Thank you.");
-}
-
-function profile(){
-	window.location.href = 'DemoPage.html';
-}
-
-</script>
-
 
 </body>
 </html>
