@@ -62,9 +62,8 @@ This library holds functions to be used in order to modify the database
 		}
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
-		var row = [];
 
-		db.all("SELECT * FROM WaitingList", function(err, row) {
+		db.all("SELECT * FROM Personal_Information WHERE EnrollmentStatus = 'W'", function(err, row) {
 			if (err){
 				callback(err);
 				return;
@@ -118,6 +117,46 @@ This library holds functions to be used in order to modify the database
 			
 		});
 		
+		db.close();
+	},
+
+	acceptChild: function(info) {
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+
+		db.run("UPDATE Personal_Information SET EnrollmentStatus = 'E' WHERE ChildID = $ChildID", {
+			$ChildID = info[26],
+		});
+
+		db.close();
+	},
+
+	callEnrolledList : function(callback){
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+
+		db.all("SELECT * FROM Personal_Information WHERE EnrollmentStatus = 'E'", function(err, row) {
+			if (err){
+				callback(err);
+				return;
+			}				
+			callback(null, row);
+		});
+
 		db.close();
 	},
 };
