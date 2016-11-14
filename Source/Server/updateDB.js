@@ -46,10 +46,7 @@ This library holds functions to be used in order to modify the database
 				$employment1: info[24],
 				$employment2: info[25]
 			});
-			// db.each("SELECT * FROM Personal_Information", function(err, row) {
-			// 	console.log(row.ChildName + ": " + row.ChildAge);
-			// 	array.push(info);
-			// });
+
 			db.close();
 		},
 
@@ -150,6 +147,28 @@ This library holds functions to be used in order to modify the database
 		var db = new sqlite3.Database(file);
 
 		db.all("SELECT * FROM Personal_Information WHERE EnrollmentStatus = 'E'", function(err, row) {
+			if (err){
+				callback(err);
+				return;
+			}				
+			callback(null, row);
+		});
+
+		db.close();
+	},
+
+		callProfile : function(callback){
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+
+		db.all("SELECT * FROM Personal_Information WHERE ChildID = $ChildID", function(err, row) {
+			$ChildID = info[26];
 			if (err){
 				callback(err);
 				return;
