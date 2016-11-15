@@ -121,10 +121,10 @@
         </a>
     </th>
     <th>
-        <a href="#" ng-click="sortType = 'Class'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        <a href="#" ng-click="sortType = 'AgeGroup'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
         Class
-        <span ng-show="sortType == 'Class' && !sortReverse" class="fa fa-caret-down"></span>
-        <span ng-show="sortType == 'Class' && sortReverse" class="fa fa-caret-up"></span>
+        <span ng-show="sortType == 'AgeGroup' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'AgeGroup' && sortReverse" class="fa fa-caret-up"></span>
         </a>
     </th>
     <th>
@@ -150,7 +150,7 @@
     <th>{{child.GaurdianStatus2}}</th>
     <th>{{child.TimeStamp}}</th>
     <th>{{child.DesiredEnrollment}}</th>
-    <th>{{child.Class}}</th>
+    <th>{{child.AgeGroup}}</th>
     <th>{{child.RequiredDays}}</th>
 <!--make sure all button code is between the <th> and </th> tags-->
     <th><button type="button" ng-click="storeProfile(child)">Profile</button></th>
