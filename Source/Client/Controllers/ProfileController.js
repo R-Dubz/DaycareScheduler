@@ -7,7 +7,7 @@
             .then(function(response) {
                 // alert("HTTP request set, getting data");
                 // $scope.Children.push(response.data);
-                $scope.Profile.push(response);
+                $scope.Profile.push(response.data[0]);
             });
         };
 
