@@ -29,6 +29,17 @@
 <body ng-app="DaycareApp" ng-controller="WaitingListController" ng-init="LoadWaitingList()">
 
 <h1>Waiting List Testing</h1>
+<h5><div class="dropdown" style="float:right;">
+  <button class="dropbtn">||||</button>
+  <div class="dropdown-content">
+    <a href="Rooms.html">Rooms</a>
+    <a href="Employees.html">Employees</a>
+    <a href="Children.html">Children</a>
+        <a href="sChildren.html">Schedule Classrooms</a>
+        <a href="sEmployee.html">Schedule Employees</a>
+        <a href="Waiting_list.html">Waiting List</a>
+  </div>
+</div></h5>
 
 <button type="button" ng-click="RefreshDatabase()">Refresh Database</button>
 <div id="display"></div>
