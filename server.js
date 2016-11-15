@@ -73,6 +73,12 @@ app.get('/', function (req, res) {
     })
   });
 
+  app.post('/test', jsonParser, function (req, res) {
+    updateDB.editFromProfile(req.body); 
+    return res.sendStatus(200);
+  }); 
+
+
 
 app.listen(3000);
 console.log("running at port 3000");
