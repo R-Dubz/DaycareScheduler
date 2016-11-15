@@ -11,13 +11,23 @@
 <body ng-app="DaycareApp" ng-controller="ProfileController" ng-init="LoadTempProfile()">
 <table style="width: 100%; height: 5%" bgcolor="yellow">
 <tr><td align="center" bgcolor="black"><h1><font color="white">
-Child's Name: {{Profile[0].ChildName}} <br>
-Parent/guardian's marital status: {{Profile[0].MaritalStatus}} <br>
-Age: {{Profile[0].ChildAge}}
+    Child's Name: 
+        <span ng-if="!Editing">{{Profile[0].ChildName}}<br></span>
+        <span ng-if="Editing"><input type="text" value="{{Profile[0].ChildName}}"></input><br></span>
+    Parent/guardian's marital status: 
+        <span ng-if="!Editing">{{Profile[0].MaritalStatus}}<br></span>
+        <span ng-if="Editing"><input type="text" value="{{Profile[0].MaritalStatus}}"></input><br></span>
+    Age:
+        <span ng-if="!Editing">{{Profile[0].ChildAge}}<br></span>
+        <span ng-if="Editing"><input type="text" value="{{Profile[0].ChildAge}}"></input><br></span>
 </font></h1></td>
 <td align="center" bgcolor="white"><h3><font color="black">
-DOB: {{Profile[0].ChildBirthdate}} <br>
-Age Group: {{Profile[0].AgeGroup}}
+    DOB: 
+        <span ng-if="!Editing">{{Profile[0].ChildBirthdate}}<br></span>
+        <span ng-if="Editing"><input type="text" value="{{Profile[0].ChildBirthdate}}"></input><br></span>
+    Age Group:
+        <span ng-if="!Editing">{{Profile[0].AgeGroup}}<br></span>
+        <span ng-if="Editing"><input type="text" value="{{Profile[0].AgeGroup}}"></input><br></span>
 </font></h1></td></table>
 <p>
 <table style="width: 100%; height: 10%" bgcolor="0000ff">
