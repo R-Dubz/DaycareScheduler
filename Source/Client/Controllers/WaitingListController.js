@@ -1,7 +1,10 @@
     angular.module('DaycareApp').controller('WaitingListController', ['$scope', '$http', function($scope, $http){
 
         $scope.Children = [];
-        $scope.Profile = [];        
+        $scope.Profile = [];   
+        $scope.sortType = 'ChildName'; 
+        $scope.sortReverse = false;
+        $scope.searchText = '';         
         
         $scope.RefreshDatabase = function() {
             $http.get('/RefreshDatabase')

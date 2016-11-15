@@ -1,7 +1,10 @@
 angular.module('DaycareApp').controller('EnrollmentController', ['$scope', '$http', function($scope, $http){
 
         $scope.Children = [];
-        $scope.Profile = [];        
+        $scope.Profile = [];  
+        $scope.sortType = 'ChildName'; 
+        $scope.sortReverse = false;
+        $scope.searchText = '';     
 
 
         $scope.callEnrolledList = function() {

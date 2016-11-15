@@ -9,6 +9,7 @@
 
 
 <link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">
+<link rel="stylesheet" type="text/css" href="./Other Files/(CSS Stuff) font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 
 <h5><div class="dropdown" style="float:right;">
@@ -30,12 +31,14 @@
 <h1>Waiting List Testing</h1>
 
 
-
+<div>
+    <label>Search: <input placeholder="What are you looking for?" ng-model="searchText"></label>
+</div>
 <button type="button" ng-click="RefreshDatabase()">Refresh Database</button> 
 <div id="display"></div>
 
 <table class = "TFtable">
-	<tr>
+	<!--<tr>
 	<th>Child's Name</th>
 	<th>D.O.B.</th>
 	<th>Phone Number</th>
@@ -48,10 +51,96 @@
 	<th>Class</th>
 	<th>Days</th>
 	<th>View Profile</th>
-	<th>Accept</th>
+	<th>Accept</th>-->
         
-</tr>
-<tr ng-repeat="child in Children">
+<!--</tr>-->
+
+<thead>
+    <tr>
+    <th>
+        <a href="#" ng-click="sortType = 'ChildName'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Child's Name
+        <span ng-show="sortType == 'ChildName' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'ChildName' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'ChildBirthdate'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        D.O.B.
+        <span ng-show="sortType == 'ChildBirthdate' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'ChildBirthdate' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'HomePhone'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Phone Number
+        <span ng-show="sortType == 'HomePhone' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'HomePhone' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'GaurdianName1'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Primany Parent Name
+        <span ng-show="sortType == 'GaurdianName1' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'GaurdianName1' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'GaurdianStatus1'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Primany Parent Status
+        <span ng-show="sortType == 'GaurdianStatus1' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'GaurdianStatus1' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'GaurdianName2'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Secondary Parent Name
+        <span ng-show="sortType == 'GaurdianName2' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'GaurdianName2' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'GaurdianStatus2'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Secondary Parent Status
+        <span ng-show="sortType == 'GaurdianStatus2' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'GaurdianStatus2' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'TimeStamp'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Date of App.
+        <span ng-show="sortType == 'TimeStamp' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'TimeStamp' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'DesiredEnrollment'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Desired Start Date
+        <span ng-show="sortType == 'DesiredEnrollment' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'DesiredEnrollment' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'Class'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Class
+        <span ng-show="sortType == 'Class' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'Class' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'RequiredDays'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Days
+        <span ng-show="sortType == 'RequiredDays' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'RequiredDays' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+	<th>View Profile</th>
+	<th>Accept</th>
+    </tr>
+</thead>
+
+
+<tr ng-repeat="child in Children | orderBy:sortType:sortReverse | filter:searchText">
     <th>{{child.ChildName}}</th>
     <th>{{child.ChildBirthdate}}</th>
     <th>{{child.HomePhone}}</th>
