@@ -60,7 +60,7 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		db.all("SELECT ChildName, ChildBirthdate, HomePhone, GaurdianName1, GaurdianStatus1, GaurdianName2, GaurdianStatus2, TimeStamp, DesiredEnrollment, AgeGroup, RequiredDays FROM Personal_Information WHERE EnrollmentStatus = 'W'", 
+		db.all("SELECT ChildID, ChildName, ChildBirthdate, HomePhone, GaurdianName1, GaurdianStatus1, GaurdianName2, GaurdianStatus2, TimeStamp, DesiredEnrollment, AgeGroup, RequiredDays FROM Personal_Information WHERE EnrollmentStatus = 'W'", 
 				function(err, row) {
 			if (err){
 				callback(err);
@@ -147,7 +147,7 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		db.all("SELECT * FROM Personal_Information WHERE EnrollmentStatus = 'E'", function(err, row) {
+		db.all("SELECT ChildID, ChildName, ChildBirthdate, HomePhone, GaurdianName1, GaurdianStatus1, GaurdianName2, GaurdianStatus2, TimeStamp, DesiredEnrollment, AgeGroup, RequiredDays FROM Personal_Information WHERE EnrollmentStatus = 'E'", function(err, row) {
 			if (err){
 				callback(err);
 				return;
