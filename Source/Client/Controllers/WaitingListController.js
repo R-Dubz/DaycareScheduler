@@ -21,7 +21,11 @@
                 // $scope.Children.push(response.data);
 
                 for(var i = 0; i < response.data.length; i++){
+                    response.data[i].jsFriendlyBirthDate = new Date(response.data[i].ChildBirthdate);
+                    response.data[i].jsFriendlyTimeStamp = new Date(response.data[i].TimeStamp);
+                    response.data[i].jsFriendlyDesiredEnrollment = new Date(response.data[i].DesiredEnrollment);                    
                     $scope.Children.push(response.data[i]);
+                    // $scope.Children[i].push(jsFriendlyBirthDate);                    
                 }
 
                 if($scope.Children.length === 0){
