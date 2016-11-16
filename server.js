@@ -30,8 +30,26 @@ app.get('/', function (req, res) {
     //   // send the data
     //   res.send(data);
     // })
-    res.send(quickstart.runQuickstart());
+    // res.send(quickstart.runQuickstart());
+    var callCount = 1;
+    var repeater = setInterval(function () {
+      if (callCount < 30) {
+        quickstart.runQuickstart();
+        callCount += 1;
+      } else {
+        clearInterval(repeater);
+      }
+    }, 5000);
+
+    updateDB.callWaitingList(function(err, data){
+      if(err) {
+        // handle the error here
+      }
+      // send the data
+      res.send(data);
+    })
   });
+
 
   app.get('/LoadWaitingList', function (req, res) {
     updateDB.callWaitingList(function(err, data){

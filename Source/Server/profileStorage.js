@@ -1,11 +1,11 @@
 var updateDB = require('./updateDB.js');
-var profile = [];
+var profile = [0];
 
 var profileStorage = {
 
     storeProfile: function(child){
         var profileID = {ChildID: child.ChildID};
-        profile.push(profileID);
+        profile[0] = (profileID);
     },
 
     retrieveProfile: function(callback){

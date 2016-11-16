@@ -2,8 +2,8 @@
 
         $scope.Children = [];
         $scope.Profile = [];   
-        $scope.sortType = 'ChildName'; 
-        $scope.sortReverse = false;
+        $scope.sortType = 'jsFriendlyTimeStamp'; 
+        $scope.sortReverse = true;
         $scope.searchText = '';         
         
         $scope.RefreshDatabase = function() {
