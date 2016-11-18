@@ -13,6 +13,7 @@
 <body ng-app="DaycareApp" ng-controller="ProfileController" ng-init="LoadTempProfile()">
 <button type="button"onclick="Date()">
 BACK</button>
+<button class="button">Button</button>
 <h5><div class="dropdown" style="float:right;">
 
   <button class="dropbtn">||||</button>
@@ -34,11 +35,11 @@ BACK</button>
         <span ng-if="Editing"><input type="text" id="ChildName" value="{{Profile[0].ChildName}}"></input><br></span>
     </h1><h3>Child's Gender: 
         <span ng-if="!Editing">{{Profile[0].ChildGender}}<br></span>
-        <span ng-if="Editing"><input type="text" id="ChildName" value="{{Profile[0].ChildGender}}"></input><br></span>
-    </h3><h3>Address: 
+        <span ng-if="Editing"><input type="text" id="ChildGender" value="{{Profile[0].ChildGender}}"></input><br></span>
+    Address: 
         <span ng-if="!Editing">{{Profile[0].ChildHomeAddress}} <br></span>
-        <span ng-if="Editing"><input type="text" id="ChildName" value="{{Profile[0].ChildHomeAddress}}"></input><br></span>
-    </h3><h3>Parent/guardian's marital status: 
+        <span ng-if="Editing"><input type="text" id="ChildHomeAddress" value="{{Profile[0].ChildHomeAddress}}"></input><br></span>
+    Parent/guardian's marital status: 
         <span ng-if="!Editing">{{Profile[0].MaritalStatus}}<br></span>
         <span ng-if="Editing"><input type="text" id="MaritalStatus" value="{{Profile[0].MaritalStatus}}"></input><br></span>
 </h3></font></td>
@@ -54,10 +55,10 @@ BACK</button>
         <span ng-if="Editing"><input type="text" id="AgeGroup" value="{{Profile[0].AgeGroup}}"></input><br></span>
     Days: 
         <span ng-if="!Editing">{{Profile[0].RequiredDays}} <br></span>
-        <span ng-if="Editing"><input type="text" id="AgeGroup" value="{{Profile[0].RequiredDays}}"></input><br></span>
+        <span ng-if="Editing"><input type="text" id="RequiredDays" value="{{Profile[0].RequiredDays}}"></input><br></span>
     hours: 
         <span ng-if="!Editing">{{Profile[0].DesiredTimeBlock}}<br></span>
-        <span ng-if="Editing"><input type="text" id="AgeGroup" value="{{Profile[0].DesiredTimeBlock}}"></input><br></span>
+        <span ng-if="Editing"><input type="text" id="DesiredTimeBlock" value="{{Profile[0].DesiredTimeBlock}}"></input><br></span>
 </font></td></h5></table>
 <p>
 <table style="width: 100%; height: 10%" bgcolor="0000ff">
