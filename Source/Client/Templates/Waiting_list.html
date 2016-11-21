@@ -7,25 +7,25 @@
 <script src="./app.js"></script>
 <script src="./Source/Client/Controllers/WaitingListController.js"></script>
 
-<style type="text/css">
-.TFtable {
-	width:100%;
-	border: 1px solid black;
-	background-color: black;
-/*	border-collapse: collapse; */
-	padding: 5px;
-}
-/*  Define the background color for all the ODD background rows  */
-	.TFtable tr:nth-child(odd){ 
-		background: #b8d1f3;
-	}
-	/*  Define the background color for all the EVEN background rows  */
-	.TFtable tr:nth-child(even){
-		background: #dae5f4;
-	}
-</style>
 
+<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">
+<link rel="stylesheet" type="text/css" href="./Other Files/(CSS Stuff) font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
+
+<h5><div class="dropdown" style="float:right;">
+
+  <button class="dropbtn">||||</button>
+  <div class="dropdown-content">
+    <a href="Rooms.html">Rooms</a>
+    <a href="Employees.html">Employees</a>
+    <a href="Children.html">Children</a>
+	<a href="sChildren.html">Schedule Classrooms</a>
+	<a href="sEmployee.html">Schedule Employees</a>
+	<a href="Waiting_list.html">Waiting List</a>
+  </div>
+
+</div></h5>
+
 <body ng-app="DaycareApp" ng-controller="WaitingListController" ng-init="LoadWaitingList()">
 
 <h1>Waiting List Testing</h1>
@@ -41,11 +41,15 @@
   </div>
 </div></h5>
 
-<button type="button" ng-click="RefreshDatabase()">Refresh Database</button>
+
+<div>
+    <label>Search: <input placeholder="What are you looking for?" ng-model="searchText"></label>
+</div>
+<button type="button" ng-click="RefreshDatabase()">Refresh Database</button> 
 <div id="display"></div>
 
 <table class = "TFtable">
-	<tr>
+	<!--<tr>
 	<th>Child's Name</th>
 	<th>D.O.B.</th>
 	<th>Phone Number</th>
@@ -58,40 +62,131 @@
 	<th>Class</th>
 	<th>Days</th>
 	<th>View Profile</th>
+	<th>Accept</th>-->
+        
+<!--</tr>-->
+
+<thead>
+    <tr>
+    <th>
+        <a href="#" ng-click="sortType = 'ChildName'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Child's Name
+        <span ng-show="sortType == 'ChildName' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'ChildName' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'jsFriendlyBirthDate'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        D.O.B.
+        <span ng-show="sortType == 'jsFriendlyBirthDate' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'jsFriendlyBirthDate' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'HomePhone'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Phone Number
+        <span ng-show="sortType == 'HomePhone' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'HomePhone' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'GaurdianName1'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Primany Parent Name
+        <span ng-show="sortType == 'GaurdianName1' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'GaurdianName1' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'GaurdianStatus1'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Primany Parent Status
+        <span ng-show="sortType == 'GaurdianStatus1' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'GaurdianStatus1' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'GaurdianName2'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Secondary Parent Name
+        <span ng-show="sortType == 'GaurdianName2' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'GaurdianName2' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'GaurdianStatus2'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Secondary Parent Status
+        <span ng-show="sortType == 'GaurdianStatus2' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'GaurdianStatus2' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'jsFriendlyTimeStamp'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Date of App.
+        <span ng-show="sortType == 'jsFriendlyTimeStamp' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'jsFriendlyTimeStamp' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'jsFriendlyDesiredEnrollment'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Desired Start Date
+        <span ng-show="sortType == 'jsFriendlyDesiredEnrollment' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'jsFriendlyDesiredEnrollment' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'AgeGroup'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Class
+        <span ng-show="sortType == 'AgeGroup' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'AgeGroup' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'RequiredDays'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Days
+        <span ng-show="sortType == 'RequiredDays' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'RequiredDays' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+	<th>View Profile</th>
 	<th>Accept</th>
+    </tr>
+</thead>
+
+
+<tr ng-repeat="child in Children | orderBy:sortType:sortReverse | filter:searchText">
+    <th>{{child.ChildName}}</th>
+    <th>{{child.ChildBirthdate}}</th>
+    <th>{{child.HomePhone}}</th>
+    <th>{{child.GaurdianName1}}</th>
+    <th>{{child.GaurdianStatus1}}</th>
+    <th>{{child.GaurdianName2}}</th>
+    <th>{{child.GaurdianStatus2}}</th>
+    <th>{{child.TimeStamp}}</th>
+    <th>{{child.DesiredEnrollment}}</th>
+    <th>{{child.AgeGroup}}</th>
+    <th>{{child.RequiredDays}}</th>
+<!--make sure all button code is between the <th> and </th> tags-->
+    <th><button type="button" ng-click="storeProfile(child)">Profile</button></th>
+    <th><button type="button" ng-click="acceptChild(child.ChildID)">Accept</button> </th>
 </tr>
-<tr>
-	<th>Jessica Brown</th>
-	<th>06/04/2007</th>
-        <th>(123)456-7890</th>
-        <th>John Brown</th>
-        <th>Student</th>
-        <th>Jane Brown</th>
-        <th>Comunaty</th>
-        <th>10/31/2016</th>
-        <th>1/1/2017</th>
-        <th>IN</th>
-        <th>MWF</th>
-<!-- make shure all button code is between the <th> and </th> tags -->
-        <th><button type="button" onclick="profile()"> Profile</button></th>
-        <th><button type="button" onclick="accept()">Accept</button> </th>
+
+<tr ng-if="Children.length === 0">
+    <th style="height: 48px"></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>    
+    <th style="background: #dae5f4"></th>
+    <th style="background: #dae5f4"></th>
+</tr>
 
 </table>
 
 <p id="accepted"></p>
-
-<script>
-
-function accept(){
-	confirm("You clicked accept! \nNothing has happened.\n Thank you.");
-}
-
-function profile(){
-	window.location.href = 'DemoPage.html';
-}
-
-</script>
-
 
 </body>
 </html>

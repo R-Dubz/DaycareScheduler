@@ -2,81 +2,165 @@
 <html>
 
 <head>
-<style>
-.dropbtn {
-    background-color: #000000;
-    color: white;
-    padding: 10px;
-    font-size: 10px;
-    border: none;
-    cursor: pointer;
-}
+<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">
+<link rel="stylesheet" type="text/css" href="./Other Files/(CSS Stuff) font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script>
+<script src="./app.js"></script>
+<script src="./Source/Client/Controllers/EnrollmentController.js"></script>
 
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-	right: 0;
-    background-color: #ffffff;
-    min-width: 160px;
-    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2);
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {background-color: #ffff00}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown:hover .dropbtn {
-    background-color: #888888;
-}
-</style>
 </head>
 
-<body bgcolor="ffff35">
-<center><h1>Search for an enrolled child</h1></center>
+<body bgcolor="ffff35"ng-app="DaycareApp" ng-controller="EnrollmentController" ng-init="callEnrolledList()">
+
 <h5><div class="dropdown" style="float:right;">
   <button class="dropbtn">||||</button>
   <div class="dropdown-content">
     <a href="Rooms.html">Rooms</a>
     <a href="Employees.html">Employees</a>
     <a href="Children.html">Children</a>
-        <a href="sChildren.html">Schedule Classrooms</a>
-        <a href="sEmployee.html">Schedule Employees</a>
-        <a href="Waiting_list.html">Waiting List</a>
+    <a href="sChildren.html">Schedule Classrooms</a>
+    <a href="sEmployee.html">Schedule Employees</a>
+    <a href="Waiting_list.html">Waiting List</a>
 
   </div>
 </div></h5>
 
-What to search for: <input type="text" id="myText" value="Search Here">
+<center><h1>Search for an enrolled child</h1></center>
 
-<button onclick="myFunction()">Check it</button>
+<!--The table sort and search functions implemented in this file were modeled after the tutorial in the link below this comment-->
+<!--https://scotch.io/tutorials/sort-and-filter-a-table-using-angular-->
+<label>Search: <input placeholder="What are you looking for?" ng-model="searchText"></label>
 
-<p id="demo"></p>
-<script src="..\Sheets_API_Quickstart\updateDB.js"></script>
-<script type="text/javascript">
-<!--
-//var updateDB = require('../Sheets_API_Quickstart/updateDB.js');
-var argus = ["", "", "Smith", "Jane", "1/24"];
-function myFunction() {
-   var x = document.getElementById("myText").value;
- //  updateDB.inputFormToDB.apply(this argus);
-   document.getElementById("myText").value = argus[2];
-}
+<div id="display"></div>
 
-</script>
+<table class = "TFtable">
+	<!--<th>Child's Name</th>
+	<th>D.O.B.</th>
+	<th>Phone Number</th>
+	<th>Primany Parent Name</th>
+	<th>Primanry Parent Status</th>
+	<th>Secondary Parent Name</th>
+	<th>Secondary Parent Status</th>
+	<th>Date of App.</th>
+	<th>Desired Start Date</th>
+	<th>Class</th>
+	<th>Days</th>
+	<th>View Profile</th>
+	<th>Delete</th>-->
+
+<thead>
+    <tr>
+    <th>
+        <a href="#" ng-click="sortType = 'ChildName'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Child's Name
+        <span ng-show="sortType == 'ChildName' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'ChildName' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'ChildBirthdate'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        D.O.B.
+        <span ng-show="sortType == 'ChildBirthdate' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'ChildBirthdate' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'HomePhone'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Phone Number
+        <span ng-show="sortType == 'HomePhone' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'HomePhone' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'GaurdianName1'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Primany Parent Name
+        <span ng-show="sortType == 'GaurdianName1' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'GaurdianName1' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'GaurdianStatus1'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Primany Parent Status
+        <span ng-show="sortType == 'GaurdianStatus1' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'GaurdianStatus1' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'GaurdianName2'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Secondary Parent Name
+        <span ng-show="sortType == 'GaurdianName2' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'GaurdianName2' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'GaurdianStatus2'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Secondary Parent Status
+        <span ng-show="sortType == 'GaurdianStatus2' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'GaurdianStatus2' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'jsFriendlyTimeStamp'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Date of App.
+        <span ng-show="sortType == 'jsFriendlyTimeStamp' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'jsFriendlyTimeStamp' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'jsFriendlyDesiredEnrollment'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Desired Start Date
+        <span ng-show="sortType == 'jsFriendlyDesiredEnrollment' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'jsFriendlyDesiredEnrollment' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'AgeGroup'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Class
+        <span ng-show="sortType == 'AgeGroup' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'AgeGroup' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>
+        <a href="#" ng-click="sortType = 'RequiredDays'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Days
+        <span ng-show="sortType == 'RequiredDays' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'RequiredDays' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    <th>View Profile</th>
+    </tr>
+</thead>
+
+<tr ng-repeat="child in Children | orderBy:sortType:sortReverse | filter:searchText">
+    <th>{{child.ChildName}}</th>
+    <th>{{child.ChildBirthdate}}</th>
+    <th>{{child.HomePhone}}</th>
+    <th>{{child.GaurdianName1}}</th>
+    <th>{{child.GaurdianStatus1}}</th>
+    <th>{{child.GaurdianName2}}</th>
+    <th>{{child.GaurdianStatus2}}</th>
+    <th>{{child.TimeStamp}}</th>
+    <th>{{child.DesiredEnrollment}}</th>
+    <th>{{child.AgeGroup}}</th>
+    <th>{{child.RequiredDays}}</th>
+<!--make sure all button code is between the <th> and </th> tags-->
+    <th><button type="button" ng-click="storeProfile(child)">Profile</button></th>
+</tr>
+
+<tr ng-if="Children.length === 0">
+    <th style="height: 48px"></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>    
+    <th style="background: #dae5f4"></th>
+</tr>
 
 </body>
 <html>

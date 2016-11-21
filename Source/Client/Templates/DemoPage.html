@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html>
-<body>
+<head>
+<title>Waiting List</title>
+<script type="text/javascript"></script>
+<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script>
+<script src="./app.js"></script>
+<script src="./Source/Client/Controllers/ProfileController.js"></script>
+<!--<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">-->
+</head>
+<body ng-app="DaycareApp" ng-controller="ProfileController" ng-init="LoadTempProfile()">
 <table style="width: 100%; height: 5%" bgcolor="yellow">
 <tr><td align="center" bgcolor="black"><h1><font color="white">
-Jessica Brown
+{{Profile[0].ChildName}}
 </font></h1></td>
 <td align="center" bgcolor="white"><h3><font color="black">
-Date of Birth: 06/04/2007
+{{Profile[0].ChildBirthdate}}
 </font></h3></td></tr></table>
 <p>
 <table style="width: 100%; height: 10%" bgcolor="0000ff">
@@ -15,23 +23,51 @@ Date of Birth: 06/04/2007
 <td align="center" bgcolor="ff8800"><h4>Parent 1's email</h4></td>
 <td align="center" bgcolor="ff8800"><h4>Parent 1's phone number</h4></td>
 </tr>
-<tr><td align="center" bgcolor="white"><h4>John Brown</h4></td>
-<td align="center" bgcolor="white"><h4>Student</h4></td>
-<td align="center" bgcolor="white"><h4>JBrown@gmail.com</h4></td>
-<td align="center" bgcolor="white"><h4>(123)456-7890</h4></td>
+<tr>
+    <td align="center" bgcolor="white"><h4>{{Profile[0].GaurdianName1}}</h4></td>
+    <td align="center" bgcolor="white"><h4>{{Profile[0].GaurdianStatus1}}</h4></td>
+    <td align="center" bgcolor="white"><h4>{{Profile[0].GaurdianEmail1}}</h4></td>
+    <td align="center" bgcolor="white"><h4>{{Profile[0].GaurdianPhone1}}</h4></td>
 </tr></table></p>
 <p><table style="width: 100%; height: 10%" bgcolor="000000">
-<tr><td align="center" bgcolor="9999ff"><h4>Parent 2's Name</h4></td>
+<tr>
+<td align="center" bgcolor="9999ff"><h4>Parent 2's Name</h4></td>
 <td align="center" bgcolor="9999ff"><h4>Parent 2's Potsdam Status</h4></td>
 <td align="center" bgcolor="9999ff"><h4>Parent 2's email</h4></td>
 <td align="center" bgcolor="9999ff"><h4>Parent 2's phone number</h4></td>
 </tr>
-<tr><td align="center" bgcolor="white"><h4>Jane Brown</h4></td>
-<td align="center" bgcolor="white"><h4>Community</h4></td>
-<td align="center" bgcolor="white"><h4>JaneB@gmail.com</h4></td>
-<td align="center" bgcolor="white"><h4>(123)456-7899</h4></td>
+<tr>
+    <td align="center" bgcolor="white"><h4>{{Profile[0].GaurdianName2}}</h4></td>
+    <td align="center" bgcolor="white"><h4>{{Profile[0].GaurdianStatus2}}</h4></td>
+    <td align="center" bgcolor="white"><h4>{{Profile[0].GaurdianEmail2}}</h4></td>
+    <td align="center" bgcolor="white"><h4>{{Profile[0].GaurdianPhone2}}</h4></td>
 </tr></table>
 </p>
-
+<p><table style="width: 100%; height: 10%" bgcolor="000000">
+    <tr><td align="center" bgcolor="lightblue"><h4>Sunday</h4></td>
+    <td align="center" bgcolor="lightblue"><h4>Monday</h4></td>
+    <td align="center" bgcolor="lightblue"><h4>Tuesday</h4></td>
+    <td align="center" bgcolor="lightblue"><h4>Wednesday</h4></td>
+    <td align="center" bgcolor="lightblue"><h4>Thursday</h4></td>
+    <td align="center" bgcolor="lightblue"><h4>Friday</h4></td>
+    <td align="center" bgcolor="lightblue"><h4>Saturday</h4></td>
+    </tr>
+     <tr><td align="center" bgcolor="white"><h4>Room</h4></td>
+    <td align="center" bgcolor="white"><h4>Room</h4></td>
+    <td align="center" bgcolor="white"><h4>Room</h4></td>
+    <td align="center" bgcolor="white"><h4>Room</h4></td>
+    <td align="center" bgcolor="white"><h4>Room</h4></td>
+    <td align="center" bgcolor="white"><h4>Room</h4></td>
+    <td align="center" bgcolor="white"><h4>Room</h4></td>
+    </tr>
+     <tr><td align="center" bgcolor="white"><h4>Time</h4></td>
+    <td align="center" bgcolor="white"><h4>Time</h4></td>
+    <td align="center" bgcolor="white"><h4>Time</h4></td>
+    <td align="center" bgcolor="white"><h4>Time</h4></td>
+    <td align="center" bgcolor="white"><h4>Time</h4></td>
+    <td align="center" bgcolor="white"><h4>Time</h4></td>
+    <td align="center" bgcolor="white"><h4>Time</h4></td>
+    </tr>
+</table></p>
 </body>
 </html>

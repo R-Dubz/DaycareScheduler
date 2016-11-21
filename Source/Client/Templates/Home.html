@@ -2,6 +2,7 @@
 <html>
 
 <head>
+
 <style>
 .dropbtn {
     background-color: #000000;
@@ -36,23 +37,13 @@ transform: rotate(90deg);
 
 .dropdown-content a:hover {background-color: #ffff00}
 
-.dropdown:hover .dropdown-content {
-    display: block;
-}
+<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">
 
-.dropdown:hover .dropbtn {
-    background-color: #888888;
-}
-</style>
 </head>
 
 <body bgcolor="white" background="sky.jpg">
 
-<table style="width: 100%; height: 5%" bgcolor="white">
-<tr><td align="center"><h1><font color="maroon">
-SUNY Potsdam Daycare scheduling
-</font></h1></td></tr></table>
-<h5><div class="dropdown" style="float:right;">
+	<h5><div class="dropdown" style="float:right;">
   <button class="dropbtn">||||</button>
   <div class="dropdown-content">
     <a href="Rooms.html">Rooms</a>
@@ -65,28 +56,40 @@ SUNY Potsdam Daycare scheduling
 
 </div></h5>
 
+<table style="width: 100%; height: 5%" bgcolor="white">
+<tr><td align="center"><h1><font color="maroon">
+SUNY Potsdam Daycare scheduling
+</font></h1></td></tr></table>
+
+
 <h1><table border="25" style="width: 100%; height: 81%" bgcolor="turquoise">
 	<tr style="height: 50%">
 		<td align="center">
+			<button style="height:200px;width:200px;background-color:3399f0" onclick="day()">
+			<h1>Waiting List</h1></button>
+		</td>
+		<td align="center">
 			<button style="height:200px;width:200px;background-color:3399f0" onclick="childInfo()">
-			<h1>Child search</h1></button></td>
+			<h1>Enrollment Database</h1></button>
+		</td>
 		<td align="center">
-			<button style="height:200px;width:200px;background-color:3399f0" onclick="rooms()">
-			<h1>Room Search</h1></button></td>
-		<td align="center">
-			<button style="height:200px;width:200px;background-color:3399f0" onclick="employees()">
-			<h1>Employee search</h1></button></td>
+			<button style="height:200px;width:200px;background-color:3399f0" onclick="childSched()">
+			<h1>Classroom Schedules</h1></button>
+		</td>
 	</tr>
 	<tr style="height: 50%">
 		<td align="center">
-			<button style="height:200px;width:200px;background-color:3399f0" onclick="childSched()">
-			<h1>Schedule Classrooms</h1></button></td>
-		<td align="center">
 			<button style="height:200px;width:200px;background-color:3399f0" onclick="employeeSched()">
-			<h1>Schedule employees</h1></button></td>
+			<h1>Employee Scheduler</h1></button>
+		</td>
 		<td align="center">
-			<button style="height:200px;width:200px;background-color:3399f0" onclick="day()">
-			<h1>Waiting List</h1></button></td>
+			<button style="height:200px;width:200px;background-color:3399f0" onclick="employees()">
+			<h1>Employee Search</h1></button>
+		</td>
+		<td align="center">
+			<button style="height:200px;width:200px;background-color:3399f0" onclick="rooms()">
+			<h1>Room Search</h1></button>
+		</td>
 	</tr>
 </table>
 </h1>
