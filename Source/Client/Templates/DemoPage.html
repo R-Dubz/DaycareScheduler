@@ -1,73 +1,124 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Waiting List</title>
+<title>Individual Profile</title>
 <script type="text/javascript"></script>
 <script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script>
 <script src="./app.js"></script>
 <script src="./Source/Client/Controllers/ProfileController.js"></script>
 <!--<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">-->
+<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">
+<link rel="stylesheet" type="text/css" href="./Other Files/(CSS Stuff) font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 <body ng-app="DaycareApp" ng-controller="ProfileController" ng-init="LoadTempProfile()">
+<button type="button"onclick="Date()">
+BACK</button>
+<button class="button">Button</button>
+<h5><div class="dropdown" style="float:right;">
+
+  <button class="dropbtn">||||</button>
+  <div class="dropdown-content">
+    <a href="Home.html">Home</a>
+    <a href="Rooms.html">Rooms</a>
+    <a href="Employees.html">Employees</a>
+    <a href="Children.html">Children</a>
+	<a href="sChildren.html">Schedule Classrooms</a>
+	<a href="sEmployee.html">Schedule Employees</a>
+	<a href="Waiting_list.html">Waiting List</a>
+  </div>
+
+</div></h5>
 <table style="width: 100%; height: 5%" bgcolor="yellow">
-<tr><td align="center" bgcolor="black"><h1><font color="white">
-{{Profile[0].ChildName}}
-</font></h1></td>
-<td align="center" bgcolor="white"><h3><font color="black">
-{{Profile[0].ChildBirthdate}}
-</font></h3></td></tr></table>
+<tr><td align="center" bgcolor="black"><font color="white">
+    <h1>Child's Name: 
+        <span ng-if="!Editing">{{Profile[0].ChildName}}<br></span>
+        <span ng-if="Editing"><input type="text" id="ChildName" value="{{Profile[0].ChildName}}"></input><br></span>
+    </h1><h3>Child's Gender: 
+        <span ng-if="!Editing">{{Profile[0].ChildGender}}<br></span>
+        <span ng-if="Editing"><input type="text" id="ChildGender" value="{{Profile[0].ChildGender}}"></input><br></span>
+    Address: 
+        <span ng-if="!Editing">{{Profile[0].ChildHomeAddress}} <br></span>
+        <span ng-if="Editing"><input type="text" id="ChildHomeAddress" value="{{Profile[0].ChildHomeAddress}}"></input><br></span>
+    Parent/guardian's marital status: 
+        <span ng-if="!Editing">{{Profile[0].MaritalStatus}}<br></span>
+        <span ng-if="Editing"><input type="text" id="MaritalStatus" value="{{Profile[0].MaritalStatus}}"></input><br></span>
+</h3></font></td>
+<h5><td align="center" bgcolor="white"><h3><font color="black">
+    DOB: 
+        <span ng-if="!Editing">{{Profile[0].ChildBirthdate}}<br></span>
+        <span ng-if="Editing"><input type="text" id="ChildBirthdate" value="{{Profile[0].ChildBirthdate}}"></input><br></span>
+    Age:
+        <span ng-if="!Editing">{{Profile[0].ChildAge}}<br></span>
+        <span ng-if="Editing"><input type="text" id="ChildAge" value="{{Profile[0].ChildAge}}"></input><br></span>
+    Age Group:
+        <span ng-if="!Editing">{{Profile[0].AgeGroup}}<br></span>
+        <span ng-if="Editing"><input type="text" id="AgeGroup" value="{{Profile[0].AgeGroup}}"></input><br></span>
+    Days: 
+        <span ng-if="!Editing">{{Profile[0].RequiredDays}} <br></span>
+        <span ng-if="Editing"><input type="text" id="RequiredDays" value="{{Profile[0].RequiredDays}}"></input><br></span>
+    hours: 
+        <span ng-if="!Editing">{{Profile[0].DesiredTimeBlock}}<br></span>
+        <span ng-if="Editing"><input type="text" id="DesiredTimeBlock" value="{{Profile[0].DesiredTimeBlock}}"></input><br></span>
+</font></td></h5></table>
 <p>
 <table style="width: 100%; height: 10%" bgcolor="0000ff">
-<tr><td align="center" bgcolor="ff8800"><h4>Parent 1's Name</h4></td>
-<td align="center" bgcolor="ff8800"><h4>Parent 1's Potsdam Status</h4></td>
-<td align="center" bgcolor="ff8800"><h4>Parent 1's email</h4></td>
-<td align="center" bgcolor="ff8800"><h4>Parent 1's phone number</h4></td>
+<tr><td align="center" bgcolor="ff8800"><h4>Person</h4></td>
+<td align="center" bgcolor="ff8800"><h4>Name</h4></td>
+<td align="center" bgcolor="ff8800"><h4>Potsdam Status</h4></td>
+<td align="center" bgcolor="ff8800"><h4>Email</h4></td>
+<td align="center" bgcolor="ff8800"><h4>Phone Number</h4></td>
+<td align="center" bgcolor="ff8800"><h4>Custody</h4></td>
 </tr>
 <tr>
-    <td align="center" bgcolor="white"><h4>{{Profile[0].GaurdianName1}}</h4></td>
-    <td align="center" bgcolor="white"><h4>{{Profile[0].GaurdianStatus1}}</h4></td>
-    <td align="center" bgcolor="white"><h4>{{Profile[0].GaurdianEmail1}}</h4></td>
-    <td align="center" bgcolor="white"><h4>{{Profile[0].GaurdianPhone1}}</h4></td>
-</tr></table></p>
-<p><table style="width: 100%; height: 10%" bgcolor="000000">
-<tr>
-<td align="center" bgcolor="9999ff"><h4>Parent 2's Name</h4></td>
-<td align="center" bgcolor="9999ff"><h4>Parent 2's Potsdam Status</h4></td>
-<td align="center" bgcolor="9999ff"><h4>Parent 2's email</h4></td>
-<td align="center" bgcolor="9999ff"><h4>Parent 2's phone number</h4></td>
+    <td align="center" bgcolor="white"><h4>Parent 1</h4></td>
+    <td align="center" bgcolor="white">
+        <span ng-if="!Editing">{{Profile[0].GaurdianName1}}</span>
+        <span ng-if="Editing"><input type="text" id="GaurdianName1" value="{{Profile[0].GaurdianName1}}"></input></span>
+    </td>
+    <td align="center" bgcolor="white">
+        <span ng-if="!Editing">{{Profile[0].GaurdianStatus1}}</span>
+        <span ng-if="Editing"><input type="text" id="GaurdianStatus1" value="{{Profile[0].GaurdianStatus1}}"></input></span>
+    </td>
+    <td align="center" bgcolor="white">
+        <span ng-if="!Editing">{{Profile[0].GaurdianEmail1}}</span>
+        <span ng-if="Editing"><input type="text" id="GaurdianEmail1" value="{{Profile[0].GaurdianEmail1}}"></input></span>
+    </td>
+    <td align="center" bgcolor="white">
+        <span ng-if="!Editing">{{Profile[0].GaurdianPhone1}}</span>
+        <span ng-if="Editing"><input type="text" id="GaurdianPhone1" value="{{Profile[0].GaurdianPhone1}}"></input></span>
+    </td>
+    <td align="center" bgcolor="white">{{Custody}}</td>
 </tr>
 <tr>
-    <td align="center" bgcolor="white"><h4>{{Profile[0].GaurdianName2}}</h4></td>
-    <td align="center" bgcolor="white"><h4>{{Profile[0].GaurdianStatus2}}</h4></td>
-    <td align="center" bgcolor="white"><h4>{{Profile[0].GaurdianEmail2}}</h4></td>
-    <td align="center" bgcolor="white"><h4>{{Profile[0].GaurdianPhone2}}</h4></td>
+    <td align="center" bgcolor="white"><h4>Parent 2</h4></td>
+    <td align="center" bgcolor="white">
+        <span ng-if="!Editing">{{Profile[0].GaurdianName2}}</span>
+        <span ng-if="Editing"><input type="text" id="GaurdianName2" value="{{Profile[0].GaurdianName2}}"></input></span>
+    </td>
+    <td align="center" bgcolor="white">
+        <span ng-if="!Editing">{{Profile[0].GaurdianStatus2}}</span>
+        <span ng-if="Editing"><input type="text" id="GaurdianStatus2" value="{{Profile[0].GaurdianStatus2}}"></input></span>
+    </td>
+    <td align="center" bgcolor="white">
+        <span ng-if="!Editing">{{Profile[0].GaurdianEmail2}}</span>
+        <span ng-if="Editing"><input type="text" id="GaurdianEmail2" value="{{Profile[0].GaurdianEmail2}}"></input></span>
+    </td>
+    <td align="center" bgcolor="white">
+        <span ng-if="!Editing">{{Profile[0].GaurdianPhone2}}</span>
+        <span ng-if="Editing"><input type="text" id="GaurdianPhone2" value="{{Profile[0].GaurdianPhone2}}"></input></span>
+    </td>
+    <td align="center" bgcolor="white">{{Custody}}</td>
 </tr></table>
 </p>
-<p><table style="width: 100%; height: 10%" bgcolor="000000">
-    <tr><td align="center" bgcolor="lightblue"><h4>Sunday</h4></td>
-    <td align="center" bgcolor="lightblue"><h4>Monday</h4></td>
-    <td align="center" bgcolor="lightblue"><h4>Tuesday</h4></td>
-    <td align="center" bgcolor="lightblue"><h4>Wednesday</h4></td>
-    <td align="center" bgcolor="lightblue"><h4>Thursday</h4></td>
-    <td align="center" bgcolor="lightblue"><h4>Friday</h4></td>
-    <td align="center" bgcolor="lightblue"><h4>Saturday</h4></td>
-    </tr>
-     <tr><td align="center" bgcolor="white"><h4>Room</h4></td>
-    <td align="center" bgcolor="white"><h4>Room</h4></td>
-    <td align="center" bgcolor="white"><h4>Room</h4></td>
-    <td align="center" bgcolor="white"><h4>Room</h4></td>
-    <td align="center" bgcolor="white"><h4>Room</h4></td>
-    <td align="center" bgcolor="white"><h4>Room</h4></td>
-    <td align="center" bgcolor="white"><h4>Room</h4></td>
-    </tr>
-     <tr><td align="center" bgcolor="white"><h4>Time</h4></td>
-    <td align="center" bgcolor="white"><h4>Time</h4></td>
-    <td align="center" bgcolor="white"><h4>Time</h4></td>
-    <td align="center" bgcolor="white"><h4>Time</h4></td>
-    <td align="center" bgcolor="white"><h4>Time</h4></td>
-    <td align="center" bgcolor="white"><h4>Time</h4></td>
-    <td align="center" bgcolor="white"><h4>Time</h4></td>
-    </tr>
-</table></p>
+
+
+<span ng-if="!Editing">
+    <button ng-click="EditProfile()">Toggle Editing/Edit Profile</button>
+</span>
+<span ng-if="Editing">
+    <button ng-click="SaveChanges()">Save Changes</button>
+    <button ng-click="EditProfile()">Cancel</button>
+</span>
+
 </body>
 </html>
