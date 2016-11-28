@@ -19,8 +19,8 @@
     color: white;
     padding: 10px;
     font-size: 10px;
-    position: absolute;
-    left: 0;
+    position: fixed;
+    right: 0;
     border: none;
     cursor: pointer;
 	transform: rotate(90deg);
