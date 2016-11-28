@@ -12,36 +12,23 @@
 <link rel="stylesheet" type="text/css" href="./Other Files/(CSS Stuff) font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 
-<h5><div class="dropdown" style="float:right;">
+<body ng-app="DaycareApp" ng-controller="WaitingListController" ng-init="LoadWaitingList()">
 
+<h5><div class="dropdown" style="float:right;">
   <button class="dropbtn">||||</button>
   <div class="dropdown-content">
     <a href="Home.html">Home</a>
     <a href="Rooms.html">Rooms</a>
     <a href="Employees.html">Employees</a>
     <a href="Children.html">Children</a>
-	<a href="sChildren.html">Schedule Classrooms</a>
-	<a href="sEmployee.html">Schedule Employees</a>
-	<a href="Waiting_list.html">Waiting List</a>
+    <a href="sChildren.html">Schedule Classrooms</a>
+    <a href="sEmployee.html">Schedule Employees</a>
+    <a href="Waiting_list.html">Waiting List</a>
   </div>
-
 </div></h5>
 
-<body ng-app="DaycareApp" ng-controller="WaitingListController" ng-init="LoadWaitingList()">
 
 <h1>Waiting List Testing</h1>
-<h5><div class="dropdown" style="float:right;">
-  <button class="dropbtn">||||</button>
-  <div class="dropdown-content">
-    <a href="Rooms.html">Rooms</a>
-    <a href="Employees.html">Employees</a>
-    <a href="Children.html">Children</a>
-        <a href="sChildren.html">Schedule Classrooms</a>
-        <a href="sEmployee.html">Schedule Employees</a>
-        <a href="Waiting_list.html">Waiting List</a>
-  </div>
-</div></h5>
-
 
 <div>
     <label>Search: <input placeholder="What are you looking for?" ng-model="searchText"></label>

@@ -4,13 +4,6 @@
 <head>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<div ng-app="app" ng-controller="myCtrl">
-	<p>First Name: <input type="text" name="firstName" ng-model="firstName" required /></p>
-	<p>Lirst Name: <input type="text" name="lastName" ng-model="lastName" required /></p>
-	<button ng-click="SendData()">Submit</button>
-	<hr />
-        {{ PostDataResponse }}
-    </div>
     <script>
         var app = angular.module("app",[]);
         app.controller("myCtrl", function($scope,$http){
@@ -39,9 +32,9 @@
     <a href="Rooms.html">Rooms</a>
     <a href="Employees.html">Employees</a>
     <a href="Children.html">Children</a>
-        <a href="sChildren.html">Schedule Classrooms</a>
-        <a href="sEmployee.html">Schedule Employees</a>
-        <a href="Waiting_list.html">Waiting List</a>
+    <a href="sChildren.html">Schedule Classrooms</a>
+    <a href="sEmployee.html">Schedule Employees</a>
+    <a href="Waiting_list.html">Waiting List</a>
 
   </div>
 </div></h5>
@@ -54,4 +47,13 @@ What to search for: <input type="text" id="myText" value="Search Here">
 <button onclick="myFunction()">Check it</button>
 
 <p id="demo"></p>
+
+
+<div ng-app="app" ng-controller="myCtrl">
+	<p>First Name: <input type="text" name="firstName" ng-model="firstName" required /></p>
+	<p>Lirst Name: <input type="text" name="lastName" ng-model="lastName" required /></p>
+	<button ng-click="SendData()">Submit</button>
+	<hr />
+        {{ PostDataResponse }}
+    </div>
 

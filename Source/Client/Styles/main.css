@@ -19,7 +19,7 @@
     color: white;
     padding: 10px;
     font-size: 10px;
-    position: absolute;
+    position: relative;
     left: 0;
     border: none;
     cursor: pointer;
