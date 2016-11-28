@@ -4,14 +4,7 @@
 <head>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<div ng-app="app" ng-controller="myCtrl">
-	<p>First Name: <input type="text" name="firstName" ng-model="firstName" required /></p>
-	<p>Lirst Name: <input type="text" name="lastName" ng-model="lastName" required /></p>
-	<button ng-click="SendData()">Submit</button>
-	<hr />
-        {{ PostDataResponse }}
-    </div>
-    <script>
+<script>
         var app = angular.module("app",[]);
         app.controller("myCtrl", function($scope,$http){
         $scope.SendData = function() {
@@ -55,3 +48,13 @@ What to search for: <input type="text" id="myText" value="Search Here">
 
 <p id="demo"></p>
 
+<div ng-app="app" ng-controller="myCtrl">
+	<p>First Name: <input type="text" name="firstName" ng-model="firstName" required /></p>
+	<p>Lirst Name: <input type="text" name="lastName" ng-model="lastName" required /></p>
+	<button ng-click="SendData()">Submit</button>
+	<hr />
+        {{ PostDataResponse }}
+    </div>
+
+</body>
+</html>
