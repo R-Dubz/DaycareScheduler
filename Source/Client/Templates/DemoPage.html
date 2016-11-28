@@ -39,6 +39,9 @@ BACK</button>
     Address: 
         <span ng-if="!Editing">{{Profile[0].ChildHomeAddress}} <br></span>
         <span ng-if="Editing"><input type="text" id="ChildHomeAddress" value="{{Profile[0].ChildHomeAddress}}"></input><br></span>
+    Home Phone: 
+        <span ng-if="!Editing">{{Profile[0].HomePhone}} <br></span>
+        <span ng-if="Editing"><input type="text" id="HomePhone" value="{{Profile[0].HomePhone}}"></input><br></span>
     Parent/guardian's marital status: 
         <span ng-if="!Editing">{{Profile[0].MaritalStatus}}<br></span>
         <span ng-if="Editing"><input type="text" id="MaritalStatus" value="{{Profile[0].MaritalStatus}}"></input><br></span>
