@@ -18,6 +18,7 @@ This library holds functions to be used in order to modify the database
 			var sqlite3 = require("sqlite3").verbose();
 			var db = new sqlite3.Database(file);
 
+			db.run("INSERT INTO Personal_Information (EnrollmentStatus, TimeStamp, DesiredEnrollment, ChildName, ChildHomeAddress, HomePhone, ChildBirthDate, ChildAge, ChildGender, GuardianName1, GuardianPhone1, GuardianEmail1, GuardianStatus1, GuardianName2, GuardianPhone2, GuardianEmail2, GuardianStatus2, MaritalStatus, Custody, AgeGroup, RequiredDays, DesiredTimeBlock, RegisterResponse, GrandparentsPhone, GrandparentsAddress, employment1, employment2) VALUES ('W', $TimeStamp, $DesiredEnrollment, $ChildName, $ChildHomeAddress, $HomePhone, $ChildBirthDate, $ChildAge, $ChildGender, $GuardianName1, $GuardianPhone1, $GuardianEmail1, $GuardianStatus1, $GuardianName2, $GuardianPhone2, $GuardianEmail2, $GuardianStatus2, $MaritalStatus, $Custody, $AgeGroup, $RequiredDays, $DesiredTimeBlock, $RegisterResponse, $GrandparentsPhone, $GrandparentsAddress, $employment1, $employment2)", {
 				$TimeStamp: info[0],
 				$DesiredEnrollment: info[1],
 				$ChildName: info[2],
@@ -26,6 +27,14 @@ This library holds functions to be used in order to modify the database
 				$ChildBirthDate: info[5],
 				$ChildAge: info[6],
 				$ChildGender: info[7],
+				$GuardianName1: info[8],
+				$GuardianPhone1: info[9],
+				$GuardianEmail1: info[10],
+				$GuardianStatus1: info[11],
+				$GuardianName2: info[12],
+				$GuardianPhone2: info[13],
+				$GuardianEmail2: info[14],
+				$GuardianStatus2: info[15],
 				$MaritalStatus: info[16],
 				$Custody: info[17],
 				$AgeGroup: info[18],
@@ -51,6 +60,7 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
+		db.all("SELECT ChildID, ChildName, ChildBirthdate, HomePhone, GuardianName1, GuardianStatus1, GuardianName2, GuardianStatus2, TimeStamp, DesiredEnrollment, AgeGroup, RequiredDays FROM Personal_Information WHERE EnrollmentStatus = 'W'", 
 				function(err, row) {
 			if (err){
 				callback(err);
@@ -74,6 +84,7 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 			
+		db.run("UPDATE Personal_Information SET EnrollmentStatus = $EnrollmentStatus, TimeStamp = $TimeStamp, DesiredEnrollment = $DesiredEnrollment, ChildName = $ChildName, ChildHomeAddress = $ChildHomeAddress, HomePhone = $HomePhone, ChildBirthdate = $ChildBirthdate, ChildAge = $ChildAge, ChildGender = $ChildGender, GuardianName1 = $GuardianName1, GuardianPhone1 = $GuardianPhone1, GuardianEmail1 = $GuardianEmail1, GuardianStatus1 = $GuardianStatus1, GuardianName2 = $GuardianName2, GuardianPhone2 = $GuardianPhone2, GuardianEmail2 = $GuardianEmail2, GuardianStatus2 = $GuardianStatus2, MaritalStatus = $MaritalStatus, Custody = $Custody, AgeGroup = $AgeGroup, RequiredDays = $RequiredDays, DesiredTimeBlock = $DesiredTimeBlock, RegisterResponse = $RegisterResponse, GrandparentsPhone = $GrandparentsPhone, GrandparentsAddress = $GrandparentsAddress, employment1 = $employment1, employment2 = $employment2 WHERE ChildID = $ChildID", {
 			$EnrollmentStatus: info[0].EnrollmentStatus,
 			$ChildID: info[0].ChildID,
 			$TimeStamp: info[0].TimeStamp,
@@ -84,6 +95,14 @@ This library holds functions to be used in order to modify the database
 			$ChildBirthdate: info[0].ChildBirthdate,
 			$ChildAge: info[0].ChildAge,
 			$ChildGender: info[0].ChildGender,
+			$GuardianName1: info[0].GuardianName1,
+			$GuardianPhone1: info[0].GuardianPhone1,
+			$GuardianEmail1: info[0].GuardianEmail1,
+			$GuardianStatus1: info[0].GuardianStatus1,
+			$GuardianName2: info[0].GuardianName2,
+			$GuardianPhone2: info[0].GuardianPhone2,
+			$GuardianEmail2: info[0].GuardianEmail2,
+			$GuardianStatus2: info[0].GuardianStatus2,
 			$MaritalStatus: info[0].MaritalStatus,
 			$Custody: info[0].Custody,
 			$AgeGroup: info[0].AgeGroup,
@@ -129,6 +148,7 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
+		db.all("SELECT ChildID, ChildName, ChildBirthdate, HomePhone, GuardianName1, GuardianStatus1, GuardianName2, GuardianStatus2, TimeStamp, DesiredEnrollment, AgeGroup, RequiredDays FROM Personal_Information WHERE EnrollmentStatus = 'E'", function(err, row) {
 			if (err){
 				callback(err);
 				return;
