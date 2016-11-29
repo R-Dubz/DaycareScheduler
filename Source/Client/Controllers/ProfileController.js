@@ -3,6 +3,15 @@ angular.module('DaycareApp').controller('ProfileController', ['$scope', '$http',
     $scope.Profile = [];      
     $scope.Editing = false;  
 
+    $scope.backToList = function() {
+        if($scope.Profile[0].EnrollmentStatus === 'W'){
+            window.location.href = 'Waiting_list.html';
+        } else {
+            window.location.href = 'Children.html';
+        }
+    };
+
+
     $scope.LoadTempProfile = function() {
         $http.get('/getTempProfile')
         .then(function(response) {
@@ -37,15 +46,6 @@ angular.module('DaycareApp').controller('ProfileController', ['$scope', '$http',
             console.log("Success");
             // window.location.href = 'Waiting_list.html';            
         });
-
-
-        var backToList = function(){
-            if($scope.Profile === 'W'){
-                window.location.href = 'Waiting_list.html';
-            } else {
-                window.location.href = 'Children.html';
-            }
-        }
 
 
         $scope.Editing = false;  
