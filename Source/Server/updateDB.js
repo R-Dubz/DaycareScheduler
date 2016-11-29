@@ -181,6 +181,30 @@ This library holds functions to be used in order to modify the database
 
 		db.close();
 	},
+
+	callClass : function(info, callback){
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+
+		db.all("SELECT * FROM $Table WHERE ChildID = $ChildID", {$ChildID: info.ChildID, $Table: info.Classroom},
+		 function(err, row) {
+			$Table = info[0];
+			$ChildID = info[0];
+			if (err){
+				callback(err);
+				return;
+			}				
+			callback(null, row);
+		});
+
+		db.close();
+	},
 };
 
 	module.exports = updateDB;
