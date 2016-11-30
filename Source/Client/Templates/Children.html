@@ -10,7 +10,7 @@
 
 </head>
 
-<body bgcolor="ffff35"ng-app="DaycareApp" ng-controller="EnrollmentController" ng-init="callEnrolledList()">
+<body bgcolor="ffff35" background="sky.jpg" ng-app="DaycareApp" ng-controller="EnrollmentController" ng-init="callEnrolledList()">
 
 <h5><div class="dropdown" style="float:right;">
   <button class="dropbtn">||||</button>
@@ -73,31 +73,31 @@
         </a>
     </th>
     <th>
-        <a href="#" ng-click="sortType = 'GaurdianName1'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        <a href="#" ng-click="sortType = 'GuardianName1'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
         Primany Parent Name
-        <span ng-show="sortType == 'GaurdianName1' && !sortReverse" class="fa fa-caret-down"></span>
-        <span ng-show="sortType == 'GaurdianName1' && sortReverse" class="fa fa-caret-up"></span>
+        <span ng-show="sortType == 'GuardianName1' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'GuardianName1' && sortReverse" class="fa fa-caret-up"></span>
         </a>
     </th>
     <th>
-        <a href="#" ng-click="sortType = 'GaurdianStatus1'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        <a href="#" ng-click="sortType = 'GuardianStatus1'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
         Primany Parent Status
-        <span ng-show="sortType == 'GaurdianStatus1' && !sortReverse" class="fa fa-caret-down"></span>
-        <span ng-show="sortType == 'GaurdianStatus1' && sortReverse" class="fa fa-caret-up"></span>
+        <span ng-show="sortType == 'GuardianStatus1' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'GuardianStatus1' && sortReverse" class="fa fa-caret-up"></span>
         </a>
     </th>
     <th>
-        <a href="#" ng-click="sortType = 'GaurdianName2'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        <a href="#" ng-click="sortType = 'GuardianName2'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
         Secondary Parent Name
-        <span ng-show="sortType == 'GaurdianName2' && !sortReverse" class="fa fa-caret-down"></span>
-        <span ng-show="sortType == 'GaurdianName2' && sortReverse" class="fa fa-caret-up"></span>
+        <span ng-show="sortType == 'GuardianName2' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'GuardianName2' && sortReverse" class="fa fa-caret-up"></span>
         </a>
     </th>
     <th>
-        <a href="#" ng-click="sortType = 'GaurdianStatus2'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        <a href="#" ng-click="sortType = 'GuardianStatus2'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
         Secondary Parent Status
-        <span ng-show="sortType == 'GaurdianStatus2' && !sortReverse" class="fa fa-caret-down"></span>
-        <span ng-show="sortType == 'GaurdianStatus2' && sortReverse" class="fa fa-caret-up"></span>
+        <span ng-show="sortType == 'GuardianStatus2' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'GuardianStatus2' && sortReverse" class="fa fa-caret-up"></span>
         </a>
     </th>
     <th>
@@ -136,10 +136,10 @@
     <th>{{child.ChildName}}</th>
     <th>{{child.ChildBirthdate}}</th>
     <th>{{child.HomePhone}}</th>
-    <th>{{child.GaurdianName1}}</th>
-    <th>{{child.GaurdianStatus1}}</th>
-    <th>{{child.GaurdianName2}}</th>
-    <th>{{child.GaurdianStatus2}}</th>
+    <th>{{child.GuardianName1}}</th>
+    <th>{{child.GuardianStatus1}}</th>
+    <th>{{child.GuardianName2}}</th>
+    <th>{{child.GuardianStatus2}}</th>
     <th>{{child.TimeStamp}}</th>
     <th>{{child.DesiredEnrollment}}</th>
     <th>{{child.AgeGroup}}</th>

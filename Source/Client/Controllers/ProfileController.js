@@ -22,14 +22,14 @@ angular.module('DaycareApp').controller('ProfileController', ['$scope', '$http',
         $scope.Profile[0].ChildAge = ChildAge.value;
         $scope.Profile[0].ChildBirthdate = ChildBirthdate.value;
         $scope.Profile[0].AgeGroup = AgeGroup.value;
-        $scope.Profile[0].GaurdianName1 = GaurdianName1.value;
-        $scope.Profile[0].GaurdianStatus1 = GaurdianStatus1.value;
-        $scope.Profile[0].GaurdianEmail1 = GaurdianEmail1.value;
-        $scope.Profile[0].GaurdianPhone1 = GaurdianPhone1.value;
-        $scope.Profile[0].GaurdianName2 = GaurdianName2.value;
-        $scope.Profile[0].GaurdianStatus2 = GaurdianStatus2.value;
-        $scope.Profile[0].GaurdianEmail2 = GaurdianEmail2.value;
-        $scope.Profile[0].GaurdianPhone2 = GaurdianPhone2.value;
+        $scope.Profile[0].GuardianName1 = GuardianName1.value;
+        $scope.Profile[0].GuardianStatus1 = GuardianStatus1.value;
+        $scope.Profile[0].GuardianEmail1 = GuardianEmail1.value;
+        $scope.Profile[0].GuardianPhone1 = GuardianPhone1.value;
+        $scope.Profile[0].GuardianName2 = GuardianName2.value;
+        $scope.Profile[0].GuardianStatus2 = GuardianStatus2.value;
+        $scope.Profile[0].GuardianEmail2 = GuardianEmail2.value;
+        $scope.Profile[0].GuardianPhone2 = GuardianPhone2.value;
 
         var updates = $scope.Profile;
         $http.post('/test', updates)
