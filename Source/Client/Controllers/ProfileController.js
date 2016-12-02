@@ -1,7 +1,9 @@
 angular.module('DaycareApp').controller('ProfileController', ['$scope', '$http', function($scope, $http){
-
     $scope.Profile = [];      
     $scope.Editing = false;  
+    $scope.ShowModal = false;
+    var modal = document.getElementById('myModal');
+    var controllerFunction = $scope;
 
     $scope.backToList = function() {
         if($scope.Profile[0].EnrollmentStatus === 'W'){
@@ -63,15 +65,26 @@ angular.module('DaycareApp').controller('ProfileController', ['$scope', '$http',
     //     }
     // }
 
-        $scope.acceptChild = function(ID){
-            // var sendID = [];
-            // sendID.push(ID);
-            // $http.post('/acceptChild', sendID)
-            // .then(function(response) {
-            //     // var acceptedChild = [];
-            //     alert("Child has been accepted into the program!");
-            // });
-        };
+    $scope.acceptChild = function(ID){
+    };
 
+
+    /* MODAL JUNK */
+    $scope.OpenModal = function() {
+        $scope.ShowModal = true;
+    }
+
+    $scope.CloseModal = function() {
+        $scope.ShowModal = false;
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {  
+        if (event.target == modal) {
+            // $scope.ShowModal = false;
+            controllerFunction.CloseModal();
+        }
+        controllerFunction.$apply(); // This makes it so the page "sees" that we changed the variable.
+    }
 
 }]);

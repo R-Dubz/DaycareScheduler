@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+
 <title>Individual Profile</title>
 <script type="text/javascript"></script>
 <script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script>
@@ -8,6 +10,7 @@
 <script src="./Source/Client/Controllers/ProfileController.js"></script>
 <!--<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">-->
 <link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">
+<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/modal.css">
 <link rel="stylesheet" type="text/css" href="./Other Files/(CSS Stuff) font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 <body ng-app="DaycareApp" ng-controller="ProfileController" ng-init="LoadTempProfile()">
@@ -115,19 +118,35 @@
 </p>
 
 
-<span ng-if="!Editing">
-    <button ng-click="EditProfile()">Toggle Editing/Edit Profile</button>
-    <button type="button" ng-click="acceptChild(Profile[0].ChildID)">Accept</button>
-</span>
-<span ng-if="Editing">
-    <button ng-click="SaveChanges()">Save Changes</button>
-    <button ng-click="EditProfile()">Cancel</button>
-</span>
+<div ng-if="!Editing" style="text-align: center;">
+        <button ng-click="EditProfile()">Edit Profile</button>
+        <button type="button" ng-click="OpenModal()">Add to Classroom</button>
+</div>
+<div ng-if="Editing" style="text-align: center;">
+        <button ng-click="SaveChanges()">Save Changes</button>
+        <button ng-click="EditProfile()">Cancel</button>
+</div>
 <p>
-<table class = "TFtable">
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal" ng-show="ShowModal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+        <span class="close" ng-click="CloseModal()">×</span>
+        <p>Some text in the Modal..</p>
+        <div style="text-align: center;">
+                <button ng-click="acceptChild(Profile[0].ChildID)">Accept Child</button>
+                <button ng-click="CloseModal()">Cancel</button>
+        </div>
+        </div>
+
+        </div>
+
+<table ng-if="Profile[0].EnrollmentStatus !== 'W'" class = "TFtable">
         <tr>
         <th></th>
-<th>Monday</th>
+        <th>Monday</th>
         <th>Tuesday</th>
         <th>Wednesday</th>
         <th>Thursday</th>
@@ -516,4 +535,5 @@
 </table></p>
 
 </body>
+
 </html>
