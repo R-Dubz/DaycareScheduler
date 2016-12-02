@@ -51,16 +51,27 @@ angular.module('DaycareApp').controller('ProfileController', ['$scope', '$http',
         $scope.Editing = false;  
     };
 
-    $scope.Monday = function( time ){
-        if(time < $scope.Profile[0].MondayIn){
-            "N/A"
-        }
-        else if(time > $scope.Profile[0].MondayOut){
-            "N/A"
-        }
-        else{
-            "X"
-        }
-    }
+    // $scope.Monday = function( time ){
+    //     if(time < $scope.Profile[0].MondayIn){
+    //         "N/A"
+    //     }
+    //     else if(time > $scope.Profile[0].MondayOut){
+    //         "N/A"
+    //     }
+    //     else{
+    //         "X"
+    //     }
+    // }
+
+        $scope.acceptChild = function(ID){
+            // var sendID = [];
+            // sendID.push(ID);
+            // $http.post('/acceptChild', sendID)
+            // .then(function(response) {
+            //     // var acceptedChild = [];
+            //     alert("Child has been accepted into the program!");
+            // });
+        };
+
 
 }]);

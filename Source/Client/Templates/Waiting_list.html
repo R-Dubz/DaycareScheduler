@@ -134,7 +134,6 @@
         </a>
     </th>
 	<th>View Profile</th>
-	<th>Accept</th>
     </tr>
 </thead>
 
@@ -153,7 +152,6 @@
     <th>{{child.RequiredDays}}</th>
 <!--make sure all button code is between the <th> and </th> tags-->
     <th><button type="button" ng-click="storeProfile(child)">Profile</button></th>
-    <th><button type="button" ng-click="acceptChild(child.ChildID)">Accept</button> </th>
 </tr>
 
 <tr ng-if="Children.length === 0">
@@ -168,7 +166,6 @@
     <th></th>
     <th></th>
     <th></th>    
-    <th style="background: #dae5f4"></th>
     <th style="background: #dae5f4"></th>
 </tr>
 

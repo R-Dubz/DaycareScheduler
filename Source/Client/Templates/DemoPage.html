@@ -117,6 +117,7 @@
 
 <span ng-if="!Editing">
     <button ng-click="EditProfile()">Toggle Editing/Edit Profile</button>
+    <button type="button" ng-click="acceptChild(Profile[0].ChildID)">Accept</button>
 </span>
 <span ng-if="Editing">
     <button ng-click="SaveChanges()">Save Changes</button>
