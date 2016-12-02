@@ -205,6 +205,36 @@ This library holds functions to be used in order to modify the database
 
 		db.close();
 	},
+
+	childToClass: function(info) {
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+			
+		db.run("INSERT INTO $Table (ChildID, MondayIn, MondayOut, TuesdayIn, TuesdayOut, WednesdayIn, WednesdayOut, ThursdayIn, ThursdayOut, FridayIn, FridayOut) VALUES ($ChildID, $MondayIn, $MondayOut, $TuesdayIn, $TuesdayOut, $WednesdayIn, $WednesdayOut, $ThursdayIn, $ThursdayOut, $FridayIn, $FridayOut)", {
+			$ChildID: info[0].ChildID,
+			$Table: chris[0].Classroom.Class,
+			$MondayIn: chris[0].Classroom.MondayIn,
+			$MondayOut: chris[0].Classroom.MondayOut,
+			$Tuesdayin: chris[0].Classroom.TuesdayIn,
+			$TuesdayOut: chris[0].Classroom.TuesdayOut,
+			$WednesdayIn: chris[0].Classroom.WednesdayIn,
+			$WednesdayOut: chris[0].Classroom.WednesdayOut,
+			$ThursdayIn: chris[0].Classroom.ThursdayIn,
+			$ThursdayOut: chris[0].Classroom.ThursdayOut,
+			$FridayIn: chris[0].Classroom.FridayIn,
+			$FridayOut: chris[0].Classroom.FridayOut,
+		});
+		
+		db.close();
+	},
 };
 
 	module.exports = updateDB;
