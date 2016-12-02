@@ -66,10 +66,19 @@ angular.module('DaycareApp').controller('ProfileController', ['$scope', '$http',
     // }
 
     $scope.acceptChild = function(ID){
+        var sendID = [];
+        sendID.push(ID);
+        $http.post('/acceptChild', sendID)
+        .then(function(response) {
+            // var acceptedChild = [];
+            alert("Child has been accepted into the program!");
+            $scope.CloseModal();
+        });
     };
 
 
     /* MODAL JUNK */
+
     $scope.OpenModal = function() {
         $scope.ShowModal = true;
     }
