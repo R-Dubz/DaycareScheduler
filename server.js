@@ -18,6 +18,7 @@ app.use(express.static(__dirname + '/'));
 
 
 app.get('/', function (req, res) {
+    console.log("Loading Home Page...");
     res.sendFile('/Source/Client/Templates/Home.html', {root: __dirname });
 });
 
@@ -46,6 +47,7 @@ app.get('/', function (req, res) {
         // handle the error here
       }
       // send the data
+      console.log("Refreshing Database...");
       res.send(data);
     })
   });
@@ -57,12 +59,14 @@ app.get('/', function (req, res) {
         // handle the error here
       }
       // send the data
+      console.log("Loading Waiting List...");
       res.send(data);
     })
   });
 
   app.post('/storeTempProfile', jsonParser, function (req, res) {
     profileStorage.storeProfile(req.body); 
+    console.log("Storing Temp Profile...");
     return res.sendStatus(200);
   }); 
 
@@ -72,12 +76,14 @@ app.get('/', function (req, res) {
         // handle the error here
       }
       // send the data
+      console.log("Sending Profile...");
       res.send(data);
     })
   });
 
   app.post('/acceptChild', jsonParser, function (req, res) {
     updateDB.acceptChild(req.body); 
+    console.log("Accepting Child...");
     return res.sendStatus(200);
   }); 
 
@@ -87,12 +93,14 @@ app.get('/', function (req, res) {
         // handle the error here
       }
       // send the data
+      console.log("Loading Enrolled List...");
       res.send(data);
     })
   });
 
   app.post('/test', jsonParser, function (req, res) {
     updateDB.editFromProfile(req.body); 
+    console.log("Applying Profile Changes...");
     return res.sendStatus(200);
   }); 
 
