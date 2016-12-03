@@ -87,6 +87,12 @@ app.get('/', function (req, res) {
     return res.sendStatus(200);
   }); 
 
+  app.post('/InsertChildToClass', jsonParser, function (req, res) {
+    updateDB.childToClass(req.body); 
+    console.log("Inserting Child into Classroom...");
+    return res.sendStatus(200);
+  }); 
+
   app.get('/callEnrolledList', function (req, res) {
     updateDB.callEnrolledList(function(err, data){
       if(err) {

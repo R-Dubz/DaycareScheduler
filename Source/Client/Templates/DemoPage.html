@@ -136,7 +136,8 @@
         <span class="close" ng-click="CloseModal()">×</span>
         <div> Classroom:
         <select id="Classroom">
-                <option value="blank">blank</option>
+                <option value="null">           </option>
+                <option value="InfantRoom">Infant Room</option>                
         </select>
         </div>
         <table>
@@ -653,7 +654,7 @@
 
         </table>
         <div style="text-align: center;">
-                <button ng-click="acceptChild(Profile[0].ChildID)">Accept Child</button>
+                <button ng-click="acceptChild(Profile[0])">Accept Child</button>
                 <button ng-click="CloseModal()">Cancel</button>
         </div>
         </div>

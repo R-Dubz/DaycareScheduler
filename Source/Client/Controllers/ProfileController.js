@@ -67,12 +67,28 @@ angular.module('DaycareApp').controller('ProfileController', ['$scope', '$http',
 
     $scope.acceptChild = function(ID){
         var sendID = [];
-        sendID.push(ID);
-        $http.post('/acceptChild', sendID)
+        sendID.push(ID.ChildID);
+        ID.Classroom = document.getElementById('Classroom').value;
+        ID.MondayIn = document.getElementById('MondayIn').value;
+        ID.MondayOut = document.getElementById('MondayOut').value;
+        ID.TuesdayIn = document.getElementById('TuesdayIn').value;
+        ID.TuesdayOut = document.getElementById('TuesdayOut').value;
+        ID.WednesdayIn = document.getElementById('WednesdayIn').value;
+        ID.WednesdayOut = document.getElementById('WednesdayOut').value;
+        ID.ThursdayIn = document.getElementById('ThursdayIn').value;
+        ID.ThursdayOut = document.getElementById('ThursdayOut').value;
+        ID.FridayIn = document.getElementById('FridayIn').value;
+        ID.FridayOut = document.getElementById('FridayOut').value;
+        $http.post('/InsertChildToClass', ID)
         .then(function(response) {
-            // var acceptedChild = [];
-            alert("Child has been accepted into the program!");
-            $scope.CloseModal();
+            alert("Child has been inserted into the classroom!"); 
+
+            $http.post('/acceptChild', sendID)
+            .then(function(response) {
+                // var acceptedChild = [];
+                alert("Child has been accepted into the program!");
+                $scope.CloseModal();
+            });        
         });
     };
 

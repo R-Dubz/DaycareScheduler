@@ -220,19 +220,19 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 			
-		db.run("INSERT INTO $Table (ChildID, MondayIn, MondayOut, TuesdayIn, TuesdayOut, WednesdayIn, WednesdayOut, ThursdayIn, ThursdayOut, FridayIn, FridayOut) VALUES ($ChildID, $MondayIn, $MondayOut, $TuesdayIn, $TuesdayOut, $WednesdayIn, $WednesdayOut, $ThursdayIn, $ThursdayOut, $FridayIn, $FridayOut)", {
-			$ChildID: info[0].ChildID,
-			$Table: chris[0].Classroom.Class,
-			$MondayIn: chris[0].Classroom.MondayIn,
-			$MondayOut: chris[0].Classroom.MondayOut,
-			$TuesdayIn: chris[0].Classroom.TuesdayIn,
-			$TuesdayOut: chris[0].Classroom.TuesdayOut,
-			$WednesdayIn: chris[0].Classroom.WednesdayIn,
-			$WednesdayOut: chris[0].Classroom.WednesdayOut,
-			$ThursdayIn: chris[0].Classroom.ThursdayIn,
-			$ThursdayOut: chris[0].Classroom.ThursdayOut,
-			$FridayIn: chris[0].Classroom.FridayIn,
-			$FridayOut: chris[0].Classroom.FridayOut,
+		db.run("INSERT INTO " + info.Classroom + " (ChildID, MondayIn, MondayOut, TuesdayIn, TuesdayOut, WednesdayIn, WednesdayOut, ThursdayIn, ThursdayOut, FridayIn, FridayOut) VALUES ($ChildID, $MondayIn, $MondayOut, $TuesdayIn, $TuesdayOut, $WednesdayIn, $WednesdayOut, $ThursdayIn, $ThursdayOut, $FridayIn, $FridayOut)", {
+			$ChildID: info.ChildID,
+			// $Table: info.Classroom,
+			$MondayIn: info.MondayIn,
+			$MondayOut: info.MondayOut,
+			$TuesdayIn: info.TuesdayIn,
+			$TuesdayOut: info.TuesdayOut,
+			$WednesdayIn: info.WednesdayIn,
+			$WednesdayOut: info.WednesdayOut,
+			$ThursdayIn: info.ThursdayIn,
+			$ThursdayOut: info.ThursdayOut,
+			$FridayIn: info.FridayIn,
+			$FridayOut: info.FridayOut
 		});
 		
 		db.close();
@@ -251,42 +251,42 @@ This library holds functions to be used in order to modify the database
 		var db = new sqlite3.Database(file);
 			
 		db.run("UPDATE $Table SET MondayIn = $MondayIn, MondayOut = $MondayOut, TuesdayIn = $TuesdayIn, TuesdayOut = $TuesdayOut, WednesdayIn = $WednesdayIn, WednesdayOut = $WednesdayOut, ThursdayIn = $ThursdayIn, ThursdayOut = $ThursdayOut, FridayIn = $FridayIn, FridayOut = $FridayOut", {
-			$ChildID: info[0].ChildID,
-			$Table: chris[0].Classroom.Class,
-			$MondayIn: chris[0].Classroom.MondayIn,
-			$MondayOut: chris[0].Classroom.MondayOut,
-			$Tuesdayin: chris[0].Classroom.TuesdayIn,
-			$TuesdayOut: chris[0].Classroom.TuesdayOut,
-			$WednesdayIn: chris[0].Classroom.WednesdayIn,
-			$WednesdayOut: chris[0].Classroom.WednesdayOut,
-			$ThursdayIn: chris[0].Classroom.ThursdayIn,
-			$ThursdayOut: chris[0].Classroom.ThursdayOut,
-			$FridayIn: chris[0].Classroom.FridayIn,
-			$FridayOut: chris[0].Classroom.FridayOut,
+			$ChildID: info.ChildID,
+			$Table: info.Classroom,
+			$MondayIn: info.MondayIn,
+			$MondayOut: info.MondayOut,
+			$TuesdayIn: info.TuesdayIn,
+			$TuesdayOut: info.TuesdayOut,
+			$WednesdayIn: info.WednesdayIn,
+			$WednesdayOut: info.WednesdayOut,
+			$ThursdayIn: info.ThursdayIn,
+			$ThursdayOut: info.ThursdayOut,
+			$FridayIn: info.FridayIn,
+			$FridayOut: info.FridayOut
 		});
 		
 		db.close();
 	},
 
-	childToClass: function(info) {
-		var fs = require("fs");
-		var file = "./Source/Server/Data/DaycareDB.db";
-		var exists = fs.existsSync(file);
+	// childToClass: function(info) {
+	// 	var fs = require("fs");
+	// 	var file = "./Source/Server/Data/DaycareDB.db";
+	// 	var exists = fs.existsSync(file);
 
-		if (!exists) {
-			throw new Error("File not Found");
-		}
+	// 	if (!exists) {
+	// 		throw new Error("File not Found");
+	// 	}
 
-		var sqlite3 = require("sqlite3").verbose();
-		var db = new sqlite3.Database(file);
+	// 	var sqlite3 = require("sqlite3").verbose();
+	// 	var db = new sqlite3.Database(file);
 			
-		db.run("DELETE FROM $Table WHERE ChildID = $ChildID", {
-			$ChildID: info[0].ChildID,
-			$Table: chris[0].Classroom.Class,
-		});
+	// 	db.run("DELETE FROM $Table WHERE ChildID = $ChildID", {
+	// 		$ChildID: info.ChildID,
+	// 		$Table: info.Classroom,
+	// 	});
 		
-		db.close();
-	},
+	// 	db.close();
+	// },
 };
 
 	module.exports = updateDB;
