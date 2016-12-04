@@ -1,5 +1,6 @@
 angular.module('DaycareApp').controller('ProfileController', ['$scope', '$http', function($scope, $http){
-    $scope.Profile = [];      
+    $scope.Profile = [];  
+    $scope.ClassroomInfo = [];    
     $scope.Editing = false;  
     $scope.ShowModal = false;
     var modal = document.getElementById('myModal');
@@ -17,8 +18,6 @@ angular.module('DaycareApp').controller('ProfileController', ['$scope', '$http',
     $scope.LoadTempProfile = function() {
         $http.get('/getTempProfile')
         .then(function(response) {
-            // alert("HTTP request set, getting data");
-            // $scope.Children.push(response.data);
             $scope.Profile.push(response.data[0]);
         });
     };
