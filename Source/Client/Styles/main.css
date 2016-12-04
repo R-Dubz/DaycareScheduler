@@ -82,6 +82,17 @@
     table, th, td {
         border: 1px solid black;
     }
+
+/*    .modal {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal-dialog {
+  max-height: 100%;
+}
 /*Put all of our style classes into this file and then go to a page (like waiting list) and test out
 whether you can reference the classes here from those files. I suggest you try to reference the 
 class of the dropdown button so it changes from the default css to what we have specified in our dropdown class.*/
