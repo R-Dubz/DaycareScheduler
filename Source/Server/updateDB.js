@@ -131,7 +131,7 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		db.run("UPDATE Personal_Information SET EnrollmentStatus = 'E' WHERE ChildID = $ChildID", {
+		db.run("UPDATE Personal_Information SET EnrollmentStatus = 'E', Classroom = '" + info[1] + "'  WHERE ChildID = $ChildID", {
 			$ChildID: info[0],
 		});
 
@@ -192,10 +192,9 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		db.all("SELECT * FROM $Table WHERE ChildID = $ChildID", {$ChildID: info.ChildID, $Table: info.Classroom},
+		db.all("SELECT * FROM " + info.Classroom + " WHERE ChildID = $ChildID", {$ChildID: info.ID},
 		 function(err, row) {
-			$Table = info[0];
-			$ChildID = info[0];
+			$ChildID = info.ID;
 			if (err){
 				callback(err);
 				return;

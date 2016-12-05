@@ -56,3 +56,4 @@ Temporary Items
 
 # Directories to ignore
 *.db
+.vscode/settings.json

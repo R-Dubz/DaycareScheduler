@@ -671,384 +671,1035 @@
         <th>Friday</th>
 	</tr>
 
-	<tr>
+<tr>
 	<th> 7:00 </th>
-	<th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-	<th></th>
+        <span>
+                <th ng-if="((7 >= ClassroomInfo.MondayIn) && (7 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((7 >= ClassroomInfo.MondayIn) && (7 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((7 >= ClassroomInfo.TuesdayIn) && (7 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((7 >= ClassroomInfo.TuesdayIn) && (7 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((7 >= ClassroomInfo.WednesdayIn) && (7 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((7 >= ClassroomInfo.WednesdayIn) && (7 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((7 >= ClassroomInfo.ThursdayIn) && (7 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((7 >= ClassroomInfo.ThursdayIn) && (7 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((7 >= ClassroomInfo.FridayIn) && (7 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((7 >= ClassroomInfo.FridayIn) && (7 < ClassroomInfo.FridayOut))"></th>
+        </span>
 	</tr>
 
 <tr>
         <th> 7:15 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((7.25 >= ClassroomInfo.MondayIn) && (7.25 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((7.25 >= ClassroomInfo.MondayIn) && (7.25 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((7.25 >= ClassroomInfo.TuesdayIn) && (7.25 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((7.25 >= ClassroomInfo.TuesdayIn) && (7.25 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((7.25 >= ClassroomInfo.WednesdayIn) && (7.25 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((7.25 >= ClassroomInfo.WednesdayIn) && (7.25 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((7.25 >= ClassroomInfo.ThursdayIn) && (7.25 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((7.25 >= ClassroomInfo.ThursdayIn) && (7.25 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((7.25 >= ClassroomInfo.FridayIn) && (7.25 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((7.25 >= ClassroomInfo.FridayIn) && (7.25 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
 <tr>
         <th> 7:30 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((7.5 >= ClassroomInfo.MondayIn) && (7.5 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((7.5 >= ClassroomInfo.MondayIn) && (7.5 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((7.5 >= ClassroomInfo.TuesdayIn) && (7.5 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((7.5 >= ClassroomInfo.TuesdayIn) && (7.5 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((7.5 >= ClassroomInfo.WednesdayIn) && (7.5 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((7.5 >= ClassroomInfo.WednesdayIn) && (7.5 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((7.5 >= ClassroomInfo.ThursdayIn) && (7.5 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((7.5 >= ClassroomInfo.ThursdayIn) && (7.5 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((7.5 >= ClassroomInfo.FridayIn) && (7.5 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((7.5 >= ClassroomInfo.FridayIn) && (7.5 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
 
 <tr>
         <th> 7:45 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((7.75 >= ClassroomInfo.MondayIn) && (7.75 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((7.75 >= ClassroomInfo.MondayIn) && (7.75 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((7.75 >= ClassroomInfo.TuesdayIn) && (7.75 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((7.75 >= ClassroomInfo.TuesdayIn) && (7.75 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((7.75 >= ClassroomInfo.WednesdayIn) && (7.75 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((7.75 >= ClassroomInfo.WednesdayIn) && (7.75 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((7.75 >= ClassroomInfo.ThursdayIn) && (7.75 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((7.75 >= ClassroomInfo.ThursdayIn) && (7.75 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((7.75 >= ClassroomInfo.FridayIn) && (7.75 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((7.75 >= ClassroomInfo.FridayIn) && (7.75 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>	
 <tr>
         <th> 8:00 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((8 >= ClassroomInfo.MondayIn) && (8 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((8 >= ClassroomInfo.MondayIn) && (8 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((8 >= ClassroomInfo.TuesdayIn) && (8 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((8 >= ClassroomInfo.TuesdayIn) && (8 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((8 >= ClassroomInfo.WednesdayIn) && (8 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((8 >= ClassroomInfo.WednesdayIn) && (8 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((8 >= ClassroomInfo.ThursdayIn) && (8 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((8 >= ClassroomInfo.ThursdayIn) && (8 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((8 >= ClassroomInfo.FridayIn) && (8 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((8 >= ClassroomInfo.FridayIn) && (8 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
 
 <tr>
         <th> 8:15 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((8.25 >= ClassroomInfo.MondayIn) && (8.25 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((8.25 >= ClassroomInfo.MondayIn) && (8.25 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((8.25 >= ClassroomInfo.TuesdayIn) && (8.25 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((8.25 >= ClassroomInfo.TuesdayIn) && (8.25 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((8.25 >= ClassroomInfo.WednesdayIn) && (8.25 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((8.25 >= ClassroomInfo.WednesdayIn) && (8.25 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((8.25 >= ClassroomInfo.ThursdayIn) && (8.25 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((8.25 >= ClassroomInfo.ThursdayIn) && (8.25 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((8.25 >= ClassroomInfo.FridayIn) && (8.25 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((8.25 >= ClassroomInfo.FridayIn) && (8.25 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
 <tr>
         <th> 8:30 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((8.5 >= ClassroomInfo.MondayIn) && (8.5 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((8.5 >= ClassroomInfo.MondayIn) && (8.5 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((8.5 >= ClassroomInfo.TuesdayIn) && (8.5 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((8.5 >= ClassroomInfo.TuesdayIn) && (8.5 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((8.5 >= ClassroomInfo.WednesdayIn) && (8.5 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((8.5 >= ClassroomInfo.WednesdayIn) && (8.5 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((8.5 >= ClassroomInfo.ThursdayIn) && (8.5 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((8.5 >= ClassroomInfo.ThursdayIn) && (8.5 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((8.5 >= ClassroomInfo.FridayIn) && (8.5 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((8.5 >= ClassroomInfo.FridayIn) && (8.5 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
 
 <tr>
         <th> 8:45 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((8.75 >= ClassroomInfo.MondayIn) && (8.75 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((8.75 >= ClassroomInfo.MondayIn) && (8.75 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((8.75 >= ClassroomInfo.TuesdayIn) && (8.75 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((8.75 >= ClassroomInfo.TuesdayIn) && (8.75 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((8.75 >= ClassroomInfo.WednesdayIn) && (8.75 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((8.75 >= ClassroomInfo.WednesdayIn) && (8.75 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((8.75 >= ClassroomInfo.ThursdayIn) && (8.75 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((8.75 >= ClassroomInfo.ThursdayIn) && (8.75 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((8.75 >= ClassroomInfo.FridayIn) && (8.75 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((8.75 >= ClassroomInfo.FridayIn) && (8.75 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
 <tr>
         <th> 9:00 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((9 >= ClassroomInfo.MondayIn) && (9 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((9 >= ClassroomInfo.MondayIn) && (9 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((9 >= ClassroomInfo.TuesdayIn) && (9 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((9 >= ClassroomInfo.TuesdayIn) && (9 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((9 >= ClassroomInfo.WednesdayIn) && (9 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((9 >= ClassroomInfo.WednesdayIn) && (9 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((9 >= ClassroomInfo.ThursdayIn) && (9 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((9 >= ClassroomInfo.ThursdayIn) && (9 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((9 >= ClassroomInfo.FridayIn) && (9 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((9 >= ClassroomInfo.FridayIn) && (9 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
 
 <tr>
         <th> 9:15 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((9.25 >= ClassroomInfo.MondayIn) && (9.25 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((9.25 >= ClassroomInfo.MondayIn) && (9.25 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((9.25 >= ClassroomInfo.TuesdayIn) && (9.25 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((9.25 >= ClassroomInfo.TuesdayIn) && (9.25 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((9.25 >= ClassroomInfo.WednesdayIn) && (9.25 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((9.25 >= ClassroomInfo.WednesdayIn) && (9.25 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((9.25 >= ClassroomInfo.ThursdayIn) && (9.25 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((9.25 >= ClassroomInfo.ThursdayIn) && (9.25 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((9.25 >= ClassroomInfo.FridayIn) && (9.25 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((9.25 >= ClassroomInfo.FridayIn) && (9.25 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
 <tr>
         <th> 9:30 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((9.5 >= ClassroomInfo.MondayIn) && (9.5 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((9.5 >= ClassroomInfo.MondayIn) && (9.5 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((9.5 >= ClassroomInfo.TuesdayIn) && (9.5 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((9.5 >= ClassroomInfo.TuesdayIn) && (9.5 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((9.5 >= ClassroomInfo.WednesdayIn) && (9.5 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((9.5 >= ClassroomInfo.WednesdayIn) && (9.5 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((9.5 >= ClassroomInfo.ThursdayIn) && (9.5 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((9.5 >= ClassroomInfo.ThursdayIn) && (9.5 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((9.5 >= ClassroomInfo.FridayIn) && (9.5 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((9.5 >= ClassroomInfo.FridayIn) && (9.5 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
 
 <tr>
         <th> 9:45 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((9.75 >= ClassroomInfo.MondayIn) && (9.75 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((9.75 >= ClassroomInfo.MondayIn) && (9.75 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((9.75 >= ClassroomInfo.TuesdayIn) && (9.75 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((9.75 >= ClassroomInfo.TuesdayIn) && (9.75 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((9.75 >= ClassroomInfo.WednesdayIn) && (9.75 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((9.75 >= ClassroomInfo.WednesdayIn) && (9.75 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((9.75 >= ClassroomInfo.ThursdayIn) && (9.75 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((9.75 >= ClassroomInfo.ThursdayIn) && (9.75 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((9.75 >= ClassroomInfo.FridayIn) && (9.75 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((9.75 >= ClassroomInfo.FridayIn) && (9.75 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
 <tr>
         <th> 10:00 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((10 >= ClassroomInfo.MondayIn) && (10 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((10 >= ClassroomInfo.MondayIn) && (10 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((10 >= ClassroomInfo.TuesdayIn) && (10 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((10 >= ClassroomInfo.TuesdayIn) && (10 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((10 >= ClassroomInfo.WednesdayIn) && (10 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((10 >= ClassroomInfo.WednesdayIn) && (10 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((10 >= ClassroomInfo.ThursdayIn) && (10 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((10 >= ClassroomInfo.ThursdayIn) && (10 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((10 >= ClassroomInfo.FridayIn) && (10 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((10 >= ClassroomInfo.FridayIn) && (10 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
 
 <tr>
         <th> 10:15 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((10.25 >= ClassroomInfo.MondayIn) && (10.25 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((10.25 >= ClassroomInfo.MondayIn) && (10.25 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((10.25 >= ClassroomInfo.TuesdayIn) && (10.25 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((10.25 >= ClassroomInfo.TuesdayIn) && (10.25 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((10.25 >= ClassroomInfo.WednesdayIn) && (10.25 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((10.25 >= ClassroomInfo.WednesdayIn) && (10.25 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((10.25 >= ClassroomInfo.ThursdayIn) && (10.25 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((10.25 >= ClassroomInfo.ThursdayIn) && (10.25 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((10.25 >= ClassroomInfo.FridayIn) && (10.25 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((10.25 >= ClassroomInfo.FridayIn) && (10.25 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
 <tr>
         <th> 10:30 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((10.5 >= ClassroomInfo.MondayIn) && (10.5 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((10.5 >= ClassroomInfo.MondayIn) && (10.5 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((10.5 >= ClassroomInfo.TuesdayIn) && (10.5 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((10.5 >= ClassroomInfo.TuesdayIn) && (10.5 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((10.5 >= ClassroomInfo.WednesdayIn) && (10.5 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((10.5 >= ClassroomInfo.WednesdayIn) && (10.5 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((10.5 >= ClassroomInfo.ThursdayIn) && (10.5 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((10.5 >= ClassroomInfo.ThursdayIn) && (10.5 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((10.5 >= ClassroomInfo.FridayIn) && (10.5 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((10.5 >= ClassroomInfo.FridayIn) && (10.5 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
 
 <tr>
         <th> 10:45 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((10.75 >= ClassroomInfo.MondayIn) && (10.75 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((10.75 >= ClassroomInfo.MondayIn) && (10.75 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((10.75 >= ClassroomInfo.TuesdayIn) && (10.75 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((10.75 >= ClassroomInfo.TuesdayIn) && (10.75 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((10.75 >= ClassroomInfo.WednesdayIn) && (10.75 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((10.75 >= ClassroomInfo.WednesdayIn) && (10.75 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((10.75 >= ClassroomInfo.ThursdayIn) && (10.75 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((10.75 >= ClassroomInfo.ThursdayIn) && (10.75 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((10.75 >= ClassroomInfo.FridayIn) && (10.75 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((10.75 >= ClassroomInfo.FridayIn) && (10.75 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
 
 <tr>
-        <th> 11:00 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        </tr>
+	<th> 11:00 </th>
+        <span>
+                <th ng-if="((11 >= ClassroomInfo.MondayIn) && (11 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((11 >= ClassroomInfo.MondayIn) && (11 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((11 >= ClassroomInfo.TuesdayIn) && (11 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((11 >= ClassroomInfo.TuesdayIn) && (11 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((11 >= ClassroomInfo.WednesdayIn) && (11 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((11 >= ClassroomInfo.WednesdayIn) && (11 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((11 >= ClassroomInfo.ThursdayIn) && (11 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((11 >= ClassroomInfo.ThursdayIn) && (11 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((11 >= ClassroomInfo.FridayIn) && (11 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((11 >= ClassroomInfo.FridayIn) && (11 < ClassroomInfo.FridayOut))"></th>
+        </span>
+	</tr>
 
 <tr>
         <th> 11:15 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((11.25 >= ClassroomInfo.MondayIn) && (11.25 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((11.25 >= ClassroomInfo.MondayIn) && (11.25 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((11.25 >= ClassroomInfo.TuesdayIn) && (11.25 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((11.25 >= ClassroomInfo.TuesdayIn) && (11.25 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((11.25 >= ClassroomInfo.WednesdayIn) && (11.25 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((11.25 >= ClassroomInfo.WednesdayIn) && (11.25 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((11.25 >= ClassroomInfo.ThursdayIn) && (11.25 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((11.25 >= ClassroomInfo.ThursdayIn) && (11.25 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((11.25 >= ClassroomInfo.FridayIn) && (11.25 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((11.25 >= ClassroomInfo.FridayIn) && (11.25 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
 <tr>
         <th> 11:30 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((11.5 >= ClassroomInfo.MondayIn) && (11.5 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((11.5 >= ClassroomInfo.MondayIn) && (11.5 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((11.5 >= ClassroomInfo.TuesdayIn) && (11.5 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((11.5 >= ClassroomInfo.TuesdayIn) && (11.5 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((11.5 >= ClassroomInfo.WednesdayIn) && (11.5 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((11.5 >= ClassroomInfo.WednesdayIn) && (11.5 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((11.5 >= ClassroomInfo.ThursdayIn) && (11.5 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((11.5 >= ClassroomInfo.ThursdayIn) && (11.5 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((11.5 >= ClassroomInfo.FridayIn) && (11.5 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((11.5 >= ClassroomInfo.FridayIn) && (11.5 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
-
 <tr>
         <th> 11:45 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        </tr>
+        <span>
+                <th ng-if="((11.75 >= ClassroomInfo.MondayIn) && (11.75 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((11.75 >= ClassroomInfo.MondayIn) && (11.75 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((11.75 >= ClassroomInfo.TuesdayIn) && (11.75 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((11.75 >= ClassroomInfo.TuesdayIn) && (11.75 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((11.75 >= ClassroomInfo.WednesdayIn) && (11.75 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((11.75 >= ClassroomInfo.WednesdayIn) && (11.75 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((11.75 >= ClassroomInfo.ThursdayIn) && (11.75 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((11.75 >= ClassroomInfo.ThursdayIn) && (11.75 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((11.75 >= ClassroomInfo.FridayIn) && (11.75 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((11.75 >= ClassroomInfo.FridayIn) && (11.75 < ClassroomInfo.FridayOut))"></th>
+        </span>
+        </tr>	
 
 <tr>
-        <th> 12:00 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        </tr>
+	<th> 12:00 </th>
+        <span>
+                <th ng-if="((12 >= ClassroomInfo.MondayIn) && (12 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((12 >= ClassroomInfo.MondayIn) && (12 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((12 >= ClassroomInfo.TuesdayIn) && (12 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((12 >= ClassroomInfo.TuesdayIn) && (12 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((12 >= ClassroomInfo.WednesdayIn) && (12 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((12 >= ClassroomInfo.WednesdayIn) && (12 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((12 >= ClassroomInfo.ThursdayIn) && (12 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((12 >= ClassroomInfo.ThursdayIn) && (12 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((12 >= ClassroomInfo.FridayIn) && (12 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((12 >= ClassroomInfo.FridayIn) && (12 < ClassroomInfo.FridayOut))"></th>
+        </span>
+	</tr>
 
 <tr>
         <th> 12:15 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((12.25 >= ClassroomInfo.MondayIn) && (12.25 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((12.25 >= ClassroomInfo.MondayIn) && (12.25 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((12.25 >= ClassroomInfo.TuesdayIn) && (12.25 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((12.25 >= ClassroomInfo.TuesdayIn) && (12.25 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((12.25 >= ClassroomInfo.WednesdayIn) && (12.25 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((12.25 >= ClassroomInfo.WednesdayIn) && (12.25 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((12.25 >= ClassroomInfo.ThursdayIn) && (12.25 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((12.25 >= ClassroomInfo.ThursdayIn) && (12.25 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((12.25 >= ClassroomInfo.FridayIn) && (12.25 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((12.25 >= ClassroomInfo.FridayIn) && (12.25 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
 <tr>
         <th> 12:30 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((12.5 >= ClassroomInfo.MondayIn) && (12.5 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((12.5 >= ClassroomInfo.MondayIn) && (12.5 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((12.5 >= ClassroomInfo.TuesdayIn) && (12.5 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((12.5 >= ClassroomInfo.TuesdayIn) && (12.5 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((12.5 >= ClassroomInfo.WednesdayIn) && (12.5 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((12.5 >= ClassroomInfo.WednesdayIn) && (12.5 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((12.5 >= ClassroomInfo.ThursdayIn) && (12.5 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((12.5 >= ClassroomInfo.ThursdayIn) && (12.5 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((12.5 >= ClassroomInfo.FridayIn) && (12.5 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((12.5 >= ClassroomInfo.FridayIn) && (12.5 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
-
 <tr>
         <th> 12:45 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        </tr>
+        <span>
+                <th ng-if="((12.75 >= ClassroomInfo.MondayIn) && (12.75 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((12.75 >= ClassroomInfo.MondayIn) && (12.75 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((12.75 >= ClassroomInfo.TuesdayIn) && (12.75 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((12.75 >= ClassroomInfo.TuesdayIn) && (12.75 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((12.75 >= ClassroomInfo.WednesdayIn) && (12.75 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((12.75 >= ClassroomInfo.WednesdayIn) && (12.75 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((12.75 >= ClassroomInfo.ThursdayIn) && (12.75 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((12.75 >= ClassroomInfo.ThursdayIn) && (12.75 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((12.75 >= ClassroomInfo.FridayIn) && (12.75 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((12.75 >= ClassroomInfo.FridayIn) && (12.75 < ClassroomInfo.FridayOut))"></th>
+        </span>
+        </tr>	
 <tr>
-        <th> 1:00 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        </tr>
+	<th> 1:00 </th>
+        <span>
+                <th ng-if="((13 >= ClassroomInfo.MondayIn) && (13 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((13 >= ClassroomInfo.MondayIn) && (13 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((13 >= ClassroomInfo.TuesdayIn) && (13 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((13 >= ClassroomInfo.TuesdayIn) && (13 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((13 >= ClassroomInfo.WednesdayIn) && (13 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((13 >= ClassroomInfo.WednesdayIn) && (13 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((13 >= ClassroomInfo.ThursdayIn) && (13 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((13 >= ClassroomInfo.ThursdayIn) && (13 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((13 >= ClassroomInfo.FridayIn) && (13 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((13 >= ClassroomInfo.FridayIn) && (13 < ClassroomInfo.FridayOut))"></th>
+        </span>
+	</tr>
 
 <tr>
         <th> 1:15 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((13.25 >= ClassroomInfo.MondayIn) && (13.25 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((13.25 >= ClassroomInfo.MondayIn) && (13.25 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((13.25 >= ClassroomInfo.TuesdayIn) && (13.25 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((13.25 >= ClassroomInfo.TuesdayIn) && (13.25 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((13.25 >= ClassroomInfo.WednesdayIn) && (13.25 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((13.25 >= ClassroomInfo.WednesdayIn) && (13.25 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((13.25 >= ClassroomInfo.ThursdayIn) && (13.25 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((13.25 >= ClassroomInfo.ThursdayIn) && (13.25 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((13.25 >= ClassroomInfo.FridayIn) && (13.25 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((13.25 >= ClassroomInfo.FridayIn) && (13.25 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
 <tr>
         <th> 1:30 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((13.5 >= ClassroomInfo.MondayIn) && (13.5 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((13.5 >= ClassroomInfo.MondayIn) && (13.5 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((13.5 >= ClassroomInfo.TuesdayIn) && (13.5 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((13.5 >= ClassroomInfo.TuesdayIn) && (13.5 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((13.5 >= ClassroomInfo.WednesdayIn) && (13.5 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((13.5 >= ClassroomInfo.WednesdayIn) && (13.5 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((13.5 >= ClassroomInfo.ThursdayIn) && (13.5 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((13.5 >= ClassroomInfo.ThursdayIn) && (13.5 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((13.5 >= ClassroomInfo.FridayIn) && (13.5 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((13.5 >= ClassroomInfo.FridayIn) && (13.5 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
-
 <tr>
         <th> 1:45 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        </tr>
-
+        <span>
+                <th ng-if="((13.75 >= ClassroomInfo.MondayIn) && (13.75 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((13.75 >= ClassroomInfo.MondayIn) && (13.75 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((13.75 >= ClassroomInfo.TuesdayIn) && (13.75 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((13.75 >= ClassroomInfo.TuesdayIn) && (13.75 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((13.75 >= ClassroomInfo.WednesdayIn) && (13.75 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((13.75 >= ClassroomInfo.WednesdayIn) && (13.75 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((13.75 >= ClassroomInfo.ThursdayIn) && (13.75 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((13.75 >= ClassroomInfo.ThursdayIn) && (13.75 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((13.75 >= ClassroomInfo.FridayIn) && (13.75 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((13.75 >= ClassroomInfo.FridayIn) && (13.75 < ClassroomInfo.FridayOut))"></th>
+        </span>
+        </tr>	
 <tr>
-        <th> 2:00 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        </tr>
+	<th> 2:00 </th>
+        <span>
+                <th ng-if="((14 >= ClassroomInfo.MondayIn) && (14 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((14 >= ClassroomInfo.MondayIn) && (14 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((14 >= ClassroomInfo.TuesdayIn) && (14 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((14 >= ClassroomInfo.TuesdayIn) && (14 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((14 >= ClassroomInfo.WednesdayIn) && (14 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((14 >= ClassroomInfo.WednesdayIn) && (14 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((14 >= ClassroomInfo.ThursdayIn) && (14 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((14 >= ClassroomInfo.ThursdayIn) && (14 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((14 >= ClassroomInfo.FridayIn) && (14 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((14 >= ClassroomInfo.FridayIn) && (14 < ClassroomInfo.FridayOut))"></th>
+        </span>
+	</tr>
 
 <tr>
         <th> 2:15 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((14.25 >= ClassroomInfo.MondayIn) && (14.25 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((14.25 >= ClassroomInfo.MondayIn) && (14.25 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((14.25 >= ClassroomInfo.TuesdayIn) && (14.25 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((14.25 >= ClassroomInfo.TuesdayIn) && (14.25 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((14.25 >= ClassroomInfo.WednesdayIn) && (14.25 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((14.25 >= ClassroomInfo.WednesdayIn) && (14.25 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((14.25 >= ClassroomInfo.ThursdayIn) && (14.25 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((14.25 >= ClassroomInfo.ThursdayIn) && (14.25 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((14.25 >= ClassroomInfo.FridayIn) && (14.25 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((14.25 >= ClassroomInfo.FridayIn) && (14.25 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
 <tr>
         <th> 2:30 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((14.5 >= ClassroomInfo.MondayIn) && (14.5 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((14.5 >= ClassroomInfo.MondayIn) && (14.5 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((14.5 >= ClassroomInfo.TuesdayIn) && (14.5 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((14.5 >= ClassroomInfo.TuesdayIn) && (14.5 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((14.5 >= ClassroomInfo.WednesdayIn) && (14.5 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((14.5 >= ClassroomInfo.WednesdayIn) && (14.5 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((14.5 >= ClassroomInfo.ThursdayIn) && (14.5 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((14.5 >= ClassroomInfo.ThursdayIn) && (14.5 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((14.5 >= ClassroomInfo.FridayIn) && (14.5 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((14.5 >= ClassroomInfo.FridayIn) && (14.5 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
-
 <tr>
         <th> 2:45 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        </tr>
+        <span>
+                <th ng-if="((14.75 >= ClassroomInfo.MondayIn) && (14.75 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((14.75 >= ClassroomInfo.MondayIn) && (14.75 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((14.75 >= ClassroomInfo.TuesdayIn) && (14.75 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((14.75 >= ClassroomInfo.TuesdayIn) && (14.75 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((14.75 >= ClassroomInfo.WednesdayIn) && (14.75 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((14.75 >= ClassroomInfo.WednesdayIn) && (14.75 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((14.75 >= ClassroomInfo.ThursdayIn) && (14.75 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((14.75 >= ClassroomInfo.ThursdayIn) && (14.75 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((14.75 >= ClassroomInfo.FridayIn) && (14.75 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((14.75 >= ClassroomInfo.FridayIn) && (14.75 < ClassroomInfo.FridayOut))"></th>
+        </span>
+        </tr>	
 <tr>
-        <th> 3:00 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        </tr>
+	<th> 3:00 </th>
+        <span>
+                <th ng-if="((15 >= ClassroomInfo.MondayIn) && (15 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((15 >= ClassroomInfo.MondayIn) && (15 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((15 >= ClassroomInfo.TuesdayIn) && (15 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((15 >= ClassroomInfo.TuesdayIn) && (15 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((15 >= ClassroomInfo.WednesdayIn) && (15 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((15 >= ClassroomInfo.WednesdayIn) && (15 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((15 >= ClassroomInfo.ThursdayIn) && (15 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((15 >= ClassroomInfo.ThursdayIn) && (15 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((15 >= ClassroomInfo.FridayIn) && (15 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((15 >= ClassroomInfo.FridayIn) && (15 < ClassroomInfo.FridayOut))"></th>
+        </span>
+	</tr>
 
 <tr>
         <th> 3:15 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((15.25 >= ClassroomInfo.MondayIn) && (15.25 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((15.25 >= ClassroomInfo.MondayIn) && (15.25 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((15.25 >= ClassroomInfo.TuesdayIn) && (15.25 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((15.25 >= ClassroomInfo.TuesdayIn) && (15.25 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((15.25 >= ClassroomInfo.WednesdayIn) && (15.25 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((15.25 >= ClassroomInfo.WednesdayIn) && (15.25 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((15.25 >= ClassroomInfo.ThursdayIn) && (15.25 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((15.25 >= ClassroomInfo.ThursdayIn) && (15.25 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((15.25 >= ClassroomInfo.FridayIn) && (15.25 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((15.25 >= ClassroomInfo.FridayIn) && (15.25 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
 <tr>
         <th> 3:30 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((15.5 >= ClassroomInfo.MondayIn) && (15.5 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((15.5 >= ClassroomInfo.MondayIn) && (15.5 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((15.5 >= ClassroomInfo.TuesdayIn) && (15.5 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((15.5 >= ClassroomInfo.TuesdayIn) && (15.5 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((15.5 >= ClassroomInfo.WednesdayIn) && (15.5 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((15.5 >= ClassroomInfo.WednesdayIn) && (15.5 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((15.5 >= ClassroomInfo.ThursdayIn) && (15.5 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((15.5 >= ClassroomInfo.ThursdayIn) && (15.5 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((15.5 >= ClassroomInfo.FridayIn) && (15.5 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((15.5 >= ClassroomInfo.FridayIn) && (15.5 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
-
 <tr>
         <th> 3:45 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        </tr>
-
+        <span>
+                <th ng-if="((15.75 >= ClassroomInfo.MondayIn) && (15.75 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((15.75 >= ClassroomInfo.MondayIn) && (15.75 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((15.75 >= ClassroomInfo.TuesdayIn) && (15.75 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((15.75 >= ClassroomInfo.TuesdayIn) && (15.75 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((15.75 >= ClassroomInfo.WednesdayIn) && (15.75 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((15.75 >= ClassroomInfo.WednesdayIn) && (15.75 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((15.75 >= ClassroomInfo.ThursdayIn) && (15.75 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((15.75 >= ClassroomInfo.ThursdayIn) && (15.75 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((15.75 >= ClassroomInfo.FridayIn) && (15.75 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((15.75 >= ClassroomInfo.FridayIn) && (15.75 < ClassroomInfo.FridayOut))"></th>
+        </span>
+        </tr>	
 <tr>
-        <th> 4:00 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        </tr>
+	<th> 4:00 </th>
+        <span>
+                <th ng-if="((16 >= ClassroomInfo.MondayIn) && (16 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((16 >= ClassroomInfo.MondayIn) && (16 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((16 >= ClassroomInfo.TuesdayIn) && (16 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((16 >= ClassroomInfo.TuesdayIn) && (16 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((16 >= ClassroomInfo.WednesdayIn) && (16 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((16 >= ClassroomInfo.WednesdayIn) && (16 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((16 >= ClassroomInfo.ThursdayIn) && (16 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((16 >= ClassroomInfo.ThursdayIn) && (16 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((16 >= ClassroomInfo.FridayIn) && (16 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((16 >= ClassroomInfo.FridayIn) && (16 < ClassroomInfo.FridayOut))"></th>
+        </span>
+	</tr>
 
 <tr>
         <th> 4:15 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((16.25 >= ClassroomInfo.MondayIn) && (16.25 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((16.25 >= ClassroomInfo.MondayIn) && (16.25 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((16.25 >= ClassroomInfo.TuesdayIn) && (16.25 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((16.25 >= ClassroomInfo.TuesdayIn) && (16.25 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((16.25 >= ClassroomInfo.WednesdayIn) && (16.25 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((16.25 >= ClassroomInfo.WednesdayIn) && (16.25 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((16.25 >= ClassroomInfo.ThursdayIn) && (16.25 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((16.25 >= ClassroomInfo.ThursdayIn) && (16.25 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((16.25 >= ClassroomInfo.FridayIn) && (16.25 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((16.25 >= ClassroomInfo.FridayIn) && (16.25 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
 <tr>
         <th> 4:30 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((16.5 >= ClassroomInfo.MondayIn) && (16.5 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((16.5 >= ClassroomInfo.MondayIn) && (16.5 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((16.5 >= ClassroomInfo.TuesdayIn) && (16.5 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((16.5 >= ClassroomInfo.TuesdayIn) && (16.5 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((16.5 >= ClassroomInfo.WednesdayIn) && (16.5 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((16.5 >= ClassroomInfo.WednesdayIn) && (16.5 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((16.5 >= ClassroomInfo.ThursdayIn) && (16.5 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((16.5 >= ClassroomInfo.ThursdayIn) && (16.5 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((16.5 >= ClassroomInfo.FridayIn) && (16.5 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((16.5 >= ClassroomInfo.FridayIn) && (16.5 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
-
 <tr>
         <th> 4:45 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        </tr>
+        <span>
+                <th ng-if="((16.75 >= ClassroomInfo.MondayIn) && (16.75 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((16.75 >= ClassroomInfo.MondayIn) && (16.75 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((16.75 >= ClassroomInfo.TuesdayIn) && (16.75 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((16.75 >= ClassroomInfo.TuesdayIn) && (16.75 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((16.75 >= ClassroomInfo.WednesdayIn) && (16.75 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((16.75 >= ClassroomInfo.WednesdayIn) && (16.75 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((16.75 >= ClassroomInfo.ThursdayIn) && (16.75 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((16.75 >= ClassroomInfo.ThursdayIn) && (16.75 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((16.75 >= ClassroomInfo.FridayIn) && (16.75 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((16.75 >= ClassroomInfo.FridayIn) && (16.75 < ClassroomInfo.FridayOut))"></th>
+        </span>
+        </tr>	
 <tr>
-        <th> 5:00 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        </tr>
+	<th> 5:00 </th>
+        <span>
+                <th ng-if="((17 >= ClassroomInfo.MondayIn) && (17 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((17 >= ClassroomInfo.MondayIn) && (17 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((17 >= ClassroomInfo.TuesdayIn) && (17 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((17 >= ClassroomInfo.TuesdayIn) && (17 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((17 >= ClassroomInfo.WednesdayIn) && (17 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((17 >= ClassroomInfo.WednesdayIn) && (17 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((17 >= ClassroomInfo.ThursdayIn) && (17 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((17 >= ClassroomInfo.ThursdayIn) && (17 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((17 >= ClassroomInfo.FridayIn) && (17 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((17 >= ClassroomInfo.FridayIn) && (17 < ClassroomInfo.FridayOut))"></th>
+        </span>
+	</tr>
 
 <tr>
         <th> 5:15 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((17.25 >= ClassroomInfo.MondayIn) && (17.25 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((17.25 >= ClassroomInfo.MondayIn) && (17.25 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((17.25 >= ClassroomInfo.TuesdayIn) && (17.25 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((17.25 >= ClassroomInfo.TuesdayIn) && (17.25 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((17.25 >= ClassroomInfo.WednesdayIn) && (17.25 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((17.25 >= ClassroomInfo.WednesdayIn) && (17.25 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((17.25 >= ClassroomInfo.ThursdayIn) && (17.25 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((17.25 >= ClassroomInfo.ThursdayIn) && (17.25 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((17.25 >= ClassroomInfo.FridayIn) && (17.25 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((17.25 >= ClassroomInfo.FridayIn) && (17.25 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
 <tr>
         <th> 5:30 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <span>
+                <th ng-if="((17.5 >= ClassroomInfo.MondayIn) && (17.5 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((17.5 >= ClassroomInfo.MondayIn) && (17.5 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((17.5 >= ClassroomInfo.TuesdayIn) && (17.5 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((17.5 >= ClassroomInfo.TuesdayIn) && (17.5 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((17.5 >= ClassroomInfo.WednesdayIn) && (17.5 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((17.5 >= ClassroomInfo.WednesdayIn) && (17.5 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((17.5 >= ClassroomInfo.ThursdayIn) && (17.5 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((17.5 >= ClassroomInfo.ThursdayIn) && (17.5 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((17.5 >= ClassroomInfo.FridayIn) && (17.5 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((17.5 >= ClassroomInfo.FridayIn) && (17.5 < ClassroomInfo.FridayOut))"></th>
+        </span>
         </tr>
-
 <tr>
         <th> 5:45 </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        </tr>
+        <span>
+                <th ng-if="((17.75 >= ClassroomInfo.MondayIn) && (17.75 < ClassroomInfo.MondayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((17.75 >= ClassroomInfo.MondayIn) && (17.75 < ClassroomInfo.MondayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((17.75 >= ClassroomInfo.TuesdayIn) && (17.75 < ClassroomInfo.TuesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((17.75 >= ClassroomInfo.TuesdayIn) && (17.75 < ClassroomInfo.TuesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((17.75 >= ClassroomInfo.WednesdayIn) && (17.75 < ClassroomInfo.WednesdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((17.75 >= ClassroomInfo.WednesdayIn) && (17.75 < ClassroomInfo.WednesdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((17.75 >= ClassroomInfo.ThursdayIn) && (17.75 < ClassroomInfo.ThursdayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((17.75 >= ClassroomInfo.ThursdayIn) && (17.75 < ClassroomInfo.ThursdayOut))"></th>
+        </span>
+        <span>
+                <th ng-if="((17.75 >= ClassroomInfo.FridayIn) && (17.75 < ClassroomInfo.FridayOut))" style="background-color: yellow;"></th>
+                <th ng-if="!((17.75 >= ClassroomInfo.FridayIn) && (17.75 < ClassroomInfo.FridayOut))"></th>
+        </span>
+        </tr>	
 
 </table></p>
 

@@ -93,6 +93,18 @@ app.get('/', function (req, res) {
     return res.sendStatus(200);
   }); 
 
+    app.get('/getChildClass', jsonParser, function (req, res) {
+    updateDB.callClass(req.query, function(err, data){
+      if(err) {
+        // handle the error here
+        console.log(err);
+      }
+      // send the data
+      console.log("Sending Classroom info for Child...");
+      res.send(data);
+    })
+  });
+
   app.get('/callEnrolledList', function (req, res) {
     updateDB.callEnrolledList(function(err, data){
       if(err) {

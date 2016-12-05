@@ -1,6 +1,6 @@
 angular.module('DaycareApp').controller('ProfileController', ['$scope', '$http', function($scope, $http){
     $scope.Profile = [];  
-    $scope.ClassroomInfo = [];    
+    $scope.ClassroomInfo = {};    
     $scope.Editing = false;  
     $scope.ShowModal = false;
     var modal = document.getElementById('myModal');
@@ -19,8 +19,22 @@ angular.module('DaycareApp').controller('ProfileController', ['$scope', '$http',
         $http.get('/getTempProfile')
         .then(function(response) {
             $scope.Profile.push(response.data[0]);
+
+
+            $http.get('/getChildClass', {params: {ID: $scope.Profile[0].ChildID, Classroom: $scope.Profile[0].Classroom}})
+            .then(function(response) {
+                $scope.ClassroomInfo = response.data[0];
+                console.log("Data received");
+            });
         });
     };
+
+    // $scope.LoadChildClassroomInfo = function() {
+    //     $http.get('/getChildClass', Profile)
+    //     .then(function(response) {
+    //         $scope.Profile.push(response.data[0]);
+    //     });
+    // };
 
     $scope.EditProfile = function(){
         $scope.Editing = !$scope.Editing
@@ -52,18 +66,6 @@ angular.module('DaycareApp').controller('ProfileController', ['$scope', '$http',
         $scope.Editing = false;  
     };
 
-    // $scope.Monday = function( time ){
-    //     if(time < $scope.Profile[0].MondayIn){
-    //         "N/A"
-    //     }
-    //     else if(time > $scope.Profile[0].MondayOut){
-    //         "N/A"
-    //     }
-    //     else{
-    //         "X"
-    //     }
-    // }
-
     $scope.acceptChild = function(ID){
         var sendID = [];
         sendID.push(ID.ChildID);
@@ -78,6 +80,7 @@ angular.module('DaycareApp').controller('ProfileController', ['$scope', '$http',
         ID.ThursdayOut = document.getElementById('ThursdayOut').value;
         ID.FridayIn = document.getElementById('FridayIn').value;
         ID.FridayOut = document.getElementById('FridayOut').value;
+        sendID.push(ID.Classroom);
         $http.post('/InsertChildToClass', ID)
         .then(function(response) {
             alert("Child has been inserted into the classroom!"); 
