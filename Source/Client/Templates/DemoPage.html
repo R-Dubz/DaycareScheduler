@@ -132,7 +132,7 @@
         <div id="myModal" class="modal" ng-show="ShowModal">
 
         <!-- Modal content -->
-        <div class="modal-content">
+        <div class="modal-content" style="width: 250px; height: 250px">
         <span class="close" ng-click="CloseModal()">×</span>
         <div> Classroom:
         <select id="Classroom">
@@ -673,11 +673,11 @@
 
 	<tr>
 	<th> 7:00 </th>
-	<th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-	<th></th>
+	<th>{{Profile[0].MondayIn}}</th>
+        <th>{{Profile[0].TuesdayIn}}</th>
+        <th>{{Profile[0].WednesdayIn}}</th>
+        <th>{{Profile[0].ThursdayIn}}</th>
+	<th>{{Profile[0].FridayIn}}</th>
 	</tr>
 
 <tr>
