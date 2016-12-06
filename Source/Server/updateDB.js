@@ -72,6 +72,27 @@ This library holds functions to be used in order to modify the database
 		db.close();
 	},
 
+    storeProfile: function(child){
+
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+			
+		db.run("UPDATE CurrentProfile SET ProfileID = $ProfileID WHERE RowID = 1", {
+			$ProfileID: child.ChildID	
+		});
+		
+		db.close();
+    },
+
+
 	editFromProfile: function(info) {
 		var fs = require("fs");
 		var file = "./Source/Server/Data/DaycareDB.db";
@@ -169,9 +190,9 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		db.all("SELECT * FROM Personal_Information WHERE ChildID = $ChildID", {$ChildID: info.ChildID},
+		db.all("SELECT * FROM Personal_Information WHERE ChildID = $ChildID", {$ChildID: info[0].ProfileID},
 		 function(err, row) {
-			$ChildID = info[0];
+			$ChildID = info[0].ProfileID;
 			if (err){
 				callback(err);
 				return;

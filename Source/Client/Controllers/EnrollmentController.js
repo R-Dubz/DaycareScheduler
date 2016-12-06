@@ -26,7 +26,7 @@ angular.module('DaycareApp').controller('EnrollmentController', ['$scope', '$htt
         $scope.storeProfile = function(child){
             $http.post('/storeTempProfile', child)
             .then(function(response) {
-                window.location.href = 'DemoPage.html';
+                window.location.href = 'EnrolledDemoPage.html';
             });
         }
 

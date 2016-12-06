@@ -65,19 +65,25 @@ app.get('/', function (req, res) {
   });
 
   app.post('/storeTempProfile', jsonParser, function (req, res) {
-    profileStorage.storeProfile(req.body); 
+    updateDB.storeProfile(req.body); 
     console.log("Storing Temp Profile...");
     return res.sendStatus(200);
   }); 
 
   app.get('/getTempProfile', function (req, res) {
-    profileStorage.retrieveProfile(function(err, data){
+    profileStorage.callProfileDB(function(err, data){
       if(err) {
         // handle the error here
       }
       // send the data
-      console.log("Sending Profile...");
-      res.send(data);
+      profileStorage.retrieveProfile(data, function(err, data1){
+        if(err) {
+          // handle the error here
+        }
+        // send the data
+        console.log("Sending Profile...");
+        res.send(data1);
+    })
     })
   });
 

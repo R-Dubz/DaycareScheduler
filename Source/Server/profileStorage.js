@@ -1,16 +1,31 @@
 var updateDB = require('./updateDB.js');
-var profile = [0];
-
 var profileStorage = {
 
-    storeProfile: function(child){
-        var profileID = {ChildID: child.ChildID};
-        profile[0] = (profileID);
+    callProfileDB: function(callback){
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+
+		db.all("SELECT * FROM CurrentProfile WHERE RowID = 1",
+		 function(err, row) {
+			if (err){
+				callback(err);
+				return;
+			}				
+			callback(null, row);
+		});
+
+		db.close();
     },
 
-    retrieveProfile: function(callback){
+    retrieveProfile: function(ID, callback){
 
-        updateDB.callProfile(profile[0], function(err, data){
+        updateDB.callProfile(ID, function(err, data){
         if(err) {
             // handle the error here
             callback(err);
@@ -19,10 +34,8 @@ var profileStorage = {
         // send the data
             profile = [];
             callback(null, data);
-        })
+        });
     }
-
-
 };	
 
 module.exports = profileStorage;

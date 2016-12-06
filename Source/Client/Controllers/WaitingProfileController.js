@@ -1,17 +1,12 @@
-angular.module('DaycareApp').controller('ProfileController', ['$scope', '$http', function($scope, $http){
-    $scope.Profile = [];  
-    $scope.ClassroomInfo = {};    
+angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '$http', function($scope, $http){
+    $scope.Profile = [];     
     $scope.Editing = false;  
     $scope.ShowModal = false;
     var modal = document.getElementById('myModal');
     var controllerFunction = $scope;
 
     $scope.backToList = function() {
-        if($scope.Profile[0].EnrollmentStatus === 'W'){
-            window.location.href = 'Waiting_list.html';
-        } else {
-            window.location.href = 'Children.html';
-        }
+      window.location.href = 'Waiting_list.html';
     };
 
 
@@ -19,22 +14,8 @@ angular.module('DaycareApp').controller('ProfileController', ['$scope', '$http',
         $http.get('/getTempProfile')
         .then(function(response) {
             $scope.Profile.push(response.data[0]);
-
-
-            $http.get('/getChildClass', {params: {ID: $scope.Profile[0].ChildID, Classroom: $scope.Profile[0].Classroom}})
-            .then(function(response) {
-                $scope.ClassroomInfo = response.data[0];
-                console.log("Data received");
-            });
         });
     };
-
-    // $scope.LoadChildClassroomInfo = function() {
-    //     $http.get('/getChildClass', Profile)
-    //     .then(function(response) {
-    //         $scope.Profile.push(response.data[0]);
-    //     });
-    // };
 
     $scope.EditProfile = function(){
         $scope.Editing = !$scope.Editing
@@ -58,11 +39,8 @@ angular.module('DaycareApp').controller('ProfileController', ['$scope', '$http',
         var updates = $scope.Profile;
         $http.post('/test', updates)
         .then(function(response) {
-            console.log("Success");
-            // window.location.href = 'Waiting_list.html';            
+            console.log("Success");      
         });
-
-
         $scope.Editing = false;  
     };
 
@@ -87,9 +65,9 @@ angular.module('DaycareApp').controller('ProfileController', ['$scope', '$http',
 
             $http.post('/acceptChild', sendID)
             .then(function(response) {
-                // var acceptedChild = [];
-                alert("Child has been accepted into the program!");
-                $scope.CloseModal();
+               alert("Child has been accepted into the program!");
+               $scope.CloseModal();
+               window.location.href = 'EnrolledDemoPage.html';
             });        
         });
     };
