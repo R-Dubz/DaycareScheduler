@@ -63,8 +63,23 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
 
     $scope.EditClassroomInfo = function(ID){
         //console.log("We're sorry, this button has been disabled until we figure out what to do with it...");
-        console.log(document.getElementById('Classroom').value);
-        if (document.getElementById('Classroom').value == null) {
+        //console.log(document.getElementById('Classroom').value);
+        var sendID = [];
+        sendID.push(ID.ChildID);
+        ID.Classroom = document.getElementById('Classroom').value;
+        ID.MondayIn = document.getElementById('MondayIn').value;
+        ID.MondayOut = document.getElementById('MondayOut').value;
+        ID.TuesdayIn = document.getElementById('TuesdayIn').value;
+        ID.TuesdayOut = document.getElementById('TuesdayOut').value;
+        ID.WednesdayIn = document.getElementById('WednesdayIn').value;
+        ID.WednesdayOut = document.getElementById('WednesdayOut').value;
+        ID.ThursdayIn = document.getElementById('ThursdayIn').value;
+        ID.ThursdayOut = document.getElementById('ThursdayOut').value;
+        ID.FridayIn = document.getElementById('FridayIn').value;
+        ID.FridayOut = document.getElementById('FridayOut').value;
+        sendID.push(ID.Classroom);
+
+        if (document.getElementById('Classroom').value === "null") {
             $http.post('/deleteChildFromClassroom', ID)
             .then(function(response) {
                 alert("Child has been Removed from the classroom");

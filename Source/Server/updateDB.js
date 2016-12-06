@@ -226,6 +226,29 @@ This library holds functions to be used in order to modify the database
 		db.close();
 	},
 
+	callAllClass : function(info, callback){
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+
+		db.all("SELECT * FROM " + info.Classroom, {$ChildID: info.ID},
+		 function(err, row) {
+			//$ChildID = info.ID;
+			if (err){
+				callback(err);
+				return;
+			}				
+			callback(null, row);
+		});
+
+		db.close();
+	},
+
 //Next 3 Functions need to be fixed for correct variable names as well as add inputs to the functions.
 
 	childToClass: function(info) {
@@ -270,9 +293,9 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 			
-		db.run("UPDATE $Table SET MondayIn = $MondayIn, MondayOut = $MondayOut, TuesdayIn = $TuesdayIn, TuesdayOut = $TuesdayOut, WednesdayIn = $WednesdayIn, WednesdayOut = $WednesdayOut, ThursdayIn = $ThursdayIn, ThursdayOut = $ThursdayOut, FridayIn = $FridayIn, FridayOut = $FridayOut", {
+		db.run("UPDATE " + info.Classroom + " SET MondayIn = $MondayIn, MondayOut = $MondayOut, TuesdayIn = $TuesdayIn, TuesdayOut = $TuesdayOut, WednesdayIn = $WednesdayIn, WednesdayOut = $WednesdayOut, ThursdayIn = $ThursdayIn, ThursdayOut = $ThursdayOut, FridayIn = $FridayIn, FridayOut = $FridayOut WHERE ChildID = $ChildID", {
 			$ChildID: info.ChildID,
-			$Table: info.Classroom,
+			//$Table: info.Classroom,
 			$MondayIn: info.MondayIn,
 			$MondayOut: info.MondayOut,
 			$TuesdayIn: info.TuesdayIn,
@@ -300,9 +323,12 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 			
-		db.run("DELETE FROM $Table WHERE ChildID = $ChildID", {
+		db.run("DELETE FROM " + info.Classroom + " WHERE ChildID = $ChildID", {
 			$ChildID: info.ChildID,
-			$Table: info.Classroom,
+		});
+
+		db.run("UPDATE Personal_Information SET Classroom = '' WHERE ChildID = $ChildID", {
+			$ChildID: info.ChildID,
 		});
 		
 		db.close();
