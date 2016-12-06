@@ -61,8 +61,35 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
         $scope.Editing = false;  
     };
 
-    $scope.EditClassroomInfo = function(){
-        console.log("We're sorry, this button has been disabled until we figure out what to do with it...");
+    $scope.EditClassroomInfo = function(ID){
+        //console.log("We're sorry, this button has been disabled until we figure out what to do with it...");
+        console.log(document.getElementById('Classroom').value);
+        if (document.getElementById('Classroom').value == null) {
+            $http.post('/deleteChildFromClassroom', ID)
+            .then(function(response) {
+                alert("Child has been Removed from the classroom");
+                $scope.CloseModal();
+            });
+        }
+        else if ($scope.Profile[0].Classroom === document.getElementById('Classroom').value) {
+            $http.post('/editChildClassroom', ID)
+            .then(function(response) {
+                alert("Child's classroom times have been changed");
+                $scope.CloseModal();
+            });
+        }
+        else {
+            $http.post('/deleteChildFromClassroom', ID)
+            .then(function(response) {
+                alert("Child has been removed from the classroom. Beginning to move them to new classroom!");
+                $http.post('/InsertChildToClass', ID)
+                .then(function(response) {
+                    alert("Child has been inserted into the classroom!"); 
+                    $scope.CloseModal();     
+                });
+            })
+        }
+
         // var sendID = [];
         // sendID.push(ID.ChildID);
         // ID.Classroom = document.getElementById('Classroom').value;

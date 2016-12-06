@@ -93,6 +93,18 @@ app.get('/', function (req, res) {
     return res.sendStatus(200);
   }); 
 
+  app.post('/editChildClassroom', jsonParser, function (req, res) {
+    updateDB.editChildClass(req.body);
+    console.log("Editing Child...");
+    return res.sendStatus(200);
+  });
+
+  app.post('/deleteChildFromClassroom', jsonParser, function (req, res) {
+    updateDB.deleteChild(req.body);
+    console.log("Deleting Child...");
+    return res.sendStatus(200);
+  });
+
   app.post('/InsertChildToClass', jsonParser, function (req, res) {
     updateDB.childToClass(req.body); 
     console.log("Inserting Child into Classroom...");

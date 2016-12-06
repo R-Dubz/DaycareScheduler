@@ -180,7 +180,7 @@ This library holds functions to be used in order to modify the database
 		db.close();
 	},
 
-		callProfile : function(info, callback){
+	callProfile : function(info, callback){
 		var fs = require("fs");
 		var file = "./Source/Server/Data/DaycareDB.db";
 		var exists = fs.existsSync(file);
@@ -288,25 +288,25 @@ This library holds functions to be used in order to modify the database
 		db.close();
 	},
 
-	// childToClass: function(info) {
-	// 	var fs = require("fs");
-	// 	var file = "./Source/Server/Data/DaycareDB.db";
-	// 	var exists = fs.existsSync(file);
+	deleteChild: function(info) {
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
 
-	// 	if (!exists) {
-	// 		throw new Error("File not Found");
-	// 	}
+		if (!exists) {
+			throw new Error("File not Found");
+		}
 
-	// 	var sqlite3 = require("sqlite3").verbose();
-	// 	var db = new sqlite3.Database(file);
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
 			
-	// 	db.run("DELETE FROM $Table WHERE ChildID = $ChildID", {
-	// 		$ChildID: info.ChildID,
-	// 		$Table: info.Classroom,
-	// 	});
+		db.run("DELETE FROM $Table WHERE ChildID = $ChildID", {
+			$ChildID: info.ChildID,
+			$Table: info.Classroom,
+		});
 		
-	// 	db.close();
-	// },
+		db.close();
+	},
 };
 
 	module.exports = updateDB;
