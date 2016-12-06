@@ -16,21 +16,15 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
         .then(function(response) {
             $scope.Profile.push(response.data[0]);
 
-
-            $http.get('/getChildClass', {params: {ID: $scope.Profile[0].ChildID, Classroom: $scope.Profile[0].Classroom}})
-            .then(function(response) {
-                $scope.ClassroomInfo = response.data[0];
-                console.log("Data received");
-            });
+            if($scope.Profile[0].Classroom !== ""){
+                $http.get('/getChildClass', {params: {ID: $scope.Profile[0].ChildID, Classroom: $scope.Profile[0].Classroom}})
+                .then(function(response) {
+                    $scope.ClassroomInfo = response.data[0];
+                    console.log("Data received");
+                });
+            }
         });
     };
-
-    // $scope.LoadChildClassroomInfo = function() {
-    //     $http.get('/getChildClass', Profile)
-    //     .then(function(response) {
-    //         $scope.Profile.push(response.data[0]);
-    //     });
-    // };
 
     $scope.EditProfile = function(){
         $scope.Editing = !$scope.Editing
@@ -62,8 +56,6 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
     };
 
     $scope.EditClassroomInfo = function(ID){
-        //console.log("We're sorry, this button has been disabled until we figure out what to do with it...");
-        //console.log(document.getElementById('Classroom').value);
         var changes = {};
         changes.ChildID = $scope.Profile[0].ChildID;
         changes.oldClassroom = $scope.Profile[0].Classroom;
@@ -84,6 +76,7 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
             .then(function(response) {
                 alert("Child has been Removed from the classroom");
                 $scope.CloseModal();
+                window.location.reload(true); 
             });
         }
         else if ($scope.Profile[0].Classroom === document.getElementById('Classroom').value) {
@@ -91,6 +84,15 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
             .then(function(response) {
                 alert("Child's classroom times have been changed");
                 $scope.CloseModal();
+                window.location.reload(true); 
+            });
+        }
+        else if($scope.Profile[0].Classroom === ""){
+            $http.post('/InsertChildToClass', changes)
+            .then(function(response) {
+                alert("Child has been inserted into the classroom!"); 
+                $scope.CloseModal(); 
+                window.location.reload(true);     
             });
         }
         else {
@@ -100,36 +102,11 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
                 $http.post('/InsertChildToClass', changes)
                 .then(function(response) {
                     alert("Child has been inserted into the classroom!"); 
-                    $scope.CloseModal();     
+                    $scope.CloseModal();  
+                    window.location.reload(true);    
                 });
             })
         }
-
-        // var sendID = [];
-        // sendID.push(ID.ChildID);
-        // ID.Classroom = document.getElementById('Classroom').value;
-        // ID.MondayIn = document.getElementById('MondayIn').value;
-        // ID.MondayOut = document.getElementById('MondayOut').value;
-        // ID.TuesdayIn = document.getElementById('TuesdayIn').value;
-        // ID.TuesdayOut = document.getElementById('TuesdayOut').value;
-        // ID.WednesdayIn = document.getElementById('WednesdayIn').value;
-        // ID.WednesdayOut = document.getElementById('WednesdayOut').value;
-        // ID.ThursdayIn = document.getElementById('ThursdayIn').value;
-        // ID.ThursdayOut = document.getElementById('ThursdayOut').value;
-        // ID.FridayIn = document.getElementById('FridayIn').value;
-        // ID.FridayOut = document.getElementById('FridayOut').value;
-        // sendID.push(ID.Classroom);
-        // $http.post('/InsertChildToClass', ID)
-        // .then(function(response) {
-        //     alert("Child has been inserted into the classroom!"); 
-
-        //     $http.post('/acceptChild', sendID)
-        //     .then(function(response) {
-        //         // var acceptedChild = [];
-        //         alert("Child has been accepted into the program!");
-        //         $scope.CloseModal();
-        //     });        
-        // });
     };
 
 

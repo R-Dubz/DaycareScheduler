@@ -169,7 +169,7 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		db.all("SELECT ChildID, ChildName, ChildBirthdate, HomePhone, GuardianName1, GuardianStatus1, GuardianName2, GuardianStatus2, TimeStamp, DesiredEnrollment, AgeGroup, RequiredDays FROM Personal_Information WHERE EnrollmentStatus = 'E'", function(err, row) {
+		db.all("SELECT ChildID, ChildName, ChildBirthdate, Classroom, HomePhone, GuardianName1, GuardianStatus1, GuardianName2, GuardianStatus2, TimeStamp, DesiredEnrollment, AgeGroup, RequiredDays FROM Personal_Information WHERE EnrollmentStatus = 'E'", function(err, row) {
 			if (err){
 				callback(err);
 				return;
@@ -265,7 +265,6 @@ This library holds functions to be used in order to modify the database
 			
 		db.run("INSERT INTO " + info.Classroom + " (ChildID, MondayIn, MondayOut, TuesdayIn, TuesdayOut, WednesdayIn, WednesdayOut, ThursdayIn, ThursdayOut, FridayIn, FridayOut) VALUES ($ChildID, $MondayIn, $MondayOut, $TuesdayIn, $TuesdayOut, $WednesdayIn, $WednesdayOut, $ThursdayIn, $ThursdayOut, $FridayIn, $FridayOut)", {
 			$ChildID: info.ChildID,
-			// $Table: info.Classroom,
 			$MondayIn: info.MondayIn,
 			$MondayOut: info.MondayOut,
 			$TuesdayIn: info.TuesdayIn,
@@ -278,9 +277,8 @@ This library holds functions to be used in order to modify the database
 			$FridayOut: info.FridayOut
 		});
 
-		db.run("UPDATE Personal_Information SET Classroom = $Classroom WHERE ChildID = $ChildID", {
-			$ChildId: info.ChildID,
-			$Classroom: info.Classroom
+		db.run("UPDATE Personal_Information SET Classroom = '" + info.Classroom + "' WHERE ChildID = $ChildID", {
+			$ChildID: info.ChildID,
 		});
 		
 		db.close();

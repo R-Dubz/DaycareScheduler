@@ -17,6 +17,23 @@ angular.module('DaycareApp').controller('EnrollmentController', ['$scope', '$htt
                     response.data[i].jsFriendlyBirthDate = new Date(response.data[i].ChildBirthdate);
                     response.data[i].jsFriendlyTimeStamp = new Date(response.data[i].TimeStamp);
                     response.data[i].jsFriendlyDesiredEnrollment = new Date(response.data[i].DesiredEnrollment); 
+                    if(response.data[i].Classroom === "InfantRoom"){
+                        response.data[i].Classroom = "Infant Room";
+                    } else if(response.data[i].Classroom === "Toddler1"){
+                       response.data[i].Classroom = "Toddler 1"; 
+                    } else if(response.data[i].Classroom === "Toddler2"){
+                       response.data[i].Classroom = "Toddler 2"; 
+                    } else if(response.data[i].Classroom === "Preschool3"){
+                       response.data[i].Classroom = "Preschool 1"; 
+                    } else if(response.data[i].Classroom === "Preschool4"){
+                       response.data[i].Classroom = "Preschool 2"; 
+                    } else if(response.data[i].Classroom === "SchoolAge"){
+                       response.data[i].Classroom = "School Age"; 
+                    } else if(response.data[i].Classroom === "Classroom8"){
+                       response.data[i].Classroom = "Classroom 8"; 
+                    } else {
+                        //do nothing
+                    }
                     $scope.Children.push(response.data[i]);
                 }
 
