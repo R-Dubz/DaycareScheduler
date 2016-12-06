@@ -34,7 +34,7 @@
 
 <div id="display"></div>
 
-<table class = "TFtable">
+<table class = "TFtable" style="height: 85%">
 	<!--<th>Child's Name</th>
 	<th>D.O.B.</th>
 	<th>Phone Number</th>
@@ -131,6 +131,37 @@
     <th>View Profile</th>
     </tr>
 </thead>
+
+<tr ng-repeat="child in Children | orderBy:sortType:sortReverse | filter:searchText">
+    <th>{{child.ChildName}}</th>
+    <th>{{child.ChildBirthdate}}</th>
+    <th>{{child.HomePhone}}</th>
+    <th>{{child.GuardianName1}}</th>
+    <th>{{child.GuardianStatus1}}</th>
+    <th>{{child.GuardianName2}}</th>
+    <th>{{child.GuardianStatus2}}</th>
+    <th>{{child.TimeStamp}}</th>
+    <th>TBA</th>
+    <th>{{child.AgeGroup}}</th>
+    <th>{{child.RequiredDays}}</th>
+<!--make sure all button code is between the <th> and </th> tags-->
+    <th><button type="button" ng-click="storeProfile(child)">Profile</button></th>
+</tr>
+
+<tr ng-if="Children.length === 0">
+    <th style="height: 48px"></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>    
+    <th style="background: #dae5f4"></th>
+</tr>
 
 <tr ng-repeat="child in Children | orderBy:sortType:sortReverse | filter:searchText">
     <th>{{child.ChildName}}</th>

@@ -1,9 +1,16 @@
-<!DOCTYPE html>
+<DOCTYPE! html>
 <html>
 
+<head>
 <link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">
-    
-<body bgcolor="00ff00" background="sky.jpg">
+<link rel="stylesheet" type="text/css" href="./Other Files/(CSS Stuff) font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script>
+<script src="./app.js"></script>
+<script src="./Source/Client/Controllers/RoomsController.js"></script>
+
+</head>
+
+<body bgcolor="ffff35" background="sky.jpg" ng-app="DaycareApp" ng-controller="RoomsController" ng-init="callEnrolledList()">
 
 <h5><div class="dropdown" style="float:right;">
   <button class="dropbtn">||||</button>
@@ -19,37 +26,58 @@
   </div>
 </div></h5>
 
+<center><h1>Search for an enrolled child</h1></center>
 
-<h1><font color="ff0000">Room search</font></h1>
+<!--The table sort and search functions implemented in this file were modeled after the tutorial in the link below this comment-->
+<!--https://scotch.io/tutorials/sort-and-filter-a-table-using-angular-->
+<label>Search: <input placeholder="What are you looking for?" ng-model="searchText"></label>
 
+<div id="display"></div>
 
+<table class = "TFtable" style="height: 85%">
+	<!--<th>Child's Name</th>
+	<th>D.O.B.</th>
+	<th>Phone Number</th>
+	<th>Primany Parent Name</th>
+	<th>Primanry Parent Status</th>
+	<th>Secondary Parent Name</th>
+	<th>Secondary Parent Status</th>
+	<th>Date of App.</th>
+	<th>Desired Start Date</th>
+	<th>Class</th>
+	<th>Days</th>
+	<th>View Profile</th>
+	<th>Delete</th>-->
 
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<div ng-app="app" ng-controller="myCtrl">
-	<p>First Name: <input type="text" name="firstName" ng-model="firstName" required /></p>
-	<p>Lirst Name: <input type="text" name="lastName" ng-model="lastName" required /></p>
-	<button ng-click="SendData()">Submit</button>
-	<hr />
-        {{ PostDataResponse }}
-    </div>
-    <script>
-        var app = angular.module("app",[]);
-        app.controller("myCtrl", function($scope,$http){
-        $scope.SendData = function() {
-            var data = {
-                    fName : $scope.firstName,lName : $scope.lastName
-                }
-            $http.post('/postFormAngular', data)
-                .success(function (data, status, headers, config) {
-                    $scope.PostDataResponse = data;
-                })
-                .error(function(data, status, header, config){
-                    $scope.PostDataResponse = "Data: " + status;
-                });
-        };  
-        });
-    </script>
+<thead>
+    <tr>
+    <th>
+        <a href="#" ng-click="sortType = 'ChildName'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Child's Name
+        <span ng-show="sortType == 'ChildName' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'ChildName' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    </tr>
+</thead>
+
+<tr ng-repeat="child in Children | orderBy:sortType:sortReverse | filter:searchText">
+    <th>{{child.ChildName}}</th>
+</tr>
+
+<tr ng-if="Children.length === 0">
+    <th style="height: 48px"></th>
+    <th style="background: #dae5f4"></th>
+</tr>
+
+<tr ng-repeat="child in Children | orderBy:sortType:sortReverse | filter:searchText">
+    <th>{{child.ChildName}}</th>
+</tr>
+
+<tr ng-if="Children.length === 0">
+    <th style="height: 48px"></th>
+    <th style="background: #dae5f4"></th>
+</tr>
 
 </body>
-</html> 
+<html>
