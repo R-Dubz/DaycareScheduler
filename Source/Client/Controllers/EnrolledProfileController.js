@@ -64,40 +64,40 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
     $scope.EditClassroomInfo = function(ID){
         //console.log("We're sorry, this button has been disabled until we figure out what to do with it...");
         //console.log(document.getElementById('Classroom').value);
-        var sendID = [];
-        sendID.push(ID.ChildID);
-        ID.Classroom = document.getElementById('Classroom').value;
-        ID.MondayIn = document.getElementById('MondayIn').value;
-        ID.MondayOut = document.getElementById('MondayOut').value;
-        ID.TuesdayIn = document.getElementById('TuesdayIn').value;
-        ID.TuesdayOut = document.getElementById('TuesdayOut').value;
-        ID.WednesdayIn = document.getElementById('WednesdayIn').value;
-        ID.WednesdayOut = document.getElementById('WednesdayOut').value;
-        ID.ThursdayIn = document.getElementById('ThursdayIn').value;
-        ID.ThursdayOut = document.getElementById('ThursdayOut').value;
-        ID.FridayIn = document.getElementById('FridayIn').value;
-        ID.FridayOut = document.getElementById('FridayOut').value;
-        sendID.push(ID.Classroom);
+        var changes = {};
+        changes.ChildID = $scope.Profile[0].ChildID;
+        changes.oldClassroom = $scope.Profile[0].Classroom;
+        changes.Classroom = document.getElementById('Classroom').value;
+        changes.MondayIn = document.getElementById('MondayIn').value;
+        changes.MondayOut = document.getElementById('MondayOut').value;
+        changes.TuesdayIn = document.getElementById('TuesdayIn').value;
+        changes.TuesdayOut = document.getElementById('TuesdayOut').value;
+        changes.WednesdayIn = document.getElementById('WednesdayIn').value;
+        changes.WednesdayOut = document.getElementById('WednesdayOut').value;
+        changes.ThursdayIn = document.getElementById('ThursdayIn').value;
+        changes.ThursdayOut = document.getElementById('ThursdayOut').value;
+        changes.FridayIn = document.getElementById('FridayIn').value;
+        changes.FridayOut = document.getElementById('FridayOut').value;
 
         if (document.getElementById('Classroom').value === "null") {
-            $http.post('/deleteChildFromClassroom', ID)
+            $http.post('/deleteChildFromClassroom', changes)
             .then(function(response) {
                 alert("Child has been Removed from the classroom");
                 $scope.CloseModal();
             });
         }
         else if ($scope.Profile[0].Classroom === document.getElementById('Classroom').value) {
-            $http.post('/editChildClassroom', ID)
+            $http.post('/editChildClassroom', changes)
             .then(function(response) {
                 alert("Child's classroom times have been changed");
                 $scope.CloseModal();
             });
         }
         else {
-            $http.post('/deleteChildFromClassroom', ID)
+            $http.post('/deleteChildFromClassroom', changes)
             .then(function(response) {
                 alert("Child has been removed from the classroom. Beginning to move them to new classroom!");
-                $http.post('/InsertChildToClass', ID)
+                $http.post('/InsertChildToClass', changes)
                 .then(function(response) {
                     alert("Child has been inserted into the classroom!"); 
                     $scope.CloseModal();     

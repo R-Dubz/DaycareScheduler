@@ -323,7 +323,7 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 			
-		db.run("DELETE FROM " + info.Classroom + " WHERE ChildID = $ChildID", {
+		db.run("DELETE FROM " + info.oldClassroom + " WHERE ChildID = $ChildID", {
 			$ChildID: info.ChildID,
 		});
 
