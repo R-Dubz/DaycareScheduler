@@ -277,6 +277,11 @@ This library holds functions to be used in order to modify the database
 			$FridayIn: info.FridayIn,
 			$FridayOut: info.FridayOut
 		});
+
+		db.run("UPDATE Personal_Information SET Classroom = $Classroom WHERE ChildID = $ChildID", {
+			$ChildId: info.ChildID,
+			$Classroom: info.Classroom
+		});
 		
 		db.close();
 	},
