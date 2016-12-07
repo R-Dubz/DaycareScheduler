@@ -4,7 +4,8 @@ angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', f
         $scope.Profile = [];  
         $scope.sortType = 'ChildName'; 
         $scope.sortReverse = false;
-        $scope.searchText = '';     
+        $scope.searchText1 = 'School Age';     
+        $scope.searchText = 'Toddler1';  
 
 
         $scope.callEnrolledList = function() {
@@ -36,6 +37,7 @@ angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', f
                     }
                     $scope.Children.push(response.data[i]);
                 }
+
             });
         };
 

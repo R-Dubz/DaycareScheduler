@@ -140,7 +140,22 @@ app.get('/', function (req, res) {
     return res.sendStatus(200);
   }); 
 
+app.get('/callAllClass', function (req, res) {
+    updateDB.callAllClass(function(err, data){
+      if(err) {
+        // handle the error here
+      }
+      // send the data
+      console.log("Loading Rooms List...");
+      res.send(data);
+    })
+  });
 
+  app.post('/test', jsonParser, function (req, res) {
+    updateDB.editFromProfile(req.body); 
+    console.log("Applying Profile Changes...");
+    return res.sendStatus(200);
+  }); 
 
 app.listen(3000);
 console.log("running at port 3000");
