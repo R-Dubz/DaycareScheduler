@@ -16,7 +16,7 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
         .then(function(response) {
             $scope.Profile.push(response.data[0]);
 
-            if($scope.Profile[0].Classroom !== ""){
+            if($scope.Profile[0].Classroom !== "" && $scope.Profile[0].Classroom !== "null" && $scope.Profile[0].Classroom !== null){
                 $http.get('/getChildClass', {params: {ID: $scope.Profile[0].ChildID, Classroom: $scope.Profile[0].Classroom}})
                 .then(function(response) {
                     $scope.ClassroomInfo = response.data[0];
