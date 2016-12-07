@@ -59,17 +59,26 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
         ID.FridayIn = document.getElementById('FridayIn').value;
         ID.FridayOut = document.getElementById('FridayOut').value;
         sendID.push(ID.Classroom);
-        $http.post('/InsertChildToClass', ID)
-        .then(function(response) {
-            alert("Child has been inserted into the classroom!"); 
+        if(ID.Classroom !== "null"){
+            $http.post('/InsertChildToClass', ID)
+            .then(function(response) {
+                alert("Child has been inserted into the classroom!"); 
 
+                $http.post('/acceptChild', sendID)
+                .then(function(response) {
+                    alert("Child has been accepted into the program!");
+                    $scope.CloseModal();
+                    window.location.href = 'EnrolledDemoPage.html';
+                });        
+            });
+        } else {
             $http.post('/acceptChild', sendID)
             .then(function(response) {
-               alert("Child has been accepted into the program!");
-               $scope.CloseModal();
-               window.location.href = 'EnrolledDemoPage.html';
-            });        
-        });
+                alert("Child has been accepted into the program!");
+                $scope.CloseModal();
+                window.location.href = 'EnrolledDemoPage.html';
+            });    
+        }
     };
 
 
