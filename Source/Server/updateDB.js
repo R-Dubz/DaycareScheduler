@@ -72,6 +72,27 @@ This library holds functions to be used in order to modify the database
 		db.close();
 	},
 
+    storeProfile: function(child){
+
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+			
+		db.run("UPDATE CurrentProfile SET ProfileID = $ProfileID WHERE RowID = 1", {
+			$ProfileID: child.ChildID	
+		});
+		
+		db.close();
+    },
+
+
 	editFromProfile: function(info) {
 		var fs = require("fs");
 		var file = "./Source/Server/Data/DaycareDB.db";
@@ -131,7 +152,7 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		db.run("UPDATE Personal_Information SET EnrollmentStatus = 'E' WHERE ChildID = $ChildID", {
+		db.run("UPDATE Personal_Information SET EnrollmentStatus = 'E', Classroom = '" + info[1] + "'  WHERE ChildID = $ChildID", {
 			$ChildID: info[0],
 		});
 
@@ -148,7 +169,7 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		db.all("SELECT ChildID, ChildName, ChildBirthdate, HomePhone, GuardianName1, GuardianStatus1, GuardianName2, GuardianStatus2, TimeStamp, DesiredEnrollment, AgeGroup, RequiredDays FROM Personal_Information WHERE EnrollmentStatus = 'E'", function(err, row) {
+		db.all("SELECT ChildID, ChildName, ChildBirthdate, Classroom, HomePhone, GuardianName1, GuardianStatus1, GuardianName2, GuardianStatus2, TimeStamp, DesiredEnrollment, AgeGroup, RequiredDays FROM Personal_Information WHERE EnrollmentStatus = 'E'", function(err, row) {
 			if (err){
 				callback(err);
 				return;
@@ -159,7 +180,7 @@ This library holds functions to be used in order to modify the database
 		db.close();
 	},
 
-		callProfile : function(info, callback){
+	callProfile : function(info, callback){
 		var fs = require("fs");
 		var file = "./Source/Server/Data/DaycareDB.db";
 		var exists = fs.existsSync(file);
@@ -169,9 +190,9 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		db.all("SELECT * FROM Personal_Information WHERE ChildID = $ChildID", {$ChildID: info.ChildID},
+		db.all("SELECT * FROM Personal_Information WHERE ChildID = $ChildID", {$ChildID: info[0].ProfileID},
 		 function(err, row) {
-			$ChildID = info[0];
+			$ChildID = info[0].ProfileID;
 			if (err){
 				callback(err);
 				return;
@@ -192,10 +213,9 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		db.all("SELECT * FROM $Table WHERE ChildID = $ChildID", {$ChildID: info.ChildID, $Table: info.Classroom},
+		db.all("SELECT * FROM " + info.Classroom + " WHERE ChildID = $ChildID", {$ChildID: info.ID},
 		 function(err, row) {
-			$Table = info[0];
-			$ChildID = info[0];
+			$ChildID = info.ID;
 			if (err){
 				callback(err);
 				return;
@@ -203,6 +223,117 @@ This library holds functions to be used in order to modify the database
 			callback(null, row);
 		});
 
+		db.close();
+	},
+
+	callAllClass : function(info, callback){
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+
+		db.all("SELECT * FROM " + info.Classroom, {$ChildID: info.ID},
+		 function(err, row) {
+			//$ChildID = info.ID;
+			if (err){
+				callback(err);
+				return;
+			}				
+			callback(null, row);
+		});
+
+		db.close();
+	},
+
+//Next 3 Functions need to be fixed for correct variable names as well as add inputs to the functions.
+
+	childToClass: function(info) {
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+			
+		db.run("INSERT INTO " + info.Classroom + " (ChildID, MondayIn, MondayOut, TuesdayIn, TuesdayOut, WednesdayIn, WednesdayOut, ThursdayIn, ThursdayOut, FridayIn, FridayOut) VALUES ($ChildID, $MondayIn, $MondayOut, $TuesdayIn, $TuesdayOut, $WednesdayIn, $WednesdayOut, $ThursdayIn, $ThursdayOut, $FridayIn, $FridayOut)", {
+			$ChildID: info.ChildID,
+			$MondayIn: info.MondayIn,
+			$MondayOut: info.MondayOut,
+			$TuesdayIn: info.TuesdayIn,
+			$TuesdayOut: info.TuesdayOut,
+			$WednesdayIn: info.WednesdayIn,
+			$WednesdayOut: info.WednesdayOut,
+			$ThursdayIn: info.ThursdayIn,
+			$ThursdayOut: info.ThursdayOut,
+			$FridayIn: info.FridayIn,
+			$FridayOut: info.FridayOut
+		});
+
+		db.run("UPDATE Personal_Information SET Classroom = '" + info.Classroom + "' WHERE ChildID = $ChildID", {
+			$ChildID: info.ChildID,
+		});
+		
+		db.close();
+	},
+
+	editChildClass: function(info) {
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+			
+		db.run("UPDATE " + info.Classroom + " SET MondayIn = $MondayIn, MondayOut = $MondayOut, TuesdayIn = $TuesdayIn, TuesdayOut = $TuesdayOut, WednesdayIn = $WednesdayIn, WednesdayOut = $WednesdayOut, ThursdayIn = $ThursdayIn, ThursdayOut = $ThursdayOut, FridayIn = $FridayIn, FridayOut = $FridayOut WHERE ChildID = $ChildID", {
+			$ChildID: info.ChildID,
+			//$Table: info.Classroom,
+			$MondayIn: info.MondayIn,
+			$MondayOut: info.MondayOut,
+			$TuesdayIn: info.TuesdayIn,
+			$TuesdayOut: info.TuesdayOut,
+			$WednesdayIn: info.WednesdayIn,
+			$WednesdayOut: info.WednesdayOut,
+			$ThursdayIn: info.ThursdayIn,
+			$ThursdayOut: info.ThursdayOut,
+			$FridayIn: info.FridayIn,
+			$FridayOut: info.FridayOut
+		});
+		
+		db.close();
+	},
+
+	deleteChild: function(info) {
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+			
+		db.run("DELETE FROM " + info.oldClassroom + " WHERE ChildID = $ChildID", {
+			$ChildID: info.ChildID,
+		});
+
+		db.run("UPDATE Personal_Information SET Classroom = '' WHERE ChildID = $ChildID", {
+			$ChildID: info.ChildID,
+		});
+		
 		db.close();
 	},
 };

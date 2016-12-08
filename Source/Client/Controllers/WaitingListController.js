@@ -38,7 +38,7 @@
         $scope.storeProfile = function(child){
             $http.post('/storeTempProfile', child)
             .then(function(response) {
-                window.location.href = 'DemoPage.html';
+                window.location.href = 'WaitingDemoPage.html';
             });
         };
 
@@ -48,22 +48,6 @@
                 // alert("HTTP request set, getting data");
                 // $scope.Children.push(response.data);
                 $scope.Profile.push(response);
-            });
-        };
-
-        $scope.acceptChild = function(ID){
-            var sendID = [];
-            sendID.push(ID);
-            $http.post('/acceptChild', sendID)
-            .then(function(response) {
-                var acceptedChild = [];
-                for(var i = 0; i < $scope.Children.length; i++){
-                    if($scope.Children[i].ChildID === ID){
-                        $scope.Children.splice(i, 1);
-                        return;
-                    }
-                }
-                console.log("Child has been accepted into the program!");
             });
         };
 

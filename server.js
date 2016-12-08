@@ -18,6 +18,7 @@ app.use(express.static(__dirname + '/'));
 
 
 app.get('/', function (req, res) {
+    console.log("Loading Home Page...");
     res.sendFile('/Source/Client/Templates/Home.html', {root: __dirname });
 });
 
@@ -46,6 +47,7 @@ app.get('/', function (req, res) {
         // handle the error here
       }
       // send the data
+      console.log("Refreshing Database...");
       res.send(data);
     })
   });
@@ -57,29 +59,69 @@ app.get('/', function (req, res) {
         // handle the error here
       }
       // send the data
+      console.log("Loading Waiting List...");
       res.send(data);
     })
   });
 
   app.post('/storeTempProfile', jsonParser, function (req, res) {
-    profileStorage.storeProfile(req.body); 
+    updateDB.storeProfile(req.body); 
+    console.log("Storing Temp Profile...");
     return res.sendStatus(200);
   }); 
 
   app.get('/getTempProfile', function (req, res) {
-    profileStorage.retrieveProfile(function(err, data){
+    profileStorage.callProfileDB(function(err, data){
       if(err) {
         // handle the error here
       }
       // send the data
-      res.send(data);
+      profileStorage.retrieveProfile(data, function(err, data1){
+        if(err) {
+          // handle the error here
+        }
+        // send the data
+        console.log("Sending Profile...");
+        res.send(data1);
+    })
     })
   });
 
   app.post('/acceptChild', jsonParser, function (req, res) {
     updateDB.acceptChild(req.body); 
+    console.log("Accepting Child...");
     return res.sendStatus(200);
   }); 
+
+  app.post('/editChildClassroom', jsonParser, function (req, res) {
+    updateDB.editChildClass(req.body);
+    console.log("Editing Child...");
+    return res.sendStatus(200);
+  });
+
+  app.post('/deleteChildFromClassroom', jsonParser, function (req, res) {
+    updateDB.deleteChild(req.body);
+    console.log("Deleting Child...");
+    return res.sendStatus(200);
+  });
+
+  app.post('/InsertChildToClass', jsonParser, function (req, res) {
+    updateDB.childToClass(req.body); 
+    console.log("Inserting Child into Classroom...");
+    return res.sendStatus(200);
+  }); 
+
+    app.get('/getChildClass', jsonParser, function (req, res) {
+    updateDB.callClass(req.query, function(err, data){
+      if(err) {
+        // handle the error here
+        console.log(err);
+      }
+      // send the data
+      console.log("Sending Classroom info for Child...");
+      res.send(data);
+    })
+  });
 
   app.get('/callEnrolledList', function (req, res) {
     updateDB.callEnrolledList(function(err, data){
@@ -87,16 +129,33 @@ app.get('/', function (req, res) {
         // handle the error here
       }
       // send the data
+      console.log("Loading Enrolled List...");
       res.send(data);
     })
   });
 
   app.post('/test', jsonParser, function (req, res) {
     updateDB.editFromProfile(req.body); 
+    console.log("Applying Profile Changes...");
     return res.sendStatus(200);
   }); 
 
+app.get('/callAllClass', function (req, res) {
+    updateDB.callAllClass(function(err, data){
+      if(err) {
+        // handle the error here
+      }
+      // send the data
+      console.log("Loading Rooms List...");
+      res.send(data);
+    })
+  });
 
+  app.post('/test', jsonParser, function (req, res) {
+    updateDB.editFromProfile(req.body); 
+    console.log("Applying Profile Changes...");
+    return res.sendStatus(200);
+  }); 
 
 app.listen(3000);
 console.log("running at port 3000");
