@@ -18,7 +18,7 @@
   <button class="dropbtn">||||</button>
   <div class="dropdown-content">
     <a href="Home.html">Home</a>
-    <a href="Rooms.html">Rooms</a>
+        <a href="RoomSchedule.html">Rooms</a>
     <a href="Employees.html">Employees</a>
     <a href="Children.html">Children</a>
     <a href="sChildren.html">Schedule Classrooms</a>
@@ -138,7 +138,7 @@
 </thead>
 
 
-<tr ng-repeat="child in Children | orderBy:sortType:sortReverse | filter:searchText">
+<tr ng-repeat="child in Children | orderBy:['TimeStamp', 'GuardianStatus1', 'AgeGroup'] | filter:searchText"> 
     <th>{{child.ChildName}}</th>
     <th>{{child.ChildBirthdate}}</th>
     <th>{{child.HomePhone}}</th>

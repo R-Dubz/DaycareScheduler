@@ -11,9 +11,6 @@ angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', f
         $scope.callEnrolledList = function() {
             $http.get('/callEnrolledList')
             .then(function(response) {
-                // alert("HTTP request set, getting data");
-                // $scope.Children.push(response.data);
-
                 for(var i = 0; i < response.data.length; i++){
                     response.data[i].jsFriendlyBirthDate = new Date(response.data[i].ChildBirthdate);
                     response.data[i].jsFriendlyTimeStamp = new Date(response.data[i].TimeStamp);
