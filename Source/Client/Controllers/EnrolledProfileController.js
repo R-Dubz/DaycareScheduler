@@ -87,7 +87,7 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
                 window.location.reload(true); 
             });
         }
-        else if($scope.Profile[0].Classroom === ""){
+        else if($scope.Profile[0].Classroom === "" || $scope.Profile[0].Classroom === "null"){
             $http.post('/InsertChildToClass', changes)
             .then(function(response) {
                 alert("Child has been inserted into the classroom!"); 
