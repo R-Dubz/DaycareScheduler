@@ -56,6 +56,22 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
     };
 
     $scope.EditClassroomInfo = function(ID){
+
+        if((document.getElementById('MondayIn').value === "null" && document.getElementById('MondayOut').value !== "null") ||
+           (document.getElementById('MondayIn').value !== "null" && document.getElementById('MondayOut').value === "null") ||
+           (document.getElementById('TuesdayIn').value === "null" && document.getElementById('TuesdayOut').value !== "null") ||
+           (document.getElementById('TuesdayIn').value !== "null" && document.getElementById('TuesdayOut').value === "null") ||
+           (document.getElementById('WednesdayIn').value === "null" && document.getElementById('WednesdayOut').value !== "null") ||
+           (document.getElementById('WednesdayIn').value !== "null" && document.getElementById('WednesdayOut').value === "null") ||
+           (document.getElementById('ThursdayIn').value === "null" && document.getElementById('ThursdayOut').value !== "null") ||
+           (document.getElementById('ThursdayIn').value !== "null" && document.getElementById('ThursdayOut').value === "null") ||
+           (document.getElementById('FridayIn').value === "null" && document.getElementById('FridayOut').value !== "null") ||
+           (document.getElementById('FridayIn').value !== "null" && document.getElementById('FridayOut').value === "null")){
+            alert("One of the days is missing an In/Out time. Please try again.");
+            return;
+        }
+
+
         var changes = {};
         changes.ChildID = $scope.Profile[0].ChildID;
         changes.oldClassroom = $scope.Profile[0].Classroom;

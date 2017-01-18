@@ -263,18 +263,18 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 			
-		db.run("INSERT INTO " + info.Classroom + " (ChildID, MondayIn, MondayOut, TuesdayIn, TuesdayOut, WednesdayIn, WednesdayOut, ThursdayIn, ThursdayOut, FridayIn, FridayOut) VALUES ($ChildID, $MondayIn, $MondayOut, $TuesdayIn, $TuesdayOut, $WednesdayIn, $WednesdayOut, $ThursdayIn, $ThursdayOut, $FridayIn, $FridayOut)", {
+		db.run("INSERT INTO " + info.Classroom + " (ChildID, MI1, MO1, TI1, TO1, WI1, WO1, ThI1, ThO1, FI1, FO1) VALUES ($ChildID, $MI1, $MO1, $TI1, $TO1, $WI1, $WO1, $ThI1, $ThO1, $FI1, $FO1)", {
 			$ChildID: info.ChildID,
-			$MondayIn: info.MondayIn,
-			$MondayOut: info.MondayOut,
-			$TuesdayIn: info.TuesdayIn,
-			$TuesdayOut: info.TuesdayOut,
-			$WednesdayIn: info.WednesdayIn,
-			$WednesdayOut: info.WednesdayOut,
-			$ThursdayIn: info.ThursdayIn,
-			$ThursdayOut: info.ThursdayOut,
-			$FridayIn: info.FridayIn,
-			$FridayOut: info.FridayOut
+			$MI1: info.MI1,
+			$MO1: info.MO1,
+			$TI1: info.TI1,
+			$TO1: info.TO1,
+			$WI1: info.WI1,
+			$WO1: info.WO1,
+			$ThI1: info.ThI1,
+			$ThO1: info.ThO1,
+			$FI1: info.FI1,
+			$FO1: info.FO1
 		});
 
 		db.run("UPDATE Personal_Information SET Classroom = '" + info.Classroom + "' WHERE ChildID = $ChildID", {
@@ -296,19 +296,19 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 			
-		db.run("UPDATE " + info.Classroom + " SET MondayIn = $MondayIn, MondayOut = $MondayOut, TuesdayIn = $TuesdayIn, TuesdayOut = $TuesdayOut, WednesdayIn = $WednesdayIn, WednesdayOut = $WednesdayOut, ThursdayIn = $ThursdayIn, ThursdayOut = $ThursdayOut, FridayIn = $FridayIn, FridayOut = $FridayOut WHERE ChildID = $ChildID", {
+		db.run("UPDATE " + info.Classroom + " SET MonI1 = $MonI1, MonO1 = $MonO1, TuesI1 = $TuesI1, TuesO1 = $TuesO1, WednesI1 = $WednesI1, WednesO1 = $WednesO1, ThursI1 = $ThursI1, ThursO1 = $ThursO1, FriI1 = $FriI1, FriO1 = $FriO1 WHERE ChildID = $ChildID", {
 			$ChildID: info.ChildID,
 			//$Table: info.Classroom,
-			$MondayIn: info.MondayIn,
-			$MondayOut: info.MondayOut,
-			$TuesdayIn: info.TuesdayIn,
-			$TuesdayOut: info.TuesdayOut,
-			$WednesdayIn: info.WednesdayIn,
-			$WednesdayOut: info.WednesdayOut,
-			$ThursdayIn: info.ThursdayIn,
-			$ThursdayOut: info.ThursdayOut,
-			$FridayIn: info.FridayIn,
-			$FridayOut: info.FridayOut
+			$MonI1: info.MonI1,
+			$MonO1: info.MonO1,
+			$TuesI1: info.TuesI1,
+			$TuesO1: info.TuesO1,
+			$WednesI1: info.WednesI1,
+			$WednesO1: info.WednesO1,
+			$ThursI1: info.ThursI1,
+			$ThursO1: info.ThursO1,
+			$FriI1: info.FriI1,
+			$FriO1: info.FriO1
 		});
 		
 		db.close();
