@@ -46,18 +46,33 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
 
     $scope.acceptChild = function(ID){
         var sendID = [];
+
+        if((document.getElementById('MondayIn').value === "null" && document.getElementById('MondayOut').value !== "null") ||
+           (document.getElementById('MondayIn').value !== "null" && document.getElementById('MondayOut').value === "null") ||
+           (document.getElementById('TuesdayIn').value === "null" && document.getElementById('TuesdayOut').value !== "null") ||
+           (document.getElementById('TuesdayIn').value !== "null" && document.getElementById('TuesdayOut').value === "null") ||
+           (document.getElementById('WednesdayIn').value === "null" && document.getElementById('WednesdayOut').value !== "null") ||
+           (document.getElementById('WednesdayIn').value !== "null" && document.getElementById('WednesdayOut').value === "null") ||
+           (document.getElementById('ThursdayIn').value === "null" && document.getElementById('ThursdayOut').value !== "null") ||
+           (document.getElementById('ThursdayIn').value !== "null" && document.getElementById('ThursdayOut').value === "null") ||
+           (document.getElementById('FridayIn').value === "null" && document.getElementById('FridayOut').value !== "null") ||
+           (document.getElementById('FridayIn').value !== "null" && document.getElementById('FridayOut').value === "null")){
+            alert("One of the days is missing an In/Out time. Please try again.");
+            return;
+        }
+
         sendID.push(ID.ChildID);
         ID.Classroom = document.getElementById('Classroom').value;
-        ID.MondayIn = document.getElementById('MondayIn').value;
-        ID.MondayOut = document.getElementById('MondayOut').value;
-        ID.TuesdayIn = document.getElementById('TuesdayIn').value;
-        ID.TuesdayOut = document.getElementById('TuesdayOut').value;
-        ID.WednesdayIn = document.getElementById('WednesdayIn').value;
-        ID.WednesdayOut = document.getElementById('WednesdayOut').value;
-        ID.ThursdayIn = document.getElementById('ThursdayIn').value;
-        ID.ThursdayOut = document.getElementById('ThursdayOut').value;
-        ID.FridayIn = document.getElementById('FridayIn').value;
-        ID.FridayOut = document.getElementById('FridayOut').value;
+        ID.MI1 = document.getElementById('MondayIn').value;
+        ID.MO1 = document.getElementById('MondayOut').value;
+        ID.TI1 = document.getElementById('TuesdayIn').value;
+        ID.TO1 = document.getElementById('TuesdayOut').value;
+        ID.WI1 = document.getElementById('WednesdayIn').value;
+        ID.WO1 = document.getElementById('WednesdayOut').value;
+        ID.ThI1 = document.getElementById('ThursdayIn').value;
+        ID.ThO1 = document.getElementById('ThursdayOut').value;
+        ID.FI1 = document.getElementById('FridayIn').value;
+        ID.FO1 = document.getElementById('FridayOut').value;
         sendID.push(ID.Classroom);
         if(ID.Classroom !== "null"){
             $http.post('/InsertChildToClass', ID)
