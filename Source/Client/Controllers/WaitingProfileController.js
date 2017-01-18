@@ -7,8 +7,7 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
 
     $scope.backToList = function() {
       window.location.href = 'Waiting_list.html';
-    };
-
+    }
 
     $scope.LoadTempProfile = function() {
         $http.get('/getTempProfile')
@@ -99,6 +98,8 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
 
     /* MODAL JUNK */
 
+    $scope.numOfRows = 1;
+
     $scope.OpenModal = function() {
         $scope.ShowModal = true;
     }
@@ -108,7 +109,9 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
     }
 
     $scope.addSetOfDays = function(){
-        
+        if($scope.numOfRows < 3){
+        $scope.numOfRows = $scope.numOfRows+1;
+        }
     } 
 
     // When the user clicks anywhere outside of the modal, close it
