@@ -256,6 +256,107 @@
         <option value="17.75">5:45 PM</option>
         </select>
         </th>
+
+        <span ng-if="numOfRows === 2">
+        <th>
+        <select id="MondayIn">
+        <option ng-selected="ClassroomInfo.MI1 === null" value="null">        </option>
+        <option ng-selected="ClassroomInfo.MI1 === '7'" value="7">7:00 AM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '7.25'" value="7.25">7:15 AM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '7.5'" value="7.5">7:30 AM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '7.75'" value="7.75">7:45 AM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '8'" value="8">8:00 AM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '8.25'" value="8.25">8:15 AM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '8.5'" value="8.5">8:30 AM</option>        
+        <option ng-selected="ClassroomInfo.MI1 === '8.75'" value="8.75">8:45 AM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '9'" value="9">9:00 AM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '9.25'" value="9.25">9:15 AM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '9.5'" value="9.5">9:30 AM</option>        
+        <option ng-selected="ClassroomInfo.MI1 === '9.75'" value="9.75">9:45 AM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '10'" value="10">10:00 AM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '10.25'" value="10.25">10:15 AM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '10.5'" value="10.5">10:30 AM</option>        
+        <option ng-selected="ClassroomInfo.MI1 === '10.75'" value="10.75">10:45 AM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '11'" value="11">11:00 AM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '11.25'" value="11.25">11:15 AM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '11.5'" value="11.5">11:30 AM</option>        
+        <option ng-selected="ClassroomInfo.MI1 === '11.75'" value="11.75">11:45 AM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '12'" value="12">12:00 PM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '12.25'" value="12.25">12:15 PM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '12.5'" value="12.5">12:30 PM</option>        
+        <option ng-selected="ClassroomInfo.MI1 === '12.75'" value="12.75">12:45 PM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '13'" value="13">1:00 PM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '13.25'" value="13.25">1:15 PM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '13.5'" value="13.5">1:30 PM</option>        
+        <option ng-selected="ClassroomInfo.MI1 === '13.75'" value="13.75">1:45 PM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '14'" value="14">2:00 PM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '14.25'" value="14.25">2:15 PM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '14.5'" value="14.5">2:30 PM</option>        
+        <option ng-selected="ClassroomInfo.MI1 === '14.75'" value="14.75">2:45 PM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '15'" value="15">3:00 PM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '15.25'" value="15.25">3:15 PM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '15.5'" value="15.5">3:30 PM</option>        
+        <option ng-selected="ClassroomInfo.MI1 === '15.75'" value="15.75">3:45 PM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '16'" value="16">4:00 PM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '16.25'" value="16.25">4:15 PM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '16.5'" value="16.5">4:30 PM</option>        
+        <option ng-selected="ClassroomInfo.MI1 === '16.75'" value="16.75">4:45 PM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '17'" value="17">5:00 PM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '17.25'" value="17.25">5:15 PM</option>
+        <option ng-selected="ClassroomInfo.MI1 === '17.5'" value="17.5">5:30 PM</option>        
+        <option ng-selected="ClassroomInfo.MI1 === '17.75'" value="17.75">5:45 PM</option>
+        </select>        </th>
+        <th>
+        <select id="MondayOut">
+        <option ng-selected="ClassroomInfo.MO1 === null" value="null">        </option>
+        <option ng-selected="ClassroomInfo.MO1 === '7'" value="7">7:00 AM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '7.25'" value="7.25">7:15 AM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '7.5'" value="7.5">7:30 AM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '7.75'" value="7.75">7:45 AM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '8'" value="8">8:00 AM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '8.25'" value="8.25">8:15 AM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '8.5'" value="8.5">8:30 AM</option>        
+        <option ng-selected="ClassroomInfo.MO1 === '8.75'" value="8.75">8:45 AM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '9'" value="9">9:00 AM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '9.25'" value="9.25">9:15 AM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '9.5'" value="9.5">9:30 AM</option>        
+        <option ng-selected="ClassroomInfo.MO1 === '9.75'" value="9.75">9:45 AM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '10'" value="10">10:00 AM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '10.25'" value="10.25">10:15 AM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '10.5'" value="10.5">10:30 AM</option>        
+        <option ng-selected="ClassroomInfo.MO1 === '10.75'" value="10.75">10:45 AM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '11'" value="11">11:00 AM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '11.25'" value="11.25">11:15 AM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '11.5'" value="11.5">11:30 AM</option>        
+        <option ng-selected="ClassroomInfo.MO1 === '11.75'" value="11.75">11:45 AM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '12'" value="12">12:00 PM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '12.25'" value="12.25">12:15 PM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '12.5'" value="12.5">12:30 PM</option>        
+        <option ng-selected="ClassroomInfo.MO1 === '12.75'" value="12.75">12:45 PM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '13'" value="13">1:00 PM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '13.25'" value="13.25">1:15 PM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '13.5'" value="13.5">1:30 PM</option>        
+        <option ng-selected="ClassroomInfo.MO1 === '13.75'" value="13.75">1:45 PM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '14'" value="14">2:00 PM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '14.25'" value="14.25">2:15 PM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '14.5'" value="14.5">2:30 PM</option>        
+        <option ng-selected="ClassroomInfo.MO1 === '14.75'" value="14.75">2:45 PM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '15'" value="15">3:00 PM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '15.25'" value="15.25">3:15 PM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '15.5'" value="15.5">3:30 PM</option>        
+        <option ng-selected="ClassroomInfo.MO1 === '15.75'" value="15.75">3:45 PM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '16'" value="16">4:00 PM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '16.25'" value="16.25">4:15 PM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '16.5'" value="16.5">4:30 PM</option>        
+        <option ng-selected="ClassroomInfo.MO1 === '16.75'" value="16.75">4:45 PM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '17'" value="17">5:00 PM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '17.25'" value="17.25">5:15 PM</option>
+        <option ng-selected="ClassroomInfo.MO1 === '17.5'" value="17.5">5:30 PM</option>        
+        <option ng-selected="ClassroomInfo.MO1 === '17.75'" value="17.75">5:45 PM</option>
+        </select>
+        </th>
+        </span>
+        
         </tr>
         <tr>        
         <th>Tuesday</th>
