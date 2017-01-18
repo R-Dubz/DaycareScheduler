@@ -114,6 +114,12 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
         }
     } 
 
+    $scope.subSetOfDays = function(){
+        if($scope.numOfRows > 0){
+        $scope.numOfRows = $scope.numOfRows-1;
+        }
+    } 
+
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {  
         if (event.target == modal) {
