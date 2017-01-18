@@ -132,11 +132,9 @@
         <div id="myModal" class="modal" ng-show="ShowModal">
 
         <!-- Modal content -->
-       <header>
-	<div class="close" ng-click="CloseModal()">×</div>
-	</header> 
-        <div class="modal-content" style="width: 250px; height: 250px"> 
-        <div class="close" ng-click="addSetOfDays()">+ {{numOfRows}}</div>
+	
+        <div id="modalContent" class="modal-content" style="width: 250px; height: 250px"> 
+        <span class="close" ng-click="CloseModal()">×</span>
         <div style="text-align: center;"> Classroom:
         <select id="Classroom">
                 <option value="null">           </option>
@@ -149,6 +147,7 @@
                 <option value="SchoolAge">School Age</option>
                 <option value="Classroom8">Classroom 8</option>  
         </select>
+        <div ng-click="addSetOfDays()">+ {{numOfRows}}</div>
         </div>
         <table>
 	<tr>
@@ -257,9 +256,8 @@
         </select>
         </th>
 
-        <span ng-if="numOfRows === 2">
-        <th>
-        <select id="MondayIn">
+        <th ng-if="numOfRows === 2">
+        <select id="MondayIn1">
         <option ng-selected="ClassroomInfo.MI1 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.MI1 === '7'" value="7">7:00 AM</option>
         <option ng-selected="ClassroomInfo.MI1 === '7.25'" value="7.25">7:15 AM</option>
@@ -307,7 +305,7 @@
         <option ng-selected="ClassroomInfo.MI1 === '17.75'" value="17.75">5:45 PM</option>
         </select>        </th>
         <th>
-        <select id="MondayOut">
+        <select id="MondayOut1" ng-if="numOfRows === 2">
         <option ng-selected="ClassroomInfo.MO1 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.MO1 === '7'" value="7">7:00 AM</option>
         <option ng-selected="ClassroomInfo.MO1 === '7.25'" value="7.25">7:15 AM</option>
@@ -355,7 +353,6 @@
         <option ng-selected="ClassroomInfo.MO1 === '17.75'" value="17.75">5:45 PM</option>
         </select>
         </th>
-        </span>
         
         </tr>
         <tr>        

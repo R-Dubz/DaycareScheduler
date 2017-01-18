@@ -112,6 +112,10 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
         if($scope.numOfRows < 3){
         $scope.numOfRows = $scope.numOfRows+1;
         }
+
+        if($scope.numOfRows === 2){
+        document.getElementById('modalContent').style.width = "450px";
+        }
     } 
 
     // When the user clicks anywhere outside of the modal, close it

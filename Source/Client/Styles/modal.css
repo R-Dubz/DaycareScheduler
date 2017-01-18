@@ -27,9 +27,9 @@
     float: right;
     font-size: 28px;
     font-weight: bold;
-    position:absolute;
-    top:0;
-    right:0;
+    position: relative;
+    top: -25px;
+    right: -15px;
 }
 
 .close:hover,
