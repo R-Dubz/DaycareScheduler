@@ -249,7 +249,8 @@ This library holds functions to be used in order to modify the database
 		db.close();
 	},
 
-//Next 3 Functions need to be fixed for correct variable names as well as add inputs to the functions.
+//The next 3 functions; childToClass, editChildClass, and deleteChild work with the modals on the child profile pages.
+//These functions exist to move children to and from classrooms as well as store departure and arrival times throughout the week.
 
 	childToClass: function(info) {
 		var fs = require("fs");
@@ -316,19 +317,39 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 			
-		db.run("UPDATE " + info.Classroom + " SET MonI1 = $MonI1, MonO1 = $MonO1, TuesI1 = $TuesI1, TuesO1 = $TuesO1, WednesI1 = $WednesI1, WednesO1 = $WednesO1, ThursI1 = $ThursI1, ThursO1 = $ThursO1, FriI1 = $FriI1, FriO1 = $FriO1 WHERE ChildID = $ChildID", {
+		db.run("UPDATE " + info.Classroom + " SET MI1 = $MonI1, MI2 = $MonI2, MI3 = $MonI3, MO1 = $MonO1, MO2 = $MonO2, MO3 = $MonO3, TI1 = $TuesI1, TI2 = $TuesI2, TI3 = $TuesI3, TO1 = $TuesO1, TO2 = $TuesO2, TO3 = $TuesO3, WI1 = $WednesI1, WI2 = $WednesI2, WI3 = $WednesI3, WO1 = $WednesO1, WO2 = $WednesO2, WO3 = $WednesO3, THI1 = $ThursI1, THI2 = $ThursI2, THI3 = $ThursI3, THO1 = $ThursO1, THO2 = $ThursO2, THO3 = $ThursO3, FI1 = $FriI1, FI2 = $FriI2, FI3 = $FriI3, FO1 = $FriO1, FO2 = $FriO2, FO3 = $FriO3 WHERE ChildID = $ChildID", {
 			$ChildID: info.ChildID,
 			//$Table: info.Classroom,
 			$MonI1: info.MonI1,
+			$MonI2: info.MonI2,
+			$MonI3: info.MonI3,
 			$MonO1: info.MonO1,
+			$MonO2: info.MonO2,
+			$MonO3: info.MonO3,
 			$TuesI1: info.TuesI1,
+			$TuesI2: info.TuesI2,
+			$TuesI3: info.TuesI3,
 			$TuesO1: info.TuesO1,
+			$TuesO2: info.TuesO2,
+			$TuesO3: info.TuesO3,
 			$WednesI1: info.WednesI1,
+			$WednesI2: info.WednesI2,
+			$WednesI3: info.WednesI3,
 			$WednesO1: info.WednesO1,
+			$WednesO2: info.WednesO2,
+			$WednesO3: info.WednesO3,
 			$ThursI1: info.ThursI1,
+			$ThursI2: info.ThursI2,
+			$ThursI3: info.ThursI3,
 			$ThursO1: info.ThursO1,
+			$ThursO2: info.ThursO2,
+			$ThursO3: info.ThursO3,
 			$FriI1: info.FriI1,
-			$FriO1: info.FriO1
+			$FriI2: info.FriI2,
+			$FriI3: info.FriI3,
+			$FriO1: info.FriO1,
+			$FriO2: info.FriO2,
+			$FriO3: info.FriO3
 		});
 		
 		db.close();
