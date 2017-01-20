@@ -76,16 +76,36 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
         changes.ChildID = $scope.Profile[0].ChildID;
         changes.oldClassroom = $scope.Profile[0].Classroom;
         changes.Classroom = document.getElementById('Classroom').value;
-        changes.MondayIn = document.getElementById('MondayIn').value;
-        changes.MondayOut = document.getElementById('MondayOut').value;
-        changes.TuesdayIn = document.getElementById('TuesdayIn').value;
-        changes.TuesdayOut = document.getElementById('TuesdayOut').value;
-        changes.WednesdayIn = document.getElementById('WednesdayIn').value;
-        changes.WednesdayOut = document.getElementById('WednesdayOut').value;
-        changes.ThursdayIn = document.getElementById('ThursdayIn').value;
-        changes.ThursdayOut = document.getElementById('ThursdayOut').value;
-        changes.FridayIn = document.getElementById('FridayIn').value;
-        changes.FridayOut = document.getElementById('FridayOut').value;
+        changes.MI1 = document.getElementById('MondayIn').value;
+        changes.MI2 = document.getElementById('MondayIn2').value;
+        changes.MI3 = document.getElementById('MondayIn3').value;
+        changes.MO1 = document.getElementById('MondayOut').value;
+        changes.MO2 = document.getElementById('MondayOut2').value;
+        changes.MO3 = document.getElementById('MondayOut3').value;
+        changes.TI1 = document.getElementById('TuesdayIn').value;
+        changes.TI2 = document.getElementById('TuesdayIn2').value;
+        changes.TI3 = document.getElementById('TuesdayIn3').value;
+        changes.TO1 = document.getElementById('TuesdayOut').value;
+        changes.TO2 = document.getElementById('TuesdayOut2').value;
+        changes.TO3 = document.getElementById('TuesdayOut3').value;
+        changes.WI1 = document.getElementById('WednesdayIn').value;
+        changes.WI2 = document.getElementById('WednesdayIn2').value;
+        changes.WI3 = document.getElementById('WednesdayIn3').value;
+        changes.WO1 = document.getElementById('WednesdayOut').value;
+        changes.WO2 = document.getElementById('WednesdayOut2').value;
+        changes.WO3 = document.getElementById('WednesdayOut3').value;
+        changes.THI1 = document.getElementById('ThursdayIn').value;
+        changes.THI2 = document.getElementById('ThursdayIn2').value;
+        changes.THI3 = document.getElementById('ThursdayIn3').value;
+        changes.THO1 = document.getElementById('ThursdayOut').value;
+        changes.THO2 = document.getElementById('ThursdayOut2').value;
+        changes.THO3 = document.getElementById('ThursdayOut3').value;
+        changes.FI1 = document.getElementById('FridayIn').value;
+        changes.FI2 = document.getElementById('FridayIn2').value;
+        changes.FI3 = document.getElementById('FridayIn3').value;
+        changes.FO1 = document.getElementById('FridayOut').value;
+        changes.FO2 = document.getElementById('FridayOut2').value;
+        changes.FO3 = document.getElementById('FridayOut3').value;
 
         if (document.getElementById('Classroom').value === "null") {
             $http.post('/deleteChildFromClassroom', changes)

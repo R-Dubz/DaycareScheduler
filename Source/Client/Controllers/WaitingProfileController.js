@@ -63,15 +63,35 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
         sendID.push(ID.ChildID);
         ID.Classroom = document.getElementById('Classroom').value;
         ID.MI1 = document.getElementById('MondayIn').value;
+        ID.MI2 = document.getElementById('MondayIn2').value;
+        ID.MI3 = document.getElementById('MondayIn3').value;
         ID.MO1 = document.getElementById('MondayOut').value;
+        ID.MO2 = document.getElementById('MondayOut2').value;
+        ID.MO3 = document.getElementById('MondayOut3').value;
         ID.TI1 = document.getElementById('TuesdayIn').value;
+        ID.TI2 = document.getElementById('TuesdayIn2').value;
+        ID.TI3 = document.getElementById('TuesdayIn3').value;
         ID.TO1 = document.getElementById('TuesdayOut').value;
+        ID.TO2 = document.getElementById('TuesdayOut2').value;
+        ID.TO3 = document.getElementById('TuesdayOut3').value;
         ID.WI1 = document.getElementById('WednesdayIn').value;
+        ID.WI2 = document.getElementById('WednesdayIn2').value;
+        ID.WI3 = document.getElementById('WednesdayIn3').value;
         ID.WO1 = document.getElementById('WednesdayOut').value;
-        ID.ThI1 = document.getElementById('ThursdayIn').value;
-        ID.ThO1 = document.getElementById('ThursdayOut').value;
+        ID.WO2 = document.getElementById('WednesdayOut2').value;
+        ID.WO3 = document.getElementById('WednesdayOut3').value;
+        ID.THI1 = document.getElementById('ThursdayIn').value;
+        ID.THI2 = document.getElementById('ThursdayIn2').value;
+        ID.THI3 = document.getElementById('ThursdayIn3').value;
+        ID.THO1 = document.getElementById('ThursdayOut').value;
+        ID.THO2 = document.getElementById('ThursdayOut2').value;
+        ID.THO3 = document.getElementById('ThursdayOut3').value;
         ID.FI1 = document.getElementById('FridayIn').value;
+        ID.FI2 = document.getElementById('FridayIn2').value;
+        ID.FI3 = document.getElementById('FridayIn3').value;
         ID.FO1 = document.getElementById('FridayOut').value;
+        ID.FO2 = document.getElementById('FridayOut2').value;
+        ID.FO3 = document.getElementById('FridayOut3').value;
         sendID.push(ID.Classroom);
         if(ID.Classroom !== "null"){
             $http.post('/InsertChildToClass', ID)
