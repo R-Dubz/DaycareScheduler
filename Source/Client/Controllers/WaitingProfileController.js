@@ -102,10 +102,12 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
 
     $scope.OpenModal = function() {
         $scope.ShowModal = true;
+        document.getElementById('modalContent').style.width = "250px";
     }
 
     $scope.CloseModal = function() {
         $scope.ShowModal = false;
+        $scope.numOfRows = 1;
     }
 
     $scope.addSetOfDays = function(){
@@ -116,11 +118,21 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
         if($scope.numOfRows === 2){
         document.getElementById('modalContent').style.width = "450px";
         }
+        if($scope.numOfRows === 3){
+        document.getElementById('modalContent').style.width = "650px";
+        }
     } 
 
     $scope.subSetOfDays = function(){
-        if($scope.numOfRows > 0){
+        if($scope.numOfRows > 1){
         $scope.numOfRows = $scope.numOfRows-1;
+        }
+
+        if($scope.numOfRows === 2){
+        document.getElementById('modalContent').style.width = "450px";
+        }
+        if($scope.numOfRows === 1){
+        document.getElementById('modalContent').style.width = "250px";
         }
     } 
 
