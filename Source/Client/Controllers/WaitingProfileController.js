@@ -122,7 +122,7 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
 
     $scope.OpenModal = function() {
         $scope.ShowModal = true;
-        document.getElementById('modalContent').style.width = "250px";
+        document.getElementById('modalContent').style.width = "270px";
     }
 
     $scope.CloseModal = function() {
@@ -152,8 +152,9 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
         document.getElementById('modalContent').style.width = "450px";
         }
         if($scope.numOfRows === 1){
-        document.getElementById('modalContent').style.width = "250px";
+        document.getElementById('modalContent').style.width = "270px";
         }
+     //   document.getElementById('hideCells').style.empty-cells = "hide";
     } 
 
     // When the user clicks anywhere outside of the modal, close it

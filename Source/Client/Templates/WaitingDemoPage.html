@@ -133,27 +133,26 @@
 
         <!-- Modal content -->
 	
-        <div id="modalContent" class="modal-content" style="width: 250px; height: 250px"> 
+        <div id="modalContent" class="modal-content" style="width: 300px; height: 250px"> 
         <span class="close" ng-click="CloseModal()">×</span>
         <div style="text-align: center;"> Classroom:
         <select id="Classroom">
                 <option value="null">           </option>
-                <option value="InfantRoom">Infant Room</option>  
-                <option value="Toddler1">Toddler 1</option> 
+                <option value="InfantRoom">Infant Room</option>
+                <option value="Toddler1">Toddler 1</option>
                 <option value="Toddler2">Toddler 2</option>
                 <option value="Preschool3">Preschool 1</option>
                 <option value="Preschool4">Preschool 2</option>
                 <option value="Progressive">Progressive</option>
                 <option value="SchoolAge">School Age</option>
-                <option value="Classroom8">Classroom 8</option>  
+                <option value="Classroom8">Classroom 8</option>
         </select>
 
-        <button ng-click="subSetOfDays()">-</button>    
+        <button ng-click="subSetOfDays()">-</button>
         <button ng-click="addSetOfDays()">+</button>
-        
 
         </div>
-        <table>
+        <table style="empty-cells: hide; align: center">
 	<tr>
         <th></th>
 	<th>In</th>
