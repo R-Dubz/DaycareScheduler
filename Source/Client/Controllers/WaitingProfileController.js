@@ -123,6 +123,7 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
     $scope.OpenModal = function() {
         $scope.ShowModal = true;
         document.getElementById('modalContent').style.width = "270px";
+//        document.getElementById('inModal').style.empty-cells = "hide";
     }
 
     $scope.CloseModal = function() {
