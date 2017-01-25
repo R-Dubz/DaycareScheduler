@@ -17,6 +17,9 @@ app.use(express.static(__dirname + '/Source/Client/Templates'));
 app.use(express.static(__dirname + '/'));
 
 
+app.listen(3000);
+console.log("running at port 3000");
+
 app.get('/', function (req, res) {
     console.log("Loading Home Page...");
     res.sendFile('/Source/Client/Templates/Home.html', {root: __dirname });
@@ -157,5 +160,3 @@ app.get('/callAllClass', function (req, res) {
     return res.sendStatus(200);
   }); 
 
-app.listen(3000);
-console.log("running at port 3000");
