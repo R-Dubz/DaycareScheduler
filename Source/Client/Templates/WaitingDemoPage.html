@@ -148,8 +148,9 @@
                 <option value="Classroom8">Classroom 8</option>  
         </select>
 
+        <button ng-click="subSetOfDays()">-</button>    
         <button ng-click="addSetOfDays()">+</button>
-        <button ng-click="subSetOfDays()">-</button>
+        
 
         </div>
         <table>
@@ -263,7 +264,7 @@
         </select>
         </th>
 
-        <th ng-if="numOfRows >= 2">
+        <th ng-if="numOfRows >= 2" >
         <select id="MondayIn1">
         <option ng-selected="ClassroomInfo.MI1 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.MI1 === '7'" value="7">7:00 AM</option>
@@ -312,7 +313,7 @@
         <option ng-selected="ClassroomInfo.MI1 === '17.75'" value="17.75">5:45 PM</option>
         </select>        </th>
         <th>
-        <select id="MondayOut1" ng-if="numOfRows >= 2">
+        <select id="MondayOut1" ng-if="numOfRows >= 2" >
         <option ng-selected="ClassroomInfo.MO1 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.MO1 === '7'" value="7">7:00 AM</option>
         <option ng-selected="ClassroomInfo.MO1 === '7.25'" value="7.25">7:15 AM</option>
