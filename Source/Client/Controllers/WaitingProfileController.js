@@ -4,7 +4,6 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
     $scope.ShowModal = false;
     var modal = document.getElementById('myModal');
     var controllerFunction = $scope;
-    $scope.numOfRows = 1;
 
     $scope.backToList = function() {
       window.location.href = 'Waiting_list.html';
@@ -15,12 +14,6 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
         .then(function(response) {
             $scope.Profile.push(response.data[0]);
         });
-
-
-        if($scope.numOfRows === 1){
-        document.getElementById('MI1').style.display = none;
-
-        }
     };
 
     $scope.EditProfile = function(){
@@ -145,11 +138,12 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
 
     /* MODAL JUNK */
 
-
+    $scope.numOfRows = 1;
 
     $scope.OpenModal = function() {
         $scope.ShowModal = true;
         document.getElementById('modalContent').style.width = "270px";
+//        document.getElementById('inModal').style.empty-cells = "hide";
     }
 
     $scope.CloseModal = function() {

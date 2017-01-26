@@ -39,3 +39,7 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+td { 
+    width:0px; height:0px; 
+    }
