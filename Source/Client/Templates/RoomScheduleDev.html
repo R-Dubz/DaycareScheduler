@@ -1,0 +1,153 @@
+<DOCTYPE! html>
+<html>
+<head>
+<title>Rooms</title>
+<script type="text/javascript"></script>
+<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script>
+<script src="./app.js"></script>
+<script src="./Source/Client/Controllers/WaitingListController.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">
+<link rel="stylesheet" type="text/css" href="./Other Files/(CSS Stuff) font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
+
+<body background="sky.jpg" ng-app="DaycareApp" ng-controller="WaitingListController" ng-init="LoadWaitingList()">
+
+<h5><div class="dropdown" style="float:right;">
+  <button class="dropbtn">||||</button>
+  <div class="dropdown-content">
+    <a href="Home.html">Home</a>
+    <a href="RoomSchedule.html">Rooms</a>
+    <a href="Employees.html">Employees</a>
+    <a href="Children.html">Children</a>
+    <a href="sChildren.html">Schedule Classrooms</a>
+    <a href="sEmployee.html">Schedule Employees</a>
+    <a href="Waiting_list.html">Waiting List</a>
+  </div>
+</div></h5>
+
+
+<h1>Room Occupency</h1>
+
+<div>
+    <label>Search: <input placeholder="What are you looking for?" ng-model="searchText"></label>
+</div>
+<button type="button" ng-click="RefreshDatabase()">Refresh Database</button> 
+<div id="display"></div>
+
+<!--<table class = "TFtable">
+	<tr>
+        <th>D.O.B.</th>
+        <th>Name</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+        <th>Affiliation</th>
+        <th>Notes</th>
+    </tr>
+
+
+<tr ng-repeat="child in Children | orderBy:sortType:sortReverse | filter:searchText">
+    <th rowspan="2">{{child.ChildBirthdate}}</th>
+	<th rowspan="2">{{child.ChildName}}</th>
+    <th rowspan="2">{{child.MondayIn}}</th>
+    <th rowspan="2">{{child.TuesdayIn}}</th>
+    <th rowspan="2">{{child.WednesdayIn}}</th>
+    <th rowspan="2">{{child.ThursdayIn}}</th>
+    <th rowspan="2">{{child.FridayIn}}</th>
+    <th rowspan="2">{{child.Affiliation}}</th>
+    <th rowspan="2">{{child.notes}}</th>
+</tr>
+ <tr>
+  <td>Last name</td>
+ </tr>
+
+<tr ng-if="Children.length === 0">
+    <th style="height: 48px"></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>    
+    <th style="background: #dae5f4"></th>
+    <th style="background: #dae5f4"></th>
+</tr>
+
+</table>-->
+
+<table class = "TFtable">
+	<tr>
+        <th>D.O.B.</th>
+        <th>Name</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+        <th>Affiliation</th>
+        <th>Notes</th>
+    </tr>
+
+<tr ng-repeat="child in Children | orderBy:sortType:sortReverse | filter:searchText">
+    <th rowspan="2">{{child.ChildBirthdate}}</th>
+	<th rowspan="2">{{child.ChildName}}</th>
+    <th>X</th>
+    <th rowspan="2">{{child.TuesdayIn}}</th>
+    <th rowspan="2">{{child.WednesdayIn}}</th>
+    <th rowspan="2">{{child.ThursdayIn}}</th>
+    <th rowspan="2">{{child.FridayIn}}</th>
+    <th rowspan="2">{{child.Affiliation}}</th>
+    <th rowspan="2">{{child.notes}}</th>
+</tr>
+ <tr ng-repeat="child in Children | orderBy:sortType:sortReverse | filter:searchText">
+  <td>Last name</td>
+ </tr>
+</table>
+
+<p id="accepted"></p>
+
+<!-- text entry modal -->
+        <div id="textModal" class="modal" ng-show="ShowModal">
+                <! -- Modal text field style -->
+		<style type ="text/css">
+                        textarea {
+                            height: 490px;
+                            width: 490px;
+                        }
+		
+                        #textarea {
+                            -moz-appearance: textfield-multiline;
+                            -webkit-appearance: textarea;
+                            border: 1px solid gray;
+                            font: medium -moz-fixed;
+                            font: -webkit-small-control;
+                            height: 490px;
+                            overflow: auto;
+                            padding: 2px;
+                            resize: both;
+                            width: 490px;
+                        }
+                </style>
+	<!-- end style  -->
+
+        <!-- Modal content -->
+
+        <div id="modalContent" class="modal-content" style="width 500: px; height: 500px">
+        <span class="close" ng-click="CloseModal()">×</span>
+        <div style="text-align: center;"> Notes:
+
+        <div id="textarea" contenteditable>Enter notes here</div>
+
+</div>
+
+
+</body>
+</html>
