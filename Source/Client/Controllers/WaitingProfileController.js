@@ -62,7 +62,27 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
            (document.getElementById('ThursdayIn').value === "null" && document.getElementById('ThursdayOut').value !== "null") ||
            (document.getElementById('ThursdayIn').value !== "null" && document.getElementById('ThursdayOut').value === "null") ||
            (document.getElementById('FridayIn').value === "null" && document.getElementById('FridayOut').value !== "null") ||
-           (document.getElementById('FridayIn').value !== "null" && document.getElementById('FridayOut').value === "null")){
+           (document.getElementById('FridayIn').value !== "null" && document.getElementById('FridayOut').value === "null")
+           (document.getElementById('MondayIn2').value === "null" && document.getElementById('MondayOut2').value !== "null") ||
+           (document.getElementById('MondayIn2').value !== "null" && document.getElementById('MondayOut2').value === "null") ||
+           (document.getElementById('TuesdayIn2').value === "null" && document.getElementById('TuesdayOut2').value !== "null") ||
+           (document.getElementById('TuesdayIn2').value !== "null" && document.getElementById('TuesdayOut2').value === "null") ||
+           (document.getElementById('WednesdayIn2').value === "null" && document.getElementById('WednesdayOut2').value !== "null") ||
+           (document.getElementById('WednesdayIn2').value !== "null" && document.getElementById('WednesdayOut2').value === "null") ||
+           (document.getElementById('ThursdayIn2').value === "null" && document.getElementById('ThursdayOut2').value !== "null") ||
+           (document.getElementById('ThursdayIn2').value !== "null" && document.getElementById('ThursdayOut2').value === "null") ||
+           (document.getElementById('FridayIn2').value === "null" && document.getElementById('FridayOut2').value !== "null") ||
+           (document.getElementById('FridayIn2').value !== "null" && document.getElementById('FridayOut2').value === "null")
+           (document.getElementById('MondayIn3').value === "null" && document.getElementById('MondayOut3').value !== "null") ||
+           (document.getElementById('MondayIn3').value !== "null" && document.getElementById('MondayOut3').value === "null") ||
+           (document.getElementById('TuesdayIn3').value === "null" && document.getElementById('TuesdayOut3').value !== "null") ||
+           (document.getElementById('TuesdayIn3').value !== "null" && document.getElementById('TuesdayOut3').value === "null") ||
+           (document.getElementById('WednesdayIn3').value === "null" && document.getElementById('WednesdayOut3').value !== "null") ||
+           (document.getElementById('WednesdayIn3').value !== "null" && document.getElementById('WednesdayOut3').value === "null") ||
+           (document.getElementById('ThursdayIn3').value === "null" && document.getElementById('ThursdayOut3').value !== "null") ||
+           (document.getElementById('ThursdayIn3').value !== "null" && document.getElementById('ThursdayOut3').value === "null") ||
+           (document.getElementById('FridayIn3').value === "null" && document.getElementById('FridayOut3').value !== "null") ||
+           (document.getElementById('FridayIn3').value !== "null" && document.getElementById('FridayOut3').value === "null")){
             alert("One of the days is missing an In/Out time. Please try again.");
             return;
         }

@@ -5,6 +5,7 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
     $scope.ShowModal = false;
     var modal = document.getElementById('myModal');
     var controllerFunction = $scope;
+    $scope.numOfRows = 1;
 
     $scope.backToList = function() {
         window.location.href = 'Children.html';
@@ -66,7 +67,27 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
            (document.getElementById('ThursdayIn').value === "null" && document.getElementById('ThursdayOut').value !== "null") ||
            (document.getElementById('ThursdayIn').value !== "null" && document.getElementById('ThursdayOut').value === "null") ||
            (document.getElementById('FridayIn').value === "null" && document.getElementById('FridayOut').value !== "null") ||
-           (document.getElementById('FridayIn').value !== "null" && document.getElementById('FridayOut').value === "null")){
+           (document.getElementById('FridayIn').value !== "null" && document.getElementById('FridayOut').value === "null") ||
+           (document.getElementById('MondayIn2').value === "null" && document.getElementById('MondayOut2').value !== "null") ||
+           (document.getElementById('MondayIn2').value !== "null" && document.getElementById('MondayOut2').value === "null") ||
+           (document.getElementById('TuesdayIn2').value === "null" && document.getElementById('TuesdayOut2').value !== "null") ||
+           (document.getElementById('TuesdayIn2').value !== "null" && document.getElementById('TuesdayOut2').value === "null") ||
+           (document.getElementById('WednesdayIn2').value === "null" && document.getElementById('WednesdayOut2').value !== "null") ||
+           (document.getElementById('WednesdayIn2').value !== "null" && document.getElementById('WednesdayOut2').value === "null") ||
+           (document.getElementById('ThursdayIn2').value === "null" && document.getElementById('ThursdayOut2').value !== "null") ||
+           (document.getElementById('ThursdayIn2').value !== "null" && document.getElementById('ThursdayOut2').value === "null") ||
+           (document.getElementById('FridayIn2').value === "null" && document.getElementById('FridayOut2').value !== "null") ||
+           (document.getElementById('FridayIn2').value !== "null" && document.getElementById('FridayOut2').value === "null") ||
+           (document.getElementById('MondayIn3').value === "null" && document.getElementById('MondayOut3').value !== "null") ||
+           (document.getElementById('MondayIn3').value !== "null" && document.getElementById('MondayOut3').value === "null") ||
+           (document.getElementById('TuesdayIn3').value === "null" && document.getElementById('TuesdayOut3').value !== "null") ||
+           (document.getElementById('TuesdayIn3').value !== "null" && document.getElementById('TuesdayOut3').value === "null") ||
+           (document.getElementById('WednesdayIn3').value === "null" && document.getElementById('WednesdayOut3').value !== "null") ||
+           (document.getElementById('WednesdayIn3').value !== "null" && document.getElementById('WednesdayOut3').value === "null") ||
+           (document.getElementById('ThursdayIn3').value === "null" && document.getElementById('ThursdayOut3').value !== "null") ||
+           (document.getElementById('ThursdayIn3').value !== "null" && document.getElementById('ThursdayOut3').value === "null") ||
+           (document.getElementById('FridayIn3').value === "null" && document.getElementById('FridayOut3').value !== "null") ||
+           (document.getElementById('FridayIn3').value !== "null" && document.getElementById('FridayOut3').value === "null")){
             alert("One of the days is missing an In/Out time. Please try again.");
             return;
         }
@@ -150,10 +171,12 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
 
     $scope.OpenModal = function() {
         $scope.ShowModal = true;
+        document.getElementById('modalContent').style.width = "270px";
     }
 
     $scope.CloseModal = function() {
         $scope.ShowModal = false;
+        $scope.numOfRows = 1;
     }
 
     // When the user clicks anywhere outside of the modal, close it
@@ -164,5 +187,32 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
         }
         controllerFunction.$apply(); // This makes it so the page "sees" that we changed the variable.
     }
+
+    $scope.addSetOfDays = function(){
+        if($scope.numOfRows < 3){
+        $scope.numOfRows = $scope.numOfRows+1;
+        }
+
+        if($scope.numOfRows === 2){
+        document.getElementById('modalContent').style.width = "450px";
+        }
+        if($scope.numOfRows === 3){
+        document.getElementById('modalContent').style.width = "650px";
+        }
+    } 
+
+    $scope.subSetOfDays = function(){
+        if($scope.numOfRows > 1){
+        $scope.numOfRows = $scope.numOfRows-1;
+        }
+
+        if($scope.numOfRows === 2){
+        document.getElementById('modalContent').style.width = "450px";
+        }
+        if($scope.numOfRows === 1){
+        document.getElementById('modalContent').style.width = "270px";
+        }
+     //   document.getElementById('hideCells').style.empty-cells = "hide";
+    } 
 
 }]);
