@@ -99,7 +99,7 @@
 <tr ng-repeat="child in Children | orderBy:sortType:sortReverse | filter:searchText">
     <th rowspan="2">{{child.ChildBirthdate}}</th>
 	<th rowspan="2">{{child.ChildName}}</th>
-    <th>X</th>
+    <th rowspan="2">{{child.TuesdayIn}}</th>
     <th rowspan="2">{{child.TuesdayIn}}</th>
     <th rowspan="2">{{child.WednesdayIn}}</th>
     <th rowspan="2">{{child.ThursdayIn}}</th>
@@ -107,9 +107,6 @@
     <th rowspan="2">{{child.Affiliation}}</th>
     <th rowspan="2">{{child.notes}}</th>
 </tr>
- <tr ng-repeat="child in Children | orderBy:sortType:sortReverse | filter:searchText">
-  <td>Last name</td>
- </tr>
 </table>
 
 <p id="accepted"></p>
