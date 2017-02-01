@@ -29,13 +29,13 @@
 </div></h5>
 
 
-<h1>Room Occupency</h1>
+<h1>Classrooms</h1>
 
+    <label>Select Classroom: <select ng-model="selectedName" ng-change="myFunc(selectedName)" ng-options="item for item in names"></select></label>
 <div>
     <label>Search: <input placeholder="What are you looking for?" ng-model="searchText"></label>
 </div>
 
-<select ng-model="selectedName" ng-change="myFunc(selectedName)" ng-options="item for item in names"></select>
 
 <table class = "TFtable">
 	<tr>
@@ -59,7 +59,7 @@
     <th>{{child.ThursdayIn}}</th>
     <th>{{child.FridayIn}}</th>
     <th>{{child.Affiliation}}</th>
-    <th><button ng-click="EditClassroomInfo(Profile[0])">Save Changes</button></th>
+    <th><button ng-click="OpenModal()">View Notes</button></th>
 </tr>
 </table>
 
@@ -72,12 +72,13 @@
         <!-- Modal content -->
         <div id="modalContent" class="modal-content" style="width: 400px; height: 250px">
         <div class="close" ng-click="CloseModal()">×</div>
-
+            Notes:
         	<div id="textarea" class="textarea" contenteditable="true"></div>
-        </div>
+
         <div style="text-align: center; padding-top: 30px;">
                 <button ng-click="EditClassroomInfo(Profile[0])">Save Changes</button>
                 <button ng-click="CloseModal()">Cancel</button>
+        </div>
         </div>
         </div>
 

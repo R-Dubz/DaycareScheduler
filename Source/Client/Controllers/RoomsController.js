@@ -5,7 +5,7 @@ angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', f
         $scope.sortType = 'jsFriendlyTimeStamp'; 
         $scope.sortReverse = true;
         $scope.searchText = ''; 
-        $scope.ShowModal = true;  
+        $scope.ShowModal = false;  
         $scope.names = ["Infant Room", "Toddler 1", "Toddler 2", "Preschool 1", "Preschool 2", "Progressive", "School Age", "Classroom 8"];
 
         $scope.myFunc = function(item) {
@@ -49,12 +49,11 @@ angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', f
 
     $scope.OpenModal = function() {
         $scope.ShowModal = true;
-        document.getElementById('modalContent').style.width = "270px";
     }
 
     $scope.CloseModal = function() {
         $scope.ShowModal = false;
-        $scope.numOfRows = 1;
+        document.getElementById('textarea').innerHTML = null;
     }
 
     // When the user clicks anywhere outside of the modal, close it
