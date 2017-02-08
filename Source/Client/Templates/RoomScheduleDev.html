@@ -13,13 +13,13 @@
 <link rel="stylesheet" type="text/css" href="./Other Files/(CSS Stuff) font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 
-<body background="sky.jpg" ng-app="DaycareApp" ng-controller="RoomsController" ng-init="LoadWaitingList()">
+<body background="sky.jpg" class = "backgroundPic" ng-app="DaycareApp" ng-controller="RoomsController" ng-init="LoadRoomList('InfantRoom')">
 
 <h5><div class="dropdown" style="float:right;">
   <button class="dropbtn">||||</button>
   <div class="dropdown-content">
     <a href="Home.html">Home</a>
-    <a href="RoomSchedule.html">Rooms</a>
+    <a href="RoomScheduleDev.html">Rooms</a>
     <a href="Employees.html">Employees</a>
     <a href="Children.html">Children</a>
     <a href="sChildren.html">Schedule Classrooms</a>
@@ -50,7 +50,7 @@
         <th>Notes</th>
     </tr>
 
-<tr ng-repeat="child in Children | orderBy:sortType:sortReverse | filter:searchText">
+<tr ng-repeat="child in ClassroomList | orderBy:sortType:sortReverse | filter:searchText">
     <th>{{child.ChildBirthdate}}</th>
 	<th>{{child.ChildName}}</th>
     <th>{{child.TuesdayIn}}</th>
