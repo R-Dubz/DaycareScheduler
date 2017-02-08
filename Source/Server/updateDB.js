@@ -72,6 +72,28 @@ This library holds functions to be used in order to modify the database
 		db.close();
 	},
 
+	callEmployeeList : function(callback){
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+
+		db.all("SELECT * FROM Staff_Information", 
+				function(err, row) {
+			if (err){
+				callback(err);
+				return;
+			}				
+			callback(null, row);
+		});
+
+		db.close();
+	},
+
     storeProfile: function(child){
 
 		var fs = require("fs");
@@ -356,6 +378,137 @@ This library holds functions to be used in order to modify the database
 		
 		db.close();
 	},
-};
+
+// These functions INSERT, EDIT, and DELETE information from the staff table in the database.
+
+	insertStaffInfo: function(info) {
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+
+		db.run("INSERT INTO Staff_Information (StaffID, LastName, FirstName, DateOfBirth, PhoneNumber, PhoneNumber2, EmailAddress, MondayIn, MondayOut, MondayIn2, MondayOut2, MondayIn3, MondayOut3, TuesdayIn, TuesdayOut, TuesdayIn2, TuesdayOut2, TuesdayIn3, TuesdayOut3, WednesdayIn, WednesdayOut, WednesdayIn2, WednesdayOut2, WednesdayIn3, WednesdayOut3, ThursdayIn, ThursdayOut, ThursdayIn2, ThursdayOut2, ThursdayIn3, ThursdayOut3, FridayIn, FridayOut, FridayIn2, FridayOut2, FridayIn3, FridayOut3, MoreInfo) VALUES ($StaffInfo, $LastName, $FirstName, $DateOfBirth, $PhoneNumber, $PhoneNumber2, $EmailAddress, $MondayIn, $MondayOut, $MondayIn2, $MondayOut2, $MondayIn3, $MondayOut3, $TuesdayIn, $TuesdayOut, $TuesdayIn2, $TuesdayOut2, $TuesdayIn3, $TuesdayOut3, $WednesdayIn, $WednesdayOut, $WednesdayIn2, $WednesdayOut2, $WednesdayIn3, $WednesdayOut3, $ThursdayIn, $ThursdayOut, $ThursdayIn2, $ThursdayOut2, $ThursdayIn3, $ThursdayOut3, $FridayIn, $FridayOut, $FridayIn2, $FridayOut2, $FridayIn3, $FridayOut3, $MoreInfo)", {
+			$StaffID: info.StaffID,
+			$LastName: info.LastName,
+			$FirstName: info.FirstName,
+			$DateOfBirth: info.DateOfBirth,
+			$PhoneNumber: info.PhoneNumber,
+			$PhoneNumber2: info.PhoneNumber2,
+			$EmailAddress: info.EmailAddress,
+			$MondayIn: info.MondayIn,
+			$MondayOut: info.MondayOut,
+			$MondayIn2: info.MondayIn2,
+			$MondayOut2: info.MondayOut2,
+			$MondayIn3: info.MondayIn3,
+			$MondayOut3: info.MondayOut3,
+			$TuesdayIn: info.TuesdayIn,
+			$TuesdayOut: info.TuesdayOut,
+			$TuesdayIn2: info.TuesdayIn2,
+			$TuesdayOut2: info.TuesdayOut2,
+			$TuesdayIn3: info.TuesdayIn3,
+			$TuesdayOut3: info.TuesdayOut3,
+			$WednesdayIn: info.WednesdayIn,
+			$WednesdayOut: info.WednesdayOut,
+			$WednesdayIn2: info.WednesdayIn2,
+			$WednesdayOut2: info.WednesdayOut2,
+			$WednesdayIn3: info.WednesdayIn3,
+			$WednesdayOut3: info.WednesdayOut3,
+			$ThursdayIn: info.ThursdayIn,
+			$ThursdayOut: info.ThursdayOut,
+			$ThursdayIn2: info.ThursdayIn2,
+			$ThursdayOut2: info.ThursdayOut2,
+			$ThursdayIn3: info.ThursdayIn3,
+			$ThursdayOut3: info.ThursdayOut3,
+			$FridayIn: info.FridayIn,
+			$FridayOut: info.FridayOut,
+			$FridayIn2: info.FridayIn2,
+			$FridayOut2: info.FridayOut2,
+			$FridayIn3: info.FridayIn3,
+			$FridayOut3: info.FridayOut3,
+			$MoreInfo: info.MoreInfo
+		});
+		db.close();
+	},
+
+	/*updateStaffInfo: function(info) {
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+
+		db.run("UPDATE Staff_Information SET LastName = $LastName, FirstName = $FirstName, DateOfBirth = $DateOfBirth, PhoneNumber = $PhoneNumber, PhoneNumber2 = $PhoneNumber2, EmailAddress = $EmailAddress, MondayIn = $MondayIn, MondayOut = $MondayOut, MondayIn2 = $MondayIn2, MondayOut2 = $MondayOut2, MondayIn3 = $MondayIn3, MondayOut3 = $MondayOut3, TuesdayIn = $TuesdayIn, TuesdayOut = $TuesdayOut, TuesdayIn2 = $TuesdayIn2, TuesdayOut2 = $TuesdayOut2, TuesdayIn3 = $TuesdayIn3, TuesdayOut3 = $TuesdayOut3, WednesdayIn = $WednesdayIn, WednesdayOut = $WednesdayOut, WednesdayIn2 = $WednesdayIn2, WednesdayOut2 = $WednesdayOut2, WednesdayIn3 = $WednesdayIn3, WednesdayOut3 = $WednesdayOut3, ThursdayIn = $ThursdayIn, ThursdayOut = $ThursdayOut, ThursdayIn2 = $ThursdayIn2, ThursdayOut2 = $ThursdayOut2, ThursdayIn3 = $ThursdayIn3, ThursdayOut3 = $ThursdayOut3, FridayIn = $FridayIn, FridayOut = $FridayOut, FridayIn2 = $FridayIn2, FridayOut2 = $FridayOut2, FridayIn3 = $FridayIn3, FridayOut3 = $FridayOut3, MoreInfo = $MoreInfo WHERE StaffID = $StaffID", {
+			$LastName: ,
+			$FirstName: ,
+			$DateOfBirth: ,
+			$PhoneNumber: ,
+			$PhoneNumber2: ,
+			$EmailAddress: ,
+			$MondayIn: ,
+			$MondayOut: ,
+			$MondayIn2: ,
+			$MondayOut2: ,
+			$MondayIn3: ,
+			$MondayOut3: ,
+			$TuesdayIn: ,
+			$TuesdayOut: ,
+			$TuesdayIn2: ,
+			$TuesdayOut2: ,
+			$TuesdayIn3: ,
+			$TuesdayOut3: ,
+			$WednesdayIn: ,
+			$wednesdayOut: ,
+			$WednesdayIn2: ,
+			$WednesdayOut2: ,
+			$WednesdayIn3: ,
+			$WednesdayOut3: ,
+			$ThursdayIn: ,
+			$ThursdayOut: ,
+			$ThursdayIn2: ,
+			$ThursdayOut2: ,
+			$ThursdayIn3: ,
+			$ThursdayOut3: ,
+			$FridayIn: ,
+			$FridayOut: ,
+			$FridayIn2: ,
+			$FridayOut2: ,
+			$FridayIn3: ,
+			$FridayOut3:,
+			$MoreInfo: ,
+			$StaffID: 
+		});
+		db.close();
+	}, */
+
+	deleteStaffInfo: function(info) {
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+
+		db.run("DELETE FROM Staff_Information WHERE StaffID = $StaffID", {
+			$StaffID: info.StaffID,
+		});
+		
+		db.close();
+	},
+	};
 
 	module.exports = updateDB;

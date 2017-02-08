@@ -137,6 +137,18 @@ app.get('/', function (req, res) {
     })
   });
 
+  app.get('/loadEmployeeList', jsonParser, function (req, res) {
+    updateDB.callEmployeeList(function(err, data){
+      if(err) {
+        // handle the error here
+        console.log(err);
+      }
+      // send the data
+      console.log("Sending employee info...");
+      res.send(data);
+    })
+  });
+
   app.post('/test', jsonParser, function (req, res) {
     updateDB.editFromProfile(req.body); 
     console.log("Applying Profile Changes...");
@@ -159,4 +171,16 @@ app.get('/callAllClass', function (req, res) {
     console.log("Applying Profile Changes...");
     return res.sendStatus(200);
   }); 
+
+  app.post('/editEmployee', jsonParser, function (req, res) {
+    updateDB.editChildClass(req.body);
+    console.log("Editing Employee...");
+    return res.sendStatus(200);
+  });
+
+  app.post('/deleteEmployee', jsonParser, function (req, res) {
+    updateDB.editChildClass(req.body);
+    console.log("Deleting Employee...");
+    return res.sendStatus(200);
+  });
 
