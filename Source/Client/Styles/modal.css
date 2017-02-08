@@ -43,3 +43,26 @@
 td { 
     width:0px; height:0px; 
     }
+
+/* Text Modal */
+/*
+			textarea {
+			    height: 490px;
+			    width: 490px;
+			}*/
+
+
+
+.textarea {
+    -moz-appearance: textfield-multiline;
+    -webkit-appearance: textarea;
+    border: 1px solid gray;
+    font: medium -moz-fixed;
+    font: -webkit-small-control;
+    height: 28px;
+    overflow: auto;
+    padding: 2px;
+    resize: both;
+    width: 400px;
+    height: 166px;
+}

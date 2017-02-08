@@ -1,0 +1,99 @@
+<DOCTYPE!html>
+<html>
+
+    <title>Add An Employee</title>
+    <script type="text/javascript"></script>
+    <script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script>
+    <script src="./app.js"></script>
+    <script src="./Source/Client/Controllers/AddEmployee.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">-->
+    <link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">
+    <link rel="stylesheet" type="text/css" href="./Other Files/(CSS Stuff) font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+
+<head>
+<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">
+</head>
+
+<body bgcolor = "a919d1" background="sky.jpg" ng-app="DaycareApp" ng-controller="AddEmployee" ng-init="LoadDB()">
+
+<h5><div class="dropdown" style="float:right;">
+  <button class="dropbtn">||||</button>
+  <div class="dropdown-content">
+    <a href="Home.html">Home</a>
+        <a href="RoomSchedule.html">Rooms</a>
+    <a href="Employees.html">Employees</a>
+    <a href="Children.html">Children</a>
+    <a href="sChildren.html">Schedule Classrooms</a>
+    <a href="sEmployee.html">Schedule Employees</a>
+    <a href="Waiting_list.html">Waiting List</a>
+
+  </div>
+</div></h5>
+
+<h1>Add an employee.</h1>
+<table border="25" style="width: 75%; height: 10%" bgcolor=7070ff>
+<tr>
+    <td>First Name: 
+        <span ng-if="!Editing">{{Profile[0].FirstName}}<br></span>
+        <span ng-if="Editing"><input type="text" id="FirstName" value="{{Profile[0].FirstName}}"></input><br></span>
+    </td>
+    <td>Last Name:  <input type= "text" id="LastName" value="Search Here"></td>
+</tr>
+<tr>
+    <td>Date Of Hire: <input type= "text" id="DateOfHire" value="Search Here"></td>
+    <td>email:      <input type= "text" id="EmailAddress" value="Search Here"></td>
+</tr>
+<tr>
+    <td>Phone # (primary): <input type= "text" id="PhoneNumber" value="Search Here"></td>
+    <td>Phone # (secondary): <input type= "text" id="PhoneNumber2" value="Search Here"></td>
+</tr>
+<tr>
+    <td>Monday In 1: <input type= "text" id="MondayIn" value="Search Here"></td>
+    <td>Monday Out 1: <input type= "text" id="MondayOut" value="Search Here"></td>
+</tr><tr>
+    <td>Monday In 2: <input type= "text" id="MondayIn2" value="Search Here"></td> 
+    <td>Monday Out 2: <input type= "text" id="MondayOut2" value="Search Here"></td>
+</tr><tr>
+    <td>Monday In 3: <input type= "text" id="MondayIn3" value="Search Here"></td>
+    <td>Monday out 3: <input type= "text" id="MondayOut3" value="Search Here"></td>
+</tr><tr>
+    <td>Tuesday In 1: <input type= "text" id="TuesdayIn" value="Search Here"></td>
+    <td>Tuesday out 1: <input type= "text" id="TuesdayOut" value="Search Here"></td>
+</tr><tr>
+    <td>Tuesday In 2: <input type= "text" id="TuesdayIn2" value="Search Here"></td>
+    <td>Tuesday Out 2: <input type= "text" id="TuesdayOut2" value="Search Here"></td>
+</tr><tr>
+    <td>Tuesday In 3: <input type= "text" id="TuesdayIn3" value="Search Here"></td>
+    <td>Tuesday Out 3: <input type= "text" id="TuesdayOut3" value="Search Here"></td>
+</tr><tr>
+    <td>Wednesday In 1: <input type= "text" id="WednesdayIn" value="Search Here"></td>
+    <td>Wednesday Out 1: <input type= "text" id="WednesdayOut" value="Search Here"></td>
+</tr><tr>
+    <td>Wednesday In 2: <input type= "text" id="WednesdayIn2" value="Search Here"></td>
+    <td>Wednesday Out 2: <input type= "text" id="WednesdayOut2" value="Search Here"></td>
+</tr><tr>
+    <td>Wednesday In 3: <input type= "text" id="WednesdayIn3" value="Search Here"></td>
+    <td>Wednesday Out 3: <input type= "text" id="WednesdayOut3" value="Search Here"></td>
+</tr><tr>
+    <td>Thursday In 1: <input type= "text" id="ThursdayIn" value="Search Here"></td>
+    <td>Thursday Out 1: <input type= "text" id="ThursdayOut" value="Search Here"></td>
+</tr><tr>
+    <td>Thursday In 2: <input type= "text" id="ThursdayIn2" value="Search Here"></td>
+    <td>Thursday Out 2: <input type= "text" id="ThursdayOut2" value="Search Here"></td>
+</tr><tr>
+    <td>Thursday In 3: <input type= "text" id="ThursdayIn3" value="Search Here"></td>
+    <td>Thursday Out 3: <input type= "text" id="ThursdayOut3" value="Search Here"></td>
+</tr><tr>
+    <td>Friday In 1: <input type= "text" id="FridayIn" value="Search Here"></td>
+    <td>Friday Out 1: <input type= "text" id="FridayOut" value="Search Here"></td>
+</tr><tr>
+    <td>Friday In 2: <input type= "text" id="FridayIn2" value="Search Here"></td>
+    <td>Friday Out 2: <input type= "text" id="FridayOut2" value="Search Here"></td>
+</tr><tr>
+    <td>Friday In 3: <input type= "text" id="FridayIn3" value="Search Here"></td>
+    <td>Friday Out 3: <input type= "text" id="FridayOut3" value="Search Here"></td>
+</tr>
+</table>
+
+
+</html>

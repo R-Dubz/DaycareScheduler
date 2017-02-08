@@ -1,11 +1,54 @@
 angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', function($scope, $http){
 
         $scope.Children = [];
-        $scope.Profile = [];  
-        $scope.sortType = 'ChildName'; 
-        $scope.sortReverse = false;
-        $scope.searchText1 = 'School Age';     
-        $scope.searchText = 'Toddler1';  
+        $scope.Profile = [];   
+        $scope.sortType = 'jsFriendlyTimeStamp'; 
+        $scope.sortReverse = true;
+        $scope.searchText = ''; 
+        $scope.ShowModal = false;  
+        $scope.names = ["Infant Room", "Toddler 1", "Toddler 2", "Preschool 1", "Preschool 2", "Progressive", "School Age", "Classroom 8"];
+        $scope.ClassroomList = [];
+
+        $scope.myFunc = function(target) {
+            $scope.Children = [];
+            alert(target);            
+
+            if(target === "Infant Room"){
+                target = "InfantRoom";
+            } else if(target === "Toddler 1"){
+                target = "Toddler1"; 
+            } else if(target === "Toddler 2"){
+                target = "Toddler2"; 
+            } else if(target === "Preschool 1"){
+                target = "Preschool3"; 
+            } else if(target === "Preschool 2"){
+                target = "Preschool4"; 
+            } else if(target === "School Age"){
+                target = "SchoolAge"; 
+            } else if(target === "Classroom 8"){
+                target = "Classroom8"; 
+            } else {
+                //do nothing
+            }
+
+            targetClassroom = {Classroom: target}; 
+
+            $http.post('/callAllClass', targetClassroom)
+            .then(function(response) {
+                $scope.ClassroomList = response.data;
+                $scope.ClassroomList.forEach(function(element) {
+                    $http({
+                        url: '/getChildInfo',
+                        method: "POST",
+                        data: { 'ChildID': element.ChildID }
+                    })
+                    .then(function(response) {
+                        element.ChildName = response.data[0].ChildName;
+                        element.ChildBirthdate = response.data[0].ChildBirthdate;                        
+                    });
+                });
+            });
+        };   
 
 
         $scope.callEnrolledList = function() {
@@ -38,20 +81,55 @@ angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', f
             });
         };
 
-        $scope.storeProfile = function(child){
-            $http.post('/storeTempProfile', child)
-            .then(function(response) {
-                window.location.href = 'EnrolledDemoPage.html';
-            });
-        }
 
-        $scope.LoadTempProfile = function() {
-            $http.get('/getTempProfile')
+    /* MODAL JUNK */
+
+    $scope.OpenModal = function() {
+        $scope.ShowModal = true;
+    }
+
+    $scope.CloseModal = function() {
+        $scope.ShowModal = false;
+        document.getElementById('textarea').innerHTML = null;
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {  
+        if (event.target == modal) {
+            // $scope.ShowModal = false;
+            controllerFunction.CloseModal();
+        }
+        controllerFunction.$apply(); // This makes it so the page "sees" that we changed the variable.
+    }
+
+
+
+        $scope.LoadRoomList = function(target) {
+            targetClassroom = {Classroom: target}; 
+
+            $http.post('/callAllClass', targetClassroom)
             .then(function(response) {
-                // alert("HTTP request set, getting data");
-                // $scope.Children.push(response.data);
-                $scope.Profile.push(response);
+                $scope.ClassroomList = response.data;
+                $scope.ClassroomList.forEach(function(element) {
+                    $http({
+                        url: '/getChildInfo',
+                        method: "POST",
+                        data: { 'ChildID': element.ChildID }
+                    })
+                    .then(function(response) {
+                        element.ChildName = response.data[0].ChildName;
+                        element.ChildBirthdate = response.data[0].ChildBirthdate;                        
+                    });
+                });
             });
         };
+
+
+
+
+
+
+
+
 
     }]);
