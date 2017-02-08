@@ -1,18 +1,15 @@
 angular.module('DaycareApp').controller('AddEmployee', ['$scope', '$http', function($scope, $http){
 
     $scope.LoadDB = function(){
-        $http.get('/getTempProfile')
+        $http.get('/addEmployee')
         .then(function(response) {
             $scope.Profile.push(response.data[0]);
         });
     };
 
-    $scope.EditProfile = function(){
-        $scope.Editing = !$scope.Editing
-    };
 
     $scope.SaveChanges = function(){
-        $scope.Profile[0].FirstName = FirstName.value;
+        $scope.Profile[0].FirstName = document.getElementById("FirstName").value;
         $scope.Profile[0].LastName = LastName.value;
         $scope.Profile[0].DateOfBirth = DateOfBirth.value;
         $scope.Profile[0].EmailAddress = EmailAddress.value;
@@ -55,8 +52,7 @@ angular.module('DaycareApp').controller('AddEmployee', ['$scope', '$http', funct
         $http.post('/test', updates)
         .then(function(response) {
             console.log("Success");      
-        });
-        $scope.Editing = true;  
+        }); 
     };
 
 }]);

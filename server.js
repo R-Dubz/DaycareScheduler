@@ -171,3 +171,8 @@ app.post('/getChildInfo', jsonParser, function (req, res) {
     return res.sendStatus(200);
   }); 
 
+ app.post('/addEmployee', jsonParser, function (req, res) {
+    updateDB.childToClass(req.body); 
+    console.log("Adding Employee to database...");
+    return res.sendStatus(200);
+  }); 
