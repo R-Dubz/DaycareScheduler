@@ -11,7 +11,7 @@ angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', f
 
         $scope.myFunc = function(target) {
             $scope.Children = [];
-            alert(target);            
+            // alert(target);            
 
             if(target === "Infant Room"){
                 target = "InfantRoom";

@@ -143,13 +143,24 @@ app.get('/', function (req, res) {
     return res.sendStatus(200);
   }); 
 
-app.get('/callAllClass', function (req, res) {
-    updateDB.callAllClass(function(err, data){
+app.post('/callAllClass', jsonParser, function (req, res) {
+    updateDB.callAllClass(req.body, function(err, data){
       if(err) {
         // handle the error here
       }
       // send the data
       console.log("Loading Rooms List...");
+      res.send(data);
+    })
+  });
+
+app.post('/getChildInfo', jsonParser, function (req, res) {
+    updateDB.getChildInfo(req.body, function(err, data){
+      if(err) {
+        // handle the error here
+      }
+      // send the data
+      console.log("Loading room information...");
       res.send(data);
     })
   });

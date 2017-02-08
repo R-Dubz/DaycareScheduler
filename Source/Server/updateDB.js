@@ -236,9 +236,32 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		db.all("SELECT * FROM " + info.Classroom, {$ChildID: info.ID},
+		db.all("SELECT * FROM " + info.Classroom,
 		 function(err, row) {
 			//$ChildID = info.ID;
+			if (err){
+				callback(err);
+				return;
+			}				
+			callback(null, row);
+		});
+
+		db.close();
+	},
+
+	getChildInfo : function(info, callback){
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+
+		db.all("SELECT * FROM Personal_Information WHERE ChildID = $ChildID", {$ChildID: info.ChildID},
+		 function(err, row) {
+			$ChildID = info.ChildID;
 			if (err){
 				callback(err);
 				return;
@@ -316,19 +339,39 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 			
-		db.run("UPDATE " + info.Classroom + " SET MonI1 = $MonI1, MonO1 = $MonO1, TuesI1 = $TuesI1, TuesO1 = $TuesO1, WednesI1 = $WednesI1, WednesO1 = $WednesO1, ThursI1 = $ThursI1, ThursO1 = $ThursO1, FriI1 = $FriI1, FriO1 = $FriO1 WHERE ChildID = $ChildID", {
+		db.run("UPDATE " + info.Classroom + " SET MI1 = $MI1, MI2 = $MI2, MI3 = $MI3, MO1 = $MO1, MO2 = $MO2, MO3 = $MO3, TI1 = $TI1, TI2 = $TI2, TI3 = $TI3, TO1 = $TO1, TO2 = $TO2, TO3 = $TO3, WI1 = $WI1, WI2 = $WI2, WI3 = $WI3, WO1 = $WO1, WO2 = $WO2, WO3 = $WO3, THI1 = $THI1, THI2 = $THI2, THI3 = $THI3 = $THI3, THO1 = $THO1, THO2 = $THO2, THO3 = $THO3, FI1 = $FI1, FI2 = $FI2, FI3 = $FI3, FO1 = $FO1, FO2 = $FO2, FO3 = $FO3 WHERE ChildID = $ChildID", {
 			$ChildID: info.ChildID,
 			//$Table: info.Classroom,
-			$MonI1: info.MonI1,
-			$MonO1: info.MonO1,
-			$TuesI1: info.TuesI1,
-			$TuesO1: info.TuesO1,
-			$WednesI1: info.WednesI1,
-			$WednesO1: info.WednesO1,
-			$ThursI1: info.ThursI1,
-			$ThursO1: info.ThursO1,
-			$FriI1: info.FriI1,
-			$FriO1: info.FriO1
+			$MI1: info.MI1,
+			$MI2: info.MI2,
+			$MI3: info.MI3,
+			$MO1: info.MO1,
+			$MO2: info.MO2,
+			$MO3: info.MO3,
+			$TI1: info.TI1,
+			$TI2: info.TI2,
+			$TI3: info.TI3,
+			$TO1: info.TO1,
+			$TO2: info.TO2,
+			$TO3: info.TO3,
+			$WI1: info.WI1,
+			$WI2: info.WI2,
+			$WI3: info.WI3,
+			$WO1: info.WO1,
+			$WO2: info.WO2,
+			$WO3: info.WO3,
+			$THI1: info.THI1,
+			$THI2: info.THI2,
+			$THI3: info.THI3,
+			$THO1: info.THO1,
+			$THO2: info.THO2,
+			$THO3: info.THO3,
+			$FI1: info.FI1,
+			$FI2: info.FI2,
+			$FI3: info.FI3,
+			$FO1: info.FO1,
+			$FO2: info.FO2,
+			$FO3: info.FO3
 		});
 		
 		db.close();
