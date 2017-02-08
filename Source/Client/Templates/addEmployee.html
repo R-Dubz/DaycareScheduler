@@ -31,17 +31,15 @@
 </div></h5>
 
 <h1>Add an employee.</h1>
+<button onclick="saveChanges()">SAVE</button>
 <table border="25" style="width: 75%; height: 10%" bgcolor=7070ff>
 <tr>
-    <td>First Name: 
-        <span ng-if="!Editing">{{Profile[0].FirstName}}<br></span>
-        <span ng-if="Editing"><input type="text" id="FirstName" value="{{Profile[0].FirstName}}"></input><br></span>
-    </td>
+    <td>First Name: <input type= "text" id="FirstName" value="Search Here"></td>
     <td>Last Name:  <input type= "text" id="LastName" value="Search Here"></td>
 </tr>
 <tr>
     <td>Date Of Hire: <input type= "text" id="DateOfHire" value="Search Here"></td>
-    <td>email:      <input type= "text" id="EmailAddress" value="Search Here"></td>
+    <td>Their Email:      <input type= "text" id="EmailAddress" value="Search Here"></td>
 </tr>
 <tr>
     <td>Phone # (primary): <input type= "text" id="PhoneNumber" value="Search Here"></td>
