@@ -183,7 +183,6 @@ app.post('/getChildInfo', jsonParser, function (req, res) {
     return res.sendStatus(200);
   }); 
 
-<<<<<<< HEAD
   app.post('/editEmployee', jsonParser, function (req, res) {
     updateDB.editChildClass(req.body);
     console.log("Editing Employee...");
@@ -196,10 +195,8 @@ app.post('/getChildInfo', jsonParser, function (req, res) {
     return res.sendStatus(200);
   });
 
-=======
  app.post('/addEmployee', jsonParser, function (req, res) {
     updateDB.childToClass(req.body); 
     console.log("Adding Employee to database...");
     return res.sendStatus(200);
   }); 
->>>>>>> 918f46227802bb568aa028419e8459f692ca47bf
