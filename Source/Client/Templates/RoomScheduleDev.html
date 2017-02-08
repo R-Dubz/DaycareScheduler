@@ -31,7 +31,7 @@
 
 <h1>Classrooms</h1>
 
-    <label>Select Classroom: <select ng-model="selectedName" ng-change="myFunc(selectedName)" ng-options="item for item in names"></select></label>
+    <label>Selected Classroom: <select ng-init="selectedName = names[0]" ng-model="selectedName" ng-change="myFunc(selectedName)" ng-options="item for item in names"></select></label>
 <div>
     <label>Search: <input placeholder="What are you looking for?" ng-model="searchText"></label>
 </div>
