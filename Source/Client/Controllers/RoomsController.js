@@ -11,7 +11,7 @@ angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', f
 
         $scope.myFunc = function(target) {
             $scope.Children = [];
-            alert(target);            
+            // alert(target);            
 
             if(target === "Infant Room"){
                 target = "InfantRoom";
@@ -44,7 +44,10 @@ angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', f
                     })
                     .then(function(response) {
                         element.ChildName = response.data[0].ChildName;
-                        element.ChildBirthdate = response.data[0].ChildBirthdate;                        
+                        element.ChildBirthdate = response.data[0].ChildBirthdate;  
+
+                        var time = $scope.timeTo12HrFormat(element.MO1);
+                        console.log(time);                      
                     });
                 });
             });
@@ -80,6 +83,35 @@ angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', f
 
             });
         };
+
+    $scope.timeTo12HrFormat = function(time) {   // Take a time in 24 hour format and format it in 12 hour format
+        var time_part_array = time.split(".");
+        var ampm = 'AM';
+
+        if (time_part_array[0] >= 12) {
+            ampm = 'PM';
+        }
+
+        if (time_part_array[0] > 12) {
+            time_part_array[0] = time_part_array[0] - 12;
+        }
+
+        if(time_part_array[1] == 0){
+            time_part_array[1] = "00";
+        } else if(time_part_array[1] == 25){
+            time_part_array[1] = "15";
+        } else if(time_part_array[1] == 5){
+            time_part_array[1] = "30";
+        } else if(time_part_array[1] == 75){
+            time_part_array[1] = "45";
+        } else {
+            time_part_array[1] = "00";
+        }
+
+        formatted_time = time_part_array[0] + ':' + time_part_array[1] + ' ' + ampm;
+
+        return formatted_time;
+    };
 
 
     /* MODAL JUNK */

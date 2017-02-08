@@ -155,13 +155,24 @@ app.get('/', function (req, res) {
     return res.sendStatus(200);
   }); 
 
-app.get('/callAllClass', function (req, res) {
-    updateDB.callAllClass(function(err, data){
+app.post('/callAllClass', jsonParser, function (req, res) {
+    updateDB.callAllClass(req.body, function(err, data){
       if(err) {
         // handle the error here
       }
       // send the data
       console.log("Loading Rooms List...");
+      res.send(data);
+    })
+  });
+
+app.post('/getChildInfo', jsonParser, function (req, res) {
+    updateDB.getChildInfo(req.body, function(err, data){
+      if(err) {
+        // handle the error here
+      }
+      // send the data
+      console.log("Loading room information...");
       res.send(data);
     })
   });
@@ -172,6 +183,7 @@ app.get('/callAllClass', function (req, res) {
     return res.sendStatus(200);
   }); 
 
+<<<<<<< HEAD
   app.post('/editEmployee', jsonParser, function (req, res) {
     updateDB.editChildClass(req.body);
     console.log("Editing Employee...");
@@ -184,3 +196,10 @@ app.get('/callAllClass', function (req, res) {
     return res.sendStatus(200);
   });
 
+=======
+ app.post('/addEmployee', jsonParser, function (req, res) {
+    updateDB.childToClass(req.body); 
+    console.log("Adding Employee to database...");
+    return res.sendStatus(200);
+  }); 
+>>>>>>> 918f46227802bb568aa028419e8459f692ca47bf
