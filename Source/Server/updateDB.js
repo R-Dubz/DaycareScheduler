@@ -552,6 +552,26 @@ This library holds functions to be used in order to modify the database
 		
 		db.close();
 	},
+
+	editChildProfileNotes: function(info) {
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+			
+		db.run("UPDATE Personal_Information SET ChildNotes = $ChildNotes WHERE ChildID = $ChildID", {
+			$ChildNotes: info[0].ChildNotes,
+			$ChildID: info[0].ChildID,
+		});
+		
+		db.close();
+	},
 	};
 
 	module.exports = updateDB;

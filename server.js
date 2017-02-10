@@ -200,3 +200,9 @@ app.post('/getChildInfo', jsonParser, function (req, res) {
     console.log("Adding Employee to database...");
     return res.sendStatus(200);
   }); 
+
+app.post('/editChildNotes', jsonParser, function (req, res) {
+    updateDB.editChildProfileNotes(req.body);
+    console.log("Editing Child Notes...");
+    return res.sendStatus(200);
+  });
