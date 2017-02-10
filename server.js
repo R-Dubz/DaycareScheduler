@@ -184,19 +184,19 @@ app.post('/getChildInfo', jsonParser, function (req, res) {
   }); 
 
   app.post('/editEmployee', jsonParser, function (req, res) {
-    updateDB.editChildClass(req.body);
+    updateDB.updateStaffInfo(req.body);
     console.log("Editing Employee...");
     return res.sendStatus(200);
   });
 
   app.post('/deleteEmployee', jsonParser, function (req, res) {
-    updateDB.editChildClass(req.body);
+    updateDB.deleteStaffInfo(req.body);
     console.log("Deleting Employee...");
     return res.sendStatus(200);
   });
 
  app.post('/addEmployee', jsonParser, function (req, res) {
-    updateDB.childToClass(req.body); 
+    updateDB.insertStaffInfo(req.body); 
     console.log("Adding Employee to database...");
     return res.sendStatus(200);
   }); 
