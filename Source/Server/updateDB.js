@@ -361,7 +361,7 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 			
-		db.run("UPDATE " + info.Classroom + " SET MI1 = $MI1, MI2 = $MI2, MI3 = $MI3, MO1 = $MO1, MO2 = $MO2, MO3 = $MO3, TI1 = $TI1, TI2 = $TI2, TI3 = $TI3, TO1 = $TO1, TO2 = $TO2, TO3 = $TO3, WI1 = $WI1, WI2 = $WI2, WI3 = $WI3, WO1 = $WO1, WO2 = $WO2, WO3 = $WO3, THI1 = $THI1, THI2 = $THI2, THI3 = $THI3 = $THI3, THO1 = $THO1, THO2 = $THO2, THO3 = $THO3, FI1 = $FI1, FI2 = $FI2, FI3 = $FI3, FO1 = $FO1, FO2 = $FO2, FO3 = $FO3 WHERE ChildID = $ChildID", {
+		db.run("UPDATE " + info.Classroom + " SET MI1 = $MI1, MI2 = $MI2, MI3 = $MI3, MO1 = $MO1, MO2 = $MO2, MO3 = $MO3, TI1 = $TI1, TI2 = $TI2, TI3 = $TI3, TO1 = $TO1, TO2 = $TO2, TO3 = $TO3, WI1 = $WI1, WI2 = $WI2, WI3 = $WI3, WO1 = $WO1, WO2 = $WO2, WO3 = $WO3, THI1 = $THI1, THI2 = $THI2, THI3 = $THI3, THO1 = $THO1, THO2 = $THO2, THO3 = $THO3, FI1 = $FI1, FI2 = $FI2, FI3 = $FI3, FO1 = $FO1, FO2 = $FO2, FO3 = $FO3 WHERE ChildID = $ChildID", {
 			$ChildID: info.ChildID,
 			//$Table: info.Classroom,
 			$MI1: info.MI1,
