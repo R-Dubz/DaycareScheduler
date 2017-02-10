@@ -83,6 +83,23 @@
 		background: #dae5f4;
 	}
 
+.ClassroomTable {
+	width:100%;
+	border: 1px solid black;
+	background-color: black;
+/*	border-collapse: collapse; */
+	padding: 5px;
+    table-layout: fixed;
+}
+/*  Define the background color for all the ODD background rows  */
+	.ClassroomTable tr:nth-child(odd){ 
+		background: #b8d1f3;
+	}
+	/*  Define the background color for all the EVEN background rows  */
+	.ClassroomTable tr:nth-child(even){
+		background: #dae5f4;
+	}
+
 
     table, th, td {
         border: 1px solid black;

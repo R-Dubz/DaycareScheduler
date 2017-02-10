@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="./Other Files/(CSS Stuff) font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 
-<body background="sky.jpg" class = "backgroundPic" ng-app="DaycareApp" ng-controller="RoomsController" ng-init="LoadRoomList('InfantRoom')">
+<body background="sky.jpg" class = "backgroundPic" ng-app="DaycareApp" ng-controller="RoomsController" ng-init="myFunc('InfantRoom')">
 
 <h5><div class="dropdown" style="float:right;">
   <button class="dropbtn">||||</button>
@@ -37,7 +37,7 @@
 </div>
 
 
-<table class = "TFtable">
+<table class = "ClassroomTable">
 	<tr>
         <th>D.O.B.</th>
         <th>Name</th>
@@ -53,11 +53,11 @@
 <tr ng-repeat="child in ClassroomList | orderBy:sortType:sortReverse | filter:searchText">
     <th>{{child.ChildBirthdate}}</th>
 	<th>{{child.ChildName}}</th>
-    <th>{{child.TuesdayIn}}</th>
-    <th>{{child.TuesdayIn}}</th>
-    <th>{{child.WednesdayIn}}</th>
-    <th>{{child.ThursdayIn}}</th>
-    <th>{{child.FridayIn}}</th>
+    <th>{{child.MondayString}}</th>
+    <th>{{child.TuesdayString}}</th>
+    <th>{{child.WednesdayString}}</th>
+    <th>{{child.ThursdayString}}</th>
+    <th>{{child.FridayString}}</th>
     <th>{{child.Affiliation}}</th>
     <th><button ng-click="OpenModal()">View Notes</button></th>
 </tr>
