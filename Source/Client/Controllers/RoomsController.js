@@ -49,6 +49,30 @@ angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', f
                         element.ChildNotes = response.data[0].ChildNotes;
                         element.RoomIndex = index;
                         $scope.ConvertTimesToStrings(element);     
+                        if((response.data[0].GuardianStatus1 === "Full-time SUNY student") || 
+                        (response.data[0].GuardianStatus1 === "Part-time SUNY student") || 
+                        (response.data[0].GuardianStatus2 === "Full-time SUNY student") || 
+                        (response.data[0].GuardianStatus2 === "Part-time SUNY student")){
+                            if(response.data[0].GuardianStatus1 === "Full-time SUNY student" || response.data[0].GuardianStatus2 === "Full-time SUNY student"){
+                                element.Affiliation = "Full-time SUNY student";
+                            } else{
+                                element.Affiliation = "Part-time SUNY student";
+                            }
+                        } else if((response.data[0].GuardianStatus1 === "UUP") || 
+                        (response.data[0].GuardianStatus1 === "CSEA")|| 
+                        (response.data[0].GuardianStatus1 === "PEF") || 
+                        (response.data[0].GuardianStatus1 === "NYSCOPBA") ||
+                        (response.data[0].GuardianStatus2 === "UUP") || 
+                        (response.data[0].GuardianStatus2 === "CSEA")|| 
+                        (response.data[0].GuardianStatus2 === "PEF") || 
+                        (response.data[0].GuardianStatus2 === "NYSCOPBA")){
+                            element.Affiliation = GuardianStatus1 + "/" + GuardianStatus2;
+                        } else if((response.data[0].GuardianStatus1 === "Other State") || 
+                        (response.data[0].GuardianStatus2 === "Other State")){
+                            element.Affiliation = "Other State";                     
+                        } else {
+                            element.Affiliation = "None";   
+                        }
                         index++;          
                     });
                 });
@@ -139,37 +163,6 @@ angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', f
             } 
         };
 
-
-        // $scope.callEnrolledList = function() {
-        //     $http.get('/callEnrolledList')
-        //     .then(function(response) {
-        //         for(var i = 0; i < response.data.length; i++){
-        //             response.data[i].jsFriendlyBirthDate = new Date(response.data[i].ChildBirthdate);
-        //             response.data[i].jsFriendlyTimeStamp = new Date(response.data[i].TimeStamp);
-        //             response.data[i].jsFriendlyDesiredEnrollment = new Date(response.data[i].DesiredEnrollment); 
-        //             if(response.data[i].Classroom === "InfantRoom"){
-        //                 response.data[i].Classroom = "Infant Room";
-        //             } else if(response.data[i].Classroom === "Toddler1"){
-        //                response.data[i].Classroom = "Toddler 1"; 
-        //             } else if(response.data[i].Classroom === "Toddler2"){
-        //                response.data[i].Classroom = "Toddler 2"; 
-        //             } else if(response.data[i].Classroom === "Preschool3"){
-        //                response.data[i].Classroom = "Preschool 1"; 
-        //             } else if(response.data[i].Classroom === "Preschool4"){
-        //                response.data[i].Classroom = "Preschool 2"; 
-        //             } else if(response.data[i].Classroom === "SchoolAge"){
-        //                response.data[i].Classroom = "School Age"; 
-        //             } else if(response.data[i].Classroom === "Classroom8"){
-        //                response.data[i].Classroom = "Classroom 8"; 
-        //             } else {
-        //                 //do nothing
-        //             }
-        //             $scope.Children.push(response.data[i]);
-        //         }
-
-        //     });
-        // };
-
     $scope.timeTo12HrFormat = function(time) {   // Take a time in 24 hour format and format it in 12 hour format
         var time_part_array = time.split(".");
         var ampm = 'AM';
@@ -199,6 +192,13 @@ angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', f
         return formatted_time;
     };
 
+    $scope.storeProfile = function(child){
+        $http.post('/storeTempProfile', child)
+        .then(function(response) {
+            window.location.href = 'EnrolledDemoPage.html';
+        });
+    }
+
 
     /* MODAL JUNK */
 
@@ -218,14 +218,6 @@ angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', f
         targetChild.ChildID = $scope.ClassroomList[$scope.CurrentChild.index].ChildID;
         targetChild.ChildNotes = document.getElementById('textarea').innerHTML;
         $scope.ClassroomList[$scope.CurrentChild.index].ChildNotes = document.getElementById('textarea').innerHTML;
-        // $http({
-        //     url: '/editChildNotes',
-        //     method: "POST",
-        //     data: { 'ChildID': $scope.ClassroomList[$scope.CurrentChild.index].ChildID 'ChildNotes': document.getElementById('textarea').innerHTML }
-        // })
-        // .then(function(response) {
-        //   $scope.ShowModal = false;                       
-        // });
         $http.post('/editChildNotes', targetChild)
         .then(function(response) {
             $scope.ShowModal = false;
@@ -240,35 +232,6 @@ angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', f
         }
         controllerFunction.$apply(); // This makes it so the page "sees" that we changed the variable.
     }
-
-
-
-        // $scope.LoadRoomList = function(target) {
-        //     targetClassroom = {Classroom: target}; 
-
-        //     $http.post('/callAllClass', targetClassroom)
-        //     .then(function(response) {
-        //         $scope.ClassroomList = response.data;
-        //         $scope.ClassroomList.forEach(function(element) {
-        //             $http({
-        //                 url: '/getChildInfo',
-        //                 method: "POST",
-        //                 data: { 'ChildID': element.ChildID }
-        //             })
-        //             .then(function(response) {
-        //                 element.ChildName = response.data[0].ChildName;
-        //                 element.ChildBirthdate = response.data[0].ChildBirthdate;                        
-        //             });
-        //         });
-        //     });
-        // };
-
-
-
-
-
-
-
 
 
     }]);

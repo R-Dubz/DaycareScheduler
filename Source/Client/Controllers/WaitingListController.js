@@ -21,8 +21,9 @@
                 // $scope.Children.push(response.data);
 
                 for(var i = 0; i < response.data.length; i++){
+                    var jsFriendlyTimeStampObject = response.data[i].TimeStamp.split(" ");
+                    response.data[i].jsFriendlyTimeStamp = jsFriendlyTimeStampObject[0];
                     response.data[i].jsFriendlyBirthDate = new Date(response.data[i].ChildBirthdate);
-                    response.data[i].jsFriendlyTimeStamp = new Date(response.data[i].TimeStamp);
                     response.data[i].jsFriendlyDesiredEnrollment = new Date(response.data[i].DesiredEnrollment);      
 
 
