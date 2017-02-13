@@ -217,6 +217,7 @@ angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', f
         var targetChild = {};
         targetChild.ChildID = $scope.ClassroomList[$scope.CurrentChild.index].ChildID;
         targetChild.ChildNotes = document.getElementById('textarea').innerHTML;
+        $scope.ClassroomList[$scope.CurrentChild.index].ChildNotes = document.getElementById('textarea').innerHTML;
         // $http({
         //     url: '/editChildNotes',
         //     method: "POST",
