@@ -8,9 +8,11 @@ angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', f
         $scope.ShowModal = false;  
         $scope.names = ["Infant Room", "Toddler 1", "Toddler 2", "Preschool 1", "Preschool 2", "Progressive", "School Age", "Classroom 8"];
         $scope.ClassroomList = [];
+        $scope.CurrentChild = {};
 
         $scope.myFunc = function(target) {
-            $scope.ClassroomList = [];        
+            $scope.ClassroomList = [];  
+            var index = 0;      
 
             if(target === "Infant Room"){
                 target = "InfantRoom";
@@ -44,8 +46,10 @@ angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', f
                     .then(function(response) {
                         element.ChildName = response.data[0].ChildName;
                         element.ChildBirthdate = response.data[0].ChildBirthdate;  
-                        $scope.ConvertTimesToStrings(element);
-                        console.log(element.MondayString);                     
+                        element.ChildNotes = response.data[0].ChildNotes;
+                        element.RoomIndex = index;
+                        $scope.ConvertTimesToStrings(element);     
+                        index++;          
                     });
                 });
             });
@@ -198,13 +202,34 @@ angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', f
 
     /* MODAL JUNK */
 
-    $scope.OpenModal = function() {
+    $scope.OpenModal = function(index) {
         $scope.ShowModal = true;
+        $scope.CurrentChild.index = index;
+        document.getElementById('textarea').innerHTML = $scope.ClassroomList[index].ChildNotes;
     }
 
     $scope.CloseModal = function() {
         $scope.ShowModal = false;
         document.getElementById('textarea').innerHTML = null;
+    }
+
+    $scope.SaveNotes = function(){
+        var targetChild = {};
+        targetChild.ChildID = $scope.ClassroomList[$scope.CurrentChild.index].ChildID;
+        targetChild.ChildNotes = document.getElementById('textarea').innerHTML;
+        $scope.ClassroomList[$scope.CurrentChild.index].ChildNotes = document.getElementById('textarea').innerHTML;
+        // $http({
+        //     url: '/editChildNotes',
+        //     method: "POST",
+        //     data: { 'ChildID': $scope.ClassroomList[$scope.CurrentChild.index].ChildID 'ChildNotes': document.getElementById('textarea').innerHTML }
+        // })
+        // .then(function(response) {
+        //   $scope.ShowModal = false;                       
+        // });
+        $http.post('/editChildNotes', targetChild)
+        .then(function(response) {
+            $scope.ShowModal = false;
+        });
     }
 
     // When the user clicks anywhere outside of the modal, close it
