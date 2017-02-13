@@ -176,4 +176,6 @@ $scope.EditClassroomInfo = function(ID){
                 });
             })
         }
+
+        SaveChanges();
     };
