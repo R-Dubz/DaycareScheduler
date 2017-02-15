@@ -1,5 +1,8 @@
 angular.module('DaycareApp').controller('AddEmployee', ['$scope', '$http', function($scope, $http){
 
+    var controllerFunction = $scope;
+    $scope.numOfRows = 1;
+
     $scope.LoadDB = function(){
         $http.get('/addEmployee')
         .then(function(response) {
@@ -18,7 +21,7 @@ angular.module('DaycareApp').controller('AddEmployee', ['$scope', '$http', funct
                 
        
         var updates = $scope.Profile;
-        $http.post('/test', updates)
+        $http.post('/addEmployee', updates)
         .then(function(response) {
             console.log("Success");      
         }); 
@@ -27,10 +30,9 @@ angular.module('DaycareApp').controller('AddEmployee', ['$scope', '$http', funct
     };
 
 
-
-}]);
-
 $scope.EditClassroomInfo = function(ID){
+
+        alert("We are now trying to update the database!");
 
         if((document.getElementById('MondayIn').value === "null" && document.getElementById('MondayOut').value !== "null") ||
            (document.getElementById('MondayIn').value !== "null" && document.getElementById('MondayOut').value === "null") ||
@@ -179,3 +181,31 @@ $scope.EditClassroomInfo = function(ID){
 
         SaveChanges();
     };
+
+    $scope.addSetOfDays = function(){
+        if($scope.numOfRows < 3){
+        $scope.numOfRows = $scope.numOfRows+1;
+        }
+
+        if($scope.numOfRows === 2){
+        document.getElementById('modalContent').style.width = "450px";
+        }
+        if($scope.numOfRows === 3){
+        document.getElementById('modalContent').style.width = "650px";
+        }
+    } 
+
+    $scope.subSetOfDays = function(){
+        if($scope.numOfRows > 1){
+            $scope.numOfRows = $scope.numOfRows-1;
+        }
+
+        if($scope.numOfRows === 2){
+            document.getElementById('modalContent').style.width = "450px";
+        }
+        if($scope.numOfRows === 1){
+            document.getElementById('modalContent').style.width = "270px";
+        }
+    } 
+
+    }]);

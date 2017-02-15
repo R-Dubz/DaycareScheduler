@@ -12,11 +12,9 @@
 <link rel="stylesheet" type="text/css" href="./Other Files/(CSS Stuff) font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 
-<<<<<<< HEAD
 <body background="sky.jpg" ng-app="DaycareApp" ng-controller="EmployeeListController" ng-init="LoadEmployeeList()">
-=======
-<body bgcolor = "a919d1" background="sky.jpg" class = "backgroundPic">
->>>>>>> 31ee8874224dfe81bc7ec8c5777f17d227f8c6a0
+
+<!--<body bgcolor = "a919d1" background="sky.jpg" class = "backgroundPic">-->
 
 <h5><div class="dropdown" style="float:right;">
   <button class="dropbtn">||||</button>
@@ -37,12 +35,12 @@
 <div>
     <label>Search: <input placeholder="What are you looking for?" ng-model="searchText"></label>
 </div>
-<button type="button" ng-click="<a href="addEmployee.html">>Add Employee</button> 
+<button type="button" onclick="goTo()">Add Employee</button> 
 <div id="display"></div>
 
 <!--I think everything above this comment is correct, all the stuff below needs to be fixed-->
 
-<table class = "TFtable" style="height: 85%; width:100%">
+<table class = "TFtable" style="height: 85%; width: 100%">
 	<!--<tr>
 	<th>Child's Name</th>
 	<th>D.O.B.</th>
@@ -187,6 +185,11 @@
 
 <p id="accepted"></p>
 
+<script>
+function goTo() {
+	window.location.href = 'addEmployee.html';
+}
+</script>
 </body>
 </html>
 
