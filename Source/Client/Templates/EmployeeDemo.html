@@ -34,9 +34,8 @@
 <table style="width: 100%; height: 5%" bgcolor="yellow">
 <tr><td align="center" bgcolor="black"><font color="white">
     <h1>Employee's Name: 
-        <span ng-if="!Editing">{{Profile[0].FirstName}}<br></span>
+        <span ng-if="!Editing">{{Profile[0].FirstName}} - {{Profile[0].LastName}}<br></span>
         <span ng-if="Editing"><input type="text" id="FirstName" value="{{Profile[0].FirstName}}"></input><br></span>
-        <span ng-if="!Editing">{{Profile[0].LastName}}<br></span>
         <span ng-if="Editing"><input type="text" id="LastName" value="{{Profile[0].LastName}}"></input><br></span>
     </h1><h3>Address: 
         <span ng-if="!Editing">{{Profile[0].ChildHomeAddress}} <br></span>
