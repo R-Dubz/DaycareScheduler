@@ -31,19 +31,19 @@
 </div></h5>
 
 <h1>Add an employee.</h1>
-<button onclick="$scope.saveChanges()">SAVE</button>
+<button ng-click="SaveChanges()">SAVE</button> 
 <table border="25" style="width: 50%; height: 25%" bgcolor=9090ff>
 <tr>
-    <td>First Name: <input type= "text" id="FirstName" value="Search Here"></td>
-    <td>Last Name:  <input type= "text" id="LastName" value="Search Here"></td>
+    <td>First Name: <input type= "text" id="FirstName" placeholder="Search Here"></td>
+    <td>Last Name:  <input type= "text" id="LastName" placeholder="Search Here"></td>
 </tr>
 <tr>
-    <td>Date Of Hire: <input type= "text" id="DateOfHire" value="Search Here"></td>
-    <td>Their Email:      <input type= "text" id="EmailAddress" value="Search Here"></td>
+    <td>Date Of Hire: <input type= "text" id="DateOfHire" placeholder="Search Here"></td>
+    <td>Their Email:      <input type= "text" id="EmailAddress" placeholder="Search Here"></td>
 </tr>
 <tr>
-    <td>Phone # (primary): <input type= "text" id="PhoneNumber" value="Search Here"></td>
-    <td>Phone # (secondary): <input type= "text" id="PhoneNumber2" value="Search Here"></td>
+    <td>Phone # (primary): <input type= "text" id="PhoneNumber" placeholder="Search Here"></td>
+    <td>Phone # (secondary): <input type= "text" id="PhoneNumber2" placeholder="Search Here"></td>
 </tr>
 </table>
 
@@ -1550,8 +1550,9 @@
 
         </table>
         <div style="text-align: center; padding-top: 30px;">
-                <button ng-click="EditClassroomInfo(Profile[0])">Save Changes</button>
+                <button ng-click="SaveChanges()">Save Changes</button>
         </div>
+
 
 
 </html>

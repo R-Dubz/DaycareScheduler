@@ -8,29 +8,16 @@ angular.module('DaycareApp').controller('AddEmployee', ['$scope', '$http', funct
     };
 
 
-    $scope.SaveChanges = function(){
-        $scope.Profile[0].FirstName = document.getElementById("FirstName").value;
-        $scope.Profile[0].LastName = document.getElementById("LastName").value;
-        $scope.Profile[0].DateOfBirth = document.getElementById("DateOfHire").value;
-        $scope.Profile[0].EmailAddress = document.getElementById("EmailAddress").value;
-        $scope.Profile[0].PhoneNumber = document.getElementById("PhoneNumber").value;
-        $scope.Profile[0].PhoneNumber2 = document.getElementById("PhoneNumber2").value;
-                
-       
-        var updates = $scope.Profile;
-        $http.post('/test', updates)
-        .then(function(response) {
-            console.log("Success");      
-        }); 
+    $scope.SaveChanges = function(){ 
 
-        
-    };
+        var Profile = {};
 
-
-
-}]);
-
-$scope.EditClassroomInfo = function(ID){
+        Profile.FirstName = document.getElementById("FirstName").value;
+        Profile.LastName = document.getElementById("LastName").value;
+        Profile.DateOfBirth = document.getElementById("DateOfHire").value;
+        Profile.EmailAddress = document.getElementById("EmailAddress").value;
+        Profile.PhoneNumber = document.getElementById("PhoneNumber").value;
+        Profile.PhoneNumber2 = document.getElementById("PhoneNumber2").value;
 
         if((document.getElementById('MondayIn').value === "null" && document.getElementById('MondayOut').value !== "null") ||
            (document.getElementById('MondayIn').value !== "null" && document.getElementById('MondayOut').value === "null") ||
@@ -77,105 +64,74 @@ $scope.EditClassroomInfo = function(ID){
         }
 
 
-        var changes = {};
-        changes.ChildID = $scope.Profile[0].ChildID;
-        changes.oldClassroom = $scope.Profile[0].Classroom;
-        changes.Classroom = document.getElementById('Classroom').value;
-        changes.MI1 = document.getElementById('MondayIn').value;
-        changes.MO1 = document.getElementById('MondayOut').value;
-        changes.TI1 = document.getElementById('TuesdayIn').value;
-        changes.TO1 = document.getElementById('TuesdayOut').value;
-        changes.WI1 = document.getElementById('WednesdayIn').value;
-        changes.WO1 = document.getElementById('WednesdayOut').value;
-        changes.THI1 = document.getElementById('ThursdayIn').value;
-        changes.THO1 = document.getElementById('ThursdayOut').value;
-        changes.FI1 = document.getElementById('FridayIn').value;
-        changes.FO1 = document.getElementById('FridayOut').value;
+        Profile.MI1 = document.getElementById('MondayIn').value;
+        Profile.MO1 = document.getElementById('MondayOut').value;
+        Profile.TI1 = document.getElementById('TuesdayIn').value;
+        Profile.TO1 = document.getElementById('TuesdayOut').value;
+        Profile.WI1 = document.getElementById('WednesdayIn').value;
+        Profile.WO1 = document.getElementById('WednesdayOut').value;
+        Profile.THI1 = document.getElementById('ThursdayIn').value;
+        Profile.THO1 = document.getElementById('ThursdayOut').value;
+        Profile.FI1 = document.getElementById('FridayIn').value;
+        Profile.FO1 = document.getElementById('FridayOut').value;
 
         if(document.getElementById('MondayIn2') !== null){
-            changes.MI2 = document.getElementById('MondayIn2').value;
-            changes.MO2 = document.getElementById('MondayOut2').value;
-            changes.TI2 = document.getElementById('TuesdayIn2').value;
-            changes.TO2 = document.getElementById('TuesdayOut2').value;
-            changes.WI2 = document.getElementById('WednesdayIn2').value;
-            changes.WO2 = document.getElementById('WednesdayOut2').value;
-            changes.THI2 = document.getElementById('ThursdayIn2').value;
-            changes.THO2 = document.getElementById('ThursdayOut2').value;
-            changes.FI2 = document.getElementById('FridayIn2').value;
-            changes.FO2 = document.getElementById('FridayOut2').value;
+            Profile.MI2 = document.getElementById('MondayIn2').value;
+            Profile.MO2 = document.getElementById('MondayOut2').value;
+            Profile.TI2 = document.getElementById('TuesdayIn2').value;
+            Profile.TO2 = document.getElementById('TuesdayOut2').value;
+            Profile.WI2 = document.getElementById('WednesdayIn2').value;
+            Profile.WO2 = document.getElementById('WednesdayOut2').value;
+            Profile.THI2 = document.getElementById('ThursdayIn2').value;
+            Profile.THO2 = document.getElementById('ThursdayOut2').value;
+            Profile.FI2 = document.getElementById('FridayIn2').value;
+            Profile.FO2 = document.getElementById('FridayOut2').value;
         } else {
-            changes.MI2 = null;
-            changes.MO2 = null;
-            changes.TI2 = null;
-            changes.TO2 = null;
-            changes.WI2 = null;
-            changes.WO2 = null;
-            changes.THI2 = null;
-            changes.THO2 = null;
-            changes.FI2 = null;
-            changes.FO2 = null;
+            Profile.MI2 = null;
+            Profile.MO2 = null;
+            Profile.TI2 = null;
+            Profile.TO2 = null;
+            Profile.WI2 = null;
+            Profile.WO2 = null;
+            Profile.THI2 = null;
+            Profile.THO2 = null;
+            Profile.FI2 = null;
+            Profile.FO2 = null;
         }
 
         if(document.getElementById('MondayIn3') !== null){
-            changes.MI3 = document.getElementById('MondayIn3').value;
-            changes.MO3 = document.getElementById('MondayOut3').value;
-            changes.TI3 = document.getElementById('TuesdayIn3').value;
-            changes.TO3 = document.getElementById('TuesdayOut3').value;
-            changes.WI3 = document.getElementById('WednesdayIn3').value;
-            changes.WO3 = document.getElementById('WednesdayOut3').value;
-            changes.THI3 = document.getElementById('ThursdayIn3').value;
-            changes.THO3 = document.getElementById('ThursdayOut3').value;
-            changes.FI3 = document.getElementById('FridayIn3').value;
-            changes.FO3 = document.getElementById('FridayOut3').value;
+            Profile.MI3 = document.getElementById('MondayIn3').value;
+            Profile.MO3 = document.getElementById('MondayOut3').value;
+            Profile.TI3 = document.getElementById('TuesdayIn3').value;
+            Profile.TO3 = document.getElementById('TuesdayOut3').value;
+            Profile.WI3 = document.getElementById('WednesdayIn3').value;
+            Profile.WO3 = document.getElementById('WednesdayOut3').value;
+            Profile.THI3 = document.getElementById('ThursdayIn3').value;
+            Profile.THO3 = document.getElementById('ThursdayOut3').value;
+            Profile.FI3 = document.getElementById('FridayIn3').value;
+            Profile.FO3 = document.getElementById('FridayOut3').value;
         } else {
-            changes.MI3 = null;
-            changes.MO3 = null;
-            changes.TI3 = null;
-            changes.TO3 = null;
-            changes.WI3 = null;
-            changes.WO3 = null;
-            changes.THI3 = null;
-            changes.THO3 = null;
-            changes.FI3 = null;
-            changes.FO3 = null;
+            Profile.MI3 = null;
+            Profile.MO3 = null;
+            Profile.TI3 = null;
+            Profile.TO3 = null;
+            Profile.WI3 = null;
+            Profile.WO3 = null;
+            Profile.THI3 = null;
+            Profile.THO3 = null;
+            Profile.FI3 = null;
+            Profile.FO3 = null;
         }
 
-        if (document.getElementById('Classroom').value === "null") {
-            $http.post('/deleteChildFromClassroom', changes)
-            .then(function(response) {
-                alert("Child has been Removed from the classroom");
-                $scope.CloseModal();
-                window.location.reload(true); 
-            });
-        }
-        else if ($scope.Profile[0].Classroom === document.getElementById('Classroom').value) {
-            $http.post('/editChildClassroom', changes)
-            .then(function(response) {
-                alert("Child's classroom times have been changed");
-                $scope.CloseModal();
-                window.location.reload(true); 
-            });
-        }
-        else if($scope.Profile[0].Classroom === "" || $scope.Profile[0].Classroom === "null"){
-            $http.post('/InsertChildToClass', changes)
-            .then(function(response) {
-                alert("Child has been inserted into the classroom!"); 
-                $scope.CloseModal(); 
-                window.location.reload(true);     
-            });
-        }
-        else {
-            $http.post('/deleteChildFromClassroom', changes)
-            .then(function(response) {
-                alert("Child has been removed from the classroom. Beginning to move them to new classroom!");
-                $http.post('/InsertChildToClass', changes)
-                .then(function(response) {
-                    alert("Child has been inserted into the classroom!"); 
-                    $scope.CloseModal();  
-                    window.location.reload(true);    
-                });
-            })
-        }
 
-        SaveChanges();
+        $http.post('/addEmployee', Profile)
+        .then(function(response) {
+            console.log("Success");      
+        }); 
+
+        
     };
+
+
+
+}]);
