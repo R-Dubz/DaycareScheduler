@@ -55,19 +55,24 @@
 	<th>View Profile</th>
 	<th>Delete</th>-->
 
-	<th>First Name</th>
-	<th>Last Name</th>
+	<th>Name</th>
 	<th>Phone Number</th>
 	<th>Phone Number 2</th>
 	<th>Email Address</th>
 	<th>More Info</th>
 
-<tr ng-if="Children.length === 0">
-    <th style="height: 48px"></th>
-    <th>{{Employees[0].FirstName}}</th>
-    <th>{{Employees[0].LastName}}</th>
+<tr ng-if="Employees.length !== 0">
+    <th>{{Employees[0].FirstName}} {{Employees[0].LastName}}</th>
     <th></th>
     <th></th>  
+    <th></th> 
+    <th style="background: #dae5f4"></th>
+</tr>
+<tr ng-if="Employees.length === 0">
+    <th></th>
+    <th></th>
+    <th></th>  
+    <th></th> 
     <th style="background: #dae5f4"></th>
 </tr>
 </table>
