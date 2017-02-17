@@ -603,7 +603,7 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		db.all("SELECT * FROM Employee_Information WHERE EmployeeID = $EmployeeID", {$EmployeeID: info[0].EmployeeID},
+		db.all("SELECT * FROM Staff_Information WHERE EmployeeID = $EmployeeID", {$EmployeeID: info[0].EmployeeID},
 		 function(err, row) {
 			$EmployeeID = info[0].EmployeeID;
 			if (err){

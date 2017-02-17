@@ -9,8 +9,8 @@ angular.module('DaycareApp').controller('EmployeeProfileController', ['$scope', 
       window.location.href = 'Employees.html';
     }
 
-    $scope.LoadTempProfile = function() {
-        $http.get('/getTempEmployee')
+    $scope.LoadTempEmployeeProfile = function() {
+        $http.get('/getTempEmployeeProfile')
         .then(function(response) {
             $scope.Profile.push(response.data[0]);
         });
