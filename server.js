@@ -206,3 +206,26 @@ app.post('/editChildNotes', jsonParser, function (req, res) {
     console.log("Editing Child Notes...");
     return res.sendStatus(200);
   });
+
+  app.post('/storeTempEmployeeProfile', jsonParser, function (req, res) {
+    updateDB.storeEmployeeProfile(req.body); 
+    console.log("Storing Employee Profile...");
+    return res.sendStatus(200);
+  }); 
+
+  app.get('/getTempEmployeeProfile', function (req, res) {
+    profileStorage.callEmployeeProfileDB(function(err, data){
+      if(err) {
+        // handle the error here
+      }
+      // send the data
+      profileStorage.retrieveEmployeeProfile(data, function(err, data1){
+        if(err) {
+          // handle the error here
+        }
+        // send the data
+        console.log("Sending Profile...");
+        res.send(data1);
+    })
+    })
+  });
