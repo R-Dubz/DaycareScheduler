@@ -52,7 +52,7 @@
 
 <tr ng-repeat="child in ClassroomList | orderBy:sortType:sortReverse | filter:searchText">
     <th>{{child.ChildBirthdate}}</th>
-	<th>{{child.ChildName}}</th>
+	<th ng-click="storeProfile(child)">{{child.ChildName}}</th>
     <th>{{child.MondayString}}</th>
     <th>{{child.TuesdayString}}</th>
     <th>{{child.WednesdayString}}</th>

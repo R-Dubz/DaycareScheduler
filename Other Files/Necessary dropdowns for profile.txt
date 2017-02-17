@@ -1,0 +1,7 @@
+Gender (Done)
+Marital Status (Done)
+Potsdam Status (Done)    
+Days (Done)
+Age?
+Age Group?
+Hours?              
