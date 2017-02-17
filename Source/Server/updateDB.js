@@ -114,6 +114,26 @@ This library holds functions to be used in order to modify the database
 		db.close();
     },
 
+	storeEmployeeProfile: function(employee){
+
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+			
+		db.run("UPDATE CurrentProfile SET EmployeeID = $EmployeeID WHERE RowID = 1", {
+			$ProfileID: employee.EmployeeID	
+		});
+		
+		db.close();
+    },
+
 
 	editFromProfile: function(info) {
 		var fs = require("fs");
@@ -572,6 +592,30 @@ This library holds functions to be used in order to modify the database
 		
 		db.close();
 	},
-	};
+
+	callEmployeeProfile : function(info, callback){
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+
+		db.all("SELECT * FROM Employee_Information WHERE EmployeeID = $EmployeeID", {$EmployeeID: info[0].EmployeeID},
+		 function(err, row) {
+			$EmployeeID = info[0].EmployeeID;
+			if (err){
+				callback(err);
+				return;
+			}				
+			callback(null, row);
+		});
+
+		db.close();
+	},
+
+};
 
 	module.exports = updateDB;
