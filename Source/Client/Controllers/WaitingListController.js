@@ -82,19 +82,33 @@
                     var ChildBirthday = response.data[i].jsFriendlyBirthDate;
                     var currentTime = new Date();
                     var diff = currentTime - ChildBirthday;
-                    var age = Math.floor(diff/31557600000);
+                    var age = diff/31557600000;
 
                     response.data[i].AgeGroup = age;
 
-                    // if(age < 1){
-                    //     response.data[i].AgeGroup = "IN";
-                    // } else if(age >= 1 && age < 2){
-
-                    // } else if( age >= 3 && age <4){
-
-                    // } else if( age >= 3 && age <4){
-
-                    // } else
+                    if(age >= 1 && age < 2){
+                        response.data[i].AgeGroup = "IN/T1";
+                        response.data[i].AgeValue = 1;                        
+                    }
+                    else if(age >= (6/52) && age < 1){
+                        response.data[i].AgeGroup = "IN";
+                        response.data[i].AgeValue = 0;
+                    } else if(age >= 2 && age < 3){
+                        response.data[i].AgeGroup = "T2";
+                        response.data[i].AgeValue = 2;                        
+                    } else if( age >= 3 && age < 4){
+                        response.data[i].AgeGroup = "PS3";
+                        response.data[i].AgeValue = 3;                        
+                    } else if( age >= 4 && age < 5){
+                        response.data[i].AgeGroup = "PS4";
+                        response.data[i].AgeValue = 4;                        
+                    } else if( age >= 5 && age <= 10){
+                        response.data[i].AgeGroup = "SA";
+                        response.data[i].AgeValue = 5;
+                    } else {
+                        response.data[i].AgeGroup = "Unknown";
+                        response.data[i].AgeValue = 1000; 
+                    }
 
 
 

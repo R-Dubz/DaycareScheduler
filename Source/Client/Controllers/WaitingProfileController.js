@@ -24,8 +24,10 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
         $scope.Profile[0].ChildName = ChildName.value;
         $scope.Profile[0].MaritalStatus = MaritalStatus.value;
         $scope.Profile[0].ChildAge = ChildAge.value;
+        $scope.Profile[0].ChildGender = ChildGender.value;
         $scope.Profile[0].ChildBirthdate = ChildBirthdate.value;
         $scope.Profile[0].AgeGroup = AgeGroup.value;
+        $scope.Profile[0].RequiredDays = RequiredDays.value;        
         $scope.Profile[0].GuardianName1 = GuardianName1.value;
         $scope.Profile[0].GuardianStatus1 = GuardianStatus1.value;
         $scope.Profile[0].GuardianEmail1 = GuardianEmail1.value;

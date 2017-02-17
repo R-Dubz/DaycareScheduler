@@ -38,7 +38,12 @@
         <span ng-if="Editing"><input type="text" id="ChildName" value="{{Profile[0].ChildName}}"></input><br></span>
     </h1><h3>Child's Gender: 
         <span ng-if="!Editing">{{Profile[0].ChildGender}}<br></span>
-        <span ng-if="Editing"><input type="text" id="ChildGender" value="{{Profile[0].ChildGender}}"></input><br></span>
+        <span ng-if="Editing">
+            <select id="ChildGender">
+                <option ng-selected="Profile[0].ChildGender === 'Male'" value="Male">Male</option>
+                <option ng-selected="Profile[0].ChildGender === 'Female'" value="Female">Female</option>            
+            </select><br>
+        </span>
     Address: 
         <span ng-if="!Editing">{{Profile[0].ChildHomeAddress}} <br></span>
         <span ng-if="Editing"><input type="text" id="ChildHomeAddress" value="{{Profile[0].ChildHomeAddress}}"></input><br></span>
@@ -47,7 +52,16 @@
         <span ng-if="Editing"><input type="text" id="HomePhone" value="{{Profile[0].HomePhone}}"></input><br></span>
     Parent/Guardian's marital status: 
         <span ng-if="!Editing">{{Profile[0].MaritalStatus}}<br></span>
-        <span ng-if="Editing"><input type="text" id="MaritalStatus" value="{{Profile[0].MaritalStatus}}"></input><br></span>
+        <span ng-if="Editing">
+            <select id="MaritalStatus">
+                <option ng-selected="Profile[0].MaritalStatus === 'Married'" value="Married">Married</option>
+                <option ng-selected="Profile[0].MaritalStatus === 'Single'" value="Single">Single</option>  
+                <option ng-selected="Profile[0].MaritalStatus === 'Together'" value="Together">Together</option>                                                 
+                <option ng-selected="Profile[0].MaritalStatus === 'Divorced'" value="Divorced">Divorced</option>                                                 
+                <option ng-selected="Profile[0].MaritalStatus === 'Separated'" value="Separated">Separated</option>                                                 
+                <option ng-selected="Profile[0].MaritalStatus === 'Widowed'" value="Widowed">Widowed</option>                                                 
+				</select><br>
+        </span>
 </h3></font></td>
 <h5><td align="center" bgcolor="white"><h3><font color="black">
     DOB: 
@@ -61,7 +75,13 @@
         <span ng-if="Editing"><input type="text" id="AgeGroup" value="{{Profile[0].AgeGroup}}"></input><br></span>
     Days: 
         <span ng-if="!Editing">{{Profile[0].RequiredDays}} <br></span>
-        <span ng-if="Editing"><input type="text" id="RequiredDays" value="{{Profile[0].RequiredDays}}"></input><br></span>
+        <span ng-if="Editing">
+            <select id="RequiredDays">
+                <option ng-selected="Profile[0].RequiredDays === 'M-F'" value="M-F">M-F</option>
+                <option ng-selected="Profile[0].RequiredDays === 'MWF'" value="MWF">MWF</option>  
+                <option ng-selected="Profile[0].RequiredDays === 'T/Th'" value="T/Th">T/Th</option>                                                 
+            </select><br>
+        </span>
     hours: 
         <span ng-if="!Editing">{{Profile[0].DesiredTimeBlock}}<br></span>
         <span ng-if="Editing"><input type="text" id="DesiredTimeBlock" value="{{Profile[0].DesiredTimeBlock}}"></input><br></span>
@@ -83,7 +103,18 @@
     </td>
     <td align="center" bgcolor="white">
         <span ng-if="!Editing">{{Profile[0].GuardianStatus1}}</span>
-        <span ng-if="Editing"><input type="text" id="GuardianStatus1" value="{{Profile[0].GuardianStatus1}}"></input></span>
+        <span ng-if="Editing">
+            <select id="GuardianStatus1">
+                <option ng-selected="Profile[0].GuardianStatus1 === 'Full-time SUNY student'" value="Full-time SUNY student">Full-time SUNY student</option>
+                <option ng-selected="Profile[0].GuardianStatus1 === 'Part-time SUNY student'" value="Part-time SUNY student">Part-time SUNY student</option>  
+                <option ng-selected="Profile[0].GuardianStatus1 === 'UUP'" value="UUP">UUP</option>            
+                <option ng-selected="Profile[0].GuardianStatus1 === 'CSEA'" value="CSEA">CSEA</option>            
+                <option ng-selected="Profile[0].GuardianStatus1 === 'PEF'" value="PEF">PEF</option>            
+                <option ng-selected="Profile[0].GuardianStatus1 === 'NYSCOPBA'" value="NYSCOPBA">NYSCOPBA</option>            
+                <option ng-selected="Profile[0].GuardianStatus1 === 'Other State'" value="Other State">Other State</option>            
+                <option ng-selected="Profile[0].GuardianStatus1 === 'None'" value="None">None</option>                                      
+            </select><br>
+        </span>
     </td>
     <td align="center" bgcolor="white">
         <span ng-if="!Editing">{{Profile[0].GuardianEmail1}}</span>
@@ -103,7 +134,18 @@
     </td>
     <td align="center" bgcolor="white">
         <span ng-if="!Editing">{{Profile[0].GuardianStatus2}}</span>
-        <span ng-if="Editing"><input type="text" id="GuardianStatus2" value="{{Profile[0].GuardianStatus2}}"></input></span>
+        <span ng-if="Editing">
+            <select id="GuardianStatus2">
+                <option ng-selected="Profile[0].GuardianStatus2 === 'Full-time SUNY student'" value="Full-time SUNY student">Full-time SUNY student</option>
+                <option ng-selected="Profile[0].GuardianStatus2 === 'Part-time SUNY student'" value="Part-time SUNY student">Part-time SUNY student</option>  
+                <option ng-selected="Profile[0].GuardianStatus2 === 'UUP'" value="UUP">UUP</option>            
+                <option ng-selected="Profile[0].GuardianStatus2 === 'CSEA'" value="CSEA">CSEA</option>            
+                <option ng-selected="Profile[0].GuardianStatus2 === 'PEF'" value="PEF">PEF</option>            
+                <option ng-selected="Profile[0].GuardianStatus2 === 'NYSCOPBA'" value="NYSCOPBA">NYSCOPBA</option>            
+                <option ng-selected="Profile[0].GuardianStatus2 === 'Other State'" value="Other State">Other State</option>            
+                <option ng-selected="Profile[0].GuardianStatus2 === 'None'" value="None">None</option>                                      
+            </select><br>
+        </span>
     </td>
     <td align="center" bgcolor="white">
         <span ng-if="!Editing">{{Profile[0].GuardianEmail2}}</span>
