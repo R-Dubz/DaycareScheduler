@@ -40,7 +40,7 @@
 
 <div id="display"></div>
 
-<table class = "Classroomtable" style="height: 85%">
+<table class = "ClassroomTable" style="height: 85%">
 	<!--<th>Child's Name</th>
 	<th>D.O.B.</th>
 	<th>Phone Number</th>
@@ -61,12 +61,12 @@
 	<th>Email Address</th>
 	<th>More Info</th>
 
-<tr ng-if="Employees.length !== 0">
-    <th>{{Employees[0].FirstName}} {{Employees[0].LastName}}</th>
-    <th>{{Employees[0].PhoneNumber}}</th>
-    <th>{{Employees[0].PhoneNumber2}}</th>  
-    <th>{{Employees[0].EmailAddress}}</th> 
-    <th style="background: #dae5f4">{{Employees[0].MoreInfo}}</th>
+<tr ng-if="Employees.length !== 0" ng-repeat="employee in Employees">
+    <th>{{employee.FirstName}} {{employee.LastName}}</th>
+    <th>{{employee.PhoneNumber}}</th>
+    <th>{{employee.PhoneNumber2}}</th>  
+    <th>{{employee.EmailAddress}}</th> 
+    <th>{{employee.MoreInfo}}</th>
 </tr>
 <tr ng-if="Employees.length === 0">
     <th></th>
