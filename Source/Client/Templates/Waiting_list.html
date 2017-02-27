@@ -138,7 +138,7 @@
 </thead>
 
 
-<tr ng-repeat="child in Children | orderBy:['AgeGroup', '-Priority', '-TimeStamp' ] | filter:searchText"> 
+<tr ng-repeat="child in Children | orderBy:['AgeValue', '-Priority', 'TimeStamp' ] | filter:searchText"> 
     <th ng-click="storeProfile(child)">{{child.ChildName}}</th>
     <th>{{child.ChildBirthdate}}</th>   
     <th>{{child.HomePhone}}</th>
