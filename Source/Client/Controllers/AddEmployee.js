@@ -1,11 +1,11 @@
 angular.module('DaycareApp').controller('AddEmployee', ['$scope', '$http', function($scope, $http){
 
-    $scope.LoadDB = function(){
-        $http.get('/addEmployee')
-        .then(function(response) {
-            $scope.Profile.push(response.data[0]);
-        });
-    };
+    // $scope.LoadDB = function(){
+    //     $http.get('/addEmployee')
+    //     .then(function(response) {
+    //         $scope.Profile.push(response.data[0]);
+    //     });
+    // };
 
 
     $scope.SaveChanges = function(){ 
