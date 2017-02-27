@@ -1,28 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html class="no-js" lang="en">
-<head>
-	<meta charset="utf-8" />
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Employee Profile</title>
-    <link rel="stylesheet" href="css/foundation.css" />
-
-<script type="text/javascript"></script>
-<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script>
-<script src="./app.js"></script>
-<script src="./Source/Client/Controllers/EmployeeProfileController.js"></script>
-    <script src="./Other Files/foundation-6.3.0-complete/js/vendor/jquery.min.js"></script>
+    <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/foundation.css" />
+	
+	<script src="./Other Files/foundation-6.3.0-complete/js/vendor/jquery.min.js"></script>
     <script src="./Other Files/foundation-6.3.0-complete/js/vendor/what-input.min.js"></script>
     <script src="./Other Files/foundation-6.3.0-complete/js/foundation.min.js"></script>
     <script>
       $(document).foundation();
     </script>
-
-<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">
-<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/modal.css">
-<link rel="stylesheet" type="text/css" href="./Other Files/(CSS Stuff) font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
-</head>
-<body ng-app="DaycareApp" ng-controller="EmployeeProfileController" ng-init="LoadTempEmployeeProfile()">
+  </head>
+  <body>
 
     <script src="./Other Files/foundation-6.3.0-complete/js/vendor/jquery.min.js"></script>
     <script src="./Other Files/foundation-6.3.0-complete/js/vendor/what-input.min.js"></script>
@@ -30,48 +22,33 @@
     <script>
       $(document).foundation();
     </script>
-
-<button ng-click="backToList()">Back</button>
-
-<h5><div class="dropdown" style="float:right;">
-
-  <button class="dropbtn">||||</button>
-  <div class="dropdown-content">
-    <a href="Home.html">Home</a>
-        <a href="RoomScheduleDev.html">Rooms</a>
-    <a href="Employees.html">Employees</a>
-    <a href="Children.html">Children</a>
-	<a href="sChildren.html">Schedule Classrooms</a>
-	<a href="sEmployee.html">Schedule Employees</a>
-	<a href="Waiting_list.html">Waiting List</a>
-  </div>
-</div></h5>
-
-<div class="media-object">
-	<div class="media-object-selection">
-		<div class="thumbnail">
-			<img src="./Images/Stock/stock-1.jpg">
-		</div>
-	<div class="media-object-selection">
-		<h6>{{Profile[0].FirstName}} {{Profile[0].LastName}}</h6>
-		<p>Contact Info:
-		<br>Primary Number: {{Profile[0].PhoneNumber}}
-		<br>Secondary Number: {{Profile[0].PhoneNumber2}}
-		<br>Email Address: {{Profile[0].EmailAddress}}
-		</p>
-	</div>
-	</div>
+	
+	<div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle></button>
+  <div class="title-bar-title">Menu</div>
 </div>
 
-        <div style="text-align: center; padding-top: 30px;">
-                <button ng-click="acceptChild(Profile[0])">Accept Child</button>
-                <button ng-click="CloseModal()">Cancel</button>
-        </div>
-        </div>
-
-        </div>
-</p>
-
-</body>
-
+<div class="top-bar" id="main-menu">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">Site Title</li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu" data-responsive-menu="drilldown medium-dropdown">
+      <li class="has-submenu">
+        <a href="#">One</a>
+        <ul class="submenu menu vertical" data-submenu>
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Two</a></li>
+      <li><a href="#">Three</a></li>
+    </ul>
+  </div>
+</div>
+	
+  </body>
 </html>
