@@ -11,7 +11,6 @@ angular.module('DaycareApp').controller('AddEmployee', ['$scope', '$http', funct
     $scope.SaveChanges = function(){ 
 
         var Profile = {};
-
         Profile.FirstName = document.getElementById("FirstName").value;
         Profile.LastName = document.getElementById("LastName").value;
         Profile.DateOfBirth = document.getElementById("DateOfHire").value;
@@ -62,7 +61,6 @@ angular.module('DaycareApp').controller('AddEmployee', ['$scope', '$http', funct
                 return;
             } 
         }
-
 
         Profile.MI1 = document.getElementById('MondayIn').value;
         Profile.MO1 = document.getElementById('MondayOut').value;
@@ -135,3 +133,4 @@ angular.module('DaycareApp').controller('AddEmployee', ['$scope', '$http', funct
 
 
 }]);
+
