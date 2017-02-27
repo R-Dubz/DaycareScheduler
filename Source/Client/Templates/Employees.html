@@ -40,7 +40,7 @@
 
 <div id="display"></div>
 
-<table class = "TFtable" style="height: 85%">
+<table class = "ClassroomTable" style="height: 85%">
 	<!--<th>Child's Name</th>
 	<th>D.O.B.</th>
 	<th>Phone Number</th>
@@ -55,19 +55,24 @@
 	<th>View Profile</th>
 	<th>Delete</th>-->
 
-	<th>First Name</th>
-	<th>Last Name</th>
+	<th>Name</th>
 	<th>Phone Number</th>
 	<th>Phone Number 2</th>
 	<th>Email Address</th>
 	<th>More Info</th>
 
-<tr ng-if="Children.length === 0">
-    <th style="height: 48px"></th>
-    <th></th>
+<tr ng-if="Employees.length !== 0" ng-repeat="employee in Employees">
+    <th>{{employee.FirstName}} {{employee.LastName}}</th>
+    <th>{{employee.PhoneNumber}}</th>
+    <th>{{employee.PhoneNumber2}}</th>  
+    <th>{{employee.EmailAddress}}</th> 
+    <th>{{employee.MoreInfo}}</th>
+</tr>
+<tr ng-if="Employees.length === 0">
     <th></th>
     <th></th>
     <th></th>  
+    <th></th> 
     <th style="background: #dae5f4"></th>
 </tr>
 </table>
