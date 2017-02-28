@@ -49,7 +49,7 @@ body {
   margin-top: 1rem;  }
   
 .card {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   margin-top: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;
@@ -59,6 +59,14 @@ body {
   box-shadow: none;
   overflow: hidden;
   color: #0a0a0a; }
+  
+h2 {
+  font-family: 'Mada', sans-serif;
+  font-size: inherit;
+  line-height: 1.0;
+  margin-top: 0;
+  margin-left: 13rem;
+  margin-bottom: 0rem; }
   
 h4 {
   font-family: 'Mada', sans-serif;
@@ -71,7 +79,7 @@ h5 {
   font-family: 'Mada', sans-serif;
   font-size: 1.5rem;
   line-height: 1.5;
-  margin-top: 0;
+  margin-top: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;
   margin-bottom: 0.5rem; }
@@ -83,3 +91,22 @@ p {
   font-size: inherit;
   line-height: 1.6;
   text-rendering: optimizeLegibility; }
+  
+.Logo {
+	position: absolute;
+	top: 30px;
+	left: 0px;
+}
+
+.view {
+	background-color:	#696969;
+	margin-top: 0rem;
+	width:	150px;
+}
+
+.notes {
+	background-color:	#32CD32;
+	color:	black;
+	margin-top: 0rem;
+	width:	150px;
+}
