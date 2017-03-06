@@ -14,6 +14,9 @@
 
 <body background="sky.jpg" ng-app="DaycareApp" ng-controller="EmployeeListController" ng-init="LoadEmployeeList()">
 
+<!--<body bgcolor = "a919d1" background="sky.jpg" class = "backgroundPic">-->
+
+
 <h5><div class="dropdown" style="float:right;">
   <button class="dropbtn">||||</button>
   <div class="dropdown-content">
@@ -33,6 +36,9 @@
 <div>
     <label>Search: <input placeholder="What are you looking for?" ng-model="searchText"></label>
 </div>
+<button type="button" onclick="goTo()">Add Employee</button> 
+<div id="display"></div>
+
 
 <FORM METHOD="LINK" ACTION="addEmployee.html">
 <INPUT TYPE="submit" VALUE="Add Employee">
@@ -40,8 +46,14 @@
 
 <div id="display"></div>
 
+
 <table class = "ClassroomTable" style="height: 85%">
 	<!--<th>Child's Name</th>
+=======
+<table class = "TFtable" style="height: 85%; width: 100%">
+	<!--<tr>
+	<th>Child's Name</th>
+>>>>>>> master
 	<th>D.O.B.</th>
 	<th>Phone Number</th>
 	<th>Primany Parent Name</th>
@@ -77,6 +89,13 @@
 </tr>
 </table>
 
+<p id="accepted"></p>
+
+<script>
+function goTo() {
+	window.location.href = 'addEmployee.html';
+}
+</script>
 </body>
 </html>
 

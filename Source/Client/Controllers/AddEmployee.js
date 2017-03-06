@@ -1,11 +1,31 @@
 angular.module('DaycareApp').controller('AddEmployee', ['$scope', '$http', function($scope, $http){
 
-    // $scope.LoadDB = function(){
-    //     $http.get('/addEmployee')
-    //     .then(function(response) {
-    //         $scope.Profile.push(response.data[0]);
-    //     });
-    // };
+
+    var controllerFunction = $scope;
+    $scope.numOfRows = 1;
+
+    $scope.LoadDB = function(){
+        $http.get('/addEmployee')
+        .then(function(response) {
+            $scope.Profile.push(response.data[0]);
+        });
+    };
+
+
+    $scope.SaveChanges = function(){
+        $scope.Profile[0].FirstName = document.getElementById("FirstName").value;
+        $scope.Profile[0].LastName = document.getElementById("LastName").value;
+        $scope.Profile[0].DateOfBirth = document.getElementById("DateOfHire").value;
+        $scope.Profile[0].EmailAddress = document.getElementById("EmailAddress").value;
+        $scope.Profile[0].PhoneNumber = document.getElementById("PhoneNumber").value;
+        $scope.Profile[0].PhoneNumber2 = document.getElementById("PhoneNumber2").value;
+                
+       
+        var updates = $scope.Profile;
+        $http.post('/addEmployee', updates)
+        .then(function(response) {
+            console.log("Success");      
+        }); 
 
 
     $scope.SaveChanges = function(){ 
@@ -17,6 +37,10 @@ angular.module('DaycareApp').controller('AddEmployee', ['$scope', '$http', funct
         Profile.EmailAddress = document.getElementById("EmailAddress").value;
         Profile.PhoneNumber = document.getElementById("PhoneNumber").value;
         Profile.PhoneNumber2 = document.getElementById("PhoneNumber2").value;
+
+$scope.EditClassroomInfo = function(ID){
+
+        alert("We are now trying to update the database!");
 
         if((document.getElementById('MondayIn').value === "null" && document.getElementById('MondayOut').value !== "null") ||
            (document.getElementById('MondayIn').value !== "null" && document.getElementById('MondayOut').value === "null") ||
@@ -128,9 +152,32 @@ angular.module('DaycareApp').controller('AddEmployee', ['$scope', '$http', funct
         }); 
 
         
-    };
 
 
+    $scope.addSetOfDays = function(){
+        if($scope.numOfRows < 3){
+        $scope.numOfRows = $scope.numOfRows+1;
+        }
 
-}]);
+        if($scope.numOfRows === 2){
+        document.getElementById('modalContent').style.width = "450px";
+        }
+        if($scope.numOfRows === 3){
+        document.getElementById('modalContent').style.width = "650px";
+        }
+    } 
 
+    $scope.subSetOfDays = function(){
+        if($scope.numOfRows > 1){
+            $scope.numOfRows = $scope.numOfRows-1;
+        }
+
+        if($scope.numOfRows === 2){
+            document.getElementById('modalContent').style.width = "450px";
+        }
+        if($scope.numOfRows === 1){
+            document.getElementById('modalContent').style.width = "270px";
+        }
+    } 
+
+    }]);
