@@ -36,7 +36,7 @@
 <div>
     <label>Search: <input placeholder="What are you looking for?" ng-model="searchText"></label>
 </div>
-<button type="button" onclick="goTo()">Add Employee</button> 
+<!--<button type="button" onclick="goTo()">Add Employee</button> -->
 <div id="display"></div>
 
 
@@ -72,13 +72,15 @@
 	<th>Phone Number 2</th>
 	<th>Email Address</th>
 	<th>More Info</th>
+    <th>View Profile</th>
 
 <tr ng-if="Employees.length !== 0" ng-repeat="employee in Employees">
-    <th>{{employee.FirstName}} {{employee.LastName}}</th>
+    <th ng-click="storeProfile(employee)">{{employee.FirstName}} {{employee.LastName}}</th>
     <th>{{employee.PhoneNumber}}</th>
     <th>{{employee.PhoneNumber2}}</th>  
     <th>{{employee.EmailAddress}}</th> 
     <th>{{employee.MoreInfo}}</th>
+    <th><button type="button" ng-click="storeProfile(employee)">Profile</button></th>
 </tr>
 <tr ng-if="Employees.length === 0">
     <th></th>
