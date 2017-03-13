@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html>
-<head>
-<title>Employee Scheduler</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">
-<link rel="stylesheet" type="text/css" href="./Other Files/(CSS Stuff) font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Scheduler</title>
     <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/foundation.css">
     <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/app.css">
 	<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/modal_employee.css">
@@ -14,103 +13,33 @@
 	<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script>
 	<script src="./app.js"></script>
 	<script src="./Source/Client/Controllers/EmployeeProfileController.js"></script>
-    </head>
+  </head>
 <body>
-
-<div>
-  <table style="width: 100%; height: 50%">
-    <tr>
-        <td align="center" class="tablink" onclick="openCity(event,'MondayAv')" bgColor="ffff00">
-            Monday Available
-        </td>
-        <td align="center" class="tablink" onclick="openCity(event,'TuesdayAv')" bgColor="">
-            Tuesday Available
-        </td>
-        <td align="center" class="tablink" onclick="openCity(event,'WednesdayAv')" bgColor="">
-           Wednesday Available
-        </td>
-        <td align="center" class="tablink" onclick="openCity(event,'ThursdayAv')" bgColor="">
-            Thursday Available
-        </td>
-        <td align="center" class="tablink" onclick="openCity(event,'FridayAv')" bgColor="">
-            Friday Available
-        </td>
-    </tr>
-    <tr>
-        <td align="center" class="tablink" onclick="openCity(event,'MondaySc')" bgColor="">
-            Monday Schedule
-        </td>
-        <td align="center" class="tablink" onclick="openCity(event,'TuesdaySc')" bgColor="">
-            Tuesday Schedule
-        </td>
-        <td align="center" class="tablink" onclick="openCity(event,'WednesdaySc')" bgColor="">
-           Wednesday Schedule
-        </td>
-        <td align="center" class="tablink" onclick="openCity(event,'ThursdaySc')" bgColor="">
-            Thursday Schedule
-        </td>
-        <td align="center" class="tablink" onclick="openCity(event,'FridaySc')" bgColor="">
-            Friday Schedule
-        </td>
-    </tr>
-  </table>
-
-  <div id="MondayAv" class="city">
-    <p>Monday is the first day of the week</p>
+<ul class="tabs vertical" data-tab>
+  <li class="tab-title active"><a href="#panel11">Tab 1</a></li>
+  <li class="tab-title"><a href="#panel21">Tab 2</a></li>
+  <li class="tab-title"><a href="#panel31">Tab 3</a></li>
+  <li class="tab-title"><a href="#panel41">Tab 4</a></li>
+</ul>
+<div class="tabs-content">
+  <div class="content active" id="panel11">
+    <p>This is the first panel of the basic tab example</p>
   </div>
-
-  <div id="TuesdayAv" class="city" style="display:none">
-    <p>Tuesday is the second day of the week</p>
+  <div class="content" id="panel21">
+    <p>This is the second panel of the basic tab example.</p>
   </div>
-
-  <div id="WednesdayAv" class="city" style="display:none">
-    <p>Wednesday is the third day of the week</p>
+  <div class="content" id="panel31">
+    <p>This is the third panel of the basic tab example.</p>
   </div>
-
-  <div id="ThursdayAv" class="city" style="display:none">
-    <p>Thursday is the fourth day of the week</p>
-  </div>
-
-  <div id="FridayAv" class="city" style="display:none">
-    <p>Friday is the fifth day of the week</p>
-  </div>
-
-  <div id="MondaySc" class="city" style="display:none">
-    <p>Monday is the first day of the week</p>
-  </div>
-
-  <div id="TuesdaySc" class="city" style="display:none">
-    <p>Tuesday is the second day of the week</p> 
-  </div>
-
-  <div id="WednesdaySc" class="city" style="display:none">
-    <p>Wednesday is the third day of the week</p>
-  </div>
-
-  <div id="ThursdaySc" class="city" style="display:none">
-    <p>Thursday is the fourth day of the week</p>
-  </div>
-
-  <div id="FridaySc" class="city" style="display:none">
-    <p>Friday is the fifth day of the week</p>
+  <div class="content" id="panel41">
+    <p>This is the fourth panel of the basic tab example.</p>
   </div>
 </div>
 
-<script>
-function openCity(evt, cityName) {
-  var i, x, tablinks;
-  x = document.getElementsByClassName("city");
-  for (i = 0; i < x.length; i++) {
-      x[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < x.length; i++) {
-      tablinks[i].bgColor = tablinks[i].bgColor.replace("ffff00", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.bgColor = "ffff00";
-}
-</script>
+ <script src="./Other Files/foundation-6.3.0-complete/js/vendor/jquery.js"></script>
+    <script src="./Other Files/foundation-6.3.0-complete/js/vendor/what-input.js"></script>
+    <script src="./Other Files/foundation-6.3.0-complete/js/vendor/foundation.js"></script>
+    <script src="./Other Files/foundation-6.3.0-complete/js/app.js"></script>
 
 </body>
 </html>
