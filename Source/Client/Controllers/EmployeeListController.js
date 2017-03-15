@@ -13,4 +13,14 @@
                 $scope.Employees = response.data;
             });
         };
+
+
+        $scope.storeProfile = function(employee){
+            $http.post('/storeTempEmployeeProfile', employee)
+            .then(function(response) {
+                window.location.href = 'EmployeeDemoDev.html';
+            });
+        }
+
+
     }]);

@@ -1,83 +1,89 @@
-<DOCTYPE! html>
-<html>
+<!DOCTYPE html>
+<html class="no-js" lang="en" dir="ltr">
 
 <head>
+  <meta charset="utf-8">
+   <meta http-equiv="x-ua-compatible" content="ie=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Home</title>
 
 
-<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">
+   <!--<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">-->
+<link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/foundation.css">
+<link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/app.css"i>
+<script type="text/javascript"></script>
+<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script>
+<script src="./app.js"></script>
 
 </head>
 
 
 <body background="sky.jpg" class = "backgroundPic">
 
-<h5>
-	<div class="dropdown" style="float:right;">
-	<button class="dropbtn">||||</button>
-		<div class="dropdown-content">
-			<a href="RoomScheduleDev.html">Rooms</a>
-			<a href="Employees.html">Employees</a>
-			<a href="Children.html">Children</a>
-			<a href="sChildren.html">Schedule Classrooms</a>
-			<a href="addEmployee.html">Add Employees</a>
-			<a href="Waiting_list.html">Waiting List</a>
+	<div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
+	   <button class="menu-icon" type="button" data-toggle></button>
+	 <div class="title-bar-title">Menu</div>
+	 </div>
+
+
+
+	<div class="top-bar" id="main-menu">
+	<div class="top-bar-left">
+	<ul class="dropdown menu" data-dropdown-menu>
+	<li class="menu-text"><img src="./Images/Stock/PotsdamLogoSmall.jpg" class="Logo"><h2>SUNY Potsdam Child Care Center, Inc. Home</h2></li>
+	</div>
+	</ul>
+	<div class="top-bar-right">
+		<ul class="menu" data-responsive-menu="drilldown medium-dropdown">
+		 <li class="has-submenu">
+		 <a href="Home.html">Home</a>
+		<ul class="submenu menu vertical" data-submenu>
+		 <li><a href="Waiting_list.html">Waiting List</a></li>
+		<li><a href="RoomScheduleDev.html">Classrooms</a></li>
+		<li><a href="Children.html">Enrolled List</a></li>
+		<li><a href="Employees.html">Employee List</a></li>
+		</ul>
+	 </li>
+	</ul>
+	</div>
+ </div>
+
+ <br>
+
+
+
+ <div class="row small-up-3 data-equalizer">
+
+	<div class="column data-equalizer-watch">
+			 <a href="Waiting_list.html" class="button large expanded">Waiting List</a>
+		</div>
+	 <div class="column data-equalizer-watch">
+		  <a href="RoomScheduleDev.html" class="button large expanded">Classroom Schedules</a>
+		</div>
+		
+	<div class="column data-equalizer-watch">
+		<a href="EmployeeSchedWTabs.html" class="button large expanded">Test Navigation</a>
 		</div>
 	</div>
-</h5>
+	
+	<div class="row large-up-2 data-equalizer">
+		<div class="column data-equalizer-watch">
+			<a href="Children.html" class="button large expanded">Enrollment Database</a>
+		</div>
+	<div class="column data-equalizer-watch">
+		<a href="Employees.html" class="button large expanded">Employee Database</a>	
+		</div>
+	</div>
 
-<table style="width: 100%; height: 10%" bgcolor="white">
-<tr><td align="center"><h1><font color="maroon">
-SUNY Potsdam Daycare Scheduling
-</font></h1></td></tr></table>
-
-
-<h1><table border="25" style="width: 100%; height: 85%" bgcolor="turquoise">
-	<tr style="height: 50%">
-		<td colspan ="2" align="center">
-			<button style="height:200px;width:200px;background-color:3399f0" onclick="day()">
-			<h1>Waiting List</h1></button>
-		</td>
-		<td colspan ="2" align="center">
-			<button style="height:200px;width:200px;background-color:3399f0" onclick="childSched()">
-			<h1>Classroom Schedules</h1></button>
-		</td>
-		<td colspan="2" align="center">
-			<button style="height:200px;width:200px;background-color:3399f0" onclick="employeeSched()">
-			<h1>Employee Scheduler</h1></button>
-		</td>
-	</tr>
-	<tr style="height: 50%">
-		<td colspan ="3" align="center">
-			<button style="height:200px;width:200px;background-color:3399f0" onclick="childInfo()">
-			<h1>Enrollment Database</h1></button>
-		</td>
-		<td colspan="3" align="center">
-			<button style="height:200px;width:200px;background-color:3399f0" onclick="employees()">
-			<h1>Employee Database</h1></button>
-		</td>
-	</tr>
-</table>
 </h1>
-<script>
-function rooms() {
-	window.location.href = 'sChildren.html';
-}
-function childInfo() {
-	window.location.href = 'Children.html';
-}
-function childSched() {
-	window.location.href = 'RoomScheduleDev.html';
-}
-function employees() {
-	window.location.href = 'Employees.html';
-}
-function employeeSched() {
-	window.location.href = 'addEmployee.html';
-}
-function day() {
-	window.location.href = 'Waiting_list.html';
-}
-</script>
+
+	<!--Note to future programmers: we don't know why this is supposed to be at the bottom
+	of the file, but please if you use foundation CSS for the title bar, put this block at the
+	bottom of your files right next to the ending body tag-->
+	<script src="./Other Files/foundation-6.3.0-complete/js/vendor/jquery.js"></script>
+	<script src="./Other Files/foundation-6.3.0-complete/js/vendor/what-input.js"></script>
+	<script src="./Other Files/foundation-6.3.0-complete/js/vendor/foundation.js"></script>
+	<script src="./Other Files/foundation-6.3.0-complete/js/app.js"></script>
 </body>
 
 </html>

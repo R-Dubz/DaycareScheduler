@@ -128,7 +128,7 @@ This library holds functions to be used in order to modify the database
 		var db = new sqlite3.Database(file);
 			
 		db.run("UPDATE CurrentProfile SET EmployeeID = $EmployeeID WHERE RowID = 1", {
-			$ProfileID: employee.EmployeeID	
+			$EmployeeID: employee.StaffID	
 		});
 		
 		db.close();

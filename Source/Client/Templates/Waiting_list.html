@@ -8,28 +8,44 @@
 <script src="./Source/Client/Controllers/WaitingListController.js"></script>
 
 
-<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">
+<!--<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">-->
 <link rel="stylesheet" type="text/css" href="./Other Files/(CSS Stuff) font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/foundation.css">
+    <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/app.css">
 </head>
 
 <body background="sky.jpg" class = "backgroundPic" ng-app="DaycareApp" ng-controller="WaitingListController" ng-init="LoadWaitingList()">
 
-<h5><div class="dropdown" style="float:right;">
-  <button class="dropbtn">||||</button>
-  <div class="dropdown-content">
-    <a href="Home.html">Home</a>
-        <a href="RoomScheduleDev.html">Rooms</a>
-    <a href="Employees.html">Employees</a>
-    <a href="Children.html">Children</a>
-    <a href="sChildren.html">Schedule Classrooms</a>
-    <a href="sEmployee.html">Schedule Employees</a>
-    <a href="Waiting_list.html">Waiting List</a>
+
+
+    <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle></button>
+  <div class="title-bar-title">Menu</div>
+</div>
+
+<div class="top-bar" id="main-menu">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text"><img src="./Images/Stock/PotsdamLogoSmall.jpg" class="Logo"><h2>Waiting List</h2></li>
+    </ul>
   </div>
-</div></h5>
+  <div class="top-bar-right">
+    <ul class="menu" data-responsive-menu="drilldown medium-dropdown">
+      <li class="has-submenu">
+        <a href="Home.html">Home</a>
+        <ul class="submenu menu vertical" data-submenu>
+          <li><a href="Waiting_list.html">Waiting List</a></li>
+          <li><a href="RoomScheduleDev.html">Classrooms</a></li>
+          <li><a href="Children.html">Enrolled List</a></li>
+		  <li><a href="Employees.html">Employee List</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
 
-
-<h1>Waiting List</h1>
-
+<br>
 <div>
     <label>Search: <input placeholder="What are you looking for?" ng-model="searchText"></label>
 </div>
@@ -172,5 +188,9 @@
 
 <p id="accepted"></p>
 
+    <script src="./Other Files/foundation-6.3.0-complete/js/vendor/jquery.js"></script>
+    <script src="./Other Files/foundation-6.3.0-complete/js/vendor/what-input.js"></script>
+    <script src="./Other Files/foundation-6.3.0-complete/js/vendor/foundation.js"></script>
+    <script src="./Other Files/foundation-6.3.0-complete/js/app.js"></script>
 </body>
 </html>
