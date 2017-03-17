@@ -6,40 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Scheduler</title>
     <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/foundation.css">
+    <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/foundation.min.css">
     <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/app.css">
-	<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/modal_employee.css">
+	<!--<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/modal_employee.css">-->
 	
 	<script type="text/javascript"></script>
 	<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script>
 	<script src="./app.js"></script>
-	<script src="./Source/Client/Controllers/EmployeeProfileController.js"></script>
   </head>
 <body>
-<ul class="tabs vertical" data-tab>
-  <li class="tab-title active"><a href="#panel11">Tab 1</a></li>
-  <li class="tab-title"><a href="#panel21">Tab 2</a></li>
-  <li class="tab-title"><a href="#panel31">Tab 3</a></li>
-  <li class="tab-title"><a href="#panel41">Tab 4</a></li>
-</ul>
-<div class="tabs-content">
-  <div class="content active" id="panel11">
-    <p>This is the first panel of the basic tab example</p>
-  </div>
-  <div class="content" id="panel21">
-    <p>This is the second panel of the basic tab example.</p>
-  </div>
-  <div class="content" id="panel31">
-    <p>This is the third panel of the basic tab example.</p>
-  </div>
-  <div class="content" id="panel41">
-    <p>This is the fourth panel of the basic tab example.</p>
+<div class="row collapse">
+  <div class="medium-1 columns">
+    <ul class="tabs vertical" id="example-vert-tabs" data-tabs>
+      <li class="tabs-title is-active"><a href="#panel1v" aria-selected="true">Monday Available</a></li>
+      <li class="tabs-title"><a href="#panel2v">Tuesday Available</a></li>
+      <li class="tabs-title"><a href="#panel3v">Wednesday Available</a></li>
+      <li class="tabs-title"><a href="#panel4v">Thursday Available</a></li>
+      <li class="tabs-title"><a href="#panel5v">Friday Available</a></li>
+      <li class="tabs-title"><a href="#panel6v">Monday Schedule</a></li>
+      <li class="tabs-title"><a href="#panel2v">Tuesday Schedule</a></li>
+      <li class="tabs-title"><a href="#panel3v">Wednesday Schedule</a></li>
+      <li class="tabs-title"><a href="#panel4v">Thursday Schedule</a></li>
+      <li class="tabs-title"><a href="#panel5v">Friday Schedule</a></li>
+    </ul>
+    </div>
+    <div class="medium-11 columns">
+    <div class="tabs-content vertical" data-tabs-content="example-vert-tabs">
+      <div class="tabs-panel is-active" id="panel1v">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div class="tabs-panel" id="panel2v">
+        <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+      </div>
+      <div class="tabs-panel" id="panel3v">
+        <img class="thumbnail" src="sky.jpg">
+      </div>
+      <div class="tabs-panel" id="panel4v">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div class="tabs-panel" id="panel5v">
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+      <div class="tabs-panel" id="panel6v">
+        <img class="thumbnail" src="assets/img/generic/rectangle-5.jpg">
+      </div>
+    </div>
   </div>
 </div>
+
 
  <script src="./Other Files/foundation-6.3.0-complete/js/vendor/jquery.js"></script>
     <script src="./Other Files/foundation-6.3.0-complete/js/vendor/what-input.js"></script>
     <script src="./Other Files/foundation-6.3.0-complete/js/vendor/foundation.js"></script>
+    <script src="./Other Files/foundation-6.3.0-complete/js/vendor/foundation.min.js"></script>
     <script src="./Other Files/foundation-6.3.0-complete/js/app.js"></script>
+    <script>
+    $(document).foundation();
+  </script>
 
 </body>
 </html>
