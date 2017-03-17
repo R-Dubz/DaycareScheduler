@@ -60,7 +60,7 @@
 </FORM>
 
 <div id="display"></div>
-
+<br>
 
 <table class = "TFtable" style="height: 85%; width: 100%">
 	<th>Employee's Name</th>
@@ -76,7 +76,7 @@
     <th>{{employee.PhoneNumber2}}</th>  
     <th>{{employee.EmailAddress}}</th> 
     <th>{{employee.MoreInfo}}</th>
-    <th><button type="button" ng-click="storeProfile(employee)">Profile</button></th>
+    <th><button type="button" ng-click="storeProfile(employee)" class="sucess button">Profile</button></th>
 </tr>
 <tr ng-if="Employees.length === 0">
     <th></th>
