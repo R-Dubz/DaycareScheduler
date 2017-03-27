@@ -617,6 +617,96 @@ This library holds functions to be used in order to modify the database
 		db.close();
 	},
 
+	insertSchedule: function(info) {
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+
+		db.run("INSERT INTO Employee_Schedule (ScheduleID, StaffID, Date, Classroom, TimeStart, TimeEnd, Staff_Name) VALUES ($ScheduleID, $StaffID, $Date, $Classroom, $TimeStart, $TimeEnd, $Staff_Name)", {
+			$ScheduleID: info.ScheduleID,
+			$StaffID: info.StaffID,
+			$Date: info.Date,
+			$Classroom: info.Classroom,
+			$TimeStart: info.TimeStart,
+			$TimeEnd: info.TimeEnd,
+			$Staff_Name: info.Staff_Name,
+		});
+		db.close();
+	},
+
+	deleteSchedule: function(info) {
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+
+		db.run("DELETE FROM Employee_Schedule WHERE ScheduleID = $ScheduleID", {
+			$ScheduleID: info.ScheduleID,
+		});
+		
+		db.close();
+	},
+
+	editSchedule: function(info) {
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+			
+		db.run("UPDATE Employee_Schedule SET StaffID = $StaffID, Date = $Date, Classroom = $Classroom, TimeStart = $TimeStart, TimeEnd = $TimeEnd, Staff_Name = $Staff_Name WHERE ScheduleID = $ScheduleID", {
+			$StaffID: info.StaffID,
+			$Date: info.Date,
+			$Classroom: info.Classroom,
+			$TimeStart: info.TimeStart,
+			$TimeEnd: info.TimeEnd,
+			$Staff_Name: info.Staff_Name,
+			$ScheduleID: info.ScheduleID,
+		});
+		
+		db.close();
+	},
+
+	callSchedule : function(callback){
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+
+		db.all("SELECT * FROM Employee_Schedule", 
+				function(err, row) {
+			if (err){
+				callback(err);
+				return;
+			}				
+			callback(null, row);
+		});
+
+		db.close();
+	},
+
 };
 
 	module.exports = updateDB;
