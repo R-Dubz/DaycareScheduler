@@ -56,7 +56,7 @@
 
 
 <FORM METHOD="LINK" ACTION="addEmployee.html">
-<INPUT TYPE="submit" VALUE="Add Employee">
+<INPUT TYPE="submit" class="scuess button" VALUE="Add Employee">
 </FORM>
 
 <div id="display"></div>
@@ -71,7 +71,7 @@
     <th>View Profile</th>
 
 <tr ng-if="Employees.length !== 0" ng-repeat="employee in Employees">
-    <th ng-click="storeProfile(employee)">{{employee.FirstName}} {{employee.LastName}}</th>
+    <th ng-click="storeProfile(employee)" style="cursor: hand;">{{employee.FirstName}} {{employee.LastName}}</th>
     <th>{{employee.PhoneNumber}}</th>
     <th>{{employee.PhoneNumber2}}</th>  
     <th>{{employee.EmailAddress}}</th> 
