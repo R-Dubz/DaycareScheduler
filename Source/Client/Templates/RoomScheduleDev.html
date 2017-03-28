@@ -33,9 +33,10 @@
   <div class="top-bar-right">
     <ul class="menu" data-responsive-menu="drilldown medium-dropdown">
       <li class="has-submenu">
-        <a href="Home.html">Home</a>
+        <a>Menu</a>
         <ul class="submenu menu vertical" data-submenu>
-          <li><a href="Waiting_list.html">Waiting List</a></li>
+		<li><a href="Home.html">Home</a>
+		<li><a href="Waiting_list.html">Waiting List</a></li>
           <li><a href="RoomScheduleDev.html">Classrooms</a></li>
           <li><a href="Children.html">Enrolled List</a></li>
 		  <li><a href="Employees.html">Employee List</a></li>
@@ -68,7 +69,7 @@
 
 <tr ng-repeat="child in ClassroomList | orderBy:sortType:sortReverse | filter:searchText">
     <th>{{child.ChildBirthdate}}</th>
-	<th ng-click="storeProfile(child)">{{child.ChildName}}</th>
+	<th ng-click="storeProfile(child)" style="cursor: hand;">{{child.ChildName}}</th>
     <th>{{child.MondayString}}</th>
     <th>{{child.TuesdayString}}</th>
     <th>{{child.WednesdayString}}</th>
