@@ -236,7 +236,7 @@ app.post('/editChildNotes', jsonParser, function (req, res) {
     return res.sendStatus(200);
   }); 
 
-    app.get('/getSchedule', jsonParser, function (req, res) {
+  app.get('/getSchedule', jsonParser, function (req, res) {
     updateDB.callSchedule(req.query, function(err, data){
       if(err) {
         // handle the error here
