@@ -229,3 +229,33 @@ app.post('/editChildNotes', jsonParser, function (req, res) {
     })
     })
   });
+
+  app.post('/InsertSchedule', jsonParser, function (req, res) {
+    updateDB.insertSchedule(req.body); 
+    console.log("Inserting new schedule object...");
+    return res.sendStatus(200);
+  }); 
+
+    app.get('/getSchedule', jsonParser, function (req, res) {
+    updateDB.callSchedule(req.query, function(err, data){
+      if(err) {
+        // handle the error here
+        console.log(err);
+      }
+      // send the data
+      console.log("Sending Schedule information...");
+      res.send(data);
+    })
+  });
+
+  app.post('/editSchedule', jsonParser, function (req, res) {
+    updateDB.editSchedule(req.body);
+    console.log("Editing Schedule Object...");
+    return res.sendStatus(200);
+  });
+
+  app.post('/deleteSchedule', jsonParser, function (req, res) {
+    updateDB.deleteSchedule(req.body);
+    console.log("Deleting Schedule Object...");
+    return res.sendStatus(200);
+  });

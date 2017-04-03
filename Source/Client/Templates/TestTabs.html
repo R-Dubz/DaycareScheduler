@@ -1,0 +1,92 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Schedule</title>
+    <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/foundation.css">
+    <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/app.css">
+	<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/modal_employee.css">
+	
+	<script type="text/javascript"></script>
+	<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script>
+	<script src="./app.js"></script>
+	<script src="./Source/Client/Controllers/EmployeeProfileController.js"></script>
+  </head>
+  
+  <body ng-app="DaycareApp" ng-controller="EmployeeProfileController" ng-init="LoadTempEmployeeProfile()">
+  
+    <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle></button>
+  <div class="title-bar-title">Menu</div>
+</div>
+
+<div class="top-bar" id="main-menu">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text"><img src="./Images/Stock/PotsdamLogoSmall.jpg" class="Logo"></li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu" data-responsive-menu="drilldown medium-dropdown">
+      <li class="has-submenu">
+        <a href="Home.html">Home</a>
+        <ul class="submenu menu vertical" data-submenu>
+          <li><a href="Waiting_list.html">Waiting List</a></li>
+          <li><a href="RoomScheduleDev.html">Classrooms</a></li>
+          <li><a href="Children.html">Enrolled List</a></li>
+		  <li><a href="Employees.html">Employee List</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<br>
+
+
+<div class="card" style="width: 1200px; height: 700px; position: absolute; top: 100px; left: 50px;">
+
+<div class="row collapse">
+  <div class="medium-1 columns">
+    <ul class="tabs vertical" id="example-vert-tabs" data-tabs>
+      <li class="tabs-title is-active"><a href="#panel1v" aria-selected="true">Tab 1</a></li>
+      <li class="tabs-title"><a href="#panel2v">Tab 2</a></li>
+      <li class="tabs-title"><a href="#panel3v">Tab 3</a></li>
+      <li class="tabs-title"><a href="#panel4v">Tab 4</a></li>
+      <li class="tabs-title"><a href="#panel5v">Tab 5</a></li>
+      <li class="tabs-title"><a href="#panel6v">Tab 6</a></li>
+    </ul>
+    </div>
+    <div class="medium-11 columns">
+    <div class="tabs-content vertical" data-tabs-content="example-vert-tabs">
+      <div class="tabs-panel is-active" id="panel1v">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div class="tabs-panel" id="panel2v">
+        <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+      </div>
+      <div class="tabs-panel" id="panel3v">
+        <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
+      </div>
+      <div class="tabs-panel" id="panel4v">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div class="tabs-panel" id="panel5v">
+        <p>stuff</p>
+      </div>
+      <div class="tabs-panel" id="panel6v">
+        <img class="thumbnail" src="assets/img/generic/rectangle-5.jpg">
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+	
+    <script src="./Other Files/foundation-6.3.0-complete/js/vendor/jquery.js"></script>
+    <script src="./Other Files/foundation-6.3.0-complete/js/vendor/what-input.js"></script>
+    <script src="./Other Files/foundation-6.3.0-complete/js/vendor/foundation.js"></script>
+    <script src="./Other Files/foundation-6.3.0-complete/js/app.js"></script>
+  </body>
+</html>
