@@ -16,6 +16,14 @@ angular.module('DaycareApp').controller('EmployeeProfileController', ['$scope', 
             $scope.Profile.push(response.data[0]);
         });
     };
+	
+	$scope.LoadSchedule = function() {
+        $http.get('/getSchedule')
+        .then(function(response) {
+            $scope.Profile.push(response.data[0]);
+        });
+    };
+	
 
 	/*
     $scope.EditProfile = function(){
