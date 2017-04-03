@@ -16,6 +16,29 @@
   <script src="./Source/Client/Controllers/EmployeeListController.js"></script>
   </head>
 <body ng-app="DaycareApp" ng-controller="EmployeeListController" ng-init="LoadEmployeeList()">
+
+<div class="top-bar" id="main-menu">
+	<div class="top-bar-left">
+	<ul class="dropdown menu" data-dropdown-menu>
+	<li class="menu-text"><img src="./Images/Stock/PotsdamLogoSmall.jpg" class="Logo"><h2>SUNY Potsdam Child Care Center, Inc. Home</h2></li>
+	</div>
+	</ul>
+	<div class="top-bar-right">
+		<ul class="menu" data-responsive-menu="drilldown medium-dropdown">
+		 <li class="has-submenu">
+		 <a>Menu</a>
+		<ul class="submenu menu vertical" data-submenu>
+		<li><a href="Home.html">Home</a>
+		 <li><a href="Waiting_list.html">Waiting List</a></li>
+		<li><a href="RoomScheduleDev.html">Classrooms</a></li>
+		<li><a href="Children.html">Enrolled List</a></li>
+		<li><a href="Employees.html">Employee List</a></li>
+		</ul>
+	 </li>
+	</ul>
+	</div>
+ </div>
+
 <div class="row collapse">
   <div class="medium-2 columns">
     <ul class="tabs vertical" id="example-vert-tabs" data-tabs>
