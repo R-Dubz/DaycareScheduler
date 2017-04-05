@@ -1,0 +1,32 @@
+<DOCTYPE! html>
+<html>
+<head>
+<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script>
+<script src="./app.js"></script>
+<script src="./Source/Client/Controllers/WaitingFormController.js"></script>
+</head>
+
+<body ng-app="DaycareApp" ng-controller="WaitingFormController">
+
+   <form>
+      Child's Name: <input type="text" ng-model="ChildName"><br>
+      Child's Gender: <select ng-model="ChildGender">
+         <option value="Male">Male
+         <option value="Female">Female
+      </select><br>
+      Address: <input type="text" ng-model="ChildAddress"><br>
+      Home Phone: <input type="text" ng-model="ChildAddress"><br>
+      Parent/Guardian's Marital Status: <select ng-model="MaritalStatus">
+         <option value="Married">Married
+         <option value="Single">Single
+         <option value="Together">Together
+         <option value="Divorced">Divorced
+         <option value="Separated">Separated
+         <option value="Widowed">Widowed
+      </select><br>
+      Date of Birth: <input type="text" ng-model="ChildBirthDate"><br>
+      Desired Time Block:: <input type="text" ng-model="DesiredBlockofTime"><br>
+   </form>
+
+</body>
+<html>
