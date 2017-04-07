@@ -146,8 +146,9 @@
     </tr>
 </thead>
 
+
 <tr ng-repeat="child in Children | orderBy:sortType:sortReverse | filter:searchText">
-    <th ng-click="storeProfile(child)" style="cursor: hand;">{{child.ChildName}}</th>
+<th ng-click="storeProfile(child)" style="cursor: hand;">{{child.ChildName}}</th>
     <th>{{child.ChildBirthdate}}</th>
     <th>{{child.HomePhone}}</th>
     <th>{{child.GuardianName1}}</th>

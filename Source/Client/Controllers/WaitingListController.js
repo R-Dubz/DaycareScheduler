@@ -9,7 +9,11 @@
         $scope.RefreshDatabase = function() {
             $http.get('/RefreshDatabase')
             .then(function(response) {
-                alert("An HTTP request has been sent to the server.\nNow updating DaycareDB.db!");
+                // alert("An HTTP request has been sent to the server.\nNow updating DaycareDB.db!");
+                $("body").overhang({
+                type: "success",
+                message: "Woohoo! Our message works!"
+                });
                 // location.reload();
             });
         };
