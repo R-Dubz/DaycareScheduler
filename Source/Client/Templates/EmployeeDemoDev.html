@@ -84,8 +84,8 @@
 	<div class="card-section">
 		<center>
 			<div class="button-group">
-				<button class="view button" ng-click="OpenModal(Profile[0].StaffID)">View</button>
-				<button class="notes button" ng-click="OpenModal(Profile[0].StaffID)">Edit</button>
+				<button class="view button" ng-click="OpenNotesModal(Profile[0].StaffID)">Notes</button>
+				<button class="notes button" ng-click="OpenEditModal()">Edit Profile</button>
 			</div>
 		</center>
 	</div>
@@ -164,22 +164,56 @@
 
 	
 	
-	    <!-- The Modal -->
-        <div id="myModal" class="modal" ng-show="ShowModal">
+	    <!-- The Notes Modal -->
+        <div id="myModal" class="modal" ng-show="ShowNotesModal">
 
         <!-- Modal content -->
-        <div id="modalContent" class="modal-content" style="width: 400px; height: 250px">
-        <div class="close" ng-click="CloseModal()">×</div>
+        <div id="modalContent" class="modal-content" style="width: 450px; height: 300px">
+        <div class="close" ng-click="CloseNotesModal()">×</div>
             Notes:
         	<div id="textarea" class="textarea" contenteditable="true"></div>
 
         <div style="text-align: center; padding-top: 30px;">
-                <button ng-click="SaveNotes()">Save Changes</button>
-                <button ng-click="CloseModal()">Cancel</button>
+                <button class="sucess button" ng-click="SaveNotes()">Save Changes</button>
+                <button class="sucess button" ng-click="CloseNotesModal()">Cancel</button>
         </div>
         </div>
         </div>
 	
+
+	    <!-- The Edit Modal -->
+        <div id="EditModal" class="modal" ng-show="ShowEditModal">
+
+					<!-- Modal content -->
+						<div id="modalContent" class="modal-content" style="width: 450px; height: 900px">
+							<div class="close" ng-click="CloseEditModal()">×</div>
+
+									<form>
+											Child's Name: <input type="text" ng-model="ChildName"><br>
+											Child's Gender: <select ng-model="ChildGender">
+												<option value="Male">Male
+												<option value="Female">Female
+											</select><br>
+											Address: <input type="text" ng-model="ChildAddress"><br>
+											Home Phone: <input type="text" ng-model="ChildAddress"><br>
+											Parent/Guardian's Marital Status: <select ng-model="MaritalStatus">
+												<option value="Married">Married
+												<option value="Single">Single
+												<option value="Together">Together
+												<option value="Divorced">Divorced
+												<option value="Separated">Separated
+												<option value="Widowed">Widowed
+											</select><br>
+											Date of Birth: <input type="text" ng-model="ChildBirthDate"><br>
+											Desired Time Block:: <input type="text" ng-model="DesiredBlockofTime"><br>
+									</form>
+
+							<div style="text-align: center; padding-top: 30px;">
+											<button class="sucess button" ng-click="SaveNotes()">Save Changes</button>
+											<button class="sucess button" ng-click="CloseEditModal()">Cancel</button>
+							</div>
+					</div>
+        </div>
 	
     <script src="./Other Files/foundation-6.3.0-complete/js/vendor/jquery.js"></script>
     <script src="./Other Files/foundation-6.3.0-complete/js/vendor/what-input.js"></script>

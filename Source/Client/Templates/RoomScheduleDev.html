@@ -67,7 +67,7 @@
         <th>Notes</th>
     </tr>
 
-<tr ng-repeat="child in ClassroomList | orderBy:sortType:sortReverse | filter:searchText">
+<tr ng-repeat="child in ClassroomList | orderBy:['ChildBirthdate'] | filter:searchText">
     <th>{{child.ChildBirthdate}}</th>
 	<th ng-click="storeProfile(child)" style="cursor: hand;">{{child.ChildName}}</th>
     <th>{{child.MondayString}}</th>
@@ -87,13 +87,13 @@
         <div id="myModal" class="modal" ng-show="ShowModal">
 
         <!-- Modal content -->
-        <div id="modalContent" class="modal-content" style="width: 400px; height: 250px">
+        <div id="modalContent" class="modal-content" style="width: 475px; height: 300px">
         <div class="close" ng-click="CloseModal()">×</div>
             Notes:
         	<div id="textarea" class="textarea" contenteditable="true"></div>
         <div style="text-align: center; padding-top: 30px;">
-                <button ng-click="SaveNotes()">Save Changes</button>
-                <button ng-click="CloseModal()">Cancel</button>
+                <button class="sucess button" ng-click="SaveNotes()">Save Changes</button>
+                <button class="sucess button" ng-click="CloseModal()">Cancel</button>
         </div>
         </div>
         </div>
