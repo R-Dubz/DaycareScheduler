@@ -10,11 +10,15 @@
             $http.get('/RefreshDatabase')
             .then(function(response) {
                 // alert("An HTTP request has been sent to the server.\nNow updating DaycareDB.db!");
+                // Angular and jQuery don't like each other. Chris, make this work.
                 $("body").overhang({
                 type: "success",
                 message: "Woohoo! Our message works!"
                 });
-                // location.reload();
+                // angular.element(document.querySelector('body')).overhang({
+                // type: "success",
+                // message: "Woohoo! Our message works!"
+                // });
             });
         };
 

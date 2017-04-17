@@ -67,7 +67,7 @@
         <th>Notes</th>
     </tr>
 
-<tr ng-repeat="child in ClassroomList | orderBy:sortType:sortReverse | filter:searchText">
+<tr ng-repeat="child in ClassroomList | orderBy:['ChildBirthdate'] | filter:searchText">
     <th>{{child.ChildBirthdate}}</th>
 	<th ng-click="storeProfile(child)" style="cursor: hand;">{{child.ChildName}}</th>
     <th>{{child.MondayString}}</th>
