@@ -90,6 +90,7 @@
 /*	border-collapse: collapse; */
 	padding: 5px;
     table-layout: fixed;
+    white-space: pre;
 }
 /*  Define the background color for all the ODD background rows  */
 	.ClassroomTable tr:nth-child(odd){ 

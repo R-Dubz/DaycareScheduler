@@ -183,9 +183,15 @@ app.post('/getChildInfo', jsonParser, function (req, res) {
     return res.sendStatus(200);
   }); 
 
-  app.post('/editEmployee', jsonParser, function (req, res) {
+  app.post('/editEmployeeInfo', jsonParser, function (req, res) {
     updateDB.updateStaffInfo(req.body);
     console.log("Editing Employee...");
+    return res.sendStatus(200);
+  });
+
+  app.post('/editEmployeeNotes', jsonParser, function (req, res) {
+    updateDB.updateStaffNotes(req.body);
+    console.log("Editing Employee Notes...");
     return res.sendStatus(200);
   });
 
