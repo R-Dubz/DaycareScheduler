@@ -5,6 +5,7 @@
 <script type="text/javascript"></script>
 <script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script>
 <script src="./app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.8/angular-sanitize.min.js"></script>
 <script src="./Source/Client/Controllers/RoomsController.js"></script>
 
 
@@ -70,11 +71,11 @@
 <tr ng-repeat="child in ClassroomList | orderBy:['ChildBirthdate'] | filter:searchText">
     <th>{{child.ChildBirthdate}}</th>
 	<th ng-click="storeProfile(child)" style="cursor: hand;">{{child.ChildName}}</th>
-    <th>{{child.MondayString}}</th>
-    <th>{{child.TuesdayString}}</th>
-    <th>{{child.WednesdayString}}</th>
-    <th>{{child.ThursdayString}}</th>
-    <th>{{child.FridayString}}</th>
+    <th ng-bind-html="child.MondayString"></th>
+    <th ng-bind-html="child.TuesdayString"></th>
+    <th ng-bind-html="child.WednesdayString"></th>
+    <th ng-bind-html="child.ThursdayString"></th>
+    <th ng-bind-html="child.FridayString"></th>
     <th>{{child.Affiliation}}</th>
     <th><button ng-click="OpenModal(ClassroomList[child.RoomIndex].RoomIndex)" class="sucess button">View Notes</button></th>
 </tr>

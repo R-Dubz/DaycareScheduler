@@ -185,31 +185,19 @@
         <div id="EditModal" class="modal" ng-show="ShowEditModal">
 
 					<!-- Modal content -->
-						<div id="modalContent" class="modal-content" style="width: 450px; height: 900px">
+						<div id="modalContent" class="modal-content" style="width: 450px; height: 650px">
 							<div class="close" ng-click="CloseEditModal()">×</div>
-
+									<div style="text-align: center">Employee's Information</div>
 									<form>
-											Child's Name: <input type="text" ng-model="ChildName"><br>
-											Child's Gender: <select ng-model="ChildGender">
-												<option value="Male">Male
-												<option value="Female">Female
-											</select><br>
-											Address: <input type="text" ng-model="ChildAddress"><br>
-											Home Phone: <input type="text" ng-model="ChildAddress"><br>
-											Parent/Guardian's Marital Status: <select ng-model="MaritalStatus">
-												<option value="Married">Married
-												<option value="Single">Single
-												<option value="Together">Together
-												<option value="Divorced">Divorced
-												<option value="Separated">Separated
-												<option value="Widowed">Widowed
-											</select><br>
-											Date of Birth: <input type="text" ng-model="ChildBirthDate"><br>
-											Desired Time Block:: <input type="text" ng-model="DesiredBlockofTime"><br>
+											First Name: <input type="text" ng-model="Profile[0].FirstName"><br>
+											Last Name: <input type="text" ng-model="Profile[0].LastName"><br>
+											Email Address: <input type="text" ng-model="Profile[0].EmailAddress"><br>
+											Primary Phone Number: <input type="text" ng-model="Profile[0].PhoneNumber"><br>
+											Secondary Phone Number: <input type="text" ng-model="Profile[0].PhoneNumber2"><br>
 									</form>
 
 							<div style="text-align: center; padding-top: 30px;">
-											<button class="sucess button" ng-click="SaveNotes()">Save Changes</button>
+											<button class="sucess button" ng-click="SaveChanges()">Save Changes</button>
 											<button class="sucess button" ng-click="CloseEditModal()">Cancel</button>
 							</div>
 					</div>
