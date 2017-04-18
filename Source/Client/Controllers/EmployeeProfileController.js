@@ -15,6 +15,7 @@ angular.module('DaycareApp').controller('EmployeeProfileController', ['$scope', 
         $http.get('/getTempEmployeeProfile')
         .then(function(response) {
             $scope.Profile.push(response.data[0]);
+            debugger;
         });
     };
 	
@@ -47,10 +48,10 @@ angular.module('DaycareApp').controller('EmployeeProfileController', ['$scope', 
 
     $scope.SaveNotes = function(){
         var targetEmployee = {};
-        targetEmployee.StaffID = $scope.Profile[0].StaffID;
+        targetEmployee.StaffID = Profile[0].StaffID;
         targetEmployee.MoreInfo = document.getElementById('textarea').innerHTML;
-        $scope.Profile[0].MoreInfo = document.getElementById('textarea').innerHTML;
-        $http.post('/editEmployeeNotes', targetEmployee) 
+        Profile[0].MoreInfo = document.getElementById('textarea').innerHTML;
+        $http.post('/editEmployeeNotes', targetEmployee) //not implemented
         .then(function(response) {
             $scope.ShowNotesModal = false;
         });
@@ -65,17 +66,14 @@ angular.module('DaycareApp').controller('EmployeeProfileController', ['$scope', 
     }
 
     $scope.SaveChanges = function(){
-        var targetEmployee = {};
-        targetEmployee.StaffID = $scope.Profile[0].StaffID;
-        targetEmployee.FirstName = $scope.Profile[0].FirstName
-        targetEmployee.LastName = $scope.Profile[0].LastName
-        targetEmployee.PhoneNumber = $scope.Profile[0].PhoneNumber
-        targetEmployee.PhoneNumber2 = $scope.Profile[0].PhoneNumber2
-        targetEmployee.EmailAddress = $scope.Profile[0].EmailAddress
-        $http.post('/editEmployeeInfo', targetEmployee) 
-        .then(function(response) {
-            $scope.ShowEditModal = false;
-        });
+        // var targetEmployee = {};
+        // targetEmployee.StaffID = Profile[0].StaffID;
+        // targetEmployee.MoreInfo = document.getElementById('textarea').innerHTML;
+        // Profile[0].MoreInfo = document.getElementById('textarea').innerHTML;
+        // $http.post('/editEmployeeNotes', targetEmployee) //not implemented
+        // .then(function(response) {
+        //     $scope.ShowNotesModal = false;
+        // });
     }
 
 
