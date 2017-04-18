@@ -7,6 +7,7 @@
     <title>Employee Scheduler</title>
     <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/foundation.css">
     <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/foundation.min.css">
+    <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/foundation.calendar.css">
     <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/app.css">
 	<!--<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/modal_employee.css">-->
 	
@@ -14,6 +15,7 @@
 	<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script>
 	<script src="./app.js"></script>
   <script src="./Source/Client/Controllers/EmployeeListController.js"></script>
+  
   </head>
 <body ng-app="DaycareApp" ng-controller="EmployeeListController" ng-init="LoadEmployeeList()">
 
@@ -47,11 +49,16 @@
       <li class="tabs-title"><a href="#panel3v">Wednesday Available</a></li>
       <li class="tabs-title"><a href="#panel4v">Thursday Available</a></li>
       <li class="tabs-title"><a href="#panel5v">Friday Available</a></li>
-      <li class="tabs-title"><a href="#panel6v">Monday Schedule</a></li>
-      <li class="tabs-title"><a href="#panel7v">Tuesday Schedule</a></li>
-      <li class="tabs-title"><a href="#panel8v">Wednesday Schedule</a></li>
-      <li class="tabs-title"><a href="#panel9v">Thursday Schedule</a></li>
-      <li class="tabs-title"><a href="#panel10v">Friday Schedule</a></li>
+      <li class="tabs-title"><a href="#panel6v">Monday 
+        <p id="monday"></p> Schedule</a></li>
+      <li class="tabs-title"><a href="#panel7v">Tuesday
+        <p id="tuesday"></p> Schedule</a></li>
+      <li class="tabs-title"><a href="#panel8v">Wednesday
+        <p id="wednesday"></p> Schedule</a></li>
+      <li class="tabs-title"><a href="#panel9v">Thursday
+        <p id="thursday"></p> Schedule</a></li>
+      <li class="tabs-title"><a href="#panel10v">Friday
+        <p id="friday"></p> Schedule</a></li>
     </ul>
     </div>
     <div class="medium-10 columns">
@@ -124,8 +131,8 @@
             <tr ng-if="Employees.length === 0">
               <th></th>
               <th></th>
-              <th></th>  
-              <th></th> 
+              <th></th>
+              <th></th>
               <th style="background: #dae5f4"></th>
             </tr>
           </table>
@@ -180,31 +187,19 @@
           </table></p>
       </div>
       <div class="tabs-panel" id="panel6v">
-        <p><ul class="calendar">
-    <li class="title">June 4-10</li>
-    <li class="day-header">
-        <div class="large-1 day">Sun</div>
-        <div class="large-1 day">Mon</div>
-        <div class="large-1 day">Tue</div>
-        <div class="large-1 day">Wed</div>
-        <div class="large-1 day">Thu</div>
-        <div class="large-1 day">Fri</div>
-        <div class="large-1 day">Sat</div>
-    </li>
-
-    <li class="week">
-        <div class="large-1 day">4</div>
-        <div class="large-1 day">5</div>
-        <div class="large-1 day">6</div>
-        <div class="large-1 day">7</div>
-        <div class="large-1 day">8</div>
-        <div class="large-1 day">9</div>
-        <div class="large-1 day">10</div>
-    </li>
-
-    <!-- Repeat for additional weeks -->
-
-</ul></p>
+        Scheduler
+      </div>
+      <div class="tabs-panel" id="panel7v">
+        Scheduler
+      </div>
+      <div class="tabs-panel" id="panel8v">
+        Scheduler
+      </div>
+      <div class="tabs-panel" id="panel9v">
+        Scheduler
+      </div>
+      <div class="tabs-panel" id="panel10v">
+        Scheduler
       </div>
     </div>
   </div>
@@ -215,6 +210,7 @@
     <script src="./Other Files/foundation-6.3.0-complete/js/vendor/what-input.js"></script>
     <script src="./Other Files/foundation-6.3.0-complete/js/vendor/foundation.js"></script>
     <script src="./Other Files/foundation-6.3.0-complete/js/vendor/foundation.min.js"></script>
+    <script type="text/javascript" src="./Source/Client/Controllers/calendarController.js"></script>
     <script src="./Other Files/foundation-6.3.0-complete/js/app.js"></script>
     <script>
     $(document).foundation();
