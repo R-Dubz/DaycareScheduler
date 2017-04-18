@@ -49,6 +49,7 @@ function dateByDay( supDay ){
     gotMonth = gotMonth+1;
     if( gotMonth > 11 ){
       gotYear++;
+      gotMonth = 0;
     }
   }
   if( gotDay < 1 ){
@@ -61,7 +62,7 @@ function dateByDay( supDay ){
   }
 
   daysInMonth[1] = 28;
-  return gotMonth+1 + "/" + gotDay;
+  return gotMonth+1 + "/" + gotDay + "/" + gotYear;
 }
 
 document.getElementById("monday").innerHTML = dateByDay( 1 );
