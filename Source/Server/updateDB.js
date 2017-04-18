@@ -456,46 +456,45 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		// db.run("INSERT INTO Staff_Information (LastName, FirstName, DateOfHire, PhoneNumber, PhoneNumber2, EmailAddress, MI1, MO1, MI2, MO2, MI3, MO3, TI1, TO1, TI2, TO2, TI3, TO3, WI1, WO1, WI2, WO2, WI3, WO3, THI1, THO1, THI2, THO2, THI3, THO3, FI1, FO1, FI2, FO2, FI3, FO3, MoreInfo, DateOfTermination) VALUES ($LastName, $FirstName, $DateOfHire, $PhoneNumber, $PhoneNumber2, $EmailAddress, $MI1, $MO1, $MI2, $MO2, $MI3, $MO3, $TI1, $TO1, $TI2, $TO2, $TI3, $TO3, $WI1, $WO1, $WI2, $WO2, $WI3, $WO3, $THI1, $THO1, $THI2, $THO2, $THI3, $THO3, $FI1, $FO1, $FI2, $FO2, $FI3, $FO3, $MoreInfo, $DateOfTermination)", {
-		db.run("INSERT INTO Staff_Information (LastName, FirstName, PhoneNumber, PhoneNumber2, EmailAddress) VALUES ($LastName, $FirstName, $PhoneNumber, $PhoneNumber2, $EmailAddress)", {
+		db.run("INSERT INTO Staff_Information (LastName, FirstName, DateOfHire, PhoneNumber, PhoneNumber2, EmailAddress, MI1, MO1, MI2, MO2, MI3, MO3, TI1, TO1, TI2, TO2, TI3, TO3, WI1, WO1, WI2, WO2, WI3, WO3, THI1, THO1, THI2, THO2, THI3, THO3, FI1, FO1, FI2, FO2, FI3, FO3, MoreInfo, DateOfTermination) VALUES ($LastName, $FirstName, $DateOfHire, $PhoneNumber, $PhoneNumber2, $EmailAddress, $MI1, $MO1, $MI2, $MO2, $MI3, $MO3, $TI1, $TO1, $TI2, $TO2, $TI3, $TO3, $WI1, $WO1, $WI2, $WO2, $WI3, $WO3, $THI1, $THO1, $THI2, $THO2, $THI3, $THO3, $FI1, $FO1, $FI2, $FO2, $FI3, $FO3, $MoreInfo, $DateOfTermination)", {
 			$LastName: info.LastName,
 			$FirstName: info.FirstName,
-			// $DateOfHire: info.DateOfHire,
+			$DateOfHire: info.DateOfHire,
 			$PhoneNumber: info.PhoneNumber,
 			$PhoneNumber2: info.PhoneNumber2,
 			$EmailAddress: info.EmailAddress,
-			// $MI1: info.MI1,
-			// $MI2: info.MI2,
-			// $MI3: info.MI3,
-			// $MO1: info.MO1,
-			// $MO2: info.MO2,
-			// $MO3: info.MO3,
-			// $TI1: info.TI1,
-			// $TI2: info.TI2,
-			// $TI3: info.TI3,
-			// $TO1: info.TO1,
-			// $TO2: info.TO2,
-			// $TO3: info.TO3,
-			// $WI1: info.WI1,
-			// $WI2: info.WI2,
-			// $WI3: info.WI3,
-			// $WO1: info.WO1,
-			// $WO2: info.WO2,
-			// $WO3: info.WO3,
-			// $THI1: info.THI1,
-			// $THI2: info.THI2,
-			// $THI3: info.THI3,
-			// $THO1: info.THO1,
-			// $THO2: info.THO2,
-			// $THO3: info.THO3,
-			// $FI1: info.FI1,
-			// $FI2: info.FI2,
-			// $FI3: info.FI3,
-			// $FO1: info.FO1,
-			// $FO2: info.FO2,
-			// $FO3: info.FO3,
-			// $MoreInfo: info.MoreInfo,
-			// $DateOfTermination: info.DateOfTermination,
+			$MI1: info.MI1,
+			$MI2: info.MI2,
+			$MI3: info.MI3,
+			$MO1: info.MO1,
+			$MO2: info.MO2,
+			$MO3: info.MO3,
+			$TI1: info.TI1,
+			$TI2: info.TI2,
+			$TI3: info.TI3,
+			$TO1: info.TO1,
+			$TO2: info.TO2,
+			$TO3: info.TO3,
+			$WI1: info.WI1,
+			$WI2: info.WI2,
+			$WI3: info.WI3,
+			$WO1: info.WO1,
+			$WO2: info.WO2,
+			$WO3: info.WO3,
+			$THI1: info.THI1,
+			$THI2: info.THI2,
+			$THI3: info.THI3,
+			$THO1: info.THO1,
+			$THO2: info.THO2,
+			$THO3: info.THO3,
+			$FI1: info.FI1,
+			$FI2: info.FI2,
+			$FI3: info.FI3,
+			$FO1: info.FO1,
+			$FO2: info.FO2,
+			$FO3: info.FO3,
+			$MoreInfo: info.MoreInfo,
+			$DateOfTermination: info.DateOfTermination,
 		});
 		db.close();
 	},
@@ -512,71 +511,49 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		// db.run("UPDATE Staff_Information SET LastName = $LastName, FirstName = $FirstName, DateOfHire = $DateOfHire, PhoneNumber = $PhoneNumber, PhoneNumber2 = $PhoneNumber2, EmailAddress = $EmailAddress, MI1 = $MI1, MI2 = $MI2, MI3 = $MI3, MO1 = $MO1, MO2 = $MO2, MO3 = $MO3, TI1 = $TI1, TI2 = $TI2, TI3 = $TI3, TO1 = $TO1, TO2 = $TO2, TO3 = $TO3, WI1 = $WI1, WI2 = $WI2, WI3 = $WI3, WO1 = $WO1, WO2 = $WO2, WO3 = $WO3, THI1 = $THI1, THI2 = $THI2, THI3 = $THI3, THO1 = $THO1, THO2 = $THO2, THO3 = $THO3, FI1 = $FI1, FI2 = $FI2, FI3 = $FI3, FO1 = $FO1, FO2 = $FO2, FO3 = $FO3, MoreInfo = $MoreInfo, DateOfTermination = $DateOfTermination WHERE StaffID = $StaffID", {
-		db.run("UPDATE Staff_Information SET LastName = $LastName, FirstName = $FirstName, PhoneNumber = $PhoneNumber, PhoneNumber2 = $PhoneNumber2, EmailAddress = $EmailAddress WHERE StaffID = $StaffID", {
+		db.run("UPDATE Staff_Information SET LastName = $LastName, FirstName = $FirstName, DateOfHire = $DateOfHire, PhoneNumber = $PhoneNumber, PhoneNumber2 = $PhoneNumber2, EmailAddress = $EmailAddress, MI1 = $MI1, MI2 = $MI2, MI3 = $MI3, MO1 = $MO1, MO2 = $MO2, MO3 = $MO3, TI1 = $TI1, TI2 = $TI2, TI3 = $TI3, TO1 = $TO1, TO2 = $TO2, TO3 = $TO3, WI1 = $WI1, WI2 = $WI2, WI3 = $WI3, WO1 = $WO1, WO2 = $WO2, WO3 = $WO3, THI1 = $THI1, THI2 = $THI2, THI3 = $THI3, THO1 = $THO1, THO2 = $THO2, THO3 = $THO3, FI1 = $FI1, FI2 = $FI2, FI3 = $FI3, FO1 = $FO1, FO2 = $FO2, FO3 = $FO3, MoreInfo = $MoreInfo, DateOfTermination = $DateOfTermination WHERE StaffID = $StaffID", {
 			$LastName: info.LastName,
 			$FirstName: info.FirstName,
-			// $DateOfHire: info.DateOfHire,
+			$DateOfHire: info.DateOfHire,
 			$PhoneNumber: info.PhoneNumber,
 			$PhoneNumber2: info.PhoneNumber2,
 			$EmailAddress: info.EmailAddress,
-			// $MI1: info.MI1,
-			// $MI2: info.MI2,
-			// $MI3: info.MI3,
-			// $MO1: info.MO1,
-			// $MO2: info.MO2,
-			// $MO3: info.MO3,
-			// $TI1: info.TI1,
-			// $TI2: info.TI2,
-			// $TI3: info.TI3,
-			// $TO1: info.TO1,
-			// $TO2: info.TO2,
-			// $TO3: info.TO3,
-			// $WI1: info.WI1,
-			// $WI2: info.WI2,
-			// $WI3: info.WI3,
-			// $WO1: info.WO1,
-			// $WO2: info.WO2,
-			// $WO3: info.WO3,
-			// $THI1: info.THI1,
-			// $THI2: info.THI2,
-			// $THI3: info.THI3,
-			// $THO1: info.THO1,
-			// $THO2: info.THO2,
-			// $THO3: info.THO3,
-			// $FI1: info.FI1,
-			// $FI2: info.FI2,
-			// $FI3: info.FI3,
-			// $FO1: info.FO1,
-			// $FO2: info.FO2,
-			// $FO3: info.FO3,
-			// $MoreInfo: info.MoreInfo,
-			// $DateOfTermination: info.DateOfTermination,
+			$MI1: info.MI1,
+			$MI2: info.MI2,
+			$MI3: info.MI3,
+			$MO1: info.MO1,
+			$MO2: info.MO2,
+			$MO3: info.MO3,
+			$TI1: info.TI1,
+			$TI2: info.TI2,
+			$TI3: info.TI3,
+			$TO1: info.TO1,
+			$TO2: info.TO2,
+			$TO3: info.TO3,
+			$WI1: info.WI1,
+			$WI2: info.WI2,
+			$WI3: info.WI3,
+			$WO1: info.WO1,
+			$WO2: info.WO2,
+			$WO3: info.WO3,
+			$THI1: info.THI1,
+			$THI2: info.THI2,
+			$THI3: info.THI3,
+			$THO1: info.THO1,
+			$THO2: info.THO2,
+			$THO3: info.THO3,
+			$FI1: info.FI1,
+			$FI2: info.FI2,
+			$FI3: info.FI3,
+			$FO1: info.FO1,
+			$FO2: info.FO2,
+			$FO3: info.FO3,
+			$MoreInfo: info.MoreInfo,
+			$DateOfTermination: info.DateOfTermination,
 			$StaffID: info.StaffID,
 		});
 		db.close();
 	},
-
-	updateStaffNotes: function(info) {
-		var fs = require("fs");
-		var file = "./Source/Server/Data/DaycareDB.db";
-		var exists = fs.existsSync(file);
-
-		if (!exists) {
-			throw new Error("File not Found");
-		}
-
-		var sqlite3 = require("sqlite3").verbose();
-		var db = new sqlite3.Database(file);
-
-		db.run("UPDATE Staff_Information SET MoreInfo = $MoreInfo WHERE StaffID = $StaffID", {
-			$MoreInfo: info.MoreInfo,
-			$StaffID: info.StaffID
-		});
-		db.close();
-	},
-
-	
 
 	deleteStaffInfo: function(info) {
 		var fs = require("fs");
