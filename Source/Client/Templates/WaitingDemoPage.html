@@ -176,7 +176,9 @@
 
 <div ng-if="!Editing" style="text-align: center;">
         <button ng-click="EditProfile()">Edit Profile</button>
-        <button type="button" ng-click="OpenModal()">Add to Classroom</button>
+        <button type="button" ng-click="OpenModal()">
+		<span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Brings up the dialog to assign a student to a classroom.">Add to Classroom</span>
+	</button>
 </div>
 <div ng-if="Editing" style="text-align: center;">
         <button ng-click="SaveChanges()">Save Changes</button>
@@ -204,8 +206,9 @@
                 <option value="Classroom8">Classroom 8</option>
         </select>
 
-        <button ng-click="subSetOfDays()">-</button>
-        <button ng-click="addSetOfDays()">+</button>
+        <button ng-click="subSetOfDays()">
+		<span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Remove a in/out column.">-</span></button>
+	<button ng-click="addSetOfDays()"><span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Add an in/out couumn.">+</span></button>
 
         </div>
         <table class="in-modal" style="align: center">
@@ -1711,8 +1714,12 @@
 
         </table>
         <div style="text-align: center; padding-top: 30px;">
-                <button ng-click="acceptChild(Profile[0])">Accept Child</button>
-                <button ng-click="CloseModal()">Cancel</button>
+                <button ng-click="acceptChild(Profile[0])">
+			<span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Saves and moves student from waiting list to student database.">Accept Child</span>
+		</button>
+                <button ng-click="CloseModal()">
+			<span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Discards all changes.">Cancle</span>
+		</button>
         </div>
         </div>
 
