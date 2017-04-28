@@ -1,4 +1,5 @@
 var daysInMonth = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+var Mon, Tue, Wed, Thur, Fri;
 
   function dayOfMonth() {
     var d = new Date();
@@ -62,11 +63,18 @@ function dateByDay( supDay ){
   }
 
   daysInMonth[1] = 28;
+  
   return gotMonth+1 + "/" + gotDay + "/" + gotYear;
 }
 
-document.getElementById("monday").innerHTML = dateByDay( 1 );
-document.getElementById("tuesday").innerHTML = dateByDay( 2 );
-document.getElementById("wednesday").innerHTML = dateByDay( 3 );
-document.getElementById("thursday").innerHTML = dateByDay( 4 );
-document.getElementById("friday").innerHTML = dateByDay( 5 );
+Mon = dateByDay( 1 );
+Tue = dateByDay( 2 );
+Wed = dateByDay( 3 );
+Thur = dateByDay( 4 );
+Fri = dateByDay( 5 );
+
+document.getElementById("monday").innerHTML = Mon;
+document.getElementById("tuesday").innerHTML = Tue;
+document.getElementById("wednesday").innerHTML = Wed;
+document.getElementById("thursday").innerHTML = Thur;
+document.getElementById("friday").innerHTML = Fri;

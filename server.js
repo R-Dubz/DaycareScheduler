@@ -149,6 +149,18 @@ app.get('/', function (req, res) {
     })
   });
 
+  app.get('/loadEmployeeSchedule', jsonParser, function (req, res) {
+    updateDB.callSchedule(function(err, data){
+      if(err) {
+        // handle the error here
+        console.log(err);
+      }
+      // send the data
+      console.log("Sending employee schedule info...");
+      res.send(data);
+    })
+  });
+
   app.post('/test', jsonParser, function (req, res) {
     updateDB.editFromProfile(req.body); 
     console.log("Applying Profile Changes...");
