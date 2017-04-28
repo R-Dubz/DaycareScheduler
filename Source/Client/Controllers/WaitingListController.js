@@ -11,14 +11,20 @@
             .then(function(response) {
                 // alert("An HTTP request has been sent to the server.\nNow updating DaycareDB.db!");
                 // Angular and jQuery don't like each other. Chris, make this work.
-                $("body").overhang({
-                type: "success",
-                message: "Woohoo! Our message works!"
-                });
+                // $("body").overhang({
+                // type: "success",
+                // message: "Woohoo! Our message works!"
+                // });
                 // angular.element(document.querySelector('body')).overhang({
                 // type: "success",
                 // message: "Woohoo! Our message works!"
                 // });
+                // setTimeout(function() {
+                // location.reload(); //your code to be executed after 1 second
+                // }, delayMillis);
+                setTimeout(function(){ 
+                    location.reload();
+                }, 12000);
             });
         };
 

@@ -64,24 +64,32 @@
 </table>
 
         <table class="in-modal" bgcolor=aaaaaa style="align: center">
-        <div style="text-align: center;"> 
-        <button type="button" ng-click="subSetOfDays()" class="sucess button">-</button>    
-        <button type="button" ng-click="addSetOfDays()"class="sucess button">+</button>
-        </div>
         <table class="in-modal" style="align: center">
+        <div>
+        <caption style="text-align: center">
+        <span style="float: right; position: inline;" id="buttonBox"> 
+        <button type="button" ng-click="addSetOfDays()"class="sucess button" style="float: right;">+</button>
+        <button type="button" ng-click="subSetOfDays()" class="sucess button" style="float: right; margin-right: 5px">-</button>    
+        </span>
+        <div id="captionBox" style="margin-left: 170px">
+        Select Employee's Availability<br>
+        Number of Availability Periods: {{numOfRows}}
+        </div>
+        </caption>
+        </div>
 	<tr>
         <th></th>
-	<th>In</th>
-	<th>Out</th>
-        <th ng-show="numOfRows >= 2">In</th>
-        <th ng-show="numOfRows >= 2">Out</th>
-        <th ng-show="numOfRows === 3">In</th>
-        <th ng-show="numOfRows === 3">Out</th>
+	<th>Availability Start</th>
+	<th>Availability End</th>
+        <th ng-show="numOfRows >= 2">Availability Start</th>
+        <th ng-show="numOfRows >= 2">Availability End</th>
+        <th ng-show="numOfRows === 3">Availability Start</th>
+        <th ng-show="numOfRows === 3">Availability End</th>
 	</tr>
         <tr>
         <th>Monday</th>
         <th>
-        <select id="MondayIn">
+        <select id="MondayIn" style="display:inline-block; margin-top: 15px; position: relative;">
         <option ng-selected="ClassroomInfo.MI1 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.MI1 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.MI1 === '7.25'" value="7.25">7:15 AM</option>
@@ -130,7 +138,7 @@
         </select>
         </th>
         <th>
-        <select id="MondayOut">
+        <select id="MondayOut" style="display:inline-block; margin-top: 15px; position: relative;">
         <option ng-selected="ClassroomInfo.MO1 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.MO1 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.MO1 === '7.25'" value="7.25">7:15 AM</option>
@@ -180,7 +188,7 @@
         </th>
 
         <th ng-show="numOfRows >= 2">
-        <select id="MondayIn2" ng-show="numOfRows >= 2">
+        <select id="MondayIn2" style="display:inline-block; margin-top: 15px; position: relative;" ng-show="numOfRows >= 2">
         <option ng-selected="ClassroomInfo.MI2 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.MI2 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.MI2 === '7.25'" value="7.25">7:15 AM</option>
@@ -228,7 +236,7 @@
         <option ng-selected="ClassroomInfo.MI2 === '17.75'" value="17.75">5:45 PM</option>
         </select>        </th>
         <th ng-show="numOfRows >= 2">
-        <select id="MondayOut2" ng-show="numOfRows >= 2">
+        <select id="MondayOut2" style="display:inline-block; margin-top: 15px; position: relative;" ng-show="numOfRows >= 2">
         <option ng-selected="ClassroomInfo.MO2 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.MO2 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.MO2 === '7.25'" value="7.25">7:15 AM</option>
@@ -277,7 +285,7 @@
         </select>
         </th>
         <th ng-show="numOfRows === 3">
-        <select id="MondayIn3" ng-show="numOfRows === 3">
+        <select id="MondayIn3" style="display:inline-block; margin-top: 15px; position: relative;" ng-show="numOfRows >= 3">
         <option ng-selected="ClassroomInfo.MI3 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.MI3 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.MI3 === '7.25'" value="7.25">7:15 AM</option>
@@ -325,7 +333,7 @@
         <option ng-selected="ClassroomInfo.MI3 === '17.75'" value="17.75">5:45 PM</option>
         </select>        </th>
         <th ng-show="numOfRows === 3">
-        <select id="MondayOut3" ng-show="numOfRows === 3">
+        <select id="MondayOut3" style="display:inline-block; margin-top: 15px; position: relative;" ng-show="numOfRows >= 3">
         <option ng-selected="ClassroomInfo.MO3 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.MO3 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.MO3 === '7.25'" value="7.25">7:15 AM</option>
@@ -379,7 +387,7 @@
         <tr>        
         <th>Tuesday</th>
         <th>
-        <select id="TuesdayIn">
+        <select id="TuesdayIn" style="display:inline-block; margin-top: 15px; position: relative;">
         <option ng-selected="ClassroomInfo.TI1 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.TI1 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.TI1 === '7.25'" value="7.25">7:15 AM</option>
@@ -428,7 +436,7 @@
         </select>
         </th>
         <th>
-        <select id="TuesdayOut">
+        <select id="TuesdayOut" style="display:inline-block; margin-top: 15px; position: relative;">
         <option ng-selected="ClassroomInfo.TO1 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.TO1 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.TO1 === '7.25'" value="7.25">7:15 AM</option>
@@ -477,7 +485,7 @@
         </select>
         </th>
         <th ng-show="numOfRows >= 2">
-        <select id="TuesdayIn2" ng-show="numOfRows >= 2">
+        <select id="TuesdayIn2" style="display:inline-block; margin-top: 15px; position: relative;" ng-show="numOfRows >= 2">
         <option ng-selected="ClassroomInfo.TI2 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.TI2 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.TI2 === '7.25'" value="7.25">7:15 AM</option>
@@ -525,7 +533,7 @@
         <option ng-selected="ClassroomInfo.TI2 === '17.75'" value="17.75">5:45 PM</option>
         </select>        </th>
         <th ng-show="numOfRows >= 2">
-        <select id="TuesdayOut2" ng-show="numOfRows >= 2">
+        <select id="TuesdayOut2" style="display:inline-block; margin-top: 15px; position: relative;" ng-show="numOfRows >= 2">
         <option ng-selected="ClassroomInfo.TO2 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.TO2 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.TO2 === '7.25'" value="7.25">7:15 AM</option>
@@ -574,7 +582,7 @@
         </select>
         </th>
         <th ng-show="numOfRows === 3">
-        <select id="TuesdayIn3" ng-show="numOfRows === 3">
+        <select id="TuesdayIn3" style="display:inline-block; margin-top: 15px; position: relative;" ng-show="numOfRows >= 3">
         <option ng-selected="ClassroomInfo.TI3 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.TI3 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.TI3 === '7.25'" value="7.25">7:15 AM</option>
@@ -622,7 +630,7 @@
         <option ng-selected="ClassroomInfo.TI3 === '17.75'" value="17.75">5:45 PM</option>
         </select>        </th>
         <th ng-show="numOfRows === 3">
-        <select id="TuesdayOut3" ng-show="numOfRows === 3">
+        <select id="TuesdayOut3" style="display:inline-block; margin-top: 15px; position: relative;" ng-show="numOfRows >= 3">
         <option ng-selected="ClassroomInfo.TO3 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.TO3 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.TO3 === '7.25'" value="7.25">7:15 AM</option>
@@ -677,7 +685,7 @@
         <th>Wednesday</th>
 
         <th>
-        <select id="WednesdayIn">
+        <select id="WednesdayIn" style="display:inline-block; margin-top: 15px; position: relative;">
         <option ng-selected="ClassroomInfo.WI1 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.WI1 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.WI1 === '7.25'" value="7.25">7:15 AM</option>
@@ -726,7 +734,7 @@
         </select>
         </th>
         <th>
-        <select id="WednesdayOut">
+        <select id="WednesdayOut" style="display:inline-block; margin-top: 15px; position: relative;">
         <option ng-selected="ClassroomInfo.WO1 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.WO1 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.WO1 === '7.25'" value="7.25">7:15 AM</option>
@@ -775,7 +783,7 @@
         </select>
         </th>
         <th ng-show="numOfRows >= 2">
-        <select id="WednesdayIn2" ng-show="numOfRows >= 2">
+        <select id="WednesdayIn2" style="display:inline-block; margin-top: 15px; position: relative;" ng-show="numOfRows >= 2">
         <option ng-selected="ClassroomInfo.WI2 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.WI2 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.WI2 === '7.25'" value="7.25">7:15 AM</option>
@@ -823,7 +831,7 @@
         <option ng-selected="ClassroomInfo.WI2 === '17.75'" value="17.75">5:45 PM</option>
         </select>        </th>
         <th ng-show="numOfRows >= 2">
-        <select id="WednesdayOut2"ng-show="numOfRows >= 2">
+        <select id="WednesdayOut2" style="display:inline-block; margin-top: 15px; position: relative;" ng-show="numOfRows >= 2">
         <option ng-selected="ClassroomInfo.WO2 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.WO2 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.WO2 === '7.25'" value="7.25">7:15 AM</option>
@@ -872,7 +880,7 @@
         </select>
         </th>
         <th ng-show="numOfRows === 3">
-        <select id="WednesdayIn3" ng-show="numOfRows === 3">
+        <select id="WednesdayIn3" style="display:inline-block; margin-top: 15px; position: relative;" ng-show="numOfRows >= 3">
         <option ng-selected="ClassroomInfo.WI3 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.WI3 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.WI3 === '7.25'" value="7.25">7:15 AM</option>
@@ -920,7 +928,7 @@
         <option ng-selected="ClassroomInfo.WI3 === '17.75'" value="17.75">5:45 PM</option>
         </select>        </th>
         <th ng-show="numOfRows === 3">
-        <select id="WednesdayOut3" ng-show="numOfRows === 3">
+        <select id="WednesdayOut3" style="display:inline-block; margin-top: 15px; position: relative;" ng-show="numOfRows >= 3">
         <option ng-selected="ClassroomInfo.WO3 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.WO3 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.WO3 === '7.25'" value="7.25">7:15 AM</option>
@@ -974,7 +982,7 @@
         <th>Thursday</th>
 
         <th>
-        <select id="ThursdayIn">
+        <select id="ThursdayIn" style="display:inline-block; margin-top: 15px; position: relative;">
         <option ng-selected="ClassroomInfo.THI1 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.THI1 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.THI1 === '7.25'" value="7.25">7:15 AM</option>
@@ -1023,7 +1031,7 @@
         </select>
         </th>
         <th>
-        <select id="ThursdayOut">
+        <select id="ThursdayOut" style="display:inline-block; margin-top: 15px; position: relative;">
         <option ng-selected="ClassroomInfo.THO1 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.THO1 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.THO1 === '7.25'" value="7.25">7:15 AM</option>
@@ -1072,7 +1080,7 @@
         </select>
         </th>
         <th ng-show="numOfRows >= 2">
-        <select id="ThursdayIn2" ng-show="numOfRows >= 2">
+        <select id="ThursdayIn2" style="display:inline-block; margin-top: 15px; position: relative;" ng-show="numOfRows >= 2">
         <option ng-selected="ClassroomInfo.THI2 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.THI2 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.THI2 === '7.25'" value="7.25">7:15 AM</option>
@@ -1120,7 +1128,7 @@
         <option ng-selected="ClassroomInfo.THI2 === '17.75'" value="17.75">5:45 PM</option>
         </select>        </th>
         <th ng-show="numOfRows >= 2">
-        <select id="ThursdayOut2" ng-show="numOfRows >= 2">
+        <select id="ThursdayOut2" style="display:inline-block; margin-top: 15px; position: relative;" ng-show="numOfRows >= 2">
         <option ng-selected="ClassroomInfo.THO2 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.THO2 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.THO2 === '7.25'" value="7.25">7:15 AM</option>
@@ -1169,7 +1177,7 @@
         </select>
         </th>
         <th ng-show="numOfRows === 3">
-        <select id="ThursdayIn3" ng-show="numOfRows === 3">
+        <select id="ThursdayIn3" style="display:inline-block; margin-top: 15px; position: relative;" ng-show="numOfRows >= 3">
         <option ng-selected="ClassroomInfo.THI3 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.THI3 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.THI3 === '7.25'" value="7.25">7:15 AM</option>
@@ -1217,7 +1225,7 @@
         <option ng-selected="ClassroomInfo.THI3 === '17.75'" value="17.75">5:45 PM</option>
         </select>        </th>
         <th ng-show="numOfRows === 3">
-        <select id="ThursdayOut3" ng-show="numOfRows === 3">
+        <select id="ThursdayOut3" style="display:inline-block; margin-top: 15px; position: relative;" ng-show="numOfRows >= 3">
         <option ng-selected="ClassroomInfo.THO3 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.THO3 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.THO3 === '7.25'" value="7.25">7:15 AM</option>
@@ -1271,7 +1279,7 @@
         <th>Friday</th>
 
         <th>
-        <select id="FridayIn">
+        <select id="FridayIn" style="display:inline-block; margin-top: 15px; position: relative;">
         <option ng-selected="ClassroomInfo.FI1 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.FI1 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.FI1 === '7.25'" value="7.25">7:15 AM</option>
@@ -1320,7 +1328,7 @@
         </select>
         </th>
         <th>
-        <select id="FridayOut">
+        <select id="FridayOut" style="display:inline-block; margin-top: 15px; position: relative;">
         <option ng-selected="ClassroomInfo.FO1 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.FO1 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.FO1 === '7.25'" value="7.25">7:15 AM</option>
@@ -1369,7 +1377,7 @@
         </select>
         </th>
         <th ng-show="numOfRows >= 2">
-        <select id="FridayIn2" ng-show="numOfRows >= 2">
+        <select id="FridayIn2" style="display:inline-block; margin-top: 15px; position: relative;" ng-show="numOfRows >= 2">
         <option ng-selected="ClassroomInfo.FI2 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.FI2 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.FI2 === '7.25'" value="7.25">7:15 AM</option>
@@ -1417,7 +1425,7 @@
         <option ng-selected="ClassroomInfo.FI2 === '17.75'" value="17.75">5:45 PM</option>
         </select>        </th>
         <th ng-show="numOfRows >= 2">
-        <select id="FridayOut2" ng-show="numOfRows >= 2">
+        <select id="FridayOut2" style="display:inline-block; margin-top: 15px; position: relative;" ng-show="numOfRows >= 2">
         <option ng-selected="ClassroomInfo.FO2 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.FO2 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.FO2 === '7.25'" value="7.25">7:15 AM</option>
@@ -1467,7 +1475,7 @@
         </th>
 
         <th ng-show="numOfRows === 3">
-        <select id="FridayIn3" ng-show="numOfRows === 3">
+        <select id="FridayIn3" style="display:inline-block; margin-top: 15px; position: relative;" ng-show="numOfRows >= 3">
         <option ng-selected="ClassroomInfo.FI3 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.FI3 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.FI3 === '7.25'" value="7.25">7:15 AM</option>
@@ -1516,7 +1524,7 @@
         </select>        
         </th>
         <th ng-show="numOfRows === 3">
-        <select id="FridayOut3" ng-show="numOfRows === 3">
+        <select id="FridayOut3" style="display:inline-block; margin-top: 15px; position: relative;" ng-show="numOfRows >= 3">
         <option ng-selected="ClassroomInfo.FO3 === null" value="null">        </option>
         <option ng-selected="ClassroomInfo.FO3 === '7.0'" value="7.0">7:00 AM</option>
         <option ng-selected="ClassroomInfo.FO3 === '7.25'" value="7.25">7:15 AM</option>
