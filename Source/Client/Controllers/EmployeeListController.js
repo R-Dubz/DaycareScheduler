@@ -1,6 +1,7 @@
     angular.module('DaycareApp').controller('EmployeeListController', ['$scope', '$http', function($scope, $http){
 
         $scope.Employees = [];
+        $scope.EmployeeSched = [];
         $scope.Profile = [];   
         $scope.sortType = 'jsFriendlyTimeStamp'; 
         $scope.sortReverse = true;
@@ -13,7 +14,6 @@
                 $scope.Employees = response.data;
             });
         };
-
 
         $scope.storeProfile = function(employee){
             $http.post('/storeTempEmployeeProfile', employee)

@@ -14,10 +14,10 @@
 	<script type="text/javascript"></script>
 	<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script> <script src="./angular/angular-1.5.8/angular-1.5.8/angular-sanitize.js"></script>
 	<script src="./app.js"></script>
-  <script src="./Source/Client/Controllers/EmployeeListController.js"></script>
+  <script src="./Source/Client/Controllers/EmployeeSchedController.js"></script>
   
   </head>
-<body ng-app="DaycareApp" ng-controller="EmployeeListController" ng-init="LoadEmployeeList()">
+<body ng-app="DaycareApp" ng-controller="EmployeeSchedController" ng-init="LoadEmployeeList()">
 
 <div class="top-bar" id="main-menu">
 	<div class="top-bar-left">
@@ -184,7 +184,26 @@
           </table></p>
       </div>
       <div class="tabs-panel" id="panel6v">
-        Scheduler
+        <p>
+          <table class = "TFtable" style="height: 85%; width: 100%" ng-init="LoadEmployeeSchedule()">
+	          <th>Employee's Name</th>
+	          <th>Scheduled</th>
+            <th>Date</th>
+            <th>Profile</th>
+            <tr ng-repeat="employee in EmployeeSched">
+               <th ng-click="storeProfile(employee)" style="cursor: hand;" ng-show="employee.Date === Mon">
+                 {{employee.Staff_Name}}</th>
+                <th ng-show="employee.Date === Mon">{{employee.TimeStart}} - {{employee.TimeEnd}}</th>
+                <th>{{employee.Date}}</th>
+                <th ng-show="employee.Date === Mon"><button type="button" ng-click="storeProfile(employee)" class="sucess button">Profile</button></th>
+            </tr>
+            <tr ng-if="Employees.length === 0">
+              <th></th>
+              <th></th>
+              <th style="background: #dae5f4"></th>
+            </tr>
+          </table>
+        </p>
       </div>
       <div class="tabs-panel" id="panel7v">
         Scheduler
