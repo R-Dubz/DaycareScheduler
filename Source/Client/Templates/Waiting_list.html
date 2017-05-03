@@ -59,7 +59,7 @@
     <label>Search: <input placeholder="What are you looking for?" ng-model="searchText"></label>
 </div>
 <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Click to refresh the waiting list.">
-<button type="button" ng-click="RefreshDatabase()" class="sucess button" style="margin-left: 10px; margin-top: 10px">Update List
+<button type="button" ng-click="RefreshDatabase()" class="button" style="margin-left: 10px; margin-top: 10px">Update List
 </button> 
 </span>
 <div id="display"></div>
@@ -178,7 +178,7 @@
     <th>{{child.DesiredEnrollment}}</th>
     <th>{{child.AgeGroup}}</th>
     <th>{{child.RequiredDays}}</th>
-    <th><button type="button" ng-click="storeProfile(child)" class="sucess button" style="margin-top: 10px">Profile</button></th>
+    <th><button type="button" ng-click="storeProfile(child)" class="button" style="margin-top: 10px">Profile</button></th>
 </tr>
 
 <tr ng-if="Children.length === 0">

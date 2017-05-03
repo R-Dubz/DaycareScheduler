@@ -201,6 +201,25 @@ This library holds functions to be used in order to modify the database
 		db.close();
 	},
 
+	unenrollChild: function(info) {
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+
+		db.run("UPDATE Personal_Information SET EnrollmentStatus = 'U', Classroom = '" + info[1] + "'  WHERE ChildID = $ChildID", {
+			$ChildID: info[0],
+		});
+
+		db.close();
+	},
+
 	callEnrolledList : function(callback){
 		var fs = require("fs");
 		var file = "./Source/Server/Data/DaycareDB.db";

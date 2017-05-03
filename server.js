@@ -17,8 +17,13 @@ app.use(express.static(__dirname + '/Source/Client/Templates'));
 app.use(express.static(__dirname + '/'));
 
 
-app.listen(3000);
-console.log("running at port 3000");
+
+
+app.listen(3000, function() {
+  console.log("Launch successful. To access app, open your browser and insert the following URL into your address bar: http://localhost:3000/");
+  // var i = 0;
+  // setInterval(function(){console.log(i + " seconds"); i++;}, 1000);
+});
 
 app.get('/', function (req, res) {
     console.log("Loading Home Page...");
@@ -93,6 +98,12 @@ app.get('/', function (req, res) {
   app.post('/acceptChild', jsonParser, function (req, res) {
     updateDB.acceptChild(req.body); 
     console.log("Accepting Child...");
+    return res.sendStatus(200);
+  }); 
+
+  app.post('/unenrollChild', jsonParser, function (req, res) {
+    updateDB.unenrollChild(req.body); 
+    console.log("Child is being unenrolled...");
     return res.sendStatus(200);
   }); 
 

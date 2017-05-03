@@ -77,7 +77,7 @@
     <th ng-bind-html="child.ThursdayString"></th>
     <th ng-bind-html="child.FridayString"></th>
     <th>{{child.Affiliation}}</th>
-    <th><button ng-click="OpenModal(ClassroomList[child.RoomIndex].RoomIndex)" class="sucess button">View Notes</button></th>
+    <th><button ng-click="OpenModal(ClassroomList[child.RoomIndex].RoomIndex)" class="button">View Notes</button></th>
 </tr>
 </table>
 
@@ -93,8 +93,8 @@
             Notes:
         	<div id="textarea" class="textarea" contenteditable="true"></div>
         <div style="text-align: center; padding-top: 30px;">
-                <button class="sucess button" ng-click="SaveNotes()">Save Changes</button>
-                <button class="sucess button" ng-click="CloseModal()">Cancel</button>
+                <button class="button" ng-click="SaveNotes()">Save Changes</button>
+                <button class="button" ng-click="CloseModal()">Cancel</button>
         </div>
         </div>
         </div>
