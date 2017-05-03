@@ -191,11 +191,11 @@
             <th>Date</th>
             <th>Profile</th>
             <tr ng-repeat="employee in EmployeeSched">
-               <th ng-click="storeProfile(employee)" style="cursor: hand;">
+               <th ng-click="storeProfile(employee)" style="cursor: hand;" ng-if="Mon == employee.Date" >
                  {{employee.Staff_Name}}</th>
-                <th>{{employee.TimeStart}} - {{employee.TimeEnd}}</th>
+                <th ng-if="Mon == employee.Date">{{employee.TimeStart}} - {{employee.TimeEnd}}</th>
                 <th>{{employee.Date}}</th>
-                <th><button type="button" ng-click="storeProfile(employee)" class="sucess button">Profile</button></th>
+                <th ng-if="Mon == employee.Date"><button type="button" ng-click="storeProfile(employee)" class="sucess button">Profile</button></th>
             </tr>
             <tr ng-if="Employees.length === 0">
               <th></th>
