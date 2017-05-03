@@ -7,15 +7,17 @@
     <title>Employee Scheduler</title>
     <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/foundation.css">
     <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/foundation.min.css">
+    <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/foundation.calendar.css">
     <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/app.css">
 	<!--<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/modal_employee.css">-->
 	
 	<script type="text/javascript"></script>
-	<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script>
+	<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script> <script src="./angular/angular-1.5.8/angular-1.5.8/angular-sanitize.js"></script>
 	<script src="./app.js"></script>
-  <script src="./Source/Client/Controllers/EmployeeListController.js"></script>
+  <script src="./Source/Client/Controllers/EmployeeSchedController.js"></script>
+  
   </head>
-<body ng-app="DaycareApp" ng-controller="EmployeeListController" ng-init="LoadEmployeeList()">
+<body ng-app="DaycareApp" ng-controller="EmployeeSchedController" ng-init="LoadEmployeeList()">
 
 <div class="top-bar" id="main-menu">
 	<div class="top-bar-left">
@@ -42,16 +44,18 @@
 <div class="row collapse">
   <div class="medium-2 columns">
     <ul class="tabs vertical" id="example-vert-tabs" data-tabs>
-      <li class="tabs-title is-active"><a href="#panel1v" aria-selected="true">Monday Available</a></li>
-      <li class="tabs-title"><a href="#panel2v">Tuesday Available</a></li>
-      <li class="tabs-title"><a href="#panel3v">Wednesday Available</a></li>
-      <li class="tabs-title"><a href="#panel4v">Thursday Available</a></li>
-      <li class="tabs-title"><a href="#panel5v">Friday Available</a></li>
-      <li class="tabs-title"><a href="#panel6v">Monday Schedule</a></li>
-      <li class="tabs-title"><a href="#panel2v">Tuesday Schedule</a></li>
-      <li class="tabs-title"><a href="#panel3v">Wednesday Schedule</a></li>
-      <li class="tabs-title"><a href="#panel4v">Thursday Schedule</a></li>
-      <li class="tabs-title"><a href="#panel5v">Friday Schedule</a></li>
+      Available
+      <li class="tabs-title is-active"><a href="#panel1v" aria-selected="true">Monday</a></li>
+      <li class="tabs-title"><a href="#panel2v">Tuesday</a></li>
+      <li class="tabs-title"><a href="#panel3v">Wednesday</a></li>
+      <li class="tabs-title"><a href="#panel4v">Thursday</a></li>
+      <li class="tabs-title"><a href="#panel5v">Friday</a></li>
+      Schedule
+      <li class="tabs-title"><a href="#panel6v" id="monday"></a></li>
+      <li class="tabs-title"><a href="#panel7v" id="tuesday"></a></li>
+      <li class="tabs-title"><a href="#panel8v" id="wednesday"></a></li>
+      <li class="tabs-title"><a href="#panel9v" id="thursday"></a></li>
+      <li class="tabs-title"><a href="#panel10v" id="friday"></a></li>
     </ul>
     </div>
     <div class="medium-10 columns">
@@ -67,9 +71,9 @@
 
             <tr ng-repeat="employee in Employees">
                <th ng-click="storeProfile(employee)" style="cursor: hand;">{{employee.FirstName}} {{employee.LastName}}</th>
-                <th>{{employee.MondayIn}} - {{employee.MondayOut}}</th>
-                <th>{{employee.MondayIn2}} - {{employee.MondayOut2}}</th>  
-                <th>{{employee.MondayIn3}} - {{employee.MondayOut3}}</th> 
+                <th>{{employee.MondayInUF}} - {{employee.MondayOutUF}}</th>
+                <th>{{employee.MondayIn2UF}} - {{employee.MondayOut2UF}}</th>  
+                <th>{{employee.MondayIn3UF}} - {{employee.MondayOut3UF}}</th> 
                 <th><button type="button" ng-click="storeProfile(employee)" class="sucess button">Profile</button></th>
             </tr>
             <tr ng-if="Employees.length === 0">
@@ -92,9 +96,9 @@
 
             <tr ng-repeat="employee in Employees">
                <th ng-click="storeProfile(employee)" style="cursor: hand;">{{employee.FirstName}} {{employee.LastName}}</th>
-                <th>{{employee.TuesdayIn}} - {{employee.TuesdayOut}}</th>
-                <th>{{employee.TuesdayIn2}} - {{employee.TuesdayOut2}}</th>  
-                <th>{{employee.TuesdayIn3}} - {{employee.TuesdayOut3}}</th> 
+                <th>{{employee.TuesdayInUF}} - {{employee.TuesdayOutUF}}</th>
+                <th>{{employee.TuesdayIn2UF}} - {{employee.TuesdayOut2UF}}</th>  
+                <th>{{employee.TuesdayIn3UF}} - {{employee.TuesdayOut3UF}}</th> 
                 <th><button type="button" ng-click="storeProfile(employee)" class="sucess button">Profile</button></th>
             </tr>
             <tr ng-if="Employees.length === 0">
@@ -116,16 +120,16 @@
 
             <tr ng-repeat="employee in Employees">
                <th ng-click="storeProfile(employee)" style="cursor: hand;">{{employee.FirstName}} {{employee.LastName}}</th>
-                <th>{{employee.WednesdayIn}} - {{employee.WednesdayOut}}</th>
-                <th>{{employee.WednesdayIn2}} - {{employee.WednesdayOut2}}</th>  
-                <th>{{employee.WednesdayIn3}} - {{employee.WednesdayOut3}}</th> 
+                <th>{{employee.WednesdayInUF}} - {{employee.WednesdayOutUF}}</th>
+                <th>{{employee.WednesdayIn2UF}} - {{employee.WednesdayOut2UF}}</th>  
+                <th>{{employee.WednesdayIn3UF}} - {{employee.WednesdayOut3UF}}</th> 
                 <th><button type="button" ng-click="storeProfile(employee)" class="sucess button">Profile</button></th>
             </tr>
             <tr ng-if="Employees.length === 0">
               <th></th>
               <th></th>
-              <th></th>  
-              <th></th> 
+              <th></th>
+              <th></th>
               <th style="background: #dae5f4"></th>
             </tr>
           </table>
@@ -141,9 +145,9 @@
 
             <tr ng-repeat="employee in Employees">
                <th ng-click="storeProfile(employee)" style="cursor: hand;">{{employee.FirstName}} {{employee.LastName}}</th>
-                <th>{{employee.ThursdayIn}} - {{employee.ThursdayOut}}</th>
-                <th>{{employee.ThursdayIn2}} - {{employee.ThursdayOut2}}</th>  
-                <th>{{employee.ThursdayIn3}} - {{employee.ThursdayOut3}}</th>
+                <th>{{employee.ThursdayInUF}} - {{employee.ThursdayOutUF}}</th>
+                <th>{{employee.ThursdayIn2UF}} - {{employee.ThursdayOut2UF}}</th>  
+                <th>{{employee.ThursdayIn3UF}} - {{employee.ThursdayOut3UF}}</th>
                 <th><button type="button" ng-click="storeProfile(employee)" class="sucess button">Profile</button></th>
             </tr>
             <tr ng-if="Employees.length === 0">
@@ -165,9 +169,9 @@
 
             <tr ng-repeat="employee in Employees">
                <th ng-click="storeProfile(employee)" style="cursor: hand;">{{employee.FirstName}} {{employee.LastName}}</th>
-                <th>{{employee.FridayIn}} - {{employee.FridayOut}}</th>
-                <th>{{employee.FridayIn2}} - {{employee.FridayOut2}}</th>  
-                <th>{{employee.FridayIn3}} - {{employee.FridayOut3}}</th>
+                <th>{{employee.FridayInUF}} - {{employee.FridayOutUF}}</th>
+                <th>{{employee.FridayIn2UF}} - {{employee.FridayOut2UF}}</th>  
+                <th>{{employee.FridayIn3UF}} - {{employee.FridayOut3UF}}</th>
                 <th><button type="button" ng-click="storeProfile(employee)" class="sucess button">Profile</button></th>
             </tr>
             <tr ng-if="Employees.length === 0">
@@ -180,7 +184,38 @@
           </table></p>
       </div>
       <div class="tabs-panel" id="panel6v">
-        <p>HaHaHa</p>
+        <p>
+          <table class = "TFtable" style="height: 85%; width: 100%" ng-init="LoadEmployeeSchedule()">
+	          <th>Employee's Name</th>
+	          <th>Scheduled</th>
+            <th>Date</th>
+            <th>Profile</th>
+            <tr ng-repeat="employee in EmployeeSched">
+               <th ng-click="storeProfile(employee)" style="cursor: hand;" ng-if="Mon == employee.Date" >
+                 {{employee.Staff_Name}}</th>
+                <th ng-if="Mon == employee.Date">{{employee.TimeStart}} - {{employee.TimeEnd}}</th>
+                <th>{{employee.Date}}</th>
+                <th ng-if="Mon == employee.Date"><button type="button" ng-click="storeProfile(employee)" class="sucess button">Profile</button></th>
+            </tr>
+            <tr ng-if="Employees.length === 0">
+              <th></th>
+              <th></th>
+              <th style="background: #dae5f4"></th>
+            </tr>
+          </table>
+        </p>
+      </div>
+      <div class="tabs-panel" id="panel7v">
+        Scheduler
+      </div>
+      <div class="tabs-panel" id="panel8v">
+        Scheduler
+      </div>
+      <div class="tabs-panel" id="panel9v">
+        Scheduler
+      </div>
+      <div class="tabs-panel" id="panel10v">
+        Scheduler
       </div>
     </div>
   </div>
@@ -191,6 +226,7 @@
     <script src="./Other Files/foundation-6.3.0-complete/js/vendor/what-input.js"></script>
     <script src="./Other Files/foundation-6.3.0-complete/js/vendor/foundation.js"></script>
     <script src="./Other Files/foundation-6.3.0-complete/js/vendor/foundation.min.js"></script>
+    <script type="text/javascript" src="./Source/Client/Controllers/calendarController.js"></script>
     <script src="./Other Files/foundation-6.3.0-complete/js/app.js"></script>
     <script>
     $(document).foundation();

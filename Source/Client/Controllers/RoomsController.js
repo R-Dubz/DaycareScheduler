@@ -1,4 +1,4 @@
-angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', function($scope, $http){
+angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', '$sce', function($scope, $http, $sce){
 
         $scope.Children = [];
         $scope.Profile = [];   
@@ -89,77 +89,77 @@ angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', f
             if(child.MI1 !== "null"){
                 child.MI1 = $scope.timeTo12HrFormat(child.MI1);
                 child.MO1 = $scope.timeTo12HrFormat(child.MO1);
-                child.MondayString = child.MI1 + "-" + child.MO1 + "\n";           
+                child.MondayString = child.MI1 + " - " + child.MO1 + "<br />";
             }   
             if(child.MI2 !== "null"){
                 child.MI2 = $scope.timeTo12HrFormat(child.MI2);
                 child.MO2 = $scope.timeTo12HrFormat(child.MO2);  
-                child.MondayString = child.MondayString + child.MI2 + "-" + child.MO2 + "\n";          
+                child.MondayString = child.MondayString + child.MI2 + " - " + child.MO2 + "<br />";          
             }   
             if(child.MI3 !== "null"){
                 child.MI3 = $scope.timeTo12HrFormat(child.MI3);
                 child.MO3 = $scope.timeTo12HrFormat(child.MO3);   
-                child.MondayString = child.MondayString + child.MI3 + "-" + child.MO3;          
+                child.MondayString = child.MondayString + child.MI3 + " - " + child.MO3;          
             } 
             if(child.TI1 !== "null"){
                 child.TI1 = $scope.timeTo12HrFormat(child.TI1);
                 child.TO1 = $scope.timeTo12HrFormat(child.TO1);
-                child.TuesdayString = child.TI1 + "-" + child.TO1 + "\n";           
+                child.TuesdayString = child.TI1 + " - " + child.TO1 + "<br />";           
             }   
             if(child.TI2 !== "null"){
                 child.TI2 = $scope.timeTo12HrFormat(child.TI2);
                 child.TO2 = $scope.timeTo12HrFormat(child.TO2);  
-                child.TuesdayString = child.TuesdayString + child.TI2 + "-" + child.TO2 + "\n";          
+                child.TuesdayString = child.TuesdayString + child.TI2 + " - " + child.TO2 + "<br />";          
             }   
             if(child.TI3 !== "null"){
                 child.TI3 = $scope.timeTo12HrFormat(child.TI3);
                 child.TO3 = $scope.timeTo12HrFormat(child.TO3);   
-                child.TuesdayString = child.TuesdayString + child.TI3 + "-" + child.TO3;          
+                child.TuesdayString = child.TuesdayString + child.TI3 + " - " + child.TO3;          
             } 
             if(child.WI1 !== "null"){
                 child.WI1 = $scope.timeTo12HrFormat(child.WI1);
                 child.WO1 = $scope.timeTo12HrFormat(child.WO1);
-                child.WednesdayString = child.WI1 + "-" + child.WO1 + "\n";           
+                child.WednesdayString = child.WI1 + " - " + child.WO1 + "<br />";           
             }   
             if(child.WI2 !== "null"){
                 child.WI2 = $scope.timeTo12HrFormat(child.WI2);
                 child.WO2 = $scope.timeTo12HrFormat(child.WO2);  
-                child.WednesdayString = child.WednesdayString + child.WI2 + "-" + child.WO2 + "\n";          
+                child.WednesdayString = child.WednesdayString + child.WI2 + " - " + child.WO2 + "<br />";          
             }   
             if(child.WI3 !== "null"){
                 child.WI3 = $scope.timeTo12HrFormat(child.WI3);
                 child.WO3 = $scope.timeTo12HrFormat(child.WO3);   
-                child.WednesdayString = child.WednesdayString + child.WI3 + "-" + child.WO3;          
+                child.WednesdayString = child.WednesdayString + child.WI3 + " - " + child.WO3;          
             } 
             if(child.THI1 !== "null"){
                 child.THI1 = $scope.timeTo12HrFormat(child.THI1);
                 child.THO1 = $scope.timeTo12HrFormat(child.THO1);
-                child.ThursdayString = child.THI1 + "-" + child.THO1 + "\n";           
+                child.ThursdayString = child.THI1 + " - " + child.THO1 + "<br />";           
             }   
             if(child.THI2 !== "null"){
                 child.THI2 = $scope.timeTo12HrFormat(child.THI2);
                 child.THO2 = $scope.timeTo12HrFormat(child.THO2);  
-                child.ThursdayString = child.ThursdayString + child.THI2 + "-" + child.THO2 + "\n";          
+                child.ThursdayString = child.ThursdayString + child.THI2 + " - " + child.THO2 + "<br />";          
             }   
             if(child.THI3 !== "null"){
                 child.THI3 = $scope.timeTo12HrFormat(child.THI3);
                 child.THO3 = $scope.timeTo12HrFormat(child.THO3);   
-                child.ThursdayString = child.ThursdayString + child.THI3 + "-" + child.THO3;          
+                child.ThursdayString = child.ThursdayString + child.THI3 + " - " + child.THO3;          
             } 
             if(child.FI1 !== "null"){
                 child.FI1 = $scope.timeTo12HrFormat(child.FI1);
                 child.FO1 = $scope.timeTo12HrFormat(child.FO1);
-                child.FridayString = child.FI1 + "-" + child.FO1 + "\n";           
+                child.FridayString = child.FI1 + " - " + child.FO1 + "<br />";           
             }   
             if(child.FI2 !== "null"){
                 child.FI2 = $scope.timeTo12HrFormat(child.FI2);
                 child.FO2 = $scope.timeTo12HrFormat(child.FO2);  
-                child.FridayString = child.FridayString + child.FI2 + "-" + child.FO2 + "\n";          
+                child.FridayString = child.FridayString + child.FI2 + " - " + child.FO2 + "<br />";          
             }   
             if(child.FI3 !== "null"){
                 child.FI3 = $scope.timeTo12HrFormat(child.FI3);
                 child.FO3 = $scope.timeTo12HrFormat(child.FO3);   
-                child.FridayString = child.FridayString + child.FI3 + "-" + child.FO3;          
+                child.FridayString = child.FridayString + child.FI3 + " - " + child.FO3;          
             } 
         };
 

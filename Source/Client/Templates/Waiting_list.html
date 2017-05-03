@@ -3,19 +3,27 @@
 <head>
 <title>Waiting List</title>
 <script type="text/javascript"></script>
-<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script>
+<!--Overhang.js/jQuery-->
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<!--<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>-->
+<link rel="stylesheet" type="text/css" href="./node_modules/overhang/dist/overhang.min.css" />
+<script type="text/javascript" src="./node_modules/overhang/dist/overhang.min.js"></script>
+<!--AngularJS-->
+<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script> <script src="./angular/angular-1.5.8/angular-1.5.8/angular-sanitize.js"></script>
+<script src="./angular/angular-1.5.8/angular-1.5.8/angular-sanitize.js"></script>
 <script src="./app.js"></script>
 <script src="./Source/Client/Controllers/WaitingListController.js"></script>
-
-
-<!--<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">-->
+<!--Font Awesome-->
 <link rel="stylesheet" type="text/css" href="./Other Files/(CSS Stuff) font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
-
-    <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/foundation.css">
-    <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/app.css">
+<!--Foundation CSS-->
+<link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/foundation.css">
+<link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/app.css">
 </head>
 
-<body background="sky.jpg" class = "backgroundPic" ng-app="DaycareApp" ng-controller="WaitingListController" ng-init="LoadWaitingList()">
+<body background="sky.jpg" id="body" class = "backgroundPic" ng-app="DaycareApp" ng-controller="WaitingListController" ng-init="LoadWaitingList()">
 
 
 
@@ -27,7 +35,7 @@
 <div class="top-bar" id="main-menu">
   <div class="top-bar-left">
     <ul class="dropdown menu" data-dropdown-menu>
-      <li class="menu-text"><img src="./Images/Stock/PotsdamLogoSmall.jpg" class="Logo"><h2>Waiting List</h2></li>
+      <li class="menu-text"><img src="./Images/Stock/PotsdamLogoSmall.jpg" class="Logo"><h2 style="margin-left: 2rem;">Waiting List</h2></li>
     </ul>
   </div>
   <div class="top-bar-right">
@@ -50,7 +58,10 @@
 <div>
     <label>Search: <input placeholder="What are you looking for?" ng-model="searchText"></label>
 </div>
-<button type="button" ng-click="RefreshDatabase()" class="sucess button">Refresh Database</button> 
+<span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Click to refresh the waiting list.">
+<button type="button" ng-click="RefreshDatabase()" class="sucess button" style="margin-left: 10px; margin-top: 10px">Update List
+</button> 
+</span>
 <div id="display"></div>
 
 <table class = "TFtable" style="height: 85%; width:100%">
@@ -167,7 +178,7 @@
     <th>{{child.DesiredEnrollment}}</th>
     <th>{{child.AgeGroup}}</th>
     <th>{{child.RequiredDays}}</th>
-    <th><button type="button" ng-click="storeProfile(child)" class="sucess button">Profile</button></th>
+    <th><button type="button" ng-click="storeProfile(child)" class="sucess button" style="margin-top: 10px">Profile</button></th>
 </tr>
 
 <tr ng-if="Children.length === 0">

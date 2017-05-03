@@ -3,8 +3,9 @@
 <head>
 <title>Rooms</title>
 <script type="text/javascript"></script>
-<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script>
+<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script> <script src="./angular/angular-1.5.8/angular-1.5.8/angular-sanitize.js"></script>
 <script src="./app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.8/angular-sanitize.min.js"></script>
 <script src="./Source/Client/Controllers/RoomsController.js"></script>
 
 
@@ -67,14 +68,14 @@
         <th>Notes</th>
     </tr>
 
-<tr ng-repeat="child in ClassroomList | orderBy:sortType:sortReverse | filter:searchText">
+<tr ng-repeat="child in ClassroomList | orderBy:['ChildBirthdate'] | filter:searchText">
     <th>{{child.ChildBirthdate}}</th>
 	<th ng-click="storeProfile(child)" style="cursor: hand;">{{child.ChildName}}</th>
-    <th>{{child.MondayString}}</th>
-    <th>{{child.TuesdayString}}</th>
-    <th>{{child.WednesdayString}}</th>
-    <th>{{child.ThursdayString}}</th>
-    <th>{{child.FridayString}}</th>
+    <th ng-bind-html="child.MondayString"></th>
+    <th ng-bind-html="child.TuesdayString"></th>
+    <th ng-bind-html="child.WednesdayString"></th>
+    <th ng-bind-html="child.ThursdayString"></th>
+    <th ng-bind-html="child.FridayString"></th>
     <th>{{child.Affiliation}}</th>
     <th><button ng-click="OpenModal(ClassroomList[child.RoomIndex].RoomIndex)" class="sucess button">View Notes</button></th>
 </tr>
@@ -87,13 +88,13 @@
         <div id="myModal" class="modal" ng-show="ShowModal">
 
         <!-- Modal content -->
-        <div id="modalContent" class="modal-content" style="width: 400px; height: 250px">
+        <div id="modalContent" class="modal-content" style="width: 475px; height: 300px">
         <div class="close" ng-click="CloseModal()">×</div>
             Notes:
         	<div id="textarea" class="textarea" contenteditable="true"></div>
         <div style="text-align: center; padding-top: 30px;">
-                <button ng-click="SaveNotes()">Save Changes</button>
-                <button ng-click="CloseModal()">Cancel</button>
+                <button class="sucess button" ng-click="SaveNotes()">Save Changes</button>
+                <button class="sucess button" ng-click="CloseModal()">Cancel</button>
         </div>
         </div>
         </div>

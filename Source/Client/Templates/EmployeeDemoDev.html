@@ -10,7 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/modal_employee.css">
 	
 	<script type="text/javascript"></script>
-	<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script>
+	<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script> <script src="./angular/angular-1.5.8/angular-1.5.8/angular-sanitize.js"></script>
 	<script src="./app.js"></script>
 	<script src="./Source/Client/Controllers/EmployeeProfileController.js"></script>
   </head>
@@ -84,8 +84,8 @@
 	<div class="card-section">
 		<center>
 			<div class="button-group">
-				<button class="view button" ng-click="OpenModal(Profile[0].StaffID)">View</button>
-				<button class="notes button" ng-click="OpenModal(Profile[0].StaffID)">Edit</button>
+				<button class="view button" ng-click="OpenNotesModal(Profile[0].StaffID)">Notes</button>
+				<button class="notes button" ng-click="OpenEditModal()">Edit Profile</button>
 			</div>
 		</center>
 	</div>
@@ -164,22 +164,48 @@
 
 	
 	
-	    <!-- The Modal -->
-        <div id="myModal" class="modal" ng-show="ShowModal">
+	    <!-- The Notes Modal -->
+        <div id="myModal" class="modal" ng-show="ShowNotesModal">
 
         <!-- Modal content -->
-        <div id="modalContent" class="modal-content" style="width: 400px; height: 250px">
-        <div class="close" ng-click="CloseModal()">×</div>
+        <div id="modalContent" class="modal-content" style="width: 450px; height: 300px">
+        <div class="close" ng-click="CloseNotesModal()">×</div>
             Notes:
         	<div id="textarea" class="textarea" contenteditable="true"></div>
 
         <div style="text-align: center; padding-top: 30px;">
-                <button ng-click="SaveNotes()">Save Changes</button>
-                <button ng-click="CloseModal()">Cancel</button>
+                <button class="sucess button" ng-click="SaveNotes()">Save Changes</button>
+                <button class="sucess button" ng-click="CloseNotesModal()">Cancel</button>
         </div>
         </div>
         </div>
 	
+<<<<<<< HEAD
+=======
+
+	    <!-- The Edit Modal -->
+        <div id="EditModal" class="modal" ng-show="ShowEditModal">
+
+					<!-- Modal content -->
+						<div id="modalContent" class="modal-content" style="width: 450px; height: 650px">
+							<div class="close" ng-click="CloseEditModal()">×</div>
+									<div style="text-align: center">Employee's Information</div>
+									<form>
+											First Name: <input type="text" ng-model="Profile[0].FirstName"><br>
+											Last Name: <input type="text" ng-model="Profile[0].LastName"><br>
+											Email Address: <input type="text" ng-model="Profile[0].EmailAddress"><br>
+											Primary Phone Number: <input type="text" ng-model="Profile[0].PhoneNumber"><br>
+											Secondary Phone Number: <input type="text" ng-model="Profile[0].PhoneNumber2"><br>
+									</form>
+
+							<div style="text-align: center; padding-top: 30px;">
+											<button class="sucess button" ng-click="SaveChanges()">Save Changes</button>
+											<button class="sucess button" ng-click="CloseEditModal()">Cancel</button>
+							</div>
+					</div>
+        </div>
+	
+>>>>>>> 7b4dedf6de3b626803d9dd81c932ad3c425df82d
     <script src="./Other Files/foundation-6.3.0-complete/js/vendor/jquery.js"></script>
     <script src="./Other Files/foundation-6.3.0-complete/js/vendor/what-input.js"></script>
     <script src="./Other Files/foundation-6.3.0-complete/js/vendor/foundation.js"></script>
