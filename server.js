@@ -224,8 +224,14 @@ app.post('/editChildNotes', jsonParser, function (req, res) {
           // handle the error here
         }
         // send the data
+      updateDB.callSchedule(function(err, data2){
+        if(err) {
+          // handle the error here
+        }
+        // send the data
         console.log("Sending Profile...");
         res.send(data1);
+    })
     })
     })
   });
