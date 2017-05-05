@@ -17,8 +17,13 @@ app.use(express.static(__dirname + '/Source/Client/Templates'));
 app.use(express.static(__dirname + '/'));
 
 
-app.listen(3000);
-console.log("running at port 3000");
+
+
+app.listen(3000, function() {
+  console.log("Launch successful. To access app, open your browser and insert the following URL into your address bar: http://localhost:3000/");
+  // var i = 0;
+  // setInterval(function(){console.log(i + " seconds"); i++;}, 1000);
+});
 
 app.get('/', function (req, res) {
     console.log("Loading Home Page...");
@@ -96,6 +101,12 @@ app.get('/', function (req, res) {
     return res.sendStatus(200);
   }); 
 
+  app.post('/unenrollChild', jsonParser, function (req, res) {
+    updateDB.unenrollChild(req.body); 
+    console.log("Child is being unenrolled...");
+    return res.sendStatus(200);
+  }); 
+
   app.post('/editChildClassroom', jsonParser, function (req, res) {
     updateDB.editChildClass(req.body);
     console.log("Editing Child...");
@@ -149,6 +160,18 @@ app.get('/', function (req, res) {
     })
   });
 
+  app.get('/loadEmployeeSchedule', jsonParser, function (req, res) {
+    updateDB.callSchedule(function(err, data){
+      if(err) {
+        // handle the error here
+        console.log(err);
+      }
+      // send the data
+      console.log("Sending employee schedule info...");
+      res.send(data);
+    })
+  });
+
   app.post('/test', jsonParser, function (req, res) {
     updateDB.editFromProfile(req.body); 
     console.log("Applying Profile Changes...");
@@ -183,20 +206,91 @@ app.post('/getChildInfo', jsonParser, function (req, res) {
     return res.sendStatus(200);
   }); 
 
-  app.post('/editEmployee', jsonParser, function (req, res) {
-    updateDB.editChildClass(req.body);
+  app.post('/editEmployeeInfo', jsonParser, function (req, res) {
+    updateDB.updateStaffInfo(req.body);
     console.log("Editing Employee...");
     return res.sendStatus(200);
   });
 
+  app.post('/editEmployeeNotes', jsonParser, function (req, res) {
+    updateDB.updateStaffNotes(req.body);
+    console.log("Editing Employee Notes...");
+    return res.sendStatus(200);
+  });
+
   app.post('/deleteEmployee', jsonParser, function (req, res) {
-    updateDB.editChildClass(req.body);
+    updateDB.deleteStaffInfo(req.body);
     console.log("Deleting Employee...");
     return res.sendStatus(200);
   });
 
  app.post('/addEmployee', jsonParser, function (req, res) {
-    updateDB.childToClass(req.body); 
+    updateDB.insertStaffInfo(req.body); 
     console.log("Adding Employee to database...");
     return res.sendStatus(200);
   }); 
+
+app.post('/editChildNotes', jsonParser, function (req, res) {
+    updateDB.editChildProfileNotes(req.body);
+    console.log("Editing Child Notes...");
+    return res.sendStatus(200);
+  });
+
+  app.post('/storeTempEmployeeProfile', jsonParser, function (req, res) {
+    updateDB.storeEmployeeProfile(req.body); 
+    console.log("Storing Employee Profile...");
+    return res.sendStatus(200);
+  }); 
+
+  app.get('/getTempEmployeeProfile', function (req, res) {
+    profileStorage.callEmployeeProfileDB(function(err, data){
+      if(err) {
+        // handle the error here
+      }
+      // send the data
+      profileStorage.retrieveEmployeeProfile(data, function(err, data1){
+        if(err) {
+          // handle the error here
+        }
+        // send the data
+      updateDB.callSchedule(function(err, data2){
+        if(err) {
+          // handle the error here
+        }
+        // send the data
+        console.log("Sending Profile...");
+        res.send(data1);
+    })
+    })
+    })
+  });
+
+  app.post('/InsertSchedule', jsonParser, function (req, res) {
+    updateDB.insertSchedule(req.body); 
+    console.log("Inserting new schedule object...");
+    return res.sendStatus(200);
+  }); 
+
+  app.get('/getSchedule', jsonParser, function (req, res) {
+    updateDB.callSchedule(req.query, function(err, data){
+      if(err) {
+        // handle the error here
+        console.log(err);
+      }
+      // send the data
+      console.log("Sending Schedule information...");
+      res.send(data);
+    })
+  });
+
+  app.post('/editSchedule', jsonParser, function (req, res) {
+    updateDB.editSchedule(req.body);
+    console.log("Editing Schedule Object...");
+    return res.sendStatus(200);
+  });
+
+  app.post('/deleteSchedule', jsonParser, function (req, res) {
+    updateDB.deleteSchedule(req.body);
+    console.log("Deleting Schedule Object...");
+    return res.sendStatus(200);
+  });

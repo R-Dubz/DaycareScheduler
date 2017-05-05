@@ -3,34 +3,52 @@
 <head>
 <title>Rooms</title>
 <script type="text/javascript"></script>
-<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script>
+<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script> <script src="./angular/angular-1.5.8/angular-1.5.8/angular-sanitize.js"></script>
 <script src="./app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.8/angular-sanitize.min.js"></script>
 <script src="./Source/Client/Controllers/RoomsController.js"></script>
 
 
-<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">
 <link rel="stylesheet" type="text/css" href="./Source/Client/Styles/modal.css">
 <link rel="stylesheet" type="text/css" href="./Other Files/(CSS Stuff) font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/foundation.css">
+    <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/app.css">
+
 </head>
 
 <body background="sky.jpg" class = "backgroundPic" ng-app="DaycareApp" ng-controller="RoomsController" ng-init="myFunc('InfantRoom')">
 
-<h5><div class="dropdown" style="float:right;">
-  <button class="dropbtn">||||</button>
-  <div class="dropdown-content">
-    <a href="Home.html">Home</a>
-    <a href="RoomScheduleDev.html">Rooms</a>
-    <a href="Employees.html">Employees</a>
-    <a href="Children.html">Children</a>
-    <a href="sChildren.html">Schedule Classrooms</a>
-    <a href="sEmployee.html">Schedule Employees</a>
-    <a href="Waiting_list.html">Waiting List</a>
+
+    <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle></button>
+  <div class="title-bar-title">Menu</div>
+</div>
+
+<div class="top-bar" id="main-menu">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text"><img src="./Images/Stock/PotsdamLogoSmall.jpg" class="Logo"><h2>Classrooms</h2></li>
+    </ul>
   </div>
-</div></h5>
+  <div class="top-bar-right">
+    <ul class="menu" data-responsive-menu="drilldown medium-dropdown">
+      <li class="has-submenu">
+        <a>Menu</a>
+        <ul class="submenu menu vertical" data-submenu>
+		<li><a href="Home.html">Home</a>
+		<li><a href="Waiting_list.html">Waiting List</a></li>
+          <li><a href="RoomScheduleDev.html">Classrooms</a></li>
+          <li><a href="Children.html">Enrolled List</a></li>
+		  <li><a href="Employees.html">Employee List</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
 
 
-<h1>Classrooms</h1>
-
+<br>
     <label>Selected Classroom: <select ng-init="selectedName = names[0]" ng-model="selectedName" ng-change="myFunc(selectedName)" ng-options="item for item in names"></select></label>
 <div>
     <label>Search: <input placeholder="What are you looking for?" ng-model="searchText"></label>
@@ -50,16 +68,16 @@
         <th>Notes</th>
     </tr>
 
-<tr ng-repeat="child in ClassroomList | orderBy:sortType:sortReverse | filter:searchText">
+<tr ng-repeat="child in ClassroomList | orderBy:['ChildBirthdate'] | filter:searchText">
     <th>{{child.ChildBirthdate}}</th>
-	<th>{{child.ChildName}}</th>
-    <th>{{child.MondayString}}</th>
-    <th>{{child.TuesdayString}}</th>
-    <th>{{child.WednesdayString}}</th>
-    <th>{{child.ThursdayString}}</th>
-    <th>{{child.FridayString}}</th>
+	<th ng-click="storeProfile(child)" style="cursor: hand;">{{child.ChildName}}</th>
+    <th ng-bind-html="child.MondayString"></th>
+    <th ng-bind-html="child.TuesdayString"></th>
+    <th ng-bind-html="child.WednesdayString"></th>
+    <th ng-bind-html="child.ThursdayString"></th>
+    <th ng-bind-html="child.FridayString"></th>
     <th>{{child.Affiliation}}</th>
-    <th><button ng-click="OpenModal()">View Notes</button></th>
+    <th><button ng-click="OpenModal(ClassroomList[child.RoomIndex].RoomIndex)" class="button">View Notes</button></th>
 </tr>
 </table>
 
@@ -70,19 +88,22 @@
         <div id="myModal" class="modal" ng-show="ShowModal">
 
         <!-- Modal content -->
-        <div id="modalContent" class="modal-content" style="width: 400px; height: 250px">
+        <div id="modalContent" class="modal-content" style="width: 475px; height: 300px">
         <div class="close" ng-click="CloseModal()">×</div>
             Notes:
         	<div id="textarea" class="textarea" contenteditable="true"></div>
-
         <div style="text-align: center; padding-top: 30px;">
-                <button ng-click="EditClassroomInfo(Profile[0])">Save Changes</button>
-                <button ng-click="CloseModal()">Cancel</button>
+                <button class="button" ng-click="SaveNotes()">Save Changes</button>
+                <button class="button" ng-click="CloseModal()">Cancel</button>
         </div>
         </div>
         </div>
 
 
+    <script src="./Other Files/foundation-6.3.0-complete/js/vendor/jquery.js"></script>
+    <script src="./Other Files/foundation-6.3.0-complete/js/vendor/what-input.js"></script>
+    <script src="./Other Files/foundation-6.3.0-complete/js/vendor/foundation.js"></script>
+    <script src="./Other Files/foundation-6.3.0-complete/js/app.js"></script>
 
 
 

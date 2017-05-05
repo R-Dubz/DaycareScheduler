@@ -1,0 +1,112 @@
+body {
+  margin-top: 2rem; }
+
+.title-bar {
+  background: #333;
+  padding: 0.9rem; }
+
+.top-bar {
+  background: #333; }
+  .top-bar ul {
+    background: #333; }
+    .top-bar ul li {
+      background: #333; }
+      .top-bar ul li a {
+        color: #fff; }
+
+.menu-text {
+  color: #fff; }
+  @media only screen and (max-width: 40em) {
+    .menu-text {
+      display: none !important; } }
+
+@media only screen and (min-width: 40em) {
+  .menu:last-child {
+    border-left: 1px solid #4e4e4e; }
+
+  .menu:first-child {
+    border-left: none; }
+
+  .menu li:not(:last-child) {
+    border-right: 1px solid #4e4e4e; } }
+.dropdown.menu .submenu {
+  border: none; }
+
+.dropdown.menu .is-dropdown-submenu-parent.is-right-arrow > a::after {
+  border-color: #fff transparent transparent; }
+
+.is-drilldown-submenu-parent > a::after {
+  border-color: transparent transparent transparent #fff; }
+
+.js-drilldown-back::before {
+  border-color: transparent #fff transparent transparent; }
+  
+.media-object {
+  display: block;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 1rem;  }
+  
+.card {
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border: 1px solid #e6e6e6;
+  border-radius: 0;
+  background: #fefefe;
+  box-shadow: none;
+  overflow: hidden;
+  color: #0a0a0a; }
+  
+h2 {
+  font-family: 'Mada', sans-serif;
+  font-size: inherit;
+  line-height: 1.0;
+  margin-top: 0;
+  margin-left: 13rem;
+  margin-bottom: 0rem; }
+  
+h4 {
+  font-family: 'Mada', sans-serif;
+  font-size: 3.0rem;
+  line-height: 1.5;
+  margin-top: 0;
+  margin-bottom: 0.5rem; }
+  
+h5 {
+  font-family: 'Mada', sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem; }
+  
+p {
+  font-family: 'Mada', sans-serif;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  font-size: inherit;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility; }
+  
+.Logo {
+	position: absolute;
+	top: 30px;
+	left: 0px;
+}
+
+.view {
+	background-color:	#696969;
+	margin-top: 0rem;
+	width:	150px;
+}
+
+.notes {
+	background-color:	#32CD32;
+	color:	black;
+	margin-top: 0rem;
+	width:	150px;
+}

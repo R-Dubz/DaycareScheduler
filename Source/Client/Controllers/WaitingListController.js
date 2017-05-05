@@ -9,8 +9,22 @@
         $scope.RefreshDatabase = function() {
             $http.get('/RefreshDatabase')
             .then(function(response) {
-                alert("An HTTP request has been sent to the server.\nNow updating DaycareDB.db!");
-                // location.reload();
+                // alert("An HTTP request has been sent to the server.\nNow updating DaycareDB.db!");
+                // Angular and jQuery don't like each other. Chris, make this work.
+                // $("body").overhang({
+                // type: "success",
+                // message: "Woohoo! Our message works!"
+                // });
+                // angular.element(document.querySelector('body')).overhang({
+                // type: "success",
+                // message: "Woohoo! Our message works!"
+                // });
+                // setTimeout(function() {
+                // location.reload(); //your code to be executed after 1 second
+                // }, delayMillis);
+                setTimeout(function(){ 
+                    location.reload();
+                }, 12000);
             });
         };
 
@@ -21,8 +35,9 @@
                 // $scope.Children.push(response.data);
 
                 for(var i = 0; i < response.data.length; i++){
+                    var jsFriendlyTimeStampObject = response.data[i].TimeStamp.split(" ");
+                    response.data[i].jsFriendlyTimeStamp = jsFriendlyTimeStampObject[0];
                     response.data[i].jsFriendlyBirthDate = new Date(response.data[i].ChildBirthdate);
-                    response.data[i].jsFriendlyTimeStamp = new Date(response.data[i].TimeStamp);
                     response.data[i].jsFriendlyDesiredEnrollment = new Date(response.data[i].DesiredEnrollment);      
 
 
@@ -81,23 +96,59 @@
                     var ChildBirthday = response.data[i].jsFriendlyBirthDate;
                     var currentTime = new Date();
                     var diff = currentTime - ChildBirthday;
-                    var age = Math.floor(diff/31557600000);
-
-                    response.data[i].AgeGroup = age;
-
-                    // if(age < 1){
-                    //     response.data[i].AgeGroup = "IN";
-                    // } else if(age >= 1 && age < 2){
-
-                    // } else if( age >= 3 && age <4){
-
-                    // } else if( age >= 3 && age <4){
-
-                    // } else
-
-
-
-
+                    var age = diff/31557600000;
+ 
+                    // response.data[i].RealAge = age;
+                    if(response.data[i].AgeGroup === null || response.data[i].AgeGroup === ""){
+                        if(age >= 1.5 && age < 2){
+                            response.data[i].AgeGroup = "T1";
+                            response.data[i].AgeValue = 1.5;               
+                        } else if(age >= (6/52) && age < 1){
+                            response.data[i].AgeGroup = "IN";
+                            response.data[i].AgeValue = 0;
+                        } else if(age >= 1 && age < 1.5){
+                            response.data[i].AgeGroup = "IN/T1";
+                            response.data[i].AgeValue = 1;                       
+                        } else if(age >= 2 && age < 3){
+                            response.data[i].AgeGroup = "T2";
+                            response.data[i].AgeValue = 2;                        
+                        } else if( age >= 3 && age < 4){
+                            response.data[i].AgeGroup = "PS3";
+                            response.data[i].AgeValue = 3;                        
+                        } else if( age >= 4 && age < 5){
+                            response.data[i].AgeGroup = "PS4";
+                            response.data[i].AgeValue = 4;                        
+                        } else if( age >= 5 && age <= 10){
+                            response.data[i].AgeGroup = "SA";
+                            response.data[i].AgeValue = 5;
+                        } else {
+                            response.data[i].AgeGroup = "Unknown";
+                            response.data[i].AgeValue = 1000; 
+                        }
+                    } else {
+                        if(response.data[i].AgeGroup === "IN/T1"){
+                            response.data[i].AgeValue = 1;                        
+                        } else if(response.data[i].AgeGroup === "IN"){
+                            response.data[i].AgeValue = 0;
+                        } else if(response.data[i].AgeGroup === "T1"){
+                            response.data[i].AgeValue = 1;
+                        } else if(response.data[i].AgeGroup === "T2"){                            
+                            response.data[i].AgeValue = 2;                        
+                        } else if(response.data[i].AgeGroup === "PS3"){
+                            response.data[i].AgeValue = 3;                        
+                        } else if(response.data[i].AgeGroup === "PS4"){
+                            response.data[i].AgeValue = 4;                        
+                        } else if(response.data[i].AgeGroup === "SA"){
+                            response.data[i].AgeValue = 5;
+                        } else if(response.data[i].AgeGroup === "Progressive"){
+                            response.data[i].AgeValue = 6;
+                        } else if(response.data[i].AgeGroup === "Classroom 8"){
+                            response.data[i].AgeValue = 7;
+                        } else {
+                            // response.data[i].AgeGroup = "Unknown";
+                            response.data[i].AgeValue = 1000; 
+                        }
+                    }
 
                     $scope.Children.push(response.data[i]);
                     // $scope.Children[i].push(jsFriendlyBirthDate);                    

@@ -114,6 +114,26 @@ This library holds functions to be used in order to modify the database
 		db.close();
     },
 
+	storeEmployeeProfile: function(employee){
+
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+			
+		db.run("UPDATE CurrentProfile SET EmployeeID = $EmployeeID WHERE RowID = 1", {
+			$EmployeeID: employee.StaffID	
+		});
+		
+		db.close();
+    },
+
 
 	editFromProfile: function(info) {
 		var fs = require("fs");
@@ -175,6 +195,25 @@ This library holds functions to be used in order to modify the database
 		var db = new sqlite3.Database(file);
 
 		db.run("UPDATE Personal_Information SET EnrollmentStatus = 'E', Classroom = '" + info[1] + "'  WHERE ChildID = $ChildID", {
+			$ChildID: info[0],
+		});
+
+		db.close();
+	},
+
+	unenrollChild: function(info) {
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+
+		db.run("UPDATE Personal_Information SET EnrollmentStatus = 'U', Classroom = '" + info[1] + "'  WHERE ChildID = $ChildID", {
 			$ChildID: info[0],
 		});
 
@@ -436,50 +475,51 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		db.run("INSERT INTO Staff_Information (StaffID, LastName, FirstName, DateOfBirth, PhoneNumber, PhoneNumber2, EmailAddress, MondayIn, MondayOut, MondayIn2, MondayOut2, MondayIn3, MondayOut3, TuesdayIn, TuesdayOut, TuesdayIn2, TuesdayOut2, TuesdayIn3, TuesdayOut3, WednesdayIn, WednesdayOut, WednesdayIn2, WednesdayOut2, WednesdayIn3, WednesdayOut3, ThursdayIn, ThursdayOut, ThursdayIn2, ThursdayOut2, ThursdayIn3, ThursdayOut3, FridayIn, FridayOut, FridayIn2, FridayOut2, FridayIn3, FridayOut3, MoreInfo) VALUES ($StaffInfo, $LastName, $FirstName, $DateOfBirth, $PhoneNumber, $PhoneNumber2, $EmailAddress, $MondayIn, $MondayOut, $MondayIn2, $MondayOut2, $MondayIn3, $MondayOut3, $TuesdayIn, $TuesdayOut, $TuesdayIn2, $TuesdayOut2, $TuesdayIn3, $TuesdayOut3, $WednesdayIn, $WednesdayOut, $WednesdayIn2, $WednesdayOut2, $WednesdayIn3, $WednesdayOut3, $ThursdayIn, $ThursdayOut, $ThursdayIn2, $ThursdayOut2, $ThursdayIn3, $ThursdayOut3, $FridayIn, $FridayOut, $FridayIn2, $FridayOut2, $FridayIn3, $FridayOut3, $MoreInfo)", {
-			$StaffID: info.StaffID,
+		db.run("INSERT INTO Staff_Information (LastName, FirstName, DateOfHire, PhoneNumber, PhoneNumber2, EmailAddress, MondayIn, MondayOut, MondayIn2, MondayOut2, MondayIn3, MondayOut3, TuesdayIn, TuesdayOut, TuesdayIn2, TuesdayOut2, TuesdayIn3, TuesdayOut3, WednesdayIn, WednesdayOut, WednesdayIn2, WednesdayOut2, WednesdayIn3, WednesdayOut3, ThursdayIn, ThursdayOut, ThursdayIn2, ThursdayOut2, ThursdayIn3, ThursdayOut3, FridayIn, FridayOut, FridayIn2, FridayOut2, FridayIn3, FridayOut3, MoreInfo, DateOfTermination) VALUES ($LastName, $FirstName, $DateOfHire, $PhoneNumber, $PhoneNumber2, $EmailAddress, $MondayIn1, $MondayOut1, $MondayIn2, $MondayOut2, $MondayIn3, $MondayOut3, $TuesdayIn1, $TuesdayOut1, $TuesdayIn2, $TuesdayOut2, $TuesdayIn3, $TuesdayOut3, $WednesdayIn1, $WednesdayOut1, $WednesdayIn2, $WednesdayOut2, $WednesdayIn3, $WednesdayOut3, $ThursdayIn1, $ThursdayOut1, $ThursdayIn2, $ThursdayOut2, $ThursdayIn3, $ThursdayOut3, $FridayIn1, $FridayOut1, $FridayIn2, $FridayOut2, $FridayIn3, $FridayOut3, $MoreInfo, $DateOfTermination)", {
+		// db.run("INSERT INTO Staff_Information (LastName, FirstName, PhoneNumber, PhoneNumber2, EmailAddress) VALUES ($LastName, $FirstName, $PhoneNumber, $PhoneNumber2, $EmailAddress)", {
 			$LastName: info.LastName,
 			$FirstName: info.FirstName,
-			$DateOfBirth: info.DateOfBirth,
+			$DateOfHire: info.DateOfHire,
 			$PhoneNumber: info.PhoneNumber,
 			$PhoneNumber2: info.PhoneNumber2,
 			$EmailAddress: info.EmailAddress,
-			$MondayIn: info.MondayIn,
-			$MondayOut: info.MondayOut,
-			$MondayIn2: info.MondayIn2,
-			$MondayOut2: info.MondayOut2,
-			$MondayIn3: info.MondayIn3,
-			$MondayOut3: info.MondayOut3,
-			$TuesdayIn: info.TuesdayIn,
-			$TuesdayOut: info.TuesdayOut,
-			$TuesdayIn2: info.TuesdayIn2,
-			$TuesdayOut2: info.TuesdayOut2,
-			$TuesdayIn3: info.TuesdayIn3,
-			$TuesdayOut3: info.TuesdayOut3,
-			$WednesdayIn: info.WednesdayIn,
-			$WednesdayOut: info.WednesdayOut,
-			$WednesdayIn2: info.WednesdayIn2,
-			$WednesdayOut2: info.WednesdayOut2,
-			$WednesdayIn3: info.WednesdayIn3,
-			$WednesdayOut3: info.WednesdayOut3,
-			$ThursdayIn: info.ThursdayIn,
-			$ThursdayOut: info.ThursdayOut,
-			$ThursdayIn2: info.ThursdayIn2,
-			$ThursdayOut2: info.ThursdayOut2,
-			$ThursdayIn3: info.ThursdayIn3,
-			$ThursdayOut3: info.ThursdayOut3,
-			$FridayIn: info.FridayIn,
-			$FridayOut: info.FridayOut,
-			$FridayIn2: info.FridayIn2,
-			$FridayOut2: info.FridayOut2,
-			$FridayIn3: info.FridayIn3,
-			$FridayOut3: info.FridayOut3,
-			$MoreInfo: info.MoreInfo
+			$MondayIn1: info.MI1,
+			$MondayIn2: info.MI2,
+			$MondayIn3: info.MI3,
+			$MondayOut1: info.MO1,
+			$MondayOut2: info.MO2,
+			$MondayOut3: info.MO3,
+			$TuesdayIn1: info.TI1,
+			$TuesdayIn2: info.TI2,
+			$TuesdayIn3: info.TI3,
+			$TuesdayOut1: info.TO1,
+			$TuesdayOut2: info.TO2,
+			$TuesdayOut3: info.TO3,
+			$WednesdayIn1: info.WI1,
+			$WednesdayIn2: info.WI2,
+			$WednesdayIn3: info.WI3,
+			$WednesdayOut1: info.WO1,
+			$WednesdayOut2: info.WO2,
+			$WednesdayOut3: info.WO3,
+			$ThursdayIn1: info.THI1,
+			$ThursdayIn2: info.THI2,
+			$ThursdayIn3: info.THI3,
+			$ThursdayOut1: info.THO1,
+			$ThursdayOut2: info.THO2,
+			$ThursdayOut3: info.THO3,
+			$FridayIn1: info.FI1,
+			$FridayIn2: info.FI2,
+			$FridayIn3: info.FI3,
+			$FridayOut1: info.FO1,
+			$FridayOut2: info.FO2,
+			$FridayOut3: info.FO3,
+			// $MoreInfo: info.MoreInfo,
+			// $DateOfTermination: info.DateOfTermination,
 		});
 		db.close();
 	},
 
-	/*updateStaffInfo: function(info) {
+	updateStaffInfo: function(info) {
 		var fs = require("fs");
 		var file = "./Source/Server/Data/DaycareDB.db";
 		var exists = fs.existsSync(file);
@@ -491,48 +531,71 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		db.run("UPDATE Staff_Information SET LastName = $LastName, FirstName = $FirstName, DateOfBirth = $DateOfBirth, PhoneNumber = $PhoneNumber, PhoneNumber2 = $PhoneNumber2, EmailAddress = $EmailAddress, MondayIn = $MondayIn, MondayOut = $MondayOut, MondayIn2 = $MondayIn2, MondayOut2 = $MondayOut2, MondayIn3 = $MondayIn3, MondayOut3 = $MondayOut3, TuesdayIn = $TuesdayIn, TuesdayOut = $TuesdayOut, TuesdayIn2 = $TuesdayIn2, TuesdayOut2 = $TuesdayOut2, TuesdayIn3 = $TuesdayIn3, TuesdayOut3 = $TuesdayOut3, WednesdayIn = $WednesdayIn, WednesdayOut = $WednesdayOut, WednesdayIn2 = $WednesdayIn2, WednesdayOut2 = $WednesdayOut2, WednesdayIn3 = $WednesdayIn3, WednesdayOut3 = $WednesdayOut3, ThursdayIn = $ThursdayIn, ThursdayOut = $ThursdayOut, ThursdayIn2 = $ThursdayIn2, ThursdayOut2 = $ThursdayOut2, ThursdayIn3 = $ThursdayIn3, ThursdayOut3 = $ThursdayOut3, FridayIn = $FridayIn, FridayOut = $FridayOut, FridayIn2 = $FridayIn2, FridayOut2 = $FridayOut2, FridayIn3 = $FridayIn3, FridayOut3 = $FridayOut3, MoreInfo = $MoreInfo WHERE StaffID = $StaffID", {
-			$LastName: ,
-			$FirstName: ,
-			$DateOfBirth: ,
-			$PhoneNumber: ,
-			$PhoneNumber2: ,
-			$EmailAddress: ,
-			$MondayIn: ,
-			$MondayOut: ,
-			$MondayIn2: ,
-			$MondayOut2: ,
-			$MondayIn3: ,
-			$MondayOut3: ,
-			$TuesdayIn: ,
-			$TuesdayOut: ,
-			$TuesdayIn2: ,
-			$TuesdayOut2: ,
-			$TuesdayIn3: ,
-			$TuesdayOut3: ,
-			$WednesdayIn: ,
-			$wednesdayOut: ,
-			$WednesdayIn2: ,
-			$WednesdayOut2: ,
-			$WednesdayIn3: ,
-			$WednesdayOut3: ,
-			$ThursdayIn: ,
-			$ThursdayOut: ,
-			$ThursdayIn2: ,
-			$ThursdayOut2: ,
-			$ThursdayIn3: ,
-			$ThursdayOut3: ,
-			$FridayIn: ,
-			$FridayOut: ,
-			$FridayIn2: ,
-			$FridayOut2: ,
-			$FridayIn3: ,
-			$FridayOut3:,
-			$MoreInfo: ,
-			$StaffID: 
+		// db.run("UPDATE Staff_Information SET LastName = $LastName, FirstName = $FirstName, DateOfHire = $DateOfHire, PhoneNumber = $PhoneNumber, PhoneNumber2 = $PhoneNumber2, EmailAddress = $EmailAddress, MI1 = $MI1, MI2 = $MI2, MI3 = $MI3, MO1 = $MO1, MO2 = $MO2, MO3 = $MO3, TI1 = $TI1, TI2 = $TI2, TI3 = $TI3, TO1 = $TO1, TO2 = $TO2, TO3 = $TO3, WI1 = $WI1, WI2 = $WI2, WI3 = $WI3, WO1 = $WO1, WO2 = $WO2, WO3 = $WO3, THI1 = $THI1, THI2 = $THI2, THI3 = $THI3, THO1 = $THO1, THO2 = $THO2, THO3 = $THO3, FI1 = $FI1, FI2 = $FI2, FI3 = $FI3, FO1 = $FO1, FO2 = $FO2, FO3 = $FO3, MoreInfo = $MoreInfo, DateOfTermination = $DateOfTermination WHERE StaffID = $StaffID", {
+		db.run("UPDATE Staff_Information SET LastName = $LastName, FirstName = $FirstName, PhoneNumber = $PhoneNumber, PhoneNumber2 = $PhoneNumber2, EmailAddress = $EmailAddress WHERE StaffID = $StaffID", {
+			$LastName: info.LastName,
+			$FirstName: info.FirstName,
+			// $DateOfHire: info.DateOfHire,
+			$PhoneNumber: info.PhoneNumber,
+			$PhoneNumber2: info.PhoneNumber2,
+			$EmailAddress: info.EmailAddress,
+			// $MI1: info.MI1,
+			// $MI2: info.MI2,
+			// $MI3: info.MI3,
+			// $MO1: info.MO1,
+			// $MO2: info.MO2,
+			// $MO3: info.MO3,
+			// $TI1: info.TI1,
+			// $TI2: info.TI2,
+			// $TI3: info.TI3,
+			// $TO1: info.TO1,
+			// $TO2: info.TO2,
+			// $TO3: info.TO3,
+			// $WI1: info.WI1,
+			// $WI2: info.WI2,
+			// $WI3: info.WI3,
+			// $WO1: info.WO1,
+			// $WO2: info.WO2,
+			// $WO3: info.WO3,
+			// $THI1: info.THI1,
+			// $THI2: info.THI2,
+			// $THI3: info.THI3,
+			// $THO1: info.THO1,
+			// $THO2: info.THO2,
+			// $THO3: info.THO3,
+			// $FI1: info.FI1,
+			// $FI2: info.FI2,
+			// $FI3: info.FI3,
+			// $FO1: info.FO1,
+			// $FO2: info.FO2,
+			// $FO3: info.FO3,
+			// $MoreInfo: info.MoreInfo,
+			// $DateOfTermination: info.DateOfTermination,
+			$StaffID: info.StaffID,
 		});
 		db.close();
-	}, */
+	},
+
+	updateStaffNotes: function(info) {
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+
+		db.run("UPDATE Staff_Information SET MoreInfo = $MoreInfo WHERE StaffID = $StaffID", {
+			$MoreInfo: info.MoreInfo,
+			$StaffID: info.StaffID
+		});
+		db.close();
+	},
+
+	
 
 	deleteStaffInfo: function(info) {
 		var fs = require("fs");
@@ -552,6 +615,140 @@ This library holds functions to be used in order to modify the database
 		
 		db.close();
 	},
-	};
+
+	editChildProfileNotes: function(info) {
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+			
+		db.run("UPDATE Personal_Information SET ChildNotes = $ChildNotes WHERE ChildID = $ChildID", {
+			$ChildNotes: info.ChildNotes,
+			$ChildID: info.ChildID,
+		});
+		
+		db.close();
+	},
+
+	callEmployeeProfile : function(info, callback){
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+
+		db.all("SELECT * FROM Staff_Information WHERE StaffID = $StaffID", {$StaffID: info[0].EmployeeID},
+		 function(err, row) {
+			$StaffID = info[0].EmployeeID;
+			if (err){
+				callback(err);
+				return;
+			}				
+			callback(null, row);
+		});
+
+		db.close();
+	},
+
+	insertSchedule: function(info) {
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+
+		db.run("INSERT INTO Employee_Schedule (ScheduleID, StaffID, Date, Classroom, TimeStart, TimeEnd, Staff_Name) VALUES ($ScheduleID, $StaffID, $Date, $Classroom, $TimeStart, $TimeEnd, $Staff_Name)", {
+			$ScheduleID: info.ScheduleID,
+			$StaffID: info.StaffID,
+			$Date: info.Date,
+			$Classroom: info.Classroom,
+			$TimeStart: info.TimeStart,
+			$TimeEnd: info.TimeEnd,
+			$Staff_Name: info.Staff_Name,
+		});
+		db.close();
+	},
+
+	deleteSchedule: function(info) {
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+
+		db.run("DELETE FROM Employee_Schedule WHERE ScheduleID = $ScheduleID", {
+			$ScheduleID: info.ScheduleID,
+		});
+		
+		db.close();
+	},
+
+	editSchedule: function(info) {
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+			
+		db.run("UPDATE Employee_Schedule SET StaffID = $StaffID, Date = $Date, Classroom = $Classroom, TimeStart = $TimeStart, TimeEnd = $TimeEnd, Staff_Name = $Staff_Name WHERE ScheduleID = $ScheduleID", {
+			$StaffID: info.StaffID,
+			$Date: info.Date,
+			$Classroom: info.Classroom,
+			$TimeStart: info.TimeStart,
+			$TimeEnd: info.TimeEnd,
+			$Staff_Name: info.Staff_Name,
+			$ScheduleID: info.ScheduleID,
+		});
+		
+		db.close();
+	},
+
+	callSchedule : function(callback){
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+
+		db.all("SELECT * FROM Employee_Schedule", 
+				function(err, row) {
+			if (err){
+				callback(err);
+				return;
+			}				
+			callback(null, row);
+		});
+
+		db.close();
+	},
+
+};
 
 	module.exports = updateDB;

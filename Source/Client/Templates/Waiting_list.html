@@ -3,37 +3,65 @@
 <head>
 <title>Waiting List</title>
 <script type="text/javascript"></script>
-<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script>
+<!--Overhang.js/jQuery-->
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<!--<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>-->
+<link rel="stylesheet" type="text/css" href="./node_modules/overhang/dist/overhang.min.css" />
+<script type="text/javascript" src="./node_modules/overhang/dist/overhang.min.js"></script>
+<!--AngularJS-->
+<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script> <script src="./angular/angular-1.5.8/angular-1.5.8/angular-sanitize.js"></script>
+<script src="./angular/angular-1.5.8/angular-1.5.8/angular-sanitize.js"></script>
 <script src="./app.js"></script>
 <script src="./Source/Client/Controllers/WaitingListController.js"></script>
-
-
-<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">
+<!--Font Awesome-->
 <link rel="stylesheet" type="text/css" href="./Other Files/(CSS Stuff) font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--Foundation CSS-->
+<link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/foundation.css">
+<link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/app.css">
 </head>
 
-<body background="sky.jpg" class = "backgroundPic" ng-app="DaycareApp" ng-controller="WaitingListController" ng-init="LoadWaitingList()">
+<body background="sky.jpg" id="body" class = "backgroundPic" ng-app="DaycareApp" ng-controller="WaitingListController" ng-init="LoadWaitingList()">
 
-<h5><div class="dropdown" style="float:right;">
-  <button class="dropbtn">||||</button>
-  <div class="dropdown-content">
-    <a href="Home.html">Home</a>
-        <a href="RoomScheduleDev.html">Rooms</a>
-    <a href="Employees.html">Employees</a>
-    <a href="Children.html">Children</a>
-    <a href="sChildren.html">Schedule Classrooms</a>
-    <a href="sEmployee.html">Schedule Employees</a>
-    <a href="Waiting_list.html">Waiting List</a>
+
+
+    <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle></button>
+  <div class="title-bar-title">Menu</div>
+</div>
+
+<div class="top-bar" id="main-menu">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text"><img src="./Images/Stock/PotsdamLogoSmall.jpg" class="Logo"><h2 style="margin-left: 2rem;">Waiting List</h2></li>
+    </ul>
   </div>
-</div></h5>
+  <div class="top-bar-right">
+    <ul class="menu" data-responsive-menu="drilldown medium-dropdown">
+      <li class="has-submenu">
+	      <a>Menu</a>
+        <ul class="submenu menu vertical" data-submenu>
+		<li><a href="Home.html">Home</a>
+	<li><a href="Waiting_list.html">Waiting List</a></li>
+          <li><a href="RoomScheduleDev.html">Classrooms</a></li>
+          <li><a href="Children.html">Enrolled List</a></li>
+		  <li><a href="Employees.html">Employee List</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
 
-
-<h1>Waiting List</h1>
-
+<br>
 <div>
     <label>Search: <input placeholder="What are you looking for?" ng-model="searchText"></label>
 </div>
-<button type="button" ng-click="RefreshDatabase()">Refresh Database</button> 
+<span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Click to refresh the waiting list.">
+<button type="button" ng-click="RefreshDatabase()" class="button" style="margin-left: 10px; margin-top: 10px">Update List
+</button> 
+</span>
 <div id="display"></div>
 
 <table class = "TFtable" style="height: 85%; width:100%">
@@ -56,110 +84,101 @@
 
 <thead>
     <tr>
-    <th>
-        <a href="#" ng-click="sortType = 'ChildName'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+    <th style="text-align: center;">
+        <a href="#" ng-click="sortType = 'ChildName'; sortReverse = !sortReverse" style="text-align: center; color: black; text-decoration: none">
         Child's Name
         <span ng-show="sortType == 'ChildName' && !sortReverse" class="fa fa-caret-down"></span>
         <span ng-show="sortType == 'ChildName' && sortReverse" class="fa fa-caret-up"></span>
         </a>
     </th>
-    <th>
-        <a href="#" ng-click="sortType = 'jsFriendlyBirthDate'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+    <th style="text-align: center;">
+        <a href="#" ng-click="sortType = 'jsFriendlyBirthDate'; sortReverse = !sortReverse" style="text-align: center; color: black; text-decoration: none">
         D.O.B.
         <span ng-show="sortType == 'jsFriendlyBirthDate' && !sortReverse" class="fa fa-caret-down"></span>
         <span ng-show="sortType == 'jsFriendlyBirthDate' && sortReverse" class="fa fa-caret-up"></span>
         </a>
     </th>
-    <th>
-        <a href="#" ng-click="sortType = 'Priority'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
-        Priority
-        <span ng-show="sortType == 'jsFriendlyBirthDate' && !sortReverse" class="fa fa-caret-down"></span>
-        <span ng-show="sortType == 'jsFriendlyBirthDate' && sortReverse" class="fa fa-caret-up"></span>
-        </a>
-    </th>
-    <th>
+    <th style="text-align: center;">
         <a href="#" ng-click="sortType = 'HomePhone'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
         Phone Number
         <span ng-show="sortType == 'HomePhone' && !sortReverse" class="fa fa-caret-down"></span>
         <span ng-show="sortType == 'HomePhone' && sortReverse" class="fa fa-caret-up"></span>
         </a>
     </th>
-    <th>
+    <th style="text-align: center;">
         <a href="#" ng-click="sortType = 'GuardianName1'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
         Primany Parent Name
         <span ng-show="sortType == 'GuardianName1' && !sortReverse" class="fa fa-caret-down"></span>
         <span ng-show="sortType == 'GuardianName1' && sortReverse" class="fa fa-caret-up"></span>
         </a>
     </th>
-    <th>
+    <th style="text-align: center;">
         <a href="#" ng-click="sortType = 'GuardianStatus1'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
         Primany Parent Status
         <span ng-show="sortType == 'GuardianStatus1' && !sortReverse" class="fa fa-caret-down"></span>
         <span ng-show="sortType == 'GuardianStatus1' && sortReverse" class="fa fa-caret-up"></span>
         </a>
     </th>
-    <th>
+    <th style="text-align: center;">
         <a href="#" ng-click="sortType = 'GuardianName2'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
         Secondary Parent Name
         <span ng-show="sortType == 'GuardianName2' && !sortReverse" class="fa fa-caret-down"></span>
         <span ng-show="sortType == 'GuardianName2' && sortReverse" class="fa fa-caret-up"></span>
         </a>
     </th>
-    <th>
+    <th style="text-align: center;">
         <a href="#" ng-click="sortType = 'GuardianStatus2'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
         Secondary Parent Status
         <span ng-show="sortType == 'GuardianStatus2' && !sortReverse" class="fa fa-caret-down"></span>
         <span ng-show="sortType == 'GuardianStatus2' && sortReverse" class="fa fa-caret-up"></span>
         </a>
     </th>
-    <th>
+    <th style="text-align: center;">
         <a href="#" ng-click="sortType = 'jsFriendlyTimeStamp'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
         Date Applied
         <span ng-show="sortType == 'jsFriendlyTimeStamp' && !sortReverse" class="fa fa-caret-down"></span>
         <span ng-show="sortType == 'jsFriendlyTimeStamp' && sortReverse" class="fa fa-caret-up"></span>
         </a>
     </th>
-    <th>
+    <th style="text-align: center;">
         <a href="#" ng-click="sortType = 'jsFriendlyDesiredEnrollment'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
         Desired Start Date
         <span ng-show="sortType == 'jsFriendlyDesiredEnrollment' && !sortReverse" class="fa fa-caret-down"></span>
         <span ng-show="sortType == 'jsFriendlyDesiredEnrollment' && sortReverse" class="fa fa-caret-up"></span>
         </a>
     </th>
-    <th>
+    <th style="text-align: center;">
         <a href="#" ng-click="sortType = 'AgeGroup'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
-        Class
+        Age Group
         <span ng-show="sortType == 'AgeGroup' && !sortReverse" class="fa fa-caret-down"></span>
         <span ng-show="sortType == 'AgeGroup' && sortReverse" class="fa fa-caret-up"></span>
         </a>
     </th>
-    <th>
+    <th style="text-align: center;">
         <a href="#" ng-click="sortType = 'RequiredDays'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
         Days
         <span ng-show="sortType == 'RequiredDays' && !sortReverse" class="fa fa-caret-down"></span>
         <span ng-show="sortType == 'RequiredDays' && sortReverse" class="fa fa-caret-up"></span>
         </a>
     </th>
-	<th>View Profile</th>
+	<th style="text-align: center;">View Profile</th>
     </tr>
 </thead>
 
 
-<tr ng-repeat="child in Children | orderBy:['AgeGroup', '-Priority', '-TimeStamp' ] | filter:searchText"> 
-    <th>{{child.ChildName}}</th>
-    <th>{{child.ChildBirthdate}}</th>
-    <th>{{child.PriorityText}}</th>    
+<tr ng-repeat="child in Children | orderBy:['AgeValue', '-Priority', 'TimeStamp' ] | filter:searchText"> 
+    <th ng-click="storeProfile(child)" style="cursor: hand;">{{child.ChildName}}</th>
+    <th>{{child.ChildBirthdate}}</th>   
     <th>{{child.HomePhone}}</th>
     <th>{{child.GuardianName1}}</th>
     <th>{{child.GuardianStatus1}}</th>
     <th>{{child.GuardianName2}}</th>
     <th>{{child.GuardianStatus2}}</th>
-    <th>{{child.TimeStamp}}</th>
+    <th>{{child.jsFriendlyTimeStamp}}</th>
     <th>{{child.DesiredEnrollment}}</th>
     <th>{{child.AgeGroup}}</th>
     <th>{{child.RequiredDays}}</th>
-<!--make sure all button code is between the <th> and </th> tags-->
-    <th><button type="button" ng-click="storeProfile(child)">Profile</button></th>
+    <th><button type="button" ng-click="storeProfile(child)" class="button" style="margin-top: 10px">Profile</button></th>
 </tr>
 
 <tr ng-if="Children.length === 0">
@@ -181,5 +200,9 @@
 
 <p id="accepted"></p>
 
+    <script src="./Other Files/foundation-6.3.0-complete/js/vendor/jquery.js"></script>
+    <script src="./Other Files/foundation-6.3.0-complete/js/vendor/what-input.js"></script>
+    <script src="./Other Files/foundation-6.3.0-complete/js/vendor/foundation.js"></script>
+    <script src="./Other Files/foundation-6.3.0-complete/js/app.js"></script>
 </body>
 </html>

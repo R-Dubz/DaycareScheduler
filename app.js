@@ -1,1 +1,1 @@
-angular.module('DaycareApp', []);
+angular.module('DaycareApp', ['ngSanitize']);

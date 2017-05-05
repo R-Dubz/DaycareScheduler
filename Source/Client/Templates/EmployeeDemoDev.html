@@ -1,0 +1,214 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Profile</title>
+    <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/foundation.css">
+    <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/app.css">
+	<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/modal_employee.css">
+	
+	<script type="text/javascript"></script>
+	<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script> <script src="./angular/angular-1.5.8/angular-1.5.8/angular-sanitize.js"></script>
+	<script src="./app.js"></script>
+	<script src="./Source/Client/Controllers/EmployeeProfileController.js"></script>
+  </head>
+  
+  <body ng-app="DaycareApp" ng-controller="EmployeeProfileController" ng-init="LoadTempEmployeeProfile()">
+  
+    <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle></button>
+  <div class="title-bar-title">Menu</div>
+</div>
+
+<div class="top-bar" id="main-menu">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text"><img src="./Images/Stock/PotsdamLogoSmall.jpg" class="Logo"><h2>Employee Profile: {{Profile[0].StaffID}}</h2></li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu" data-responsive-menu="drilldown medium-dropdown">
+      <li class="has-submenu">
+        <a href="Home.html">Home</a>
+        <ul class="submenu menu vertical" data-submenu>
+          <li><a href="Waiting_list.html">Waiting List</a></li>
+          <li><a href="RoomScheduleDev.html">Classrooms</a></li>
+          <li><a href="Children.html">Enrolled List</a></li>
+		  <li><a href="Employees.html">Employee List</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<br>
+
+<div class="card" style="width: 800px; height: 625px;">
+	<div class="media-object">
+		<div class="media-object-section">
+			<div class="thumbnail">
+				<img src="{{Profile[0].EmployeePhoto}}">
+			</div>
+		</div>
+		<div class="media-object-section">
+			<h4>{{Profile[0].FirstName}} {{Profile[0].LastName}}</h4>
+			<table>
+			  <thead>
+				<tr>
+				  <th width="400">General Information</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<tr>
+				  <td>Primary Number</td>
+				  <td>{{Profile[0].PhoneNumber}}</td>
+				</tr>
+				<tr>
+				  <td>Secondary Number</td>
+				  <td>{{Profile[0].PhoneNumber2}}</td>
+				</tr>
+				<tr>
+				  <td>Email Address</td>
+				  <td>{{Profile[0].EmailAddress}}</td>
+				</tr>
+			  </tbody>
+			</table>
+		</div>
+	</div>
+	<div class="card" style="width: 760px; height: 200px;">
+		<h5>Other Information:</h5>
+		<p>{{Profile[0].MoreInfo}}</p>
+	</div>
+	<div class="card-section">
+		<center>
+			<div class="button-group">
+				<button class="view button" ng-click="OpenNotesModal(Profile[0].StaffID)">Notes</button>
+				<button class="notes button" ng-click="OpenEditModal()">Edit Profile</button>
+			</div>
+		</center>
+	</div>
+</div>
+	
+<div class="card" style="width: 800px; height: 625px; position: absolute; top: 110px; left: 810px; border: 0px">
+	<table>
+	  <thead>
+		<tr>
+		  <th>Weekly Availability</th>
+		  <th width="170">Time-Period 1</th>
+		  <th width="170">Time-Period 2</th>
+		  <th width="170">Time-Period 3</th>
+		</tr>
+	  </thead>
+	  <tbody>
+		<tr>
+		  <td>Monday</td>
+		  <td>{{Profile[0].MondayIn}}-{{Profile[0].MondayOut}}</td>
+		  <td>{{Profile[0].MondayIn2}}-{{Profile[0].MondayOut2}}</td>
+		  <td>{{Profile[0].MondayIn3}}-{{Profile[0].MondayOut3}}</td>
+		</tr>
+		<tr>
+		  <td>Tuesday</td>
+		  <td>{{Profile[0].TuesdayIn}}-{{Profile[0].TuesdayOut}}</td>
+		  <td>{{Profile[0].TuesdayIn2}}-{{Profile[0].TuesdayOut2}}</td>
+		  <td>{{Profile[0].TuesdayIn3}}-{{Profile[0].TuesdayOut3}}</td>
+		</tr>
+		<tr>
+		  <td>Wednesday</td>
+		  <td>{{Profile[0].WednesdayIn}}-{{Profile[0].WednesdayOut}}</td>
+		  <td>{{Profile[0].WednesdayIn2}}-{{Profile[0].WednesdayOut2}}</td>
+		  <td>{{Profile[0].WednesdayIn3}}-{{Profile[0].WednesdayOut3}}</td>
+		</tr>
+		<tr>
+		  <td>Thursday</td>
+		  <td>{{Profile[0].ThursdayIn}}-{{Profile[0].ThursdayOut}}</td>
+		  <td>{{Profile[0].ThursdayIn2}}-{{Profile[0].ThursdayOut2}}</td>
+		  <td>{{Profile[0].ThursdayIn3}}-{{Profile[0].ThursdayOut3}}</td>
+		</tr>
+		<tr>
+		  <td>Friday</td>
+		  <td>{{Profile[0].FridayIn}}-{{Profile[0].FridayOut}}</td>
+		  <td>{{Profile[0].FridayIn2}}-{{Profile[0].FridayOut2}}</td>
+		  <td>{{Profile[0].FridayIn3}}-{{Profile[0].FridayOut3}}</td>
+		</tr>
+	  </tbody>
+	</table>
+	<br>
+	 <div class="card-section">
+		<ul class="tabs" data-tabs id="example-tabs">
+			<li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Today's Schedule</a></li>
+			<li class="tabs-title"><a href="#panel2">Tab 2</a></li>
+			<li class="tabs-title"><a href="#panel2">Tab 3</a></li>
+			<li class="tabs-title"><a href="#panel2">Tab 4</a></li>
+			<li class="tabs-title"><a href="#panel2">Tab 5</a></li>
+		</ul>
+		<div class="tabs-content" data-tabs-content="example-tabs">
+			<div class="tabs-panel is-active" id="panel1">
+				<p>{{Profile[0].Classroom}} Room: {{Profile[0].TimeStart}} - {{Profile[0].TimeEnd}}</p>
+			</div>
+			<div class="tabs-panel" id="panel2">
+				<p>Infant Room: 11:00am - 1:30pm</p>
+			</div>
+			<div class="tabs-panel" id="panel3">
+				<p>Infant Room: 11:00am - 1:30pm</p>
+			</div>
+			<div class="tabs-panel" id="panel4">
+				<p>Infant Room: 11:00am - 1:30pm</p>
+			</div>
+			<div class="tabs-panel" id="panel5">
+				<p>Infant Room: 11:00am - 1:30pm</p>
+			</div>
+		</div>
+	 </div>
+
+	
+	
+	    <!-- The Notes Modal -->
+        <div id="myModal" class="modal" ng-show="ShowNotesModal">
+
+        <!-- Modal content -->
+        <div id="modalContent" class="modal-content" style="width: 450px; height: 300px">
+        <div class="close" ng-click="CloseNotesModal()">×</div>
+            Notes:
+        	<div id="textarea" class="textarea" contenteditable="true"></div>
+
+        <div style="text-align: center; padding-top: 30px;">
+                <button class="button" ng-click="SaveNotes()">Save Changes</button>
+                <button class="button" ng-click="CloseNotesModal()">Cancel</button>
+        </div>
+        </div>
+        </div>
+	
+<<<<<<< HEAD
+=======
+
+	    <!-- The Edit Modal -->
+        <div id="EditModal" class="modal" ng-show="ShowEditModal">
+
+					<!-- Modal content -->
+						<div id="modalContent" class="modal-content" style="width: 450px; height: 650px">
+							<div class="close" ng-click="CloseEditModal()">×</div>
+									<div style="text-align: center">Employee's Information</div>
+									<form>
+											First Name: <input type="text" ng-model="Profile[0].FirstName"><br>
+											Last Name: <input type="text" ng-model="Profile[0].LastName"><br>
+											Email Address: <input type="text" ng-model="Profile[0].EmailAddress"><br>
+											Primary Phone Number: <input type="text" ng-model="Profile[0].PhoneNumber"><br>
+											Secondary Phone Number: <input type="text" ng-model="Profile[0].PhoneNumber2"><br>
+									</form>
+
+							<div style="text-align: center; padding-top: 30px;">
+											<button class="button" ng-click="SaveChanges()">Save Changes</button>
+											<button class="button" ng-click="CloseEditModal()">Cancel</button>
+							</div>
+					</div>
+        </div>
+	
+>>>>>>> 7b4dedf6de3b626803d9dd81c932ad3c425df82d
+    <script src="./Other Files/foundation-6.3.0-complete/js/vendor/jquery.js"></script>
+    <script src="./Other Files/foundation-6.3.0-complete/js/vendor/what-input.js"></script>
+    <script src="./Other Files/foundation-6.3.0-complete/js/vendor/foundation.js"></script>
+    <script src="./Other Files/foundation-6.3.0-complete/js/app.js"></script>
+  </body>
+</html>

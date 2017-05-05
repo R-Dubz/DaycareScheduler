@@ -1,8 +1,10 @@
 angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '$http', function($scope, $http){
-    $scope.Profile = [];     
+    $scope.Profile = [];    
     $scope.Editing = false;  
     $scope.ShowModal = false;
+    $scope.value = "";
     var modal = document.getElementById('myModal');
+    $scope.rooms = ["", "IN", "T1", "T2", "PS3", "PS4", "Progressive", "SA", "Classroom 8"];
     var controllerFunction = $scope;
 
     $scope.backToList = function() {
@@ -12,20 +14,112 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
     $scope.LoadTempProfile = function() {
         $http.get('/getTempProfile')
         .then(function(response) {
+
+            response.data[0].jsFriendlyBirthDate = new Date(response.data[0].ChildBirthdate);
+            var ChildBirthday = response.data[0].jsFriendlyBirthDate;
+            var currentTime = new Date();
+            var diff = currentTime - ChildBirthday;
+            var age = diff/31557600000;
+            if(age >= (6/52) && age < 1){
+                response.data[0].ChildAge = "Less than 1 year old";                        
+            } else if(age < (6/52)){
+                response.data[0].ChildAge = "Less than 6 weeks old";                        
+            } else if(age >= 1 && age < 2){
+                response.data[0].ChildAge = "1 year old";
+            } else if(age >= 2 && age < 3){
+                response.data[0].ChildAge = "2 years old";                        
+            } else if( age >= 3 && age < 4){
+                response.data[0].ChildAge = "3 years old";                        
+            } else if( age >= 4 && age < 5){
+                response.data[0].ChildAge = "4 years old";                        
+            } else if( age >= 5 && age < 6){
+                response.data[0].ChildAge = "5 years old";
+            } else if( age >= 6 && age < 7){
+                response.data[0].ChildAge = "6 years old";
+            } else if( age >= 7 && age < 8){
+                response.data[0].ChildAge = "7 years old";
+            } else if( age >= 8 && age < 9){
+                response.data[0].ChildAge = "8 years old";
+            } else if( age >= 9 && age < 10){
+                response.data[0].ChildAge = "9 years old";
+            } else if( age >= 10 && age < 11){
+                response.data[0].ChildAge = "10 years old";
+            } else if( age >= 11 && age < 12){
+                response.data[0].ChildAge = "11 years old";
+            } else if( age >= 12 && age < 13){
+                response.data[0].ChildAge = "12 years old";
+            } else if( age >= 13 && age < 14){
+                response.data[0].ChildAge = "13 years old";
+            } else if( age >= 14 && age < 15){
+                response.data[0].ChildAge = "14 years old";
+            } else if( age >= 15 && age < 16){
+                response.data[0].ChildAge = "15 years old";
+            } else if( age >= 16 && age < 17){
+                response.data[0].ChildAge = "16 years old";
+            } else if( age >= 17 && age < 18){
+                response.data[0].ChildAge = "17 years old";
+            } else {
+                response.data[0].ChildAge = "Error"; 
+            }
+
+            if(response.data[0].AgeGroup === null || response.data[0].AgeGroup === ""){
+                if(age >= 1.5 && age < 2){
+                    response.data[0].AgeGroup = "T1";         
+                } else if(age >= (6/52) && age < 1){
+                    response.data[0].AgeGroup = "IN";
+                } else if(age >= 1 && age < 1.5){
+                    response.data[0].AgeGroup = "IN/T1";                 
+                } else if(age >= 2 && age < 3){
+                    response.data[0].AgeGroup = "T2";                     
+                } else if( age >= 3 && age < 4){
+                    response.data[0].AgeGroup = "PS3";             
+                } else if( age >= 4 && age < 5){
+                    response.data[0].AgeGroup = "PS4";              
+                } else if( age >= 5 && age <= 10){
+                    response.data[0].AgeGroup = "SA";
+                } else {
+                    response.data[0].AgeGroup = "None";
+                }
+            }
+
+            if(response.data[0].Custody !== "Mother" && response.data[0].Custody !== "Father"){
+                $scope.value = response.data[0].Custody;
+            }
             $scope.Profile.push(response.data[0]);
         });
     };
 
     $scope.EditProfile = function(){
         $scope.Editing = !$scope.Editing
+        // document.getElementById("ChildAge").disabled = true;
     };
+
+        $scope.myFunc = function(target) {
+            $scope.Profile[0].AgeGroup = target;
+        }; 
+
+        //radio button stuff
+        $scope.newValue = function(value) {
+            $scope.Profile[0].Custody = value;
+        }
+        $scope.focusButton = function(){
+            var textbox = document.getElementById('otherCustody');
+            textbox.focus();
+        }
+        $scope.focusBox = function(){
+            var otherCustodyButton = document.getElementById('otherCustodyButton');
+            otherCustodyButton.checked = true;
+        }
+
+
 
     $scope.SaveChanges = function(){
         $scope.Profile[0].ChildName = ChildName.value;
         $scope.Profile[0].MaritalStatus = MaritalStatus.value;
         $scope.Profile[0].ChildAge = ChildAge.value;
+        $scope.Profile[0].ChildGender = ChildGender.value;
         $scope.Profile[0].ChildBirthdate = ChildBirthdate.value;
-        $scope.Profile[0].AgeGroup = AgeGroup.value;
+        $scope.Profile[0].RequiredDays = RequiredDays.value;        
         $scope.Profile[0].GuardianName1 = GuardianName1.value;
         $scope.Profile[0].GuardianStatus1 = GuardianStatus1.value;
         $scope.Profile[0].GuardianEmail1 = GuardianEmail1.value;
@@ -40,7 +134,73 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
         .then(function(response) {
             console.log("Success");      
         });
-        $scope.Editing = false;  
+
+        $scope.Profile[0].jsFriendlyBirthDate = new Date($scope.Profile[0].ChildBirthdate);
+        var ChildBirthday = $scope.Profile[0].jsFriendlyBirthDate;
+        var currentTime = new Date();
+        var diff = currentTime - ChildBirthday;
+        var age = diff/31557600000;
+        if(age >= (6/52) && age < 1){
+            $scope.Profile[0].ChildAge = "Less than 1 year old"; 
+            $scope.Editing = !$scope.Editing                       
+        } else if(age < (6/52)){
+            $scope.Profile[0].ChildAge = "Less than 6 weeks old"; 
+            $scope.Editing = !$scope.Editing                       
+        } else if(age >= 1 && age < 2){
+            $scope.Profile[0].ChildAge = "1 year old";
+            $scope.Editing = !$scope.Editing
+        } else if(age >= 2 && age < 3){
+            $scope.Profile[0].ChildAge = "2 years old"; 
+            $scope.Editing = !$scope.Editing                       
+        } else if( age >= 3 && age < 4){
+            $scope.Profile[0].ChildAge = "3 years old";
+            $scope.Editing = !$scope.Editing                        
+        } else if( age >= 4 && age < 5){
+            $scope.Profile[0].ChildAge = "4 years old";
+            $scope.Editing = !$scope.Editing                        
+        } else if( age >= 5 && age < 6){
+            $scope.Profile[0].ChildAge = "5 years old";
+            $scope.Editing = !$scope.Editing
+        } else if( age >= 6 && age < 7){
+            $scope.Profile[0].ChildAge = "6 years old";
+            $scope.Editing = !$scope.Editing
+        } else if( age >= 7 && age < 8){
+            $scope.Profile[0].ChildAge = "7 years old";
+            $scope.Editing = !$scope.Editing
+        } else if( age >= 8 && age < 9){
+            $scope.Profile[0].ChildAge = "8 years old";
+            $scope.Editing = !$scope.Editing
+        } else if( age >= 9 && age < 10){
+            $scope.Profile[0].ChildAge = "9 years old";
+            $scope.Editing = !$scope.Editing
+        } else if( age >= 10 && age < 11){
+            $scope.Profile[0].ChildAge = "10 years old";
+            $scope.Editing = !$scope.Editing
+        } else if( age >= 11 && age < 12){
+            $scope.Profile[0].ChildAge = "11 years old";
+            $scope.Editing = !$scope.Editing
+        } else if( age >= 12 && age < 13){
+            $scope.Profile[0].ChildAge = "12 years old";
+            $scope.Editing = !$scope.Editing
+        } else if( age >= 13 && age < 14){
+            $scope.Profile[0].ChildAge = "13 years old";
+            $scope.Editing = !$scope.Editing
+        } else if( age >= 14 && age < 15){
+            $scope.Profile[0].ChildAge = "14 years old";
+            $scope.Editing = !$scope.Editing
+        } else if( age >= 15 && age < 16){
+            $scope.Profile[0].ChildAge = "15 years old";
+            $scope.Editing = !$scope.Editing
+        } else if( age >= 16 && age < 17){
+            $scope.Profile[0].ChildAge = "16 years old";
+            $scope.Editing = !$scope.Editing
+        } else if( age >= 17 && age < 18){
+            $scope.Profile[0].ChildAge = "17 years old";
+            $scope.Editing = !$scope.Editing
+        } else {
+            $scope.Profile[0].ChildAge = "Error"; 
+            $scope.Editing = !$scope.Editing
+        } 
     };
 
     $scope.acceptChild = function(ID){
