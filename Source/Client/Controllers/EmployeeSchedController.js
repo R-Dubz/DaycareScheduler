@@ -2,6 +2,12 @@ angular.module('DaycareApp').controller('EmployeeSchedController', ['$scope', '$
 
         $scope.Employees = [];
         $scope.EmployeeSched = [];
+        $scope.EmployeeSchedMon = [];
+        $scope.EmployeeSchedTue = [];
+        $scope.EmployeeSchedWed = [];
+        $scope.EmployeeSchedThr = [];
+        $scope.EmployeeSchedFri = [];
+
         $scope.Profile = [];   
         $scope.sortType = 'jsFriendlyTimeStamp'; 
         $scope.sortReverse = true;
@@ -15,6 +21,7 @@ angular.module('DaycareApp').controller('EmployeeSchedController', ['$scope', '$
                     $scope.ConvertTimesToStrings(response.data[i]);
                 }
                 $scope.Employees = response.data;
+                $scope.LoadEmployeeSchedule();
             });
         };
 
@@ -22,6 +29,7 @@ angular.module('DaycareApp').controller('EmployeeSchedController', ['$scope', '$
             $http.get('/loadEmployeeSchedule')
             .then(function(response) {
                 $scope.EmployeeSched = response.data;
+                $scope.putInBuffer();
             });
         };
         
@@ -170,5 +178,155 @@ angular.module('DaycareApp').controller('EmployeeSchedController', ['$scope', '$
         return formatted_time;
     };
 
+    var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    var myYear, myMonth, myDay, myDayOfWeek;
+
+    $scope.subDays = function( toSub ){
+        for( var i = 0; i < toSub; i++ ){
+            myDay-=1;
+            if( myDay <= 0 ){
+                myMonth-=1;
+                if( myMonth < 0 ){
+                    myYear-=1;
+                    myMonth = 11;
+                }
+                if( myYear%4 == 0 ){
+                    daysInMonth[1] = 29;
+                }else{
+                    daysInMonth[1] = 28;
+                }
+                myDay = daysInMonth[myMonth];
+            }
+        }
+    }
+
+    $scope.addDays = function( toAdd ){
+        for( var i = 0; i < toAdd; i++ ){
+            myDay+=1;
+            if( myYear%4 == 0 ){
+                daysInMonth[1] = 29;
+            }else{
+                daysInMonth[1] = 28;
+            }
+            if( myDay > daysInMonth[myMonth] ){
+                myMonth+=1;
+                myDay = 0;
+                if( myMonth > 11 ){
+                    myYear+=1;
+                    myMonth = 0;
+                    if( myYear%4 == 0 ){
+                        daysInMonth[1] = 29;
+                    }else{
+                        daysInMonth[1] = 28;
+                    }
+                }
+            }
+        }
+    }
+
+    $scope.computeDay = function( dayWant, weekFromNow ){
+        var n = new Date();
+        myYear = n.getFullYear();
+        myMonth = n.getMonth();
+        myDay = n.getDate();
+        myDayOfWeek = n.getDay();
+        if( myYear%4 == 0 ){
+            daysInMonth[1] = 29;
+        }else{
+            daysInMonth[1] = 28;
+        }
+        if( weekFromNow < 0 ){
+            while( weekFromNow < 0 ){
+                $scope.subDays( 7 );
+                weekFromNow+=1;
+            }
+        }
+        if( weekFromNow > 0 ){
+            while( weekFromNow > 0 ){
+                $scope.addDays( 7 );
+                weekFromNow-=1;
+            }
+        }
+        if( dayWant < myDayOfWeek ){
+            $scope.subDays( myDayOfWeek - dayWant );
+        }
+        if( dayWant > myDayOfWeek ){
+            $scope.addDays( dayWant - myDayOfWeek );
+        }
+
+        return myMonth+1 + "/" + myDay + "/" + myYear;
+    }
+    var theWeekToLook = 0;
+    var Mons = 0;
+    var Tues = 0;
+    var Weds = 0;
+    var Thrs = 0;
+    var Fris = 0;
+
+    var Mon = $scope.computeDay( 1, theWeekToLook );
+    var Tue = $scope.computeDay( 2, theWeekToLook );
+    var Wed = $scope.computeDay( 3, theWeekToLook );
+    var Thr = $scope.computeDay( 4, theWeekToLook );
+    var Fri = $scope.computeDay( 5, theWeekToLook );
+    document.getElementById("monday").innerHTML = Mon;
+    document.getElementById("tuesday").innerHTML = Tue;
+    document.getElementById("wednesday").innerHTML = Wed;
+    document.getElementById("thursday").innerHTML = Thr;
+    document.getElementById("friday").innerHTML = Fri;
+
+    $scope.putInBuffer = function(){
+        $scope.EmployeeSchedMon = [];
+        $scope.EmployeeSchedTue = [];
+        $scope.EmployeeSchedWed = [];
+        $scope.EmployeeSchedThr = [];
+        $scope.EmployeeSchedFri = [];
+        for( var i = 0; i < $scope.EmployeeSched.length; i++ ){
+            if( $scope.EmployeeSched[i].Date == Mon ){
+                $scope.EmployeeSchedMon.push( $scope.EmployeeSched[i] );
+            }
+            if( $scope.EmployeeSched[i].Date == Tue ){
+                $scope.EmployeeSchedTue.push( $scope.EmployeeSched[i] );
+            }
+            if( $scope.EmployeeSched[i].Date == Wed ){
+                $scope.EmployeeSchedWed.push( $scope.EmployeeSched[i] );
+            }
+            if( $scope.EmployeeSched[i].Date == Thr ){
+                $scope.EmployeeSchedThr.push( $scope.EmployeeSched[i] );
+            }
+            if( $scope.EmployeeSched[i].Date == Fri ){
+                $scope.EmployeeSchedFri.push( $scope.EmployeeSched[i] );
+            }
+        }
+    }
+
+    $scope.subDay = function(){
+        theWeekToLook-=1;
+        Mon = $scope.computeDay( 1, theWeekToLook );
+        Tue = $scope.computeDay( 2, theWeekToLook );
+        Wed = $scope.computeDay( 3, theWeekToLook );
+        Thr = $scope.computeDay( 4, theWeekToLook );
+        Fri = $scope.computeDay( 5, theWeekToLook );
+        document.getElementById("monday").innerHTML = Mon;
+        document.getElementById("tuesday").innerHTML = Tue;
+        document.getElementById("wednesday").innerHTML = Wed;
+        document.getElementById("thursday").innerHTML = Thr;
+        document.getElementById("friday").innerHTML = Fri;
+        $scope.putInBuffer();
+    }
+
+    $scope.addDay = function(){
+        theWeekToLook+=1;
+        Mon = $scope.computeDay( 1, theWeekToLook );
+        Tue = $scope.computeDay( 2, theWeekToLook );
+        Wed = $scope.computeDay( 3, theWeekToLook );
+        Thr = $scope.computeDay( 4, theWeekToLook );
+        Fri = $scope.computeDay( 5, theWeekToLook );
+        document.getElementById("monday").innerHTML = Mon;
+        document.getElementById("tuesday").innerHTML = Tue;
+        document.getElementById("wednesday").innerHTML = Wed;
+        document.getElementById("thursday").innerHTML = Thr;
+        document.getElementById("friday").innerHTML = Fri;
+        $scope.putInBuffer();
+    }
 
     }]);
