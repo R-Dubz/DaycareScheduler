@@ -11,24 +11,11 @@
 	
 	<script type="text/javascript"></script>
 	<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script>
+	<script src="./angular/angular-1.5.8/angular-1.5.8/angular-sanitize.js"></script>
 	<script src="./app.js"></script>
 	<script src="./Source/Client/Controllers/EnrolledProfileController.js"></script>
   </head>
 
-
-<<<<<<< HEAD
-=======
-<title>Individual Profile</title>
-<script type="text/javascript"></script>
-<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script> <script src="./angular/angular-1.5.8/angular-1.5.8/angular-sanitize.js"></script>
-<script src="./app.js"></script>
-<script src="./Source/Client/Controllers/EnrolledProfileController.js"></script>
-<!--<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">-->
-<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/main.css">
-<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/modal.css">
-<link rel="stylesheet" type="text/css" href="./Other Files/(CSS Stuff) font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
-</head>
->>>>>>> 7b4dedf6de3b626803d9dd81c932ad3c425df82d
 <body ng-app="DaycareApp" ng-controller="EnrolledProfileController" ng-init="LoadTempProfile()">
 
 	<!-- Title Bar -->
@@ -41,7 +28,7 @@
 <div class="top-bar" id="main-menu">
   <div class="top-bar-left">
     <ul class="dropdown menu" data-dropdown-menu>
-      <li class="menu-text"><img src="./Images/Stock/PotsdamLogoSmall.jpg" class="Logo"><h2>Employee Profile: {{Profile[0].StaffID}}</h2></li>
+      <li class="menu-text"><img src="./Images/Stock/PotsdamLogoSmall.jpg" class="Logo"><h2>Child Profile: {{Profile[0].ChildID}}</h2></li>
     </ul>
   </div>
   <div class="top-bar-right">
@@ -150,7 +137,7 @@
 			<span ng-if="Editing">{{Profile[0].ChildHomeAddress}} </span>
 		</p>
 	</div>
-</div
+</div>
 
 <div ng-if="Editing" class="card" style="width: 800px; height: 1400px;">
 	<div class="media-object">
@@ -203,7 +190,7 @@
 			</table>
 		</div>
 	</div>
-	<div class="card" style="width: 760px; height: 330px; border: 1px solid #e60000">
+	<div class="card" style="width: 760px; height: 830px; border: 1px solid #e60000">
 		<center>
 		<h5>Emergency Information:</h5>
 		</center>
