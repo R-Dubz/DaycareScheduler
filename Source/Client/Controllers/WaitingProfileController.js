@@ -2,6 +2,7 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
     $scope.Profile = [];    
     $scope.Editing = false;  
     $scope.ShowModal = false;
+    $scope.custodyValue="Parents"
     $scope.value = "";
     var modal = document.getElementById('myModal');
     $scope.rooms = ["", "IN", "T1", "T2", "PS3", "PS4", "Progressive", "SA", "Classroom 8"];
@@ -81,11 +82,11 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
                     response.data[0].AgeGroup = "None";
                 }
             }
-
             if(response.data[0].Custody !== "Mother" && response.data[0].Custody !== "Father"){
                 $scope.value = response.data[0].Custody;
             }
             $scope.Profile.push(response.data[0]);
+            debugger;
         });
     };
 
@@ -117,7 +118,7 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
         $scope.Profile[0].ChildName = ChildName.value;
         $scope.Profile[0].MaritalStatus = MaritalStatus.value;
         $scope.Profile[0].ChildAge = ChildAge.value;
-        $scope.Profile[0].ChildGender = ChildGender.value;
+        //$scope.Profile[0].ChildGender = ChildGender.value;
         $scope.Profile[0].ChildBirthdate = ChildBirthdate.value;
         $scope.Profile[0].RequiredDays = RequiredDays.value;        
         $scope.Profile[0].GuardianName1 = GuardianName1.value;
@@ -128,6 +129,13 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
         $scope.Profile[0].GuardianStatus2 = GuardianStatus2.value;
         $scope.Profile[0].GuardianEmail2 = GuardianEmail2.value;
         $scope.Profile[0].GuardianPhone2 = GuardianPhone2.value;
+        $scope.Profile[0].DesiredTimeBlock = DesiredTimeBlock.value;
+        $scope.Profile[0].RequiredDays = RequiredDays.value;
+        $scope.Profile[0].AgeGroup = AgeGroup.value;
+        $scope.Profile[0].Custody = document.querySelector('input[name="Custody"]:checked').value
+        $scope.Profile[0].ChildHomeAddress = ChildHomeAddress.value;
+        $scope.Profile[0].HomePhone = HomePhone.value;
+
 
         var updates = $scope.Profile;
         $http.post('/test', updates)
@@ -341,41 +349,14 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
 
     $scope.OpenModal = function() {
         $scope.ShowModal = true;
-        document.getElementById('modalContent').style.width = "270px";
-//        document.getElementById('inModal').style.empty-cells = "hide";
+        document.getElementById('modalContent').style.width = "600px";
+        console.log($scope.numOfRows);
     }
 
     $scope.CloseModal = function() {
         $scope.ShowModal = false;
         $scope.numOfRows = 1;
     }
-
-    $scope.addSetOfDays = function(){
-        if($scope.numOfRows < 3){
-        $scope.numOfRows = $scope.numOfRows+1;
-        }
-
-        if($scope.numOfRows === 2){
-        document.getElementById('modalContent').style.width = "450px";
-        }
-        if($scope.numOfRows === 3){
-        document.getElementById('modalContent').style.width = "650px";
-        }
-    } 
-
-    $scope.subSetOfDays = function(){
-        if($scope.numOfRows > 1){
-        $scope.numOfRows = $scope.numOfRows-1;
-        }
-
-        if($scope.numOfRows === 2){
-        document.getElementById('modalContent').style.width = "450px";
-        }
-        if($scope.numOfRows === 1){
-        document.getElementById('modalContent').style.width = "270px";
-        }
-     //   document.getElementById('hideCells').style.empty-cells = "hide";
-    } 
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {  
@@ -385,5 +366,31 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
         }
         controllerFunction.$apply(); // This makes it so the page "sees" that we changed the variable.
     }
+
+    $scope.addSetOfDays = function(){
+        if($scope.numOfRows < 3){
+        $scope.numOfRows = $scope.numOfRows+1;
+        }
+
+        if($scope.numOfRows === 2){
+        document.getElementById('modalContent').style.width = "750px";
+        }
+        if($scope.numOfRows === 3){
+        document.getElementById('modalContent').style.width = "900px";
+        }
+    } 
+
+    $scope.subSetOfDays = function(){
+        if($scope.numOfRows > 1){
+            $scope.numOfRows = $scope.numOfRows-1;
+        }
+
+        if($scope.numOfRows === 2){
+            document.getElementById('modalContent').style.width = "750px";
+        }
+        if($scope.numOfRows === 1){
+            document.getElementById('modalContent').style.width = "600px";
+        }
+    } 
 
 }]);
