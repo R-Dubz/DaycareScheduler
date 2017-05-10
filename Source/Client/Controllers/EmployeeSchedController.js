@@ -8,10 +8,11 @@ angular.module('DaycareApp').controller('EmployeeSchedController', ['$scope', '$
         $scope.EmployeeSchedThr = [];
         $scope.EmployeeSchedFri = [];
 
-        $scope.Profile = [];   
+        $scope.Profile = {};   
         $scope.sortType = 'jsFriendlyTimeStamp'; 
         $scope.sortReverse = true;
-        $scope.searchText = '';         
+        $scope.searchText = '';   
+        $scope.ShowEditModal = false;       
         
 
         $scope.LoadEmployeeList = function() {
@@ -25,10 +26,23 @@ angular.module('DaycareApp').controller('EmployeeSchedController', ['$scope', '$
             });
         };
 
+        $scope.openModal = function(given){
+            $scope.Profile = given;
+            $scope.ShowEditModal = true; 
+        }
+
+        $scope.CloseEditModal = function() {
+            $scope.ShowEditModal = false;
+        }
+
         $scope.LoadEmployeeSchedule = function() {
             $http.get('/loadEmployeeSchedule')
             .then(function(response) {
                 $scope.EmployeeSched = response.data;
+                for( var i = 0; i < $scope.EmployeeSched.length; i++ ){
+                    $scope.EmployeeSched[i].TimeStart = $scope.timeTo12HrFormat( $scope.EmployeeSched[i].TimeStart );
+                    $scope.EmployeeSched[i].TimeEnd = $scope.timeTo12HrFormat( $scope.EmployeeSched[i].TimeEnd );
+                }
                 $scope.putInBuffer();
             });
         };
@@ -39,6 +53,22 @@ angular.module('DaycareApp').controller('EmployeeSchedController', ['$scope', '$
                 window.location.href = 'EmployeeDemoDev.html';
             });
         }
+
+        
+        $scope.SaveChanges = function(){
+        var targetEmployee = {};
+        targetEmployee.StaffID = $scope.Profile.StaffID;
+        targetEmployee.Staff_Name = $scope.Profile.FirstName + " " + $scope.Profile.LastName
+        targetEmployee.TimeStart = document.getElementById( "start" ).value
+        targetEmployee.TimeEnd = document.getElementById( "end" ).value
+        targetEmployee.Date = document.getElementById( "date" ).value
+        targetEmployee.Classroom = document.getElementById( "room" ).value
+        console.log( targetEmployee );
+        $http.post('/InsertSchedule', targetEmployee) 
+        .then(function(response) {
+            $scope.ShowEditModal = false;
+        });
+    }
 
 
     $scope.ConvertTimesToStrings = function(employee){

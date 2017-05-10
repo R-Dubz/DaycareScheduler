@@ -731,8 +731,7 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		db.run("INSERT INTO Employee_Schedule (ScheduleID, StaffID, Date, Classroom, TimeStart, TimeEnd, Staff_Name) VALUES ($ScheduleID, $StaffID, $Date, $Classroom, $TimeStart, $TimeEnd, $Staff_Name)", {
-			$ScheduleID: info.ScheduleID,
+		db.run("INSERT INTO Employee_Schedule (StaffID, Date, Classroom, TimeStart, TimeEnd, Staff_Name) VALUES ($StaffID, $Date, $Classroom, $TimeStart, $TimeEnd, $Staff_Name)", {
 			$StaffID: info.StaffID,
 			$Date: info.Date,
 			$Classroom: info.Classroom,
