@@ -72,6 +72,27 @@ This library holds functions to be used in order to modify the database
 		db.close();
 	},
 
+	callUnenrolledList : function(callback){
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+
+		db.all("SELECT ChildID FROM Personal_Information WHERE EnrollmentStatus = 'U'", 
+				function(err, row) {
+			if (err){
+				callback(err);
+				return;
+			}				
+			callback(null, row);
+		});
+		db.close();
+	},
+
 	callEmployeeList : function(callback){
 		var fs = require("fs");
 		var file = "./Source/Server/Data/DaycareDB.db";
@@ -460,6 +481,45 @@ This library holds functions to be used in order to modify the database
 		
 		db.close();
 	},
+
+	deleteChildFromDatabasePermanently: function(info) {
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+			
+		db.run("DELETE FROM Personal_Information WHERE ChildID = $ChildID", {
+			$ChildID: info.ChildID,
+		});
+		
+		db.close();
+	},
+
+	deleteChild: function(info) {
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+			
+		db.run("DELETE FROM " + info.oldClassroom + " WHERE ChildID = $ChildID", {
+			$ChildID: info.ChildID,
+		});
+		
+		db.close();
+	},
+
 
 // These functions INSERT, EDIT, and DELETE information from the staff table in the database.
 
