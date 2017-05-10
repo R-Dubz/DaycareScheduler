@@ -92,7 +92,14 @@
 		</center>
 	</div>
 </div>
-	
+	    <form ref='uploadForm' 
+      id='uploadForm' 
+      action='http://localhost:3000/upload'
+      method='post' 
+      encType="multipart/form-data">
+        <input type="file" name="sampleFile" />
+        <input type='submit' value='Upload!' />
+    </form> 
 <div class="card" style="width: 800px; height: 625px; position: absolute; top: 110px; left: 810px; border: 0px">
 	<table>
 	  <thead>

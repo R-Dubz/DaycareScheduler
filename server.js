@@ -7,6 +7,7 @@ var DatabaseFunction = require('./Source/Server/test.js');
 var quickstart = require('./Source/Server/quickstart.js');
 var updateDB = require('./Source/Server/updateDB.js');
 var profileStorage = require('./Source/Server/profileStorage.js');
+var fileUpload = require('express-fileupload');
 
 
 var str = (__dirname + '/Source/Server/quickstart.js')
@@ -15,7 +16,7 @@ var runQuickstart = require(str);
 app.use(express.static(__dirname + '/Source/Client/Templates'));
 
 app.use(express.static(__dirname + '/'));
-
+app.use(fileUpload());
 // THIS IS THE WORKING VERSION OF SERVER.JS
 
 
@@ -327,3 +328,19 @@ app.post('/editChildNotes', jsonParser, function (req, res) {
     console.log("Deleting Schedule Object...");
     return res.sendStatus(200);
   });
+
+app.post('/upload', function(req, res) {
+  if (!req.files)
+    return res.status(400).send('No files were uploaded.');
+ 
+  // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file 
+  var sampleFile = req.files.sampleFile.name;
+ 
+  // Use the mv() method to place the file somewhere on your server 
+  sampleFile.mv("./Images/Stock/sampleFile", function(err) {
+    if (err)
+      return res.status(500).send(err);
+ 
+    res.send('File uploaded!');
+  });
+});
