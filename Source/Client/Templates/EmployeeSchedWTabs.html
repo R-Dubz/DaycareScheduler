@@ -9,6 +9,7 @@
      <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/foundation.min.css">
      <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/foundation.calendar.css">
      <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/app.css">
+     <link rel="stylesheet" type="text/css" href="./Source/Client/Styles/modal_employee.css">
  	<!--<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/modal_employee.css">-->
 	
 	<script type="text/javascript"></script>
@@ -51,8 +52,9 @@
        <li class="tabs-title"><a href="#panel3v">Wednesday</a></li>
        <li class="tabs-title"><a href="#panel4v">Thursday</a></li>
        <li class="tabs-title"><a href="#panel5v">Friday</a></li>
-       <button type="button" ng-click="addDay()" class="button">next week</button>
-       <button type="button" ng-click="subDay()" class="button">previous week</button>
+       <p>Change Week</p>
+       <button type="button" ng-click="subDay()" class="button"><=</button>
+       <button type="button" ng-click="addDay()" class="button">=></button>
        <li class="tabs-title"><a href="#panel6v" id="monday"></a></li>
        <li class="tabs-title"><a href="#panel7v" id="tuesday"></a></li>
        <li class="tabs-title"><a href="#panel8v" id="wednesday"></a></li>
@@ -77,12 +79,13 @@
                  <th>{{employee.MondayIn2UF}} - {{employee.MondayOut2UF}}</th>  
                  <th>{{employee.MondayIn3UF}} - {{employee.MondayOut3UF}}</th> 
                  <th><button type="button" ng-click="storeProfile(employee)" class="button">Profile</button></th>
+                 <th><button type="button" ng-click="openModal(employee)" class="button">Schedule</button></th>
              </tr>
              <tr ng-if="Employees.length === 0">
                <th></th>
                <th></th>
-               <th></th>  
-               <th></th> 
+               <th></th>
+               <th></th>
                <th style="background: #dae5f4"></th>
              </tr>
            </table>
@@ -102,6 +105,7 @@
                  <th>{{employee.TuesdayIn2UF}} - {{employee.TuesdayOut2UF}}</th>  
                  <th>{{employee.TuesdayIn3UF}} - {{employee.TuesdayOut3UF}}</th> 
                  <th><button type="button" ng-click="storeProfile(employee)" class="button">Profile</button></th>
+                 <th><button type="button" ng-click="openModal(employee)" class="button">Schedule</button></th>
              </tr>
              <tr ng-if="Employees.length === 0">
                <th></th>
@@ -126,6 +130,7 @@
                  <th>{{employee.WednesdayIn2UF}} - {{employee.WednesdayOut2UF}}</th>  
                  <th>{{employee.WednesdayIn3UF}} - {{employee.WednesdayOut3UF}}</th> 
                  <th><button type="button" ng-click="storeProfile(employee)" class="button">Profile</button></th>
+                 <th><button type="button" ng-click="openModal(employee)" class="button">Schedule</button></th>
              </tr>
              <tr ng-if="Employees.length === 0">
                <th></th>
@@ -151,6 +156,7 @@
                  <th>{{employee.ThursdayIn2UF}} - {{employee.ThursdayOut2UF}}</th>  
                  <th>{{employee.ThursdayIn3UF}} - {{employee.ThursdayOut3UF}}</th>
                  <th><button type="button" ng-click="storeProfile(employee)" class="button">Profile</button></th>
+                 <th><button type="button" ng-click="openModal(employee)" class="button">Schedule</button></th>
              </tr>
              <tr ng-if="Employees.length === 0">
                <th></th>
@@ -175,6 +181,7 @@
                  <th>{{employee.FridayIn2UF}} - {{employee.FridayOut2UF}}</th>  
                  <th>{{employee.FridayIn3UF}} - {{employee.FridayOut3UF}}</th>
                  <th><button type="button" ng-click="storeProfile(employee)" class="button">Profile</button></th>
+                 <th><button type="button" ng-click="openModal(employee)" class="button">Schedule</button></th>
              </tr>
              <tr ng-if="Employees.length === 0">
                <th></th>
@@ -191,12 +198,14 @@
  	          <th>Employee's Name</th>
  	          <th>Scheduled</th>
              <th>Date</th>
+             <th>Room</th>
              <th>Profile</th>
              <tr ng-repeat="employee in EmployeeSchedMon">
                 <th ng-click="storeProfile(employee)" style="cursor: hand;">
                   {{employee.Staff_Name}}</th>
                  <th>{{employee.TimeStart}} - {{employee.TimeEnd}}</th>
                  <th>{{employee.Date}}</th>
+                 <th>{{employee.Classroom}}</th>
                  <th><button type="button" ng-click="storeProfile(employee)" class="button">Profile</button></th>
              </tr>
              <tr ng-if="Employees.length === 0">
@@ -213,12 +222,14 @@
  	          <th>Employee's Name</th>
  	          <th>Scheduled</th>
              <th>Date</th>
+             <th>Room</th>
              <th>Profile</th>
              <tr ng-repeat="employee in EmployeeSchedTue">
                 <th ng-click="storeProfile(employee)" style="cursor: hand;">
                   {{employee.Staff_Name}}</th>
                  <th>{{employee.TimeStart}} - {{employee.TimeEnd}}</th>
                  <th>{{employee.Date}}</th>
+                 <th>{{employee.Classroom}}</th>
                  <th><button type="button" ng-click="storeProfile(employee)" class="button">Profile</button></th>
              </tr>
              <tr ng-if="Employees.length === 0">
@@ -235,12 +246,14 @@
  	          <th>Employee's Name</th>
  	          <th>Scheduled</th>
              <th>Date</th>
+             <th>Room</th>
              <th>Profile</th>
              <tr ng-repeat="employee in EmployeeSchedWed">
                 <th ng-click="storeProfile(employee)" style="cursor: hand;">
                   {{employee.Staff_Name}}</th>
                  <th>{{employee.TimeStart}} - {{employee.TimeEnd}}</th>
                  <th>{{employee.Date}}</th>
+                 <th>{{employee.Classroom}}</th>
                  <th><button type="button" ng-click="storeProfile(employee)" class="button">Profile</button></th>
              </tr>
              <tr ng-if="Employees.length === 0">
@@ -257,12 +270,14 @@
  	          <th>Employee's Name</th>
  	          <th>Scheduled</th>
              <th>Date</th>
+             <th>Room</th>
              <th>Profile</th>
              <tr ng-repeat="employee in EmployeeSchedThr">
                 <th ng-click="storeProfile(employee)" style="cursor: hand;">
                   {{employee.Staff_Name}}</th>
                  <th>{{employee.TimeStart}} - {{employee.TimeEnd}}</th>
                  <th>{{employee.Date}}</th>
+                 <th>{{employee.Classroom}}</th>
                  <th><button type="button" ng-click="storeProfile(employee)" class="button">Profile</button></th>
              </tr>
              <tr ng-if="Employees.length === 0">
@@ -279,12 +294,14 @@
  	          <th>Employee's Name</th>
  	          <th>Scheduled</th>
              <th>Date</th>
+             <th>Room</th>
              <th>Profile</th>
              <tr ng-repeat="employee in EmployeeSchedFri">
                 <th ng-click="storeProfile(employee)" style="cursor: hand;">
                   {{employee.Staff_Name}}</th>
                  <th>{{employee.TimeStart}} - {{employee.TimeEnd}}</th>
                  <th>{{employee.Date}}</th>
+                 <th>{{employee.Classroom}}</th>
                  <th><button type="button" ng-click="storeProfile(employee)" class="button">Profile</button></th>
              </tr>
              <tr ng-if="Employees.length === 0">
@@ -299,7 +316,27 @@
    </div>
  </div>
  
- 
+ <!-- The Edit Modal -->
+        <div id="EditModal" class="modal" ng-show="ShowEditModal">
+
+					<!-- Modal content -->
+						<div id="modalContent" class="modal-content" style="width: 450px; height: 650px">
+							<div class="close" ng-click="CloseEditModal()">×</div>
+									<div style="text-align: center">Employee's Information</div>
+									<form>
+											Date: (month/day/year ex: 5/10/2017) <input type="text" id="date"><br>
+											Start time: <input type="text" id="start"><br>
+											End time: <input type="text" id="end"><br>
+                      Room: <input type="text" id="room"><br>
+									</form>
+
+							<div style="text-align: center; padding-top: 30px;">
+											<button class="button" ng-click="SaveChanges()">Save Changes</button>
+											<button class="button" ng-click="CloseEditModal()">Cancel</button>
+							</div>
+					</div>
+        </div>
+
   <script src="./Other Files/foundation-6.3.0-complete/js/vendor/jquery.js"></script>
      <script src="./Other Files/foundation-6.3.0-complete/js/vendor/what-input.js"></script>
      <script src="./Other Files/foundation-6.3.0-complete/js/vendor/foundation.js"></script>
