@@ -78,7 +78,8 @@ angular.module('DaycareApp').controller('EmployeeSchedController', ['$scope', '$
         targetEmployee.Staff_Name = $scope.Profile.FirstName + " " + $scope.Profile.LastName;
         targetEmployee.TimeStart = document.getElementById( "start" ).value;
         targetEmployee.TimeEnd = document.getElementById( "end" ).value;
-        targetEmployee.Date = document.getElementById( "date" ).value;
+        var myDates = new Date(document.getElementById( "datepicker" ).value);
+        targetEmployee.Date = myDates.getMonth()+1 + "/" + myDates.getDate() + "/" + myDates.getFullYear();
         targetEmployee.Classroom = document.getElementById( "room" ).value;
         console.log( targetEmployee );
         $http.post('/InsertSchedule', targetEmployee) 
@@ -421,5 +422,16 @@ angular.module('DaycareApp').controller('EmployeeSchedController', ['$scope', '$
             // do nothing
         })
     }
+
+    var tday = new Date();
+    var picker = new Pikaday(
+    {
+        field: document.getElementById('datepicker'),
+        firstDay: 0,
+        minDate: new Date(),
+        
+        maxDate: new Date(tday.getFullYear()+10, 12, 31),
+        yearRange: [2000,2020]
+    });
 
     }]);

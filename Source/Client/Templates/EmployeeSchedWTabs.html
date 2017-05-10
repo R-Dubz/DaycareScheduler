@@ -9,6 +9,8 @@
      <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/foundation.min.css">
      <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/foundation.calendar.css">
      <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/app.css">
+     <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/pikaday.css">
+     <link rel="stylesheet" href="./Other Files/foundation-6.3.0-complete/css/site.css">
      <link rel="stylesheet" type="text/css" href="./Source/Client/Styles/modal_employee.css">
  	<!--<link rel="stylesheet" type="text/css" href="./Source/Client/Styles/modal_employee.css">-->
 	
@@ -16,6 +18,7 @@
  	<script src="./angular/angular-1.5.8/angular-1.5.8/angular.min.js"></script> <script src="./angular/angular-1.5.8/angular-1.5.8/angular-sanitize.js"></script>
  	<script src="./app.js"></script>
    <script src="./Source/Client/Controllers/EmployeeSchedController.js"></script>
+   <script src="./Source/Client/Controllers/pikaday.js"></script>
    
    </head>
  <body ng-app="DaycareApp" ng-controller="EmployeeSchedController" ng-init="LoadEmployeeList()">
@@ -336,7 +339,7 @@
 							<div class="close" ng-click="CloseEditModal()">×</div>
 									<div style="text-align: center">Employee's Information</div>
 									<form>
-											Date: (month/day/year ex: 5/10/2017) <input type="text" id="date"><br>
+											Date: <input type="text" id="datepicker"><br>
 											Start time: <select id="start" style="display:inline-block; margin-top: 15px; position: relative;">
         <option value="null">        </option>
         <option value="7.0">7:00 AM</option>
