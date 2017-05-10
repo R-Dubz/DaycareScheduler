@@ -8,6 +8,7 @@ angular.module('DaycareApp').controller('EmployeeProfileController', ['$scope', 
     var notesModal = document.getElementById('myNotesModal'); 
     var controllerFunction = $scope;
     $scope.numOfRows = 1;
+    $scope.ScheduledDates = [];
 
     $scope.backToList = function() {
       window.location.href = 'Employees.html';
@@ -34,13 +35,13 @@ angular.module('DaycareApp').controller('EmployeeProfileController', ['$scope', 
                         $scope.numOfRows = 2;
                     }
             }
-        });
-    };
-	
-	$scope.LoadSchedule = function() {
-        $http.get('/getSchedule')
-        .then(function(response) {
-            $scope.Profile.push(response.data[0]);
+            // This is where we will determine the date, the next 4 days, and then load the week schedule into an array
+            var currentDate = new Date();
+            var sendID = {StaffID: $scope.Profile[0].StaffID};
+            $http.post('/callIndivEmployeeSchedule', sendID)
+            .then(function(response) {
+                debugger;
+            });
         });
     };
 	

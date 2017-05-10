@@ -808,6 +808,31 @@ This library holds functions to be used in order to modify the database
 		db.close();
 	},
 
+
+	callIndivEmployeeSchedule : function(info, callback){
+		var fs = require("fs");
+		var file = "./Source/Server/Data/DaycareDB.db";
+		var exists = fs.existsSync(file);
+		if (!exists) {
+			throw new Error("File not Found");
+		}
+		var sqlite3 = require("sqlite3").verbose();
+		var db = new sqlite3.Database(file);
+
+		db.all("SELECT * FROM Employee_Schedule WHERE StaffID = $StaffID", {$StaffID: info.StaffID},
+		 function(err, row) {
+			$StaffID = info.StaffID;
+			if (err){
+				callback(err);
+				return;
+			}				
+			callback(null, row);
+		});
+
+		db.close();
+	},
+
+
 };
 
 	module.exports = updateDB;
