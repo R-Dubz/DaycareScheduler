@@ -164,32 +164,37 @@ angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', '
         };
 
     $scope.timeTo12HrFormat = function(time) {   // Take a time in 24 hour format and format it in 12 hour format
-        var time_part_array = time.split(".");
-        var ampm = 'AM';
+        if(time !== "" && time !== null && time !== "null"){
+            var time_part_array = time.split(".");
+            var ampm = 'AM';
 
-        if (time_part_array[0] >= 12) {
-            ampm = 'PM';
-        }
+            if (time_part_array[0] >= 12) {
+                ampm = 'PM';
+            }
 
-        if (time_part_array[0] > 12) {
-            time_part_array[0] = time_part_array[0] - 12;
-        }
+            if (time_part_array[0] > 12) {
+                time_part_array[0] = time_part_array[0] - 12;
+            }
 
-        if(time_part_array[1] == 0){
-            time_part_array[1] = "00";
-        } else if(time_part_array[1] == 25){
-            time_part_array[1] = "15";
-        } else if(time_part_array[1] == 5){
-            time_part_array[1] = "30";
-        } else if(time_part_array[1] == 75){
-            time_part_array[1] = "45";
+            if(time_part_array[1] == 0){
+                time_part_array[1] = "00";
+            } else if(time_part_array[1] == 25){
+                time_part_array[1] = "15";
+            } else if(time_part_array[1] == 5){
+                time_part_array[1] = "30";
+            } else if(time_part_array[1] == 75){
+                time_part_array[1] = "45";
+            } else {
+                time_part_array[1] = "00";
+            }
+
+            var formatted_time = time_part_array[0] + ':' + time_part_array[1] + ampm;
+
+            return formatted_time;
         } else {
-            time_part_array[1] = "00";
+            var formatted_time = "";
+            return formatted_time;
         }
-
-        formatted_time = time_part_array[0] + ':' + time_part_array[1] + ' ' + ampm;
-
-        return formatted_time;
     };
 
     $scope.storeProfile = function(child){

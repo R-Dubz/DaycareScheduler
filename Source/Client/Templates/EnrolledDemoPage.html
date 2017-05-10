@@ -22,7 +22,7 @@
 
 <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
   <button class="menu-icon" type="button" data-toggle></button>
-  <div class="title-bar-title">Menu</div>
+  <div class="title-bar-title">Main Menu</div>
 </div>
 
 <div class="top-bar" id="main-menu">
@@ -183,7 +183,19 @@
 				  <td>Age Group</td>
 				  <td>
 					<span ng-if="!Editing">{{Profile[0].AgeGroup}}</span>
-					<span ng-if="Editing"><input type="text" id="AgeGroup" value="{{Profile[0].AgeGroup}}"></input></span>
+					<span ng-if="Editing">
+            <select id="AgeGroup">
+                  <option value="null">           </option>
+                  <option ng-selected="Profile[0].AgeGroup === 'IN'" value="IN">IN</option>
+                  <option ng-selected="Profile[0].AgeGroup === 'T1'" value="T1">T1</option>
+                  <option ng-selected="Profile[0].AgeGroup === 'T2'" value="T2">T2</option>
+                  <option ng-selected="Profile[0].AgeGroup === 'PS3'" value="PS3">PS3</option>
+                  <option ng-selected="Profile[0].AgeGroup === 'PS4'" value="PS4">PS4</option>
+                  <option ng-selected="Profile[0].AgeGroup === 'Progressive'" value="Progressive">Progressive</option>
+                  <option ng-selected="Profile[0].AgeGroup === 'SA'" value="SA">SA</option>
+                  <option ng-selected="Profile[0].AgeGroup === 'Classroom8'" value="Classroom8">Classroom 8</option>
+            </select>
+          </span>
 				  </td>
 				</tr>
 			  </tbody>
@@ -231,42 +243,43 @@
 	<table>
 	  <thead>
 		<tr>
-		  <th>{{Profile[0].Classroom}}</th>
+		  <th>{{JSFClassroom}}</th>
 		  <th width="170">Time-Period 1</th>
 		  <th width="170">Time-Period 2</th>
 		  <th width="170">Time-Period 3</th>
 		</tr>
 	  </thead>
 	  <tbody>
-		<tr>
+		<tr> 
+      <!--Note: JSF = "JavaScript Friendly". Because our integers need to be times.-->
 		  <td>Monday</td>
-		  <td>{{ClassroomInfo.MI1}}-{{ClassroomInfo.MO1}}</td>
-		  <td>{{ClassroomInfo.MI2}}-{{ClassroomInfo.MO2}}</td>
-		  <td>{{ClassroomInfo.MI3}}-{{ClassroomInfo.MO3}}</td>
+		  <td>{{ClassroomInfo.MI1JSF}} - {{ClassroomInfo.MO1JSF}}</td>
+		  <td>{{ClassroomInfo.MI2JSF}} - {{ClassroomInfo.MO2JSF}}</td>
+		  <td>{{ClassroomInfo.MI3JSF}} - {{ClassroomInfo.MO3JSF}}</td>
 		</tr>
 		<tr>
 		  <td>Tuesday</td>
-		  <td>{{ClassroomInfo.TI1}}-{{ClassroomInfo.TO1}}</td>
-		  <td>{{ClassroomInfo.TI2}}-{{ClassroomInfo.TO2}}</td>
-		  <td>{{ClassroomInfo.TI3}}-{{ClassroomInfo.TO3}}</td>
+		  <td>{{ClassroomInfo.TI1JSF}} - {{ClassroomInfo.TO1JSF}}</td>
+		  <td>{{ClassroomInfo.TI2JSF}} - {{ClassroomInfo.TO2JSF}}</td>
+		  <td>{{ClassroomInfo.TI3JSF}} - {{ClassroomInfo.TO3JSF}}</td>
 		</tr>
 		<tr>
 		  <td>Wednesday</td>
-		  <td>{{ClassroomInfo.WI1}}-{{ClassroomInfo.WO1}}</td>
-		  <td>{{ClassroomInfo.WI2}}-{{ClassroomInfo.WO2}}</td>
-		  <td>{{ClassroomInfo.WI3}}-{{ClassroomInfo.WO3}}</td>
+		  <td>{{ClassroomInfo.WI1JSF}} - {{ClassroomInfo.WO1JSF}}</td>
+		  <td>{{ClassroomInfo.WI2JSF}} - {{ClassroomInfo.WO2JSF}}</td>
+		  <td>{{ClassroomInfo.WI3JSF}} - {{ClassroomInfo.WO3JSF}}</td>
 		</tr>
 		<tr>
 		  <td>Thursday</td>
-		  <td>{{ClassroomInfo.TI1}}-{{ClassroomInfo.TO1}}</td>
-		  <td>{{ClassroomInfo.TI2}}-{{ClassroomInfo.TO2}}</td>
-		  <td>{{ClassroomInfo.TI3}}-{{ClassroomInfo.TO3}}</td>
+		  <td>{{ClassroomInfo.THI1JSF}} - {{ClassroomInfo.THO1JSF}}</td>
+		  <td>{{ClassroomInfo.THI2JSF}} - {{ClassroomInfo.THO2JSF}}</td>
+		  <td>{{ClassroomInfo.THI3JSF}} - {{ClassroomInfo.THO3JSF}}</td>
 		</tr>
 		<tr>
 		  <td>Friday</td>
-		  <td>{{ClassroomInfo.FI1}}-{{ClassroomInfo.FO1}}</td>
-		  <td>{{ClassroomInfo.FI2}}-{{ClassroomInfo.FO2}}</td>
-		  <td>{{ClassroomInfo.FI3}}-{{ClassroomInfo.FO3}}</td>
+		  <td>{{ClassroomInfo.FI1JSF}} - {{ClassroomInfo.FO1JSF}}</td>
+		  <td>{{ClassroomInfo.FI2JSF}} - {{ClassroomInfo.FO2JSF}}</td>
+		  <td>{{ClassroomInfo.FI3JSF}} - {{ClassroomInfo.FO3JSF}}</td>
 		</tr>
 	  </tbody>
 	</table>
@@ -274,15 +287,13 @@
 	<br>
 	<br>
 	
-	<div class="card" style="width: 760px; height: 200px;">
+	<div class="card" style="width: 760px; height: 335px;">
 		<h5>Notes:</h5>
-		<p>{{Profile[0].ChildNotes}}</p>
+		<p ng-bind-html="Profile[0].ChildNotes"></p>
 	</div>
 	<div class="card-section">
 		<center>
 			<div class="button-group">
-				<button class="view button" ng-click="OpenNotesModal(Profile[0].ChildID)">Notes</button>
-				<button class="notes button" ng-click="OpenEditModal()">Edit Profile</button>
 			</div>
 		</center>
 	</div>
@@ -296,6 +307,8 @@
 <div ng-if="!Editing" style="text-align: center;">
     <button type="button" ng-click="EditProfile()" class="button">Edit Profile</button>
     <button type="button" ng-click="OpenModal()" class="button">Edit Classroom</button>
+		<button type="button" class="notes button" ng-click="OpenNotesModal(Profile[0].ChildID)">Edit Notes</button>
+    <button type="button" class="alert button" ng-click="terminateEnrollment()">Terminate Enrollment</button>
 </div>
 
 <div ng-if="Editing" style="text-align: center;">
@@ -309,10 +322,10 @@
         <div id="myModal" class="modal" ng-show="ShowNotesModal">
 
         <!-- Modal content -->
-        <div id="modalContent" class="modal-content" style="width: 450px; height: 300px">
+        <div id="modalContent" class="modal-content" style="width: 500px; height: 325px">
         <div class="close" ng-click="CloseNotesModal()">×</div>
             Notes:
-        	<div id="textarea" class="textarea" contenteditable="true"></div>
+        	<div id="textarea" class="textarea" contenteditable="true" ng-bind-html="Profile[0].ChildNotes" style="height: 166px; width: 457px"></div>
 
         <div style="text-align: center; padding-top: 30px;">
                 <button class="button" ng-click="SaveNotes()">Save Changes</button>
@@ -327,24 +340,25 @@
 
         <!-- Modal content -->
 	
-        <div id="modalContent" class="modal-content" style="width: 600px; height: 650px"> 
+        <div id="classroomModalContent" class="modal-content" style="width: 650px; height: 700px"> 
+        <div>
         <span class="close" ng-click="CloseModal()">×</span>
-        <div style="text-align: center;"> Classroom:
+        <div style="text-align: center;"> Classroom
         <select id="Classroom">
                 <option value="null">           </option>
-                <option value="InfantRoom">Infant Room</option>
-                <option value="Toddler1">Toddler 1</option>
-                <option value="Toddler2">Toddler 2</option>
-                <option value="Preschool3">Preschool 1</option>
-                <option value="Preschool4">Preschool 2</option>
-                <option value="Progressive">Progressive</option>
-                <option value="SchoolAge">School Age</option>
-                <option value="Classroom8">Classroom 8</option>
+                <option ng-selected="Profile[0].Classroom === 'InfantRoom'" value="InfantRoom">Infant Room</option>
+                <option ng-selected="Profile[0].Classroom === 'Toddler1'" value="Toddler1">Toddler 1</option>
+                <option ng-selected="Profile[0].Classroom === 'Toddler2'" value="Toddler2">Toddler 2</option>
+                <option ng-selected="Profile[0].Classroom === 'Preschool3'" value="Preschool3">Preschool 1</option>
+                <option ng-selected="Profile[0].Classroom === 'Preschool4'" value="Preschool4">Preschool 2</option>
+                <option ng-selected="Profile[0].Classroom === 'Progressive'" value="Progressive">Progressive</option>
+                <option ng-selected="Profile[0].Classroom === 'SchoolAge'" value="SchoolAge">School Age</option>
+                <option ng-selected="Profile[0].Classroom === 'Classroom8'" value="Classroom8">Classroom 8</option>
         </select>
 
         <button ng-click="subSetOfDays()">
-		<span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Remove a in/out column.">-</span></button>
-	<button ng-click="addSetOfDays()"><span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Add an in/out couumn.">+</span></button>
+		<span class="button" data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Remove a in/out column.">-</span></button>
+	<button class="button" ng-click="addSetOfDays()"><span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Add an in/out couumn.">+</span></button>
 
         </div>
         <table class="in-modal" style="align: center">
@@ -1851,14 +1865,14 @@
         </table>
         <div style="text-align: center; padding-top: 30px;">
                 <button ng-click="EditClassroomInfo(Profile[0])" class="button">
-			<span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Saves and moves student from waiting list to student database.">Accept Child</span>
+			<span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Save schedule changes.">Save Changes</span>
 		</button>
                 <button ng-click="CloseModal()" class="button">
-			<span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Discards all changes.">Cancel</span>
+			<span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Discard all changes.">Cancel</span>
 		</button>
         </div>
         </div>
-
+        </div>
         </div>
 	</p>
 	

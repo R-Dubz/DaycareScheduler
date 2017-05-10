@@ -6,7 +6,7 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
     var modal = document.getElementById('myModal');
     var controllerFunction = $scope;
     $scope.numOfRows = 1;
-
+    $scope.JSFClassroom = "";
     $scope.backToList = function() {
         window.location.href = 'Children.html';
     };
@@ -16,13 +16,87 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
         $http.get('/getTempProfile')
         .then(function(response) {
             $scope.Profile.push(response.data[0]);
-
             if($scope.Profile[0].Classroom !== "" && $scope.Profile[0].Classroom !== "null" && $scope.Profile[0].Classroom !== null){
                 $http.get('/getChildClass', {params: {ID: $scope.Profile[0].ChildID, Classroom: $scope.Profile[0].Classroom}})
                 .then(function(response) {
+                    if($scope.Profile[0].Classroom === "InfantRoom"){
+                        $scope.JSFClassroom = "Infant Room";
+                    } else if($scope.Profile[0].Classroom === "Toddler1"){
+                        $scope.JSFClassroom = "Toddler 1";
+                    } else if($scope.Profile[0].Classroom === "Toddler2"){
+                        $scope.JSFClassroom = "Toddler 2";
+                    } else if($scope.Profile[0].Classroom === "Preschool3"){
+                        $scope.JSFClassroom = "Preschool 1";
+                    } else if($scope.Profile[0].Classroom === "Preschool4"){
+                        $scope.JSFClassroom = "Preschool 2";
+                    } else if($scope.Profile[0].Classroom === "SchoolAge"){
+                        $scope.JSFClassroom = "School Age";
+                    } else if($scope.Profile[0].Classroom === "Classroom8"){
+                        $scope.JSFClassroom = "Classroom 8";
+                    } else{
+                        $scope.JSFClassroom = "";
+                    }
                     $scope.ClassroomInfo = response.data[0];
+                    $scope.ClassroomInfo.MI1JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.MI1);
+                    $scope.ClassroomInfo.MI2JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.MI2);
+                    $scope.ClassroomInfo.MI3JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.MI3);
+                    $scope.ClassroomInfo.MO1JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.MO1);
+                    $scope.ClassroomInfo.MO2JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.MO2);
+                    $scope.ClassroomInfo.MO3JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.MO3);
+                    $scope.ClassroomInfo.TI1JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.TI1);
+                    $scope.ClassroomInfo.TI2JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.TI2);
+                    $scope.ClassroomInfo.TI3JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.TI3);
+                    $scope.ClassroomInfo.TO1JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.TO1);
+                    $scope.ClassroomInfo.TO2JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.TO2);
+                    $scope.ClassroomInfo.TO3JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.TO3);
+                    $scope.ClassroomInfo.WI1JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.WI1);
+                    $scope.ClassroomInfo.WI2JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.WI2);
+                    $scope.ClassroomInfo.WI3JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.WI3);
+                    $scope.ClassroomInfo.WO1JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.WO1);
+                    $scope.ClassroomInfo.WO2JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.WO2);
+                    $scope.ClassroomInfo.WO3JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.WO3);
+                    $scope.ClassroomInfo.THI1JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.THI1);
+                    $scope.ClassroomInfo.THI2JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.THI2);
+                    $scope.ClassroomInfo.THI3JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.THI3);
+                    $scope.ClassroomInfo.THO1JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.THO1);
+                    $scope.ClassroomInfo.THO2JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.THO2);
+                    $scope.ClassroomInfo.THO3JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.THO3);
+                    $scope.ClassroomInfo.FI1JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.FI1);
+                    $scope.ClassroomInfo.FI2JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.FI2);
+                    $scope.ClassroomInfo.FI3JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.FI3);
+                    $scope.ClassroomInfo.FO1JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.FO1);
+                    $scope.ClassroomInfo.FO2JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.FO2);
+                    $scope.ClassroomInfo.FO3JSF = $scope.timeTo12HrFormat($scope.ClassroomInfo.FO3);
+
+                    if(($scope.ClassroomInfo.MI2 !== null && $scope.ClassroomInfo.MI2 !== "null") || 
+                        ($scope.ClassroomInfo.TI2 !== null && $scope.ClassroomInfo.TI2 !== "null") ||  
+                        ($scope.ClassroomInfo.WI2 !== null && $scope.ClassroomInfo.WI2 !== "null") ||  
+                        ($scope.ClassroomInfo.THI2 !== null && $scope.ClassroomInfo.THI2 !== "null") || 
+                        ($scope.ClassroomInfo.FI2 !== null && $scope.ClassroomInfo.FI2 !== "null")){
+                            if(($scope.ClassroomInfo.MI3 !== null && $scope.ClassroomInfo.MI3 !== "null") || 
+                            ($scope.ClassroomInfo.TI3 !== null && $scope.ClassroomInfo.TI3 !== "null") ||  
+                            ($scope.ClassroomInfo.WI3 !== null && $scope.ClassroomInfo.WI3 !== "null") ||  
+                            ($scope.ClassroomInfo.THI3 !== null && $scope.ClassroomInfo.THI3 !== "null") || 
+                            ($scope.ClassroomInfo.FI3 !== null && $scope.ClassroomInfo.FI3 !== "null")){
+                                $scope.numOfRows = 3;
+                            } else {
+                                $scope.numOfRows = 2;
+                            }
+                    }
+
+                    if($scope.numOfRows === 2){
+                    document.getElementById('classroomModalContent').style.width = "850px";
+                    }
+                    if($scope.numOfRows === 3){
+                        document.getElementById('classroomModalContent').style.width = "1050px";
+                    }
+
+
                     console.log("Data received");
                 });
+            }
+            if($scope.Profile[0].Classroom === ""){
+                $scope.JSFClassroom = "Classroom: None"
             }
         });
     };
@@ -175,7 +249,7 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
             changes.FO3 = null;
         }
 
-        if (document.getElementById('Classroom').value === "null") {
+        if (document.getElementById('Classroom').value === "null" || document.getElementById('Classroom').value === null) {
             $http.post('/deleteChildFromClassroom', changes)
             .then(function(response) {
                 alert("Child has been Removed from the classroom");
@@ -191,7 +265,7 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
                 window.location.reload(true); 
             });
         }
-        else if($scope.Profile[0].Classroom === "" || $scope.Profile[0].Classroom === null){
+        else if($scope.Profile[0].Classroom === "" || $scope.Profile[0].Classroom === "null"){
             $http.post('/InsertChildToClass', changes)
             .then(function(response) {
                 alert("Child has been inserted into the classroom!"); 
@@ -213,6 +287,70 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
         }
     };
 
+    $scope.terminateEnrollment = function(){
+         if($scope.Profile[0].Classroom !== "" && $scope.Profile[0].Classroom !== null){ //Check to see if child is in a classroom before unenrolling from the program
+            var target = {};
+            target.oldClassroom = $scope.Profile[0].Classroom;
+            target.ChildID = $scope.Profile[0].ChildID;
+            $http.post('/deleteChildFromClassroom', target) // remove from classroom
+            .then(function(response) {
+                alert("Child has been Removed from the classroom"); 
+                var target = {};
+                target.ChildID = $scope.Profile[0].ChildID;
+                target.Date = new Date();                
+                $http.post('/terminateChild', target) // unenroll from program
+                .then(function(response) {
+                    alert("Child has been unenrolled and is now inactive.\n Those with inactive status for more than 5 years will be permanently deleted from the system."); 
+                    window.location.href = 'Children.html';
+                });
+            });
+        } else{
+            // There weren't enrolled in a classroom. So only unenroll from the program.
+                var target = {};
+                target.ChildID = $scope.Profile[0].ChildID;
+                target.Date = new Date();                
+                $http.post('/terminateChild', target)
+                .then(function(response) {
+                    alert("Child has been unenrolled and is now inactive.\n Those with inactive status for more than 5 years will be permanently deleted from the system."); 
+                    window.location.href = 'Children.html';
+                });
+        }
+    }
+
+    $scope.timeTo12HrFormat = function(time) {   // Take a time in 24 hour format and format it in 12 hour format
+        if(time !== "" && time !== null && time !== "null"){
+            var time_part_array = time.split(".");
+            var ampm = 'AM';
+
+            if (time_part_array[0] >= 12) {
+                ampm = 'PM';
+            }
+
+            if (time_part_array[0] > 12) {
+                time_part_array[0] = time_part_array[0] - 12;
+            }
+
+            if(time_part_array[1] == 0){
+                time_part_array[1] = "00";
+            } else if(time_part_array[1] == 25){
+                time_part_array[1] = "15";
+            } else if(time_part_array[1] == 5){
+                time_part_array[1] = "30";
+            } else if(time_part_array[1] == 75){
+                time_part_array[1] = "45";
+            } else {
+                time_part_array[1] = "00";
+            }
+
+            var formatted_time = time_part_array[0] + ':' + time_part_array[1] + ampm;
+
+            return formatted_time;
+        } else {
+            var formatted_time = "";
+            return formatted_time;
+        }
+    };
+
 
     /* MODAL JUNK */
 
@@ -228,11 +366,11 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
     }
 
     $scope.SaveNotes = function(){
-        var targetEmployee = {};
-        targetEmployee.StaffID = $scope.Profile[0].StaffID;
-        targetEmployee.MoreInfo = document.getElementById('textarea').innerHTML;
-        $scope.Profile[0].MoreInfo = document.getElementById('textarea').innerHTML;
-        $http.post('/editEmployeeNotes', targetEmployee) 
+        var targetChild = {};
+        targetChild.ChildID = $scope.Profile[0].ChildID;
+        targetChild.ChildNotes = document.getElementById('textarea').innerHTML;
+        $scope.Profile[0].ChildNotes = document.getElementById('textarea').innerHTML;
+        $http.post('/editChildNotes', targetChild) 
         .then(function(response) {
             $scope.ShowNotesModal = false;
         });
@@ -241,7 +379,6 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
     $scope.OpenModal = function() {
         $scope.ShowModal = true;
         document.getElementById('modalContent').style.width = "600px";
-        console.log($scope.numOfRows);
     }
 
     $scope.CloseModal = function() {
@@ -260,14 +397,14 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
 
     $scope.addSetOfDays = function(){
         if($scope.numOfRows < 3){
-        $scope.numOfRows = $scope.numOfRows+1;
+            $scope.numOfRows = $scope.numOfRows+1;
         }
 
         if($scope.numOfRows === 2){
-        document.getElementById('modalContent').style.width = "750px";
+        document.getElementById('classroomModalContent').style.width = "850px";
         }
         if($scope.numOfRows === 3){
-        document.getElementById('modalContent').style.width = "900px";
+            document.getElementById('classroomModalContent').style.width = "1050px";
         }
     } 
 
@@ -277,10 +414,10 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
         }
 
         if($scope.numOfRows === 2){
-            document.getElementById('modalContent').style.width = "750px";
+            document.getElementById('classroomModalContent').style.width = "850px";
         }
         if($scope.numOfRows === 1){
-            document.getElementById('modalContent').style.width = "600px";
+            document.getElementById('classroomModalContent').style.width = "650px";
         }
     } 
 

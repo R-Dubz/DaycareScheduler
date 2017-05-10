@@ -82,7 +82,7 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		db.all("SELECT ChildID FROM Personal_Information WHERE EnrollmentStatus = 'U'", 
+		db.all("SELECT * FROM Personal_Information WHERE EnrollmentStatus = 'U'", 
 				function(err, row) {
 			if (err){
 				callback(err);
@@ -234,8 +234,8 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		db.run("UPDATE Personal_Information SET EnrollmentStatus = 'U', Classroom = '" + info[1] + "'  WHERE ChildID = $ChildID", {
-			$ChildID: info[0],
+		db.run("UPDATE Personal_Information SET EnrollmentStatus = 'U', EnrollmentTerminated = '" + info.Date + "' WHERE ChildID = $ChildID", {
+			$ChildID: info.ChildID,
 		});
 
 		db.close();
@@ -501,24 +501,24 @@ This library holds functions to be used in order to modify the database
 		db.close();
 	},
 
-	deleteChild: function(info) {
-		var fs = require("fs");
-		var file = "./Source/Server/Data/DaycareDB.db";
-		var exists = fs.existsSync(file);
+	// deleteChild: function(info) {
+	// 	var fs = require("fs");
+	// 	var file = "./Source/Server/Data/DaycareDB.db";
+	// 	var exists = fs.existsSync(file);
 
-		if (!exists) {
-			throw new Error("File not Found");
-		}
+	// 	if (!exists) {
+	// 		throw new Error("File not Found");
+	// 	}
 
-		var sqlite3 = require("sqlite3").verbose();
-		var db = new sqlite3.Database(file);
+	// 	var sqlite3 = require("sqlite3").verbose();
+	// 	var db = new sqlite3.Database(file);
 			
-		db.run("DELETE FROM " + info.oldClassroom + " WHERE ChildID = $ChildID", {
-			$ChildID: info.ChildID,
-		});
+	// 	db.run("DELETE FROM " + info.oldClassroom + " WHERE ChildID = $ChildID", {
+	// 		$ChildID: info.ChildID,
+	// 	});
 		
-		db.close();
-	},
+	// 	db.close();
+	// },
 
 
 // These functions INSERT, EDIT, and DELETE information from the staff table in the database.
