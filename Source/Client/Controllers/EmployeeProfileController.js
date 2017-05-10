@@ -37,10 +37,19 @@ angular.module('DaycareApp').controller('EmployeeProfileController', ['$scope', 
             }
             // This is where we will determine the date, the next 4 days, and then load the week schedule into an array
             var currentDate = new Date();
+            currentDate.setHours(0);
+            currentDate.setMinutes(0);  
+            currentDate.setSeconds(0);
+            currentDate.setMilliseconds(0)                               
             var sendID = {StaffID: $scope.Profile[0].StaffID};
             $http.post('/callIndivEmployeeSchedule', sendID)
             .then(function(response) {
-                debugger;
+                for(var i = 0; i < response.data.length; i++){
+                    var dateTest = new Date(response.data[i].Date);
+                    if(dateTest >= currentDate){
+                        $scope.ScheduledDates.push(response.data[i]);
+                    }
+                }
             });
         });
     };
