@@ -16,8 +16,23 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
         $http.get('/getTempProfile')
         .then(function(response) {
             $scope.Profile.push(response.data[0]);
+
+            if($scope.Profile[0].Classroom !== "" && $scope.Profile[0].Classroom !== "null" && $scope.Profile[0].Classroom !== null){
+                $http.get('/getChildClass', {params: {ID: $scope.Profile[0].ChildID, Classroom: $scope.Profile[0].Classroom}})
+                .then(function(response) {
+                    $scope.ClassroomInfo = response.data[0];
+                    console.log("Data received");
+                });
+            }
         });
     };
+
+    // $scope.LoadTempProfile = function() {
+    //     $http.get('/getTempProfile')
+    //     .then(function(response) {
+    //         $scope.Profile.push(response.data[0]);
+    //     });
+    // };
 
     $scope.EditProfile = function(){
         $scope.Editing = !$scope.Editing
@@ -176,7 +191,7 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
                 window.location.reload(true); 
             });
         }
-        else if($scope.Profile[0].Classroom === "" || $scope.Profile[0].Classroom === "null"){
+        else if($scope.Profile[0].Classroom === "" || $scope.Profile[0].Classroom === null){
             $http.post('/InsertChildToClass', changes)
             .then(function(response) {
                 alert("Child has been inserted into the classroom!"); 
@@ -203,7 +218,7 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
 
     $scope.OpenModal = function() {
         $scope.ShowModal = true;
-        document.getElementById('modalContent').style.width = "270px";
+        document.getElementById('modalContent').style.width = "600px";
         console.log($scope.numOfRows);
     }
 
@@ -227,10 +242,10 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
         }
 
         if($scope.numOfRows === 2){
-        document.getElementById('modalContent').style.width = "450px";
+        document.getElementById('modalContent').style.width = "750px";
         }
         if($scope.numOfRows === 3){
-        document.getElementById('modalContent').style.width = "650px";
+        document.getElementById('modalContent').style.width = "900px";
         }
     } 
 
@@ -240,10 +255,10 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
         }
 
         if($scope.numOfRows === 2){
-            document.getElementById('modalContent').style.width = "450px";
+            document.getElementById('modalContent').style.width = "750px";
         }
         if($scope.numOfRows === 1){
-            document.getElementById('modalContent').style.width = "270px";
+            document.getElementById('modalContent').style.width = "600px";
         }
     } 
 
