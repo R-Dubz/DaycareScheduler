@@ -95,7 +95,7 @@
 				  <td>Age Group</td>
 				  <td>
 					<span ng-if="!Editing">{{Profile[0].AgeGroup}}</span>
-					<span ng-if="Editing"><input type="text" id="AgeGroup" value="{{Profile[0].AgeGroup}}"></input></span>
+					<span ng-if="Editing"><input type="text" id="AgeGroup" value="{{Profile[0].AgeGroup}}" disabled></input></span>
 				  </td>
 				</tr>
 			  </tbody>
@@ -184,7 +184,7 @@
 				  <td>
 					<span ng-if="!Editing">{{Profile[0].AgeGroup}}</span>
 					<span ng-if="Editing">
-            <select id="AgeGroup">
+            <select id="AgeGroup" disabled>
                   <option value="null">           </option>
                   <option ng-selected="Profile[0].AgeGroup === 'IN'" value="IN">IN</option>
                   <option ng-selected="Profile[0].AgeGroup === 'T1'" value="T1">T1</option>
