@@ -216,6 +216,28 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
 
     /* MODAL JUNK */
 
+    $scope.OpenNotesModal = function(index) {
+        $scope.ShowNotesModal = true;
+        $scope.CurrentEmployee.index = index;
+        document.getElementById('textarea').innerHTML = $scope.Profile[0].MoreInfo;
+    }
+
+    $scope.CloseNotesModal = function() {
+        $scope.ShowNotesModal = false;
+        document.getElementById('textarea').innerHTML = null;
+    }
+
+    $scope.SaveNotes = function(){
+        var targetEmployee = {};
+        targetEmployee.StaffID = $scope.Profile[0].StaffID;
+        targetEmployee.MoreInfo = document.getElementById('textarea').innerHTML;
+        $scope.Profile[0].MoreInfo = document.getElementById('textarea').innerHTML;
+        $http.post('/editEmployeeNotes', targetEmployee) 
+        .then(function(response) {
+            $scope.ShowNotesModal = false;
+        });
+    }
+
     $scope.OpenModal = function() {
         $scope.ShowModal = true;
         document.getElementById('modalContent').style.width = "600px";
