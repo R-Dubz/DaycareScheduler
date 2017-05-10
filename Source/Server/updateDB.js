@@ -60,7 +60,7 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		db.all("SELECT ChildID, ChildName, ChildBirthdate, HomePhone, GuardianName1, GuardianStatus1, GuardianName2, GuardianStatus2, TimeStamp, DesiredEnrollment, AgeGroup, RequiredDays FROM Personal_Information WHERE EnrollmentStatus = 'W'", 
+		db.all("SELECT ChildID, ChildName, ChildBirthdate, EnrollmentStatus, HomePhone, GuardianName1, GuardianStatus1, GuardianName2, GuardianStatus2, TimeStamp, DesiredEnrollment, AgeGroup, RequiredDays FROM Personal_Information WHERE EnrollmentStatus = 'W' OR EnrollmentStatus = 'U'", 
 				function(err, row) {
 			if (err){
 				callback(err);
@@ -82,7 +82,7 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		db.all("SELECT ChildID FROM Personal_Information WHERE EnrollmentStatus = 'U'", 
+		db.all("SELECT * FROM Personal_Information WHERE EnrollmentStatus = 'U'", 
 				function(err, row) {
 			if (err){
 				callback(err);
@@ -234,8 +234,8 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		db.run("UPDATE Personal_Information SET EnrollmentStatus = 'U', Classroom = '" + info[1] + "'  WHERE ChildID = $ChildID", {
-			$ChildID: info[0],
+		db.run("UPDATE Personal_Information SET EnrollmentStatus = 'U', EnrollmentTerminated = '" + info.Date + "' WHERE ChildID = $ChildID", {
+			$ChildID: info.ChildID,
 		});
 
 		db.close();
@@ -501,24 +501,24 @@ This library holds functions to be used in order to modify the database
 		db.close();
 	},
 
-	deleteChild: function(info) {
-		var fs = require("fs");
-		var file = "./Source/Server/Data/DaycareDB.db";
-		var exists = fs.existsSync(file);
+	// deleteChild: function(info) {
+	// 	var fs = require("fs");
+	// 	var file = "./Source/Server/Data/DaycareDB.db";
+	// 	var exists = fs.existsSync(file);
 
-		if (!exists) {
-			throw new Error("File not Found");
-		}
+	// 	if (!exists) {
+	// 		throw new Error("File not Found");
+	// 	}
 
-		var sqlite3 = require("sqlite3").verbose();
-		var db = new sqlite3.Database(file);
+	// 	var sqlite3 = require("sqlite3").verbose();
+	// 	var db = new sqlite3.Database(file);
 			
-		db.run("DELETE FROM " + info.oldClassroom + " WHERE ChildID = $ChildID", {
-			$ChildID: info.ChildID,
-		});
+	// 	db.run("DELETE FROM " + info.oldClassroom + " WHERE ChildID = $ChildID", {
+	// 		$ChildID: info.ChildID,
+	// 	});
 		
-		db.close();
-	},
+	// 	db.close();
+	// },
 
 
 // These functions INSERT, EDIT, and DELETE information from the staff table in the database.
@@ -543,36 +543,36 @@ This library holds functions to be used in order to modify the database
 			$PhoneNumber: info.PhoneNumber,
 			$PhoneNumber2: info.PhoneNumber2,
 			$EmailAddress: info.EmailAddress,
-			$MondayIn1: info.MI1,
-			$MondayIn2: info.MI2,
-			$MondayIn3: info.MI3,
-			$MondayOut1: info.MO1,
-			$MondayOut2: info.MO2,
-			$MondayOut3: info.MO3,
-			$TuesdayIn1: info.TI1,
-			$TuesdayIn2: info.TI2,
-			$TuesdayIn3: info.TI3,
-			$TuesdayOut1: info.TO1,
-			$TuesdayOut2: info.TO2,
-			$TuesdayOut3: info.TO3,
-			$WednesdayIn1: info.WI1,
-			$WednesdayIn2: info.WI2,
-			$WednesdayIn3: info.WI3,
-			$WednesdayOut1: info.WO1,
-			$WednesdayOut2: info.WO2,
-			$WednesdayOut3: info.WO3,
-			$ThursdayIn1: info.THI1,
-			$ThursdayIn2: info.THI2,
-			$ThursdayIn3: info.THI3,
-			$ThursdayOut1: info.THO1,
-			$ThursdayOut2: info.THO2,
-			$ThursdayOut3: info.THO3,
-			$FridayIn1: info.FI1,
-			$FridayIn2: info.FI2,
-			$FridayIn3: info.FI3,
-			$FridayOut1: info.FO1,
-			$FridayOut2: info.FO2,
-			$FridayOut3: info.FO3,
+			$MI1: info.MI1,
+			$MI2: info.MI2,
+			$MI3: info.MI3,
+			$MO1: info.MO1,
+			$MO2: info.MO2,
+			$MO3: info.MO3,
+			$TI1: info.TI1,
+			$TI2: info.TI2,
+			$TI3: info.TI3,
+			$TO1: info.TO1,
+			$TO2: info.TO2,
+			$TO3: info.TO3,
+			$WI1: info.WI1,
+			$WI2: info.WI2,
+			$WI3: info.WI3,
+			$WO1: info.WO1,
+			$WO2: info.WO2,
+			$WO3: info.WO3,
+			$THI1: info.THI1,
+			$THI2: info.THI2,
+			$THI3: info.THI3,
+			$THO1: info.THO1,
+			$THO2: info.THO2,
+			$THO3: info.THO3,
+			$FI1: info.FI1,
+			$FI2: info.FI2,
+			$FI3: info.FI3,
+			$FO1: info.FO1,
+			$FO2: info.FO2,
+			$FO3: info.FO3,
 			// $MoreInfo: info.MoreInfo,
 			// $DateOfTermination: info.DateOfTermination,
 		});
@@ -591,44 +591,44 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		// db.run("UPDATE Staff_Information SET LastName = $LastName, FirstName = $FirstName, DateOfHire = $DateOfHire, PhoneNumber = $PhoneNumber, PhoneNumber2 = $PhoneNumber2, EmailAddress = $EmailAddress, MI1 = $MI1, MI2 = $MI2, MI3 = $MI3, MO1 = $MO1, MO2 = $MO2, MO3 = $MO3, TI1 = $TI1, TI2 = $TI2, TI3 = $TI3, TO1 = $TO1, TO2 = $TO2, TO3 = $TO3, WI1 = $WI1, WI2 = $WI2, WI3 = $WI3, WO1 = $WO1, WO2 = $WO2, WO3 = $WO3, THI1 = $THI1, THI2 = $THI2, THI3 = $THI3, THO1 = $THO1, THO2 = $THO2, THO3 = $THO3, FI1 = $FI1, FI2 = $FI2, FI3 = $FI3, FO1 = $FO1, FO2 = $FO2, FO3 = $FO3, MoreInfo = $MoreInfo, DateOfTermination = $DateOfTermination WHERE StaffID = $StaffID", {
-		db.run("UPDATE Staff_Information SET LastName = $LastName, FirstName = $FirstName, PhoneNumber = $PhoneNumber, PhoneNumber2 = $PhoneNumber2, EmailAddress = $EmailAddress WHERE StaffID = $StaffID", {
+		db.run("UPDATE Staff_Information SET LastName = $LastName, FirstName = $FirstName, DateOfHire = $DateOfHire, PhoneNumber = $PhoneNumber, PhoneNumber2 = $PhoneNumber2, EmailAddress = $EmailAddress, MI1 = $MI1, MI2 = $MI2, MI3 = $MI3, MO1 = $MO1, MO2 = $MO2, MO3 = $MO3, TI1 = $TI1, TI2 = $TI2, TI3 = $TI3, TO1 = $TO1, TO2 = $TO2, TO3 = $TO3, WI1 = $WI1, WI2 = $WI2, WI3 = $WI3, WO1 = $WO1, WO2 = $WO2, WO3 = $WO3, THI1 = $THI1, THI2 = $THI2, THI3 = $THI3, THO1 = $THO1, THO2 = $THO2, THO3 = $THO3, FI1 = $FI1, FI2 = $FI2, FI3 = $FI3, FO1 = $FO1, FO2 = $FO2, FO3 = $FO3, MoreInfo = $MoreInfo, DateOfTermination = $DateOfTermination WHERE StaffID = $StaffID", {
+		// db.run("UPDATE Staff_Information SET LastName = $LastName, FirstName = $FirstName, PhoneNumber = $PhoneNumber, PhoneNumber2 = $PhoneNumber2, EmailAddress = $EmailAddress WHERE StaffID = $StaffID", {
 			$LastName: info.LastName,
 			$FirstName: info.FirstName,
 			// $DateOfHire: info.DateOfHire,
 			$PhoneNumber: info.PhoneNumber,
 			$PhoneNumber2: info.PhoneNumber2,
 			$EmailAddress: info.EmailAddress,
-			// $MI1: info.MI1,
-			// $MI2: info.MI2,
-			// $MI3: info.MI3,
-			// $MO1: info.MO1,
-			// $MO2: info.MO2,
-			// $MO3: info.MO3,
-			// $TI1: info.TI1,
-			// $TI2: info.TI2,
-			// $TI3: info.TI3,
-			// $TO1: info.TO1,
-			// $TO2: info.TO2,
-			// $TO3: info.TO3,
-			// $WI1: info.WI1,
-			// $WI2: info.WI2,
-			// $WI3: info.WI3,
-			// $WO1: info.WO1,
-			// $WO2: info.WO2,
-			// $WO3: info.WO3,
-			// $THI1: info.THI1,
-			// $THI2: info.THI2,
-			// $THI3: info.THI3,
-			// $THO1: info.THO1,
-			// $THO2: info.THO2,
-			// $THO3: info.THO3,
-			// $FI1: info.FI1,
-			// $FI2: info.FI2,
-			// $FI3: info.FI3,
-			// $FO1: info.FO1,
-			// $FO2: info.FO2,
-			// $FO3: info.FO3,
+			$MI1: info.MI1,
+			$MI2: info.MI2,
+			$MI3: info.MI3,
+			$MO1: info.MO1,
+			$MO2: info.MO2,
+			$MO3: info.MO3,
+			$TI1: info.TI1,
+			$TI2: info.TI2,
+			$TI3: info.TI3,
+			$TO1: info.TO1,
+			$TO2: info.TO2,
+			$TO3: info.TO3,
+			$WI1: info.WI1,
+			$WI2: info.WI2,
+			$WI3: info.WI3,
+			$WO1: info.WO1,
+			$WO2: info.WO2,
+			$WO3: info.WO3,
+			$THI1: info.THI1,
+			$THI2: info.THI2,
+			$THI3: info.THI3,
+			$THO1: info.THO1,
+			$THO2: info.THO2,
+			$THO3: info.THO3,
+			$FI1: info.FI1,
+			$FI2: info.FI2,
+			$FI3: info.FI3,
+			$FO1: info.FO1,
+			$FO2: info.FO2,
+			$FO3: info.FO3,
 			// $MoreInfo: info.MoreInfo,
 			// $DateOfTermination: info.DateOfTermination,
 			$StaffID: info.StaffID,
@@ -731,8 +731,7 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		db.run("INSERT INTO Employee_Schedule (ScheduleID, StaffID, Date, Classroom, TimeStart, TimeEnd, Staff_Name) VALUES ($ScheduleID, $StaffID, $Date, $Classroom, $TimeStart, $TimeEnd, $Staff_Name)", {
-			$ScheduleID: info.ScheduleID,
+		db.run("INSERT INTO Employee_Schedule (StaffID, Date, Classroom, TimeStart, TimeEnd, Staff_Name) VALUES ($StaffID, $Date, $Classroom, $TimeStart, $TimeEnd, $Staff_Name)", {
 			$StaffID: info.StaffID,
 			$Date: info.Date,
 			$Classroom: info.Classroom,
@@ -754,7 +753,7 @@ This library holds functions to be used in order to modify the database
 
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
-
+ 
 		db.run("DELETE FROM Employee_Schedule WHERE ScheduleID = $ScheduleID", {
 			$ScheduleID: info.ScheduleID,
 		});

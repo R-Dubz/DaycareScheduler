@@ -16,7 +16,7 @@ app.use(express.static(__dirname + '/Source/Client/Templates'));
 
 app.use(express.static(__dirname + '/'));
 
-
+// THIS IS THE WORKING VERSION OF SERVER.JS
 
 
   app.listen(3000, function() {
@@ -34,7 +34,7 @@ app.use(express.static(__dirname + '/'));
           //Check to see if children have been "idle" for 5 years (arbitrary time set by SPCCC) and delete them if they have been
           var currentDate = new Date();
           for(var counter = 0; counter < data.length; counter++){
-            var unenrolledDate = new Date(data[counter].enrollmentTerminated);
+            var unenrolledDate = new Date(data[counter].EnrollmentTerminated);
             // var unenrolledDate = new Date("5/4/2010"); Test case. 
             var difference = currentDate - unenrolledDate;
             if(difference > 157700000000){

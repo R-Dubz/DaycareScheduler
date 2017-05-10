@@ -8,10 +8,11 @@ angular.module('DaycareApp').controller('EmployeeSchedController', ['$scope', '$
         $scope.EmployeeSchedThr = [];
         $scope.EmployeeSchedFri = [];
 
-        $scope.Profile = [];   
+        $scope.Profile = {};   
         $scope.sortType = 'jsFriendlyTimeStamp'; 
         $scope.sortReverse = true;
-        $scope.searchText = '';         
+        $scope.searchText = '';   
+        $scope.ShowEditModal = false;       
         
 
         $scope.LoadEmployeeList = function() {
@@ -25,10 +26,40 @@ angular.module('DaycareApp').controller('EmployeeSchedController', ['$scope', '$
             });
         };
 
+        $scope.openModal = function(given){
+            $scope.Profile = given;
+            $scope.ShowEditModal = true; 
+        }
+
+        $scope.CloseEditModal = function() {
+            $scope.ShowEditModal = false;
+        }
+
         $scope.LoadEmployeeSchedule = function() {
             $http.get('/loadEmployeeSchedule')
             .then(function(response) {
                 $scope.EmployeeSched = response.data;
+                for( var i = 0; i < $scope.EmployeeSched.length; i++ ){
+                    if($scope.EmployeeSched[i].Classroom === "InfantRoom"){
+                        $scope.EmployeeSched[i].JSFClassroom = "Infant Room";
+                    } else if($scope.EmployeeSched[i].Classroom === "Toddler1"){
+                        $scope.EmployeeSched[i].JSFClassroom = "Toddler 1";
+                    } else if($scope.EmployeeSched[i].Classroom === "Toddler2"){
+                        $scope.EmployeeSched[i].JSFClassroom = "Toddler 2";
+                    } else if($scope.EmployeeSched[i].Classroom === "Preschool3"){
+                        $scope.EmployeeSched[i].JSFClassroom = "Preschool 1";
+                    } else if($scope.EmployeeSched[i].Classroom === "Preschool4"){
+                        $scope.EmployeeSched[i].JSFClassroom = "Preschool 2";
+                    } else if($scope.EmployeeSched[i].Classroom === "SchoolAge"){
+                        $scope.EmployeeSched[i].JSFClassroom = "School Age";
+                    } else if($scope.EmployeeSched[i].Classroom === "Classroom8"){
+                        $scope.EmployeeSched[i].JSFClassroom = "Classroom 8";
+                    } else{
+                        $scope.EmployeeSched[i].JSFClassroom = "";
+                    }
+                    $scope.EmployeeSched[i].TimeStart = $scope.timeTo12HrFormat( $scope.EmployeeSched[i].TimeStart );
+                    $scope.EmployeeSched[i].TimeEnd = $scope.timeTo12HrFormat( $scope.EmployeeSched[i].TimeEnd );
+                }
                 $scope.putInBuffer();
             });
         };
@@ -40,142 +71,165 @@ angular.module('DaycareApp').controller('EmployeeSchedController', ['$scope', '$
             });
         }
 
+        
+        $scope.SaveChanges = function(){
+        var targetEmployee = {};
+        targetEmployee.StaffID = $scope.Profile.StaffID;
+        targetEmployee.Staff_Name = $scope.Profile.FirstName + " " + $scope.Profile.LastName;
+        targetEmployee.TimeStart = document.getElementById( "start" ).value;
+        targetEmployee.TimeEnd = document.getElementById( "end" ).value;
+        var myDates = new Date(document.getElementById( "datepicker" ).value);
+        targetEmployee.Date = myDates.getMonth()+1 + "/" + myDates.getDate() + "/" + myDates.getFullYear();
+        targetEmployee.Classroom = document.getElementById( "room" ).value;
+        console.log( targetEmployee );
+        $http.post('/InsertSchedule', targetEmployee) 
+        .then(function(response) {
+            $scope.LoadEmployeeSchedule();
+            $scope.ShowEditModal = false;
+        });
+    }
+
 
     $scope.ConvertTimesToStrings = function(employee){
-        if(employee.MondayIn !== "null" && employee.MondayIn !== null ){
-            employee.MondayInUF = $scope.timeTo12HrFormat(employee.MondayIn); //UF Stands for User Friendly. Ex: the number 15 will become 3:00PM
-            employee.MondayOutUF = $scope.timeTo12HrFormat(employee.MondayOut);
+        if(employee.MI1 !== "null" && employee.MI1 !== null ){
+            employee.MondayInUF = $scope.timeTo12HrFormat(employee.MI1); //UF Stands for User Friendly. Ex: the number 15 will become 3:00PM
+            employee.MondayOutUF = $scope.timeTo12HrFormat(employee.MO1);
         } else{
-            employee.MondayIn = "";
-            employee.MondayOut = "";
+            employee.MI1 = "";
+            employee.MO1 = "";
         }
-        if(employee.MondayIn2 !== "null" && employee.MondayIn2 !== null ){
-            employee.MondayIn2UF = $scope.timeTo12HrFormat(employee.MondayIn2);
-            employee.MondayOut2UF = $scope.timeTo12HrFormat(employee.MondayOut2);  
+        if(employee.MI2 !== "null" && employee.MI2 !== null ){
+            employee.MondayIn2UF = $scope.timeTo12HrFormat(employee.MI2);
+            employee.MondayOut2UF = $scope.timeTo12HrFormat(employee.MO2);  
         } else{
-            employee.MondayIn2 = ""
-            employee.MondayOut2 = "";
+            employee.MI2 = "";
+            employee.MO2 = "";
         }
-        if(employee.MondayIn3 !== "null" && employee.MondayIn3 !== null ){
-            employee.MondayIn3UF = $scope.timeTo12HrFormat(employee.MondayIn3);
-            employee.MondayOut3UF = $scope.timeTo12HrFormat(employee.MondayOut3);   
+        if(employee.MI3 !== "null" && employee.MI3 !== null ){
+            employee.MondayIn3UF = $scope.timeTo12HrFormat(employee.MI3);
+            employee.MondayOut3UF = $scope.timeTo12HrFormat(employee.MO3);   
         } else{
-            employee.MondayIn3 = ""
-            employee.MondayOut3 = "";
+            employee.MI3 = "";
+            employee.MO3 = "";
         } 
-        if(employee.TuesdayIn !== "null" && employee.TuesdayIn !== null ){
-            employee.TuesdayInUF = $scope.timeTo12HrFormat(employee.TuesdayIn);
-            employee.TuesdayOutUF = $scope.timeTo12HrFormat(employee.TuesdayOut);
+        if(employee.TI1 !== "null" && employee.TI1 !== null ){
+            employee.TuesdayInUF = $scope.timeTo12HrFormat(employee.TI1);
+            employee.TuesdayOutUF = $scope.timeTo12HrFormat(employee.TO1);
         } else{
-            employee.TuesdayIn = ""
-            employee.TuesdayOut = "";
+            employee.TI1 = "";
+            employee.TO1 = "";
         }   
-        if(employee.TuesdayIn2 !== "null" && employee.TuesdayIn2 !== null ){
-            employee.TuesdayIn2UF = $scope.timeTo12HrFormat(employee.TuesdayIn2);
-            employee.TuesdayOut2UF = $scope.timeTo12HrFormat(employee.TuesdayOut2);  
+        if(employee.TI2 !== "null" && employee.TI2 !== null ){
+            employee.TuesdayIn2UF = $scope.timeTo12HrFormat(employee.TI2);
+            employee.TuesdayOut2UF = $scope.timeTo12HrFormat(employee.TO2);  
         } else{
-            employee.TuesdayIn2 = ""
-            employee.TuesdayOut2 = "";
+            employee.TI2 = "";
+            employee.TO2 = "";
         }   
-        if(employee.TuesdayIn3 !== "null" && employee.TuesdayIn3 !== null ){
-            employee.TuesdayIn3UF = $scope.timeTo12HrFormat(employee.TuesdayIn3);
-            employee.TuesdayOut3UF = $scope.timeTo12HrFormat(employee.TuesdayOut3);   
+        if(employee.TI3 !== "null" && employee.TI3 !== null ){
+            employee.TuesdayIn3UF = $scope.timeTo12HrFormat(employee.TI3);
+            employee.TuesdayOut3UF = $scope.timeTo12HrFormat(employee.TO3);   
         } else{
-            employee.TuesdayIn3 = ""
-            employee.TuesdayOut3 = "";
+            employee.TI3 = "";
+            employee.TO3 = "";
         } 
-        if(employee.WednesdayIn !== "null" && employee.WednesdayIn !== null ){
-            employee.WednesdayInUF = $scope.timeTo12HrFormat(employee.WednesdayIn);
-            employee.WednesdayOutUF = $scope.timeTo12HrFormat(employee.WednesdayOut);
+        if(employee.WI1 !== "null" && employee.WI1 !== null ){
+            employee.WednesdayInUF = $scope.timeTo12HrFormat(employee.WI1);
+            employee.WednesdayOutUF = $scope.timeTo12HrFormat(employee.WO1);
         } else{
-            employee.WednesdayIn = ""
-            employee.WednesdayOut = "";
+            employee.WI1 = "";
+            employee.WO1 = "";
         }   
-        if(employee.WednesdayIn2 !== "null" && employee.WednesdayIn2 !== null ){
-            employee.WednesdayIn2UF = $scope.timeTo12HrFormat(employee.WednesdayIn2);
-            employee.WednesdayOut2UF = $scope.timeTo12HrFormat(employee.WednesdayOut2);  
+        if(employee.WI2 !== "null" && employee.WI2 !== null ){
+            employee.WednesdayIn2UF = $scope.timeTo12HrFormat(employee.WI2);
+            employee.WednesdayOut2UF = $scope.timeTo12HrFormat(employee.WO2);  
         } else{
-            employee.WednesdayIn2 = ""
-            employee.WednesdayOut2 = "";
+            employee.WI2 = "";
+            employee.WO2 = "";
         }   
-        if(employee.WednesdayIn3 !== "null" && employee.WednesdayIn3 !== null ){
-            employee.WednesdayIn3UF = $scope.timeTo12HrFormat(employee.WednesdayIn3);
-            employee.WednesdayOut3UF = $scope.timeTo12HrFormat(employee.WednesdayOut3);   
+        if(employee.WI3 !== "null" && employee.WI3 !== null ){
+            employee.WednesdayIn3UF = $scope.timeTo12HrFormat(employee.WI3);
+            employee.WednesdayOut3UF = $scope.timeTo12HrFormat(employee.WO3);   
         } else{
-            employee.WednesdayIn3 = ""
-            employee.WednesdayOut3 = "";
+            employee.WI3 = "";
+            employee.WO3 = "";
         } 
-        if(employee.ThursdayIn !== "null" && employee.ThursdayIn !== null ){
-            employee.ThursdayInUF = $scope.timeTo12HrFormat(employee.ThursdayIn);
-            employee.ThursdayOutUF = $scope.timeTo12HrFormat(employee.ThursdayOut);
+        if(employee.THI1 !== "null" && employee.THI1 !== null ){
+            employee.ThursdayInUF = $scope.timeTo12HrFormat(employee.THI1);
+            employee.ThursdayOutUF = $scope.timeTo12HrFormat(employee.THO1);
         } else{
-            employee.ThursdayIn = ""
-            employee.ThursdayOut = "";
+            employee.THI1 = "";
+            employee.THO1 = "";
         }   
-        if(employee.ThursdayIn2 !== "null" && employee.ThursdayIn2 !== null ){
-            employee.ThursdayIn2UF = $scope.timeTo12HrFormat(employee.ThursdayIn2);
-            employee.ThursdayOut2UF = $scope.timeTo12HrFormat(employee.ThursdayOut2);  
+        if(employee.THI2 !== "null" && employee.THI2 !== null ){
+            employee.ThursdayIn2UF = $scope.timeTo12HrFormat(employee.THI2);
+            employee.ThursdayOut2UF = $scope.timeTo12HrFormat(employee.THO2);  
         } else{
-            employee.ThursdayIn2 = ""
-            employee.ThursdayOut2 = "";
+            employee.THI2 = "";
+            employee.THO2 = "";
         }   
-        if(employee.ThursdayIn3 !== "null" && employee.ThursdayIn3 !== null ){
-            employee.ThursdayIn3UF = $scope.timeTo12HrFormat(employee.ThursdayIn3);
-            employee.ThursdayOut3UF = $scope.timeTo12HrFormat(employee.ThursdayOut3);   
+        if(employee.THI3 !== "null" && employee.THI3 !== null ){
+            employee.ThursdayIn3UF = $scope.timeTo12HrFormat(employee.THI3);
+            employee.ThursdayOut3UF = $scope.timeTo12HrFormat(employee.THO3);   
         } else{
-            employee.ThursdayIn3 = ""
-            employee.ThursdayOut3 = "";
+            employee.THI3 = "";
+            employee.THO3 = "";
         } 
-        if(employee.FridayIn !== "null" && employee.FridayIn !== null ){
-            employee.FridayInUF = $scope.timeTo12HrFormat(employee.FridayIn);
-            employee.FridayOutUF = $scope.timeTo12HrFormat(employee.FridayOut);
+        if(employee.FI1 !== "null" && employee.FI1 !== null ){
+            employee.FridayInUF = $scope.timeTo12HrFormat(employee.FI1);
+            employee.FridayOutUF = $scope.timeTo12HrFormat(employee.FO1);
         } else{
-            employee.FridayIn = ""
-            employee.FridayOut = "";
+            employee.FI1 = "";
+            employee.FO1 = "";
         }   
-        if(employee.FridayIn2 !== "null" && employee.FridayIn2 !== null ){
-            employee.FridayIn2UF = $scope.timeTo12HrFormat(employee.FridayIn2);
-            employee.FridayOut2UF = $scope.timeTo12HrFormat(employee.FridayOut2);  
+        if(employee.FI2 !== "null" && employee.FI2 !== null ){
+            employee.FridayIn2UF = $scope.timeTo12HrFormat(employee.FI2);
+            employee.FridayOut2UF = $scope.timeTo12HrFormat(employee.FO2);  
         } else{
-            employee.FridayIn2UF = ""
-            employee.FridayOut2UF = "";
+            employee.FI2 = "";
+            employee.FO2 = "";
         }   
-        if(employee.FridayIn3 !== "null" && employee.FridayIn3 !== null ){
-            employee.FridayIn3UF = $scope.timeTo12HrFormat(employee.FridayIn3);
-            employee.FridayOut3UF = $scope.timeTo12HrFormat(employee.FridayOut3);   
+        if(employee.FI3 !== "null" && employee.FI3 !== null ){
+            employee.FridayIn3UF = $scope.timeTo12HrFormat(employee.FI3);
+            employee.FridayOut3UF = $scope.timeTo12HrFormat(employee.FO3);   
         } else{
-            employee.FridayIn3 = ""
-            employee.FridayOut3 = "";
+            employee.FI3 = "";
+            employee.FO3 = "";
         } 
     };
 
     $scope.timeTo12HrFormat = function(time) {   // Take a time in 24 hour format and format it in 12 hour format
-        var time_part_array = time.split(".");
-        var ampm = 'AM';
+        if(time !== "" && time !== null && time !== "null"){
+            var time_part_array = time.split(".");
+            var ampm = 'AM';
 
-        if (time_part_array[0] >= 12) {
-            ampm = 'PM';
-        }
+            if (time_part_array[0] >= 12) {
+                ampm = 'PM';
+            }
 
-        if (time_part_array[0] > 12) {
-            time_part_array[0] = time_part_array[0] - 12;
-        }
+            if (time_part_array[0] > 12) {
+                time_part_array[0] = time_part_array[0] - 12;
+            }
 
-        if(time_part_array[1] == 0){
-            time_part_array[1] = "00";
-        } else if(time_part_array[1] == 25){
-            time_part_array[1] = "15";
-        } else if(time_part_array[1] == 5){
-            time_part_array[1] = "30";
-        } else if(time_part_array[1] == 75){
-            time_part_array[1] = "45";
+            if(time_part_array[1] == 0){
+                time_part_array[1] = "00";
+            } else if(time_part_array[1] == 25){
+                time_part_array[1] = "15";
+            } else if(time_part_array[1] == 5){
+                time_part_array[1] = "30"; 
+            } else if(time_part_array[1] == 75){
+                time_part_array[1] = "45";
+            } else {
+                time_part_array[1] = "00";
+            }
+
+            var formatted_time = time_part_array[0] + ':' + time_part_array[1] + ampm;
+
+            return formatted_time;
         } else {
-            time_part_array[1] = "00";
+            var formatted_time = "";
+            return formatted_time;
         }
-
-        formatted_time = time_part_array[0] + ':' + time_part_array[1] + ' ' + ampm;
-
-        return formatted_time;
     };
 
     var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -328,5 +382,56 @@ angular.module('DaycareApp').controller('EmployeeSchedController', ['$scope', '$
         document.getElementById("friday").innerHTML = Fri;
         $scope.putInBuffer();
     }
+
+    $scope.deleteInstance = function(employee){
+        for(var i = 0; i < $scope.EmployeeSched.length; i++){
+            if($scope.EmployeeSched[i].ScheduleID === employee.ScheduleID){
+                $scope.EmployeeSched.splice(i, 1);
+            }
+        }
+        for(var i = 0; i < $scope.EmployeeSchedMon.length; i++){
+            if($scope.EmployeeSchedMon[i].ScheduleID === employee.ScheduleID){
+                $scope.EmployeeSchedMon.splice(i, 1);
+            }
+        }
+        for(var i = 0; i < $scope.EmployeeSchedTue.length; i++){
+            if($scope.EmployeeSchedTue[i].ScheduleID === employee.ScheduleID){
+                $scope.EmployeeSchedTue.splice(i, 1);
+            }
+        }
+        for(var i = 0; i < $scope.EmployeeSchedWed.length; i++){
+            if($scope.EmployeeSchedWed[i].ScheduleID === employee.ScheduleID){
+                $scope.EmployeeSchedWed.splice(i, 1);
+            }
+        }
+        for(var i = 0; i < $scope.EmployeeSchedThr.length; i++){
+            if($scope.EmployeeSchedThr[i].ScheduleID === employee.ScheduleID){
+                $scope.EmployeeSchedThr.splice(i, 1);
+            }
+        }
+        for(var i = 0; i < $scope.EmployeeSchedFri.length; i++){
+            if($scope.EmployeeSchedFri[i].ScheduleID === employee.ScheduleID){
+                $scope.EmployeeSchedFri.splice(i, 1);
+            }
+        }
+
+        var sendID = {};
+        sendID.ScheduleID = employee.ScheduleID;
+        $http.post('/deleteSchedule', sendID)
+        .then(function(response) {
+            // do nothing
+        })
+    }
+
+    var tday = new Date();
+    var picker = new Pikaday(
+    {
+        field: document.getElementById('datepicker'),
+        firstDay: 0,
+        minDate: new Date(),
+        
+        maxDate: new Date(tday.getFullYear()+10, 12, 31),
+        yearRange: [2000,2020]
+    });
 
     }]);

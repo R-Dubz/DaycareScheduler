@@ -149,7 +149,9 @@
                             response.data[i].AgeValue = 1000; 
                         }
                     }
-
+                    if(response.data[i].EnrollmentStatus === 'U'){
+                        response.data[i].DesiredEnrollment = "INACTIVE"; 
+                    }
                     $scope.Children.push(response.data[i]);
                     // $scope.Children[i].push(jsFriendlyBirthDate);                    
                 }
