@@ -39,6 +39,10 @@ angular.module('DaycareApp').controller('EmployeeSchedController', ['$scope', '$
             $http.get('/loadEmployeeSchedule')
             .then(function(response) {
                 $scope.EmployeeSched = response.data;
+                for( var i = 0; i < $scope.EmployeeSched.length; i++ ){
+                    $scope.EmployeeSched[i].TimeStart = $scope.timeTo12HrFormat( $scope.EmployeeSched[i].TimeStart );
+                    $scope.EmployeeSched[i].TimeEnd = $scope.timeTo12HrFormat( $scope.EmployeeSched[i].TimeEnd );
+                }
                 $scope.putInBuffer();
             });
         };
