@@ -832,7 +832,7 @@ This library holds functions to be used in order to modify the database
 		db.close();
 	},
 
-	insertEmployeePhoto: function(info) {
+	editEmployeePhoto: function(info) {
 		var fs = require("fs");
 		var file = "./Source/Server/Data/DaycareDB.db";
 		var exists = fs.existsSync(file);
@@ -844,14 +844,14 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		db.run("INSERT INTO Staff_Information (EmployeePhoto) VALUES ($EmployeePhoto) WHERE StaffID = $StaffID", {
+		db.run("UPDATE Staff_Information SET EmployeePhoto = $EmployeePhoto WHERE StaffID = $StaffID", {
 			$EmployeePhoto: info.EmployeePhoto,
 			$StaffID: info.StaffID,
 		});
 		db.close();
 	},
 
-	insertChildPhoto: function(info) {
+	editChildPhoto: function(info) {
 		var fs = require("fs");
 		var file = "./Source/Server/Data/DaycareDB.db";
 		var exists = fs.existsSync(file);
@@ -863,7 +863,7 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		db.run("INSERT INTO Personal_Information (ChildPhoto) VALUES ($ChildPhoto) WHERE ChildID = $ChildID", {
+		db.run("UPDATE Personal_Information SET ChildPhoto = $ChildPhoto WHERE ChildID = $ChildID", {
 			$ChildPhoto: info.ChildPhoto,
 			$ChildID: info.ChildID,
 		});
