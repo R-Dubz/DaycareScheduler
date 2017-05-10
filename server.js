@@ -16,7 +16,7 @@ app.use(express.static(__dirname + '/Source/Client/Templates'));
 
 app.use(express.static(__dirname + '/'));
 
-
+// THIS IS THE WORKING VERSION OF SERVER.JS
 
 
   app.listen(3000, function() {
