@@ -19,11 +19,38 @@ app.use(express.static(__dirname + '/'));
 
 
 
-app.listen(3000, function() {
-  console.log("Launch successful. To access app, open your browser and insert the following URL into your address bar: http://localhost:3000/");
-  // var i = 0;
-  // setInterval(function(){console.log(i + " seconds"); i++;}, 1000);
-});
+  app.listen(3000, function() {
+    console.log("Launch successful. To access app, open your browser and insert the following URL into your address bar: http://localhost:3000/");
+     setInterval(updateDB.callUnenrolledList(function(err, data){
+        if(err) {
+          // print error
+          console.log(err);
+        }
+        console.log("Checking for Unenrolled Children...");
+        if(data.length < 1){
+          console.log("Database is up to date. No Children Deleted");
+          //Do nothing. There are no unenrolled children
+        } else {
+          //Check to see if children have been "idle" for 5 years (arbitrary time set by SPCCC) and delete them if they have been
+          var currentDate = new Date();
+          for(var counter = 0; counter < data.length; counter++){
+            // var unenrolledDate = new Date(data[counter].enrollmentTerminated);
+            var unenrolledDate = new Date("5/4/2016");
+            var difference = currentDate - unenrolledDate;
+            if(difference > 157700000000){
+              console.log("Over 5 years old. Delete child!");
+              var child = data[counter].ChildID;
+              var ID = {ChildID: child};
+              updateDB.deleteChildFromDatabasePermanently(ID);
+              console.log("child deleted");
+            } else{
+              //do nothing. array "data" was empty. There are no inactive children to delete.
+            }
+          }
+        }
+      }), 604800000); // 604800000ms = 1 week. Because Javascript uses ms. ugh.
+                      // Run this function once a week and delete children inactive for 5 years or more. 
+  });
 
 app.get('/', function (req, res) {
     console.log("Loading Home Page...");
@@ -100,6 +127,12 @@ app.get('/', function (req, res) {
     console.log("Accepting Child...");
     return res.sendStatus(200);
   }); 
+
+  app.post('/terminateChild', jsonParser, function (req, res) {
+    updateDB.unenrollChild(req.body); 
+    console.log("Unenrolling Child...");
+    return res.sendStatus(200);
+  });
 
   app.post('/unenrollChild', jsonParser, function (req, res) {
     updateDB.unenrollChild(req.body); 
