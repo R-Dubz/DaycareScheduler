@@ -24,9 +24,9 @@ angular.module('DaycareApp').controller('EnrollmentController', ['$scope', '$htt
                     } else if(response.data[i].Classroom === "Toddler2"){
                        response.data[i].Classroom = "Toddler 2"; 
                     } else if(response.data[i].Classroom === "Preschool3"){
-                       response.data[i].Classroom = "Preschool 1"; 
+                       response.data[i].Classroom = "Preschool 3"; 
                     } else if(response.data[i].Classroom === "Preschool4"){
-                       response.data[i].Classroom = "Preschool 2"; 
+                       response.data[i].Classroom = "Preschool 4"; 
                     } else if(response.data[i].Classroom === "SchoolAge"){
                        response.data[i].Classroom = "School Age"; 
                     } else if(response.data[i].Classroom === "Classroom8"){

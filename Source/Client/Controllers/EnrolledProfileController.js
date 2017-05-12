@@ -26,9 +26,9 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
                     } else if($scope.Profile[0].Classroom === "Toddler2"){
                         $scope.JSFClassroom = "Toddler 2";
                     } else if($scope.Profile[0].Classroom === "Preschool3"){
-                        $scope.JSFClassroom = "Preschool 1";
+                        $scope.JSFClassroom = "Preschool 3";
                     } else if($scope.Profile[0].Classroom === "Preschool4"){
-                        $scope.JSFClassroom = "Preschool 2";
+                        $scope.JSFClassroom = "Preschool 4";
                     } else if($scope.Profile[0].Classroom === "SchoolAge"){
                         $scope.JSFClassroom = "School Age";
                     } else if($scope.Profile[0].Classroom === "Classroom8"){
@@ -248,8 +248,10 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
             changes.FI3 = null;
             changes.FO3 = null;
         }
-
-        if (document.getElementById('Classroom').value === "null" || document.getElementById('Classroom').value === null) {
+        if ((document.getElementById('Classroom').value === "null" || document.getElementById('Classroom').value === null) && ($scope.Profile[0].Classroom === "" || $scope.Profile[0].Classroom === null || $scope.Profile[0].Classroom === "null")) {
+            $scope.CloseModal();
+            alert("It appears you are trying to save information for a child who has no classroom\nPlease assign a classroom and try again.\nIf you are attempting to save times for future enrollment, please save this information in the 'Notes' section."); 
+        } else if ((document.getElementById('Classroom').value === "null" || document.getElementById('Classroom').value === null) && $scope.Profile[0].Classroom !== "") {
             $http.post('/deleteChildFromClassroom', changes)
             .then(function(response) {
                 alert("Child has been Removed from the classroom");
@@ -265,7 +267,7 @@ angular.module('DaycareApp').controller('EnrolledProfileController', ['$scope', 
                 window.location.reload(true); 
             });
         }
-        else if($scope.Profile[0].Classroom === "" || $scope.Profile[0].Classroom === "null"){
+        else if($scope.Profile[0].Classroom === "" || $scope.Profile[0].Classroom === "null" || $scope.Profile[0].Classroom === null){
             $http.post('/InsertChildToClass', changes)
             .then(function(response) {
                 alert("Child has been inserted into the classroom!"); 

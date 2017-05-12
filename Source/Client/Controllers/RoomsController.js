@@ -6,7 +6,7 @@ angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', '
         $scope.sortReverse = true;
         $scope.searchText = ''; 
         $scope.ShowModal = false;  
-        $scope.names = ["Infant Room", "Toddler 1", "Toddler 2", "Preschool 1", "Preschool 2", "Progressive", "School Age", "Classroom 8"];
+        $scope.names = ["Infant Room", "Toddler 1", "Toddler 2", "Preschool 3", "Preschool 4", "Progressive", "School Age", "Classroom 8"];
         $scope.ClassroomList = [];
         $scope.CurrentChild = {};
 
@@ -20,9 +20,9 @@ angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', '
                 target = "Toddler1"; 
             } else if(target === "Toddler 2"){
                 target = "Toddler2"; 
-            } else if(target === "Preschool 1"){
+            } else if(target === "Preschool 3"){
                 target = "Preschool3"; 
-            } else if(target === "Preschool 2"){
+            } else if(target === "Preschool 4"){
                 target = "Preschool4"; 
             } else if(target === "School Age"){
                 target = "SchoolAge"; 

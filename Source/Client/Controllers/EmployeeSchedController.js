@@ -47,9 +47,9 @@ angular.module('DaycareApp').controller('EmployeeSchedController', ['$scope', '$
                     } else if($scope.EmployeeSched[i].Classroom === "Toddler2"){
                         $scope.EmployeeSched[i].JSFClassroom = "Toddler 2";
                     } else if($scope.EmployeeSched[i].Classroom === "Preschool3"){
-                        $scope.EmployeeSched[i].JSFClassroom = "Preschool 1";
+                        $scope.EmployeeSched[i].JSFClassroom = "Preschool 3";
                     } else if($scope.EmployeeSched[i].Classroom === "Preschool4"){
-                        $scope.EmployeeSched[i].JSFClassroom = "Preschool 2";
+                        $scope.EmployeeSched[i].JSFClassroom = "Preschool 4";
                     } else if($scope.EmployeeSched[i].Classroom === "SchoolAge"){
                         $scope.EmployeeSched[i].JSFClassroom = "School Age";
                     } else if($scope.EmployeeSched[i].Classroom === "Classroom8"){
