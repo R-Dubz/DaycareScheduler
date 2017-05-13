@@ -59,6 +59,7 @@
 
 <table class = "ClassroomTable">
 	<tr>
+        <th></th>
         <th>D.O.B.</th>
         <th>Name</th>
         <th>Monday</th>
@@ -71,6 +72,7 @@
     </tr>
 
 <tr ng-repeat="child in ClassroomList | orderBy:['ChildBirthdate'] | filter:searchText">
+    <th>{{$index + 1}}</th>
     <th>{{child.ChildBirthdate}}</th>
 	<th ng-click="storeProfile(child)" style="cursor: hand;">{{child.ChildName}}</th>
     <th ng-bind-html="child.MondayString"></th>

@@ -86,7 +86,6 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
                 $scope.value = response.data[0].Custody;
             }
             $scope.Profile.push(response.data[0]);
-            debugger;
         });
     };
 

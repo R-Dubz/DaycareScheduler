@@ -226,6 +226,8 @@ This library holds functions to be used in order to modify the database
 		var fs = require("fs");
 		var file = "./Source/Server/Data/DaycareDB.db";
 		var exists = fs.existsSync(file);
+		var todayDate = new Date();
+		var currentDate = todayDate.getMonth()+1 + "/" + todayDate.getDate() + "/" +  todayDate.getFullYear(); // For some reason Date was being misformatted between when it got sent to the server and when it arrived
 
 		if (!exists) {
 			throw new Error("File not Found");
@@ -234,7 +236,7 @@ This library holds functions to be used in order to modify the database
 		var sqlite3 = require("sqlite3").verbose();
 		var db = new sqlite3.Database(file);
 
-		db.run("UPDATE Personal_Information SET EnrollmentStatus = 'U', EnrollmentTerminated = '" + info.Date + "' WHERE ChildID = $ChildID", {
+		db.run("UPDATE Personal_Information SET EnrollmentStatus = 'U', EnrollmentTerminated = '" + currentDate + "', TimeStamp = '" + currentDate + "' WHERE ChildID = $ChildID", {
 			$ChildID: info.ChildID,
 		});
 

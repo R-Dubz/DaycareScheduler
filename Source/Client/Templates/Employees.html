@@ -64,7 +64,7 @@
 <div id="display"></div>
 <br>
 
-<table class = "TFtable" style="height: 85%; width: 100%">
+<table class = "TFtable" style="height: 85%; width: 100%; table-layout: fixed">
 	<th>Employee's Name</th>
 	<th>Phone Number</th>
 	<th>Phone Number 2</th>
@@ -77,7 +77,7 @@
     <th>{{employee.PhoneNumber}}</th>
     <th>{{employee.PhoneNumber2}}</th>  
     <th>{{employee.EmailAddress}}</th> 
-    <th>{{employee.MoreInfo}}</th>
+    <th style="word-wrap: break-word;">{{employee.MoreInfo}}</th>
     <th><button type="button" ng-click="storeProfile(employee)" class="button">Profile</button></th>
 </tr>
 <tr ng-if="Employees.length === 0">

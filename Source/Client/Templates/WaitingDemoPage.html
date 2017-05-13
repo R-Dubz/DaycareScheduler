@@ -102,6 +102,10 @@
 					<span ng-if="!Editing">Enrolled</span>
 					<span ng-if="Editing">Enrolled</span>
 				  </span>
+				  <span ng-if="Profile[0].EnrollmentStatus === 'U'">
+					<span ng-if="!Editing">Unenrolled</span>
+					<span ng-if="Editing">Unenrolled</span>
+				  </span>
 				  </td>
 				</tr>
 			  </tbody>
@@ -538,7 +542,7 @@
 
         <!-- Modal content -->
 	
-        <div id="modalContent" class="modal-content" style="width: 600px; height: 650px"> 
+        <div id="modalContent" class="modal-content" style="width: 650px; height: 700px"> 
         <span class="close" ng-click="CloseModal()">×</span>
         <div style="text-align: center;"> Classroom:
         <select id="Classroom">
@@ -554,8 +558,8 @@
         </select>
 
         <button ng-click="subSetOfDays()">
-		<span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Remove a in/out column.">-</span></button>
-	<button ng-click="addSetOfDays()"><span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Add an in/out couumn.">+</span></button>
+		<span class="button" data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Remove a in/out column.">-</span></button>
+	<button class="button" ng-click="addSetOfDays()"><span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Add an in/out couumn.">+</span></button>
 
         </div>
         <table class="in-modal" style="align: center">

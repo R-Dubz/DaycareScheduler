@@ -9,6 +9,7 @@ angular.module('DaycareApp').controller('RoomsController', ['$scope', '$http', '
         $scope.names = ["Infant Room", "Toddler 1", "Toddler 2", "Preschool 3", "Preschool 4", "Progressive", "School Age", "Classroom 8"];
         $scope.ClassroomList = [];
         $scope.CurrentChild = {};
+        $scope.counter = 0;
 
         $scope.myFunc = function(target) {
             $scope.ClassroomList = [];  

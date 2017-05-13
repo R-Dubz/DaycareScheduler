@@ -1,7 +1,7 @@
 <DOCTYPE! html>
 <html>
 <head>
-<title>Waiting List</title>
+<title>Waiting List/Unenrolled List</title>
 <script type="text/javascript"></script>
 <!--Overhang.js/jQuery-->
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -35,7 +35,7 @@
 <div class="top-bar" id="main-menu">
   <div class="top-bar-left">
     <ul class="dropdown menu" data-dropdown-menu>
-      <li class="menu-text"><img src="./Images/Stock/PotsdamLogoSmall.jpg" class="Logo"><h2 style="margin-left: 2rem;">Waiting List</h2></li>
+      <li class="menu-text"><img src="./Images/Stock/PotsdamLogoSmall.jpg" class="Logo"><h2 style="margin-left: 2rem;">Waiting List/Unenrolled List</h2></li>
     </ul>
   </div>
   <div class="top-bar-right">
@@ -65,7 +65,10 @@
 </span>
 <div id="display"></div>
 
-<table class = "TFtable" style="height: 85%; width:100%">
+<table class = "TFtable" id="WaitingList" style="height: 85%; width:100%">
+<caption>
+    <h3 style="text-align: center">Waiting List</h3>
+</caption>
 	<!--<tr>
 	<th>Child's Name</th>
 	<th>D.O.B.</th>
@@ -198,6 +201,120 @@
 </tr>
 
 </table>
+
+<table class = "TFtable" id="UnenrolledList" style="height: 85%; width:100%">
+<caption><h3 style="text-align: center">Unenrolled List</h3></caption>
+	<!--<tr>
+	<th>Child's Name</th>
+	<th>D.O.B.</th>
+	<th>Phone Number</th>
+	<th>Primany Parent Name</th>
+	<th>Primanry Parent Status</th>
+	<th>Secondary Parent Name</th>
+	<th>Secondary Parent Status</th>
+	<th>Date of App.</th>
+	<th>Desired Start Date</th>
+	<th>Class</th>
+	<th>Days</th>
+	<th>View Profile</th>
+	<th>Accept</th>-->
+        
+<!--</tr>-->
+
+<thead>
+    <tr>
+    <th style="text-align: center;">
+        <a href="#" ng-click="sortType = 'ChildName'; sortReverse = !sortReverse" style="text-align: center; color: black; text-decoration: none">
+        Child's Name
+        </a>
+    </th>
+    <th style="text-align: center;">
+        <a href="#" ng-click="sortType = 'jsFriendlyBirthDate'; sortReverse = !sortReverse" style="text-align: center; color: black; text-decoration: none">
+        D.O.B.
+        </a>
+    </th>
+    <th style="text-align: center;">
+        <a href="#" ng-click="sortType = 'HomePhone'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Phone Number
+        </a>
+    </th>
+    <th style="text-align: center;">
+        <a href="#" ng-click="sortType = 'GuardianName1'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Primany Parent Name
+        </a>
+    </th>
+    <th style="text-align: center;">
+        <a href="#" ng-click="sortType = 'GuardianStatus1'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Primany Parent Status
+        </a>
+    </th>
+    <th style="text-align: center;">
+        <a href="#" ng-click="sortType = 'GuardianName2'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Secondary Parent Name
+        </a>
+    </th>
+    <th style="text-align: center;">
+        <a href="#" ng-click="sortType = 'GuardianStatus2'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Secondary Parent Status
+        </a>
+    </th>
+    <th style="text-align: center;">
+        <a href="#" ng-click="sortType = 'jsFriendlyTimeStamp'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Date Unenrolled
+        </a>
+    </th>
+    <th style="text-align: center;">
+        <a href="#" ng-click="sortType = 'jsFriendlyDesiredEnrollment'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Enrollment Status
+        </a>
+    </th>
+    <th style="text-align: center;">
+        <a href="#" ng-click="sortType = 'AgeGroup'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Age Group
+        </a>
+    </th>
+    <th style="text-align: center;">
+        <a href="#" ng-click="sortType = 'RequiredDays'; sortReverse = !sortReverse" style="color: black; text-decoration: none">
+        Days
+        </a>
+    </th>
+	<th style="text-align: center;">View Profile</th>
+    </tr>
+</thead>
+
+
+<tr ng-repeat="child in UnenrolledChildren | orderBy:['AgeValue', '-Priority', 'TimeStamp' ] | filter:searchText"> 
+    <th ng-click="storeProfile(child)" style="cursor: hand;">{{child.ChildName}}</th>
+    <th>{{child.ChildBirthdate}}</th>   
+    <th>{{child.HomePhone}}</th>
+    <th>{{child.GuardianName1}}</th>
+    <th>{{child.GuardianStatus1}}</th>
+    <th>{{child.GuardianName2}}</th>
+    <th>{{child.GuardianStatus2}}</th>
+    <th>{{child.jsFriendlyTimeStamp}}</th>
+    <th>{{child.DesiredEnrollment}}</th>
+    <th>{{child.AgeGroup}}</th>
+    <th>{{child.RequiredDays}}</th>
+    <th><button type="button" ng-click="storeProfile(child)" class="button" style="margin-top: 10px">Profile</button></th>
+</tr>
+
+<tr ng-if="Children.length === 0">
+    <th style="height: 48px"></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>    
+    <th style="background: #dae5f4"></th>
+</tr>
+
+</table>
+
 
 <p id="accepted"></p>
 
