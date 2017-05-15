@@ -134,6 +134,7 @@ angular.module('DaycareApp').controller('WaitingProfileController', ['$scope', '
         $scope.Profile[0].Custody = document.querySelector('input[name="Custody"]:checked').value
         $scope.Profile[0].ChildHomeAddress = ChildHomeAddress.value;
         $scope.Profile[0].HomePhone = HomePhone.value;
+        $scope.Profile[0].TimeStamp = TimeStamp.value;
 
 
         var updates = $scope.Profile;

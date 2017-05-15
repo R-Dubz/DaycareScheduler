@@ -116,7 +116,7 @@
 		<center>
 		<h5>Emergency Information:</h5>
 		</center>
-		<h5>Gaurdian 1:</h5>
+		<h5>Guardian 1:</h5>
 		<p>
 			<span ng-if="!Editing">{{Profile[0].GuardianName1}}</span>
 			<span ng-if="Editing"><input type="text" id="GuardianName1" value="{{Profile[0].GuardianName1}}"></input></span>
@@ -127,7 +127,7 @@
 			<span ng-if="!Editing">{{Profile[0].GuardianEmail1}}</span>
 			<span ng-if="Editing"><input type="text" id="GuardianEmail1" value="{{Profile[0].GuardianEmail1}}"></input></span>
 		</p>
-		<h5>Gaurdian 2:</h5>
+		<h5>Guardian 2:</h5>
 		<p>
 			<span ng-if="!Editing">{{Profile[0].GuardianName2}}</span>
 			<span ng-if="Editing"><input type="text" id="GuardianName2" value="{{Profile[0].GuardianName2}}"></input></span>
@@ -210,7 +210,7 @@
 		<center>
 		<h5>Emergency Information:</h5>
 		</center>
-		<h5>Gaurdian 1:</h5>
+		<h5>Guardian 1:</h5>
 		<p>
 			<span ng-if="!Editing">{{Profile[0].GuardianName1}}</span>
 			<span ng-if="Editing"><input type="text" id="GuardianName1" value="{{Profile[0].GuardianName1}}"></input></span>
@@ -221,7 +221,7 @@
 			<span ng-if="!Editing">{{Profile[0].GuardianEmail1}}</span>
 			<span ng-if="Editing"><input type="text" id="GuardianEmail1" value="{{Profile[0].GuardianEmail1}}"></input></span>
 		</p>
-		<h5>Gaurdian 2:</h5>
+		<h5>Guardian 2:</h5>
 		<p>
 			<span ng-if="!Editing">{{Profile[0].GuardianName2}}</span>
 			<span ng-if="Editing"><input type="text" id="GuardianName2" value="{{Profile[0].GuardianName2}}"></input></span>
@@ -254,6 +254,13 @@
 		</tr>
 	  </thead>
 	  <tbody>
+		<tr>
+		  <td>Date Applied:</td>
+		  <td ng-if="!Editing">{{Profile[0].TimeStamp}}</td>
+		  <td ng-if="Editing">{{Profile[0].TimeStamp}}</td>
+		  <td></td>
+		  <td></td>
+		</tr>
 		<tr>
 		  <td>Age:</td>
 		  <td ng-if="!Editing">{{Profile[0].ChildAge}}</td>
@@ -299,7 +306,7 @@
 	<table>
 	  <thead>
 		<tr>
-		  <th>Gaurdian Information</th>
+		  <th>Guardian Information</th>
 		  <th width="170"></th>
 		  <th width="170">Marital Status:</th>
 		  <th ng-if="!Editing" width="170">{{Profile[0].MaritalStatus}}</th>
@@ -328,7 +335,7 @@
 		  <td></td>
 		</tr>
 		<tr>
-		  <td>Gaurdian 1:</td>
+		  <td>Guardian 1:</td>
 		  <td>{{Profile[0].GuardianName1}}</td>
 		  <td></td>
 		  <td></td>
@@ -352,7 +359,7 @@
 		  <td></td>
 		</tr>
 		<tr>
-		  <td>Gaurdian 2:</td>
+		  <td>Guardian 2:</td>
 		  <td>{{Profile[0].GuardianName2}}</td>
 		  <td></td>
 		  <td></td>
@@ -391,6 +398,13 @@
 		</tr>
 	  </thead>
 	  <tbody>
+		<tr>
+		  <td>Date Applied:</td>
+		  <td ng-if="!Editing">{{Profile[0].TimeStamp}}</td>
+		  <td ng-if="Editing"><input type="text" id="TimeStamp" value="{{Profile[0].TimeStamp}}"></input></td>
+		  <td></td>
+		  <td></td>
+		</tr>
 		<tr>
 		  <td>Age:</td>
 		  <td ng-if="!Editing">{{Profile[0].ChildAge}}</td>
@@ -436,7 +450,7 @@
 	<table>
 	  <thead>
 		<tr>
-		  <th>Gaurdian Information</th>
+		  <th>Guardian Information</th>
 		  <th width="170"></th>
 		  <th width="170">Marital Status:</th>
 		  <th ng-if="!Editing" width="170">{{Profile[0].MaritalStatus}}</th>
@@ -466,7 +480,7 @@
 		  <td></td>
 		</tr>
 		<tr>
-		  <td>Gaurdian 1:</td>
+		  <td>Guardian 1:</td>
 		  <td>{{Profile[0].GuardianName1}}</td>
 		  <td></td>
 		  <td></td>
@@ -490,7 +504,7 @@
 		  <td></td>
 		</tr>
 		<tr>
-		  <td>Gaurdian 2:</td>
+		  <td>Guardian 2:</td>
 		  <td>{{Profile[0].GuardianName2}}</td>
 		  <td></td>
 		  <td></td>
